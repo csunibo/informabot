@@ -5,23 +5,25 @@
  * index.js: entry point of the project
  */
 
-import axios from 'axios';
-import TelegramBot from 'node-telegram-bot-api';
-
 // Setup
 if (process.argv.length != 3)
   console.log("usage: node index.js token");
 process.env.NTBA_FIX_319 = 1;
-const bot = new TelegramBot(process.argv[2], {polling: true});
+const axios = require('axios'),
+  TelegramBot = require('node-telegram-bot-api'),
+  bot = new TelegramBot(process.argv[2], {polling: true});
 
 const options = {
   "parse_mode": "HTML",
   "disable_web_page_preview": 1,
 };
 
-function timetable() {
-  axios
-    .get("https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2")
+function answer(msg, str) {
+  bot.sendMessage(msg.chat.id, str, options).catch(e => console.error(e.stack));
+}
+
+function timetable(msg) {
+  axios.get("https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2")
     .then(res => {
       let now = new Date();
       let todayLectures = [];
@@ -42,29 +44,25 @@ function timetable() {
         return 0;
       });
       for (let i = 0; i < todayLectures.length; ++i)
-        text += "*" + todayLectures[i].title + "* " + todayLectures[i].time + "\n";
+        text += "<b>" + todayLectures[i].title + "</b> " + todayLectures[i].time + "\n";
       if (todayLectures.length !== 0)
-        bot.sendMessage(msg.chat.id, text, {parse_mode: "markdown"}).catch(e => console.error(e.stack));
+        answer(msg, text);
       else
-        bot.sendMessage(msg.chat.id, "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI", {parse_mode: "markdown"}).catch(e => console.error(e.stack));
+        answer(msg, "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI");
     }).catch(e => console.error(e.stack));
 }
 
-function course(name, virtuale, teams, website, emails) {
+function course(msg, name, virtuale, teams, website, emails) {
   // Remember to double up every % you want to escape!
-  bot.sendMessage(msg.chat.id, String.format("<b>%s</b>\n<a href='https://vir" +
-    "tuale.unibo.it/course/view.php?id=%s'>Virtuale<a>\n<a href='https://team" +
-    "s.microsoft.com/l/meetup-join/19%%3ameeting_%s%%40thread.v2/0?context=%%" +
-    "7b%%22Tid%%22%%3a%%22e99647dc-1b08-454a-bf8c-699181b389ab%%22%%2c%%22Oid" +
-    "%%22%%3a%%22080683d2-51aa-4842-aa73-291a43203f71%%22%%7d'>Videolezione</" +
-    "a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento" +
-    "/%s'>Sito</a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/i" +
-    "nsegnamento/%s/orariolezioni'>Orario</a>\n%s", name, virtuale, teams,
-    website, website, emails.join("@unibo.it<br>"), options));
-}
-
-function answer(msg, str) {
-  bot.sendMessage(msg.chat.id, str, options);
+  answer(msg, "..."/*String.format("<b>%s</b>\n<a href='https://virtuale.unibo.it/co" +
+    "urse/view.php?id=%s'>Virtuale</a>\n<a href='https://teams.microsoft.com/" +
+    "l/meetup-join/19%%3ameeting_%s%%40thread.v2/0?context=%%7b%%22Tid%%22%%3" +
+    "a%%22e99647dc-1b08-454a-bf8c-699181b389ab%%22%%2c%%22Oid%%22%%3a%%220806" +
+    "83d2-51aa-4842-aa73-291a43203f71%%22%%7d'>Videolezione</a>\n<a href='htt" +
+    "ps://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s'>Sito</a>\n<" +
+    "a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/o" +
+    "rariolezioni'>Orario</a>\n%s", name, virtuale, teams, website, website,
+    emails.join("@unibo.it<br>"))*/);
 }
 
 function onMessage(msg) {
@@ -72,57 +70,57 @@ function onMessage(msg) {
     switch (msg.text.toString().toLowerCase().split(" ")[0]) {
       // Generals
       case "/appunti":
-        bot.sendMessage(msg.chat.id, "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n➽<a href='https://www.notion.so/Algebra-e-geometria-00d4b98a5d974879aaf39457ede3261a'><b>Algebra e Geometria (Luizo)</b></a>\n➽<a href='https://www.notion.so/Algebra-a65a99336ccc499ead0637365a3bd0cd'><b>Algebra e Geometria (Alex)</b></a>\n\n➽<a href='https://www.notion.so/Algoritmi-e-strutture-dati-70a01e43fa034859bb0c8cd6d744e6d6'><b>Algoritmi (Alex)</b></a>\n➽<a href='https://www.notion.so/Algoritmi-e-Strutture-di-Dati-da9a9d634c6f433cb778cdd02bead894'><b>Algoritmi (Luizo)</b></a>\n\n➽<a href='https://www.notion.so/Analisi-1895389f8b9a465e98f2a868fc917c53'><b>Analisi (Alex)</b></a>\n➽<a href='https://www.notion.so/Analisi-Prova-unica-ab60229e9ac5455cb69b24b3c41fd0b1'><b>Analisi (Esercizi) (Fabrizio)</b></a>\n\n\n➽<a href='https://www.notion.so/Logica-logico-1adfde3168d94cc5ac461da479d113ee'><b>Logica (Alex)</b></a>\n➽<a href='https://www.notion.so/Preparazione-logica-3-CFU-8bf160d661d149f9939d5a48e72edf05'><b>Logica (Modulo da 3 CFU)(Alex)</b></a>\n➽<a href='https://www.notion.so/Ripasso-bc03206bfa034bed8f3f521778a61254'><b>Logica (Andrea)</b></a>\n\n➽<a href='https://www.notion.so/Appunti-784f6703da1447028ea95a52eda74f38'><b>Programmazione (Andrea)</b></a>\n\n<b>N.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti.</b>", option);
+        bot.sendMessage(msg, "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n➽<a href='https://www.notion.so/Algebra-e-geometria-00d4b98a5d974879aaf39457ede3261a'><b>Algebra e Geometria (Luizo)</b></a>\n➽<a href='https://www.notion.so/Algebra-a65a99336ccc499ead0637365a3bd0cd'><b>Algebra e Geometria (Alex)</b></a>\n\n➽<a href='https://www.notion.so/Algoritmi-e-strutture-dati-70a01e43fa034859bb0c8cd6d744e6d6'><b>Algoritmi (Alex)</b></a>\n➽<a href='https://www.notion.so/Algoritmi-e-Strutture-di-Dati-da9a9d634c6f433cb778cdd02bead894'><b>Algoritmi (Luizo)</b></a>\n\n➽<a href='https://www.notion.so/Analisi-1895389f8b9a465e98f2a868fc917c53'><b>Analisi (Alex)</b></a>\n➽<a href='https://www.notion.so/Analisi-Prova-unica-ab60229e9ac5455cb69b24b3c41fd0b1'><b>Analisi (Esercizi) (Fabrizio)</b></a>\n\n\n➽<a href='https://www.notion.so/Logica-logico-1adfde3168d94cc5ac461da479d113ee'><b>Logica (Alex)</b></a>\n➽<a href='https://www.notion.so/Preparazione-logica-3-CFU-8bf160d661d149f9939d5a48e72edf05'><b>Logica (Modulo da 3 CFU)(Alex)</b></a>\n➽<a href='https://www.notion.so/Ripasso-bc03206bfa034bed8f3f521778a61254'><b>Logica (Andrea)</b></a>\n\n➽<a href='https://www.notion.so/Appunti-784f6703da1447028ea95a52eda74f38'><b>Programmazione (Andrea)</b></a>\n\n<b>N.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti.</b>", option);
         break;
       case "/lezionidioggi":
-        timetable();
+        timetable(msg);
         break;
       case "/libri":
-        bot.sendMessage(msg.chat.id, "<b>LIBRI </b>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/Ej2rZIDZqklPpin8votjqR0ByrhNTUQW7qpklJjeLS196w?e=cbBVME'><b> LIBRI DI TUTTE LE MATERIE</b></a>", option);
+        bot.sendMessage(msg, "<b>LIBRI </b>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/Ej2rZIDZqklPpin8votjqR0ByrhNTUQW7qpklJjeLS196w?e=cbBVME'><b> LIBRI DI TUTTE LE MATERIE</b></a>", option);
         break;
       case "/link":
-        bot.sendMessage(msg.chat.id, "<b>GRUPPI DELLE MATERIE</b>\n<a href='https://t.me/joinchat/2hUcGLfY7Gc2MTA8'><b>➽ Sistemi operativi </b></a>\n<a href='https://t.me/joinchat/4v-08oT6QWk0ZmM8'><b>➽ Linguaggi di programmazione </b></a>\n<a href='https://t.me/joinchat/Sw2Ykp0-0mM1Zjdk'><b>➽ Reti di calcolatori </b></a>\n<a href='https://t.me/joinchat/h1lypfBFdEZkYzFk'><b>➽ Calcolo Numerico </b></a>\n<a href='https://t.me/joinchat/klw79l5tkPM1NWQ0'><b>➽ Ottimizzazione Combinatoria </b></a>\n\n<a href='https://discord.gg/YcAc2rdS3H'><b>☻ DISCORD ☻</b></a>\n\n<b>Libri, Materiali e Registrazioni</b>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EnTEAPe1X-RHoisCwNfQykQBWGOXHfwEqSdQcOqCWsQFgw?e=SYwCR7'><b>Primo Anno</b></a>\n\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EkH1O5CfQk9FniJopixNv0YBWWtW-GooDFuSx_9kbgOF1Q?e=RX0Gzx'><b>Secondo Anno</b></a>\n\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBf-odnowMZYahxYdPKyP1-g'><b>Caricare File Su Onedrive </b></a>", option);
+        bot.sendMessage(msg, "<b>Gruppi delle materie</b>\n<a href='https://t.me/joinchat/h1lypfBFdEZkYzFk'>👥 Calcolo numerico</a>\n<a href='https://t.me/joinchat/klw79l5tkPM1NWQ0'>👥 Ottimizzazione combinatoria</a>\n<a href='https://t.me/joinchat/4v-08oT6QWk0ZmM8'>👥 Linguaggi di programmazione</a>\n<a href='https://t.me/joinchat/Sw2Ykp0-0mM1Zjdk'>👥 Reti di calcolatori</a>\n<a href='https://t.me/joinchat/2hUcGLfY7Gc2MTA8'>👥 Sistemi operativi</a>\n\n<a href='https://discord.gg/YcAc2rdS3H'><b>📡 Discord</b></a>\n\n<b>Libri, materiali e prove</b>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EnTEAPe1X-RHoisCwNfQykQBWGOXHfwEqSdQcOqCWsQFgw?e=SYwCR7'>📚 Primo anno</a>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EkH1O5CfQk9FniJopixNv0YBWWtW-GooDFuSx_9kbgOF1Q?e=RX0Gzx'>📚 Secondo anno</a>\n\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBf-odnowMZYahxYdPKyP1-g'><b>📽️ Registrazion</b></a>", optons);
         break;
       case "/orari":
-        bot.sendMessage(msg.chat.id, "<b>ORARI 2° SEMESTRE </b>\n\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2020/366975/orariolezioni'><b>ALGEBRA E GEOMETRIA</b></a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2020/350957/orariolezioni#412691'><b>ALGORITMI E STRUTTURE DATI (MOD 1)</b></a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2020/320573/orariolezioni#447976'><b>ANALISI (MOD 2)</b></a> ", option);
+        bot.sendMessage(msg, "<b>ORARI 2° SEMESTRE </b>\n\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2020/366975/orariolezioni'><b>ALGEBRA E GEOMETRIA</b></a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2020/350957/orariolezioni#412691'><b>ALGORITMI E STRUTTURE DATI (MOD 1)</b></a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2020/320573/orariolezioni#447976'><b>ANALISI (MOD 2)</b></a> ", option);
         break;
       case "/registrate":
-        bot.sendMessage(msg.chat.id, "<b>Qui le videolezioni registrate</b>\n\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBhoND3NZL_y1hQ7BpNHy-_Q'><b>LEZIONI REGISTRATE</b></a>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBf-odnowMZYahxYdPKyP1-g'><b>CARICARE LEZIONI SU ONEDRIVE</b></a>\n", option);
+        bot.sendMessage(msg, "<b>Qui le videolezioni registrate</b>\n\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBhoND3NZL_y1hQ7BpNHy-_Q'><b>LEZIONI REGISTRATE</b></a>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBf-odnowMZYahxYdPKyP1-g'><b>CARICARE LEZIONI SU ONEDRIVE</b></a>\n", option);
         break;
       // First year
       case "/architettura":
-        course("Architettura degli elaboratori", "18282", "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx", "2020/350960", ["ivan.lanese"]);
+        course(msg, "Architettura degli elaboratori", "18282", "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx", "2020/350960", ["ivan.lanese"]);
         break;
       case "/logica":
-        course("Logica per l'informatica", "21407", "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk", "2020/455095", ["claudio.sacerdoticoen"]);
+        course(msg, "Logica per l'informatica", "21407", "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk", "2020/455095", ["claudio.sacerdoticoen"]);
         break;
       case "/programmazione":
-        course("Programmazione", "17653", "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4", "2020/320574", ["cosimo.laneve"]);
+        course(msg, "Programmazione", "17653", "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4", "2020/320574", ["cosimo.laneve"]);
         break;
       case "/algebra":
-        course("Algebra e geometria", "17870", "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw", "2020/366975", ["marta.morigi"]);
+        course(msg, "Algebra e geometria", "17870", "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw", "2020/366975", ["marta.morigi"]);
         break;
       case "/algoritmi":
-        course("Algoritmi e strutture di dati", "20930", "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl", "2020/350957", ["gianluigi.zavattaro", "pietro.dilena"]);
+        course(msg, "Algoritmi e strutture di dati", "20930", "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl", "2020/350957", ["gianluigi.zavattaro", "pietro.dilena"]);
         break;
       case "/analisi":
-        course("Analisi matematica", "18045", "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk", "2020/320573", ["marco.mughetti", "daniele.morbidelli"]);
+        course(msg, "Analisi matematica", "18045", "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk", "2020/320573", ["marco.mughetti", "daniele.morbidelli"]);
         break;
       // TODO: Second year
       case "/calcolo":
-        course("Calcolo numerico", "", "", "2021/320581", ["elena.loli"]);
+        course(msg, "Calcolo numerico", "", "", "2021/320581", ["elena.loli"]);
         break;
       case "/ottimizzazione":
-        course("Ottimizzazione combinatoria", "", "", "2021/460495", ["ugo.dallago"]);
+        course(msg, "Ottimizzazione combinatoria", "", "", "2021/460495", ["ugo.dallago"]);
         break;
       case "/linguaggi":
-        course("Linguaggi di programmazione", "", "", "2021/320579", ["roberto.gorrieri", "maurizio.gabbrielli", "saverio.giallorenzo2"]);
+        course(msg, "Linguaggi di programmazione", "", "", "2021/320579", ["roberto.gorrieri", "maurizio.gabbrielli", "saverio.giallorenzo2"]);
         break;
       case "/reti":
-        course("Reti di calcolatori", "", "", "2021/455456", ["luciano.bononi"]);
+        course(msg, "Reti di calcolatori", "", "", "2021/455456", ["luciano.bononi"]);
         break;
       case "/sistemi":
-        course("Sistemi operativi", "", "", "2021/320578", ["renzo.davoli"]);
+        course(msg, "Sistemi operativi", "", "", "2021/320578", ["renzo.davoli"]);
         break;
       // Memes
       case "/alice":
