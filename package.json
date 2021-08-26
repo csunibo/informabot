@@ -1,0 +1,30 @@
+{
+  "name": "informabot",
+  "version": "1.0.0",
+  "description": "A Telegram bot to assist other undergraduate Computer Science students at the University of Bologna.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FoxySeta/informabot.git"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "university",
+    "students",
+    "assistant"
+  ],
+  "author": "Stefano Volpe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FoxySeta/informabot/issues"
+  },
+  "homepage": "https://github.com/FoxySeta/informabot#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "node-telegram-bot-api": "^0.54.0"
+  }
+}
