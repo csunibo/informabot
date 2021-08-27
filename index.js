@@ -52,17 +52,15 @@ function timetable(msg) {
     }).catch(e => console.error(e.stack));
 }
 
-function course(msg, name, virtuale, teams, website, emails) {
+function course(msg, name, virtuale, teams, website, professors) {
+  const emails = professors.join("@unibo.it\n  ") + "@unibo.it";
   // Remember to double up every % you want to escape!
-  answer(msg, "..."/*String.format("<b>%s</b>\n<a href='https://virtuale.unibo.it/co" +
-    "urse/view.php?id=%s'>Virtuale</a>\n<a href='https://teams.microsoft.com/" +
-    "l/meetup-join/19%%3ameeting_%s%%40thread.v2/0?context=%%7b%%22Tid%%22%%3" +
-    "a%%22e99647dc-1b08-454a-bf8c-699181b389ab%%22%%2c%%22Oid%%22%%3a%%220806" +
-    "83d2-51aa-4842-aa73-291a43203f71%%22%%7d'>Videolezione</a>\n<a href='htt" +
-    "ps://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s'>Sito</a>\n<" +
-    "a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/o" +
-    "rariolezioni'>Orario</a>\n%s", name, virtuale, teams, website, website,
-    emails.join("@unibo.it<br>"))*/);
+  answer(msg, `<b>${name}</b>
+  <a href='https://virtuale.unibo.it/course/view.php?id=${virtuale}'>Virtuale</a>
+  <a href='https://teams.microsoft.com/l/meetup-join/19%%3ameeting_${teams}%%40thread.v2/0?context=%%7b%%22Tid%%22%%3a%%22e99647dc-1b08-454a-bf8c-699181b389ab%%22%%2c%%22Oid%%22%%3a%%22080683d2-51aa-4842-aa73-291a43203f71%%22%%7d'>Videolezione</a>
+  <a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/${website}'>Sito</a>
+  <a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/${website}/orariolezioni'>Orario</a>
+  ${emails}`);
 }
 
 function onMessage(msg) {
@@ -70,7 +68,25 @@ function onMessage(msg) {
     switch (msg.text.toString().toLowerCase().split(" ")[0]) {
       // Generals
       case "/appunti":
-        answer(msg, "Grazie ai nostri gentili contribuenti, ecco l'elenco dei <b>Notion</b>:\n\n🗒️ <a href='https://www.notion.so/Algebra-e-geometria-00d4b98a5d974879aaf39457ede3261a'>Algebra e Geometria (Luizo)</a>\n🗒️ <a href='https://www.notion.so/Algebra-a65a99336ccc499ead0637365a3bd0cd'>Algebra e Geometria (Alex)</a>\n\n🗒️ <a href='https://www.notion.so/Algoritmi-e-strutture-dati-70a01e43fa034859bb0c8cd6d744e6d6'>Algoritmi (Alex)</a>\n🗒️ <a href='https://www.notion.so/Algoritmi-e-Strutture-di-Dati-da9a9d634c6f433cb778cdd02bead894'>Algoritmi (Luizo)</a>\n\n🗒️ <a href='https://www.notion.so/Analisi-1895389f8b9a465e98f2a868fc917c53'>Analisi (Alex)</a>\n🗒️ <a href='https://www.notion.so/Analisi-Prova-unica-ab60229e9ac5455cb69b24b3c41fd0b1'>Analisi (Esercizi) (Fabrizio)</a>\n\n\n🗒️ <a href='https://www.notion.so/Logica-logico-1adfde3168d94cc5ac461da479d113ee'>Logica (Alex)</a>\n🗒️ <a href='https://www.notion.so/Preparazione-logica-3-CFU-8bf160d661d149f9939d5a48e72edf05'>Logica (Modulo da 3 CFU)(Alex)</a>\n🗒️ <a href='https://www.notion.so/Ripasso-bc03206bfa034bed8f3f521778a61254'>Logica (Andrea)</a>\n\n🗒️ <a href='https://www.notion.so/Appunti-784f6703da1447028ea95a52eda74f38'>Programmazione (Andrea)</a>\n\n<b>N.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti.</b>");
+        answer(msg, `Grazie ai nostri gentili contribuenti, ecco l'elenco dei <b>Notion</b>:
+
+  🗒️ <a href='https://www.notion.so/Algebra-a65a99336ccc499ead0637365a3bd0cd'>Algebra e Geometria (Alex)</a>
+  🗒️ <a href='https://www.notion.so/Algebra-e-geometria-00d4b98a5d974879aaf39457ede3261a'>Algebra e Geometria (Luizo)</a>
+
+  🗒️ <a href='https://www.notion.so/Algoritmi-e-strutture-dati-70a01e43fa034859bb0c8cd6d744e6d6'>Algoritmi (Alex)</a>
+  🗒️ <a href='https://www.notion.so/Algoritmi-e-Strutture-di-Dati-da9a9d634c6f433cb778cdd02bead894'>Algoritmi (Luizo)</a>
+
+  🗒️ <a href='https://www.notion.so/Analisi-1895389f8b9a465e98f2a868fc917c53'>Analisi Alex)</a>
+  🗒️ <a href='https://www.notion.so/Analisi-Prova-unica-ab60229e9ac5455cb69b24b3c41fd0b1'>Analisi esercizi) (Fabrizio)</a>
+
+
+  🗒️ <a href='https://www.notion.so/Logica-logico-1adfde3168d94cc5ac461da479d113ee'>Logica (modulo 1) (Alex)</a>
+  🗒️ <a href='https://www.notion.so/Preparazione-logica-3-CFU-8bf160d661d149f9939d5a48e72edf05'>Logica modulo 2) (Alex)</a>
+  🗒️ <a href='https://www.notion.so/Ripasso-bc03206bfa034bed8f3f521778a61254'>Logica (Andrea)</a>
+
+  🗒️ <a href='https://www.notion.so/Appunti-784f6703da1447028ea95a52eda74f38'>Programmazione(Andrea)</a>
+
+<b>N.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti.</b>`);
         break;
       case "/lezionidioggi":
         timetable(msg);
@@ -78,13 +94,24 @@ function onMessage(msg) {
       case "/libri":
       case "/materiali":
       case "/prove":
-        answer(msg, "<b>Libri, materiali e prove</b>\n📚<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EnTEAPe1X-RHoisCwNfQykQBWGOXHfwEqSdQcOqCWsQFgw?e=SYwCR7'>Primo anno</a>\n📚 <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EkH1O5CfQk9FniJopixNv0YBWWtW-GooDFuSx_9kbgOF1Q?e=RX0Gzx'>Secondo anno</a>");
+        answer(msg, `<b>Libri, materiali e prove</b>
+  📚<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EnTEAPe1X-RHoisCwNfQykQBWGOXHfwEqSdQcOqCWsQFgw?e=SYwCR7'>Primo anno</a>
+  📚 <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EkH1O5CfQk9FniJopixNv0YBWWtW-GooDFuSx_9kbgOF1Q?e=RX0Gzx'>Secondo anno</a>`);
         break;
       case "/link":
-        answer(msg, "<b>Gruppi degli insegnamenti</b>\n<a href='https://t.me/joinchat/h1lypfBFdEZkYzFk'>👥 Calcolo numerico</a>\n<a href='https://t.me/joinchat/klw79l5tkPM1NWQ0'>👥 Ottimizzazione combinatoria</a>\n<a href='https://t.me/joinchat/4v-08oT6QWk0ZmM8'>👥 Linguaggi di programmazione</a>\n<a href='https://t.me/joinchat/Sw2Ykp0-0mM1Zjdk'>👥 Reti di calcolatori</a>\n<a href='https://t.me/joinchat/2hUcGLfY7Gc2MTA8'>👥 Sistemi operativi</a>\n\n<a href='https://discord.gg/YcAc2rdS3H'><b>📡 Discord</b></a>");
+        answer(msg, `<b>Gruppi degli insegnamenti</b>
+  <a href='https://t.me/joinchat/h1lypfBFdEZkYzFk'>👥 Calcolo numerico</a>
+  <a href='https://t.me/joinchat/klw79l5tkPM1NWQ0'>👥 Ottimizzazione combinatoria</a>
+  <a href='https://t.me/joinchat/4v-08oT6QWk0ZmM8'>👥 Linguaggi di programmazione</a>
+  <a href='https://t.me/joinchat/Sw2Ykp0-0mM1Zjdk'>👥 Reti di calcolatori</a>
+  <a href='https://t.me/joinchat/2hUcGLfY7Gc2MTA8'>👥 Sistemi operativi</a>
+
+  <a href='https://discord.gg/YcAc2rdS3H'><b>📡 Discord</b></a>`);
         break;
       case "/registrate":
-        answer(msg, "<b>Registrazioni</b>\n📽️<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBf-odnowMZYahxYdPKyP1-g'>Primo anno</a>\n📽️ Secondo anno (in arrivo...)");
+        answer(msg, `<b>Registrazioni</b>
+  📽️  <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBf-odnowMZYahxYdPKyP1-g'>Primo anno</a>
+  📽️  Secondo anno (in arrivo...)`);
         break;
       // First year
       case "/architettura":
@@ -107,19 +134,24 @@ function onMessage(msg) {
         break;
       // TODO: Second year
       case "/calcolo":
-        course(msg, "Calcolo numerico", "", "", "2021/320581", ["elena.loli"]);
+        answer(msg, "In arrivo...");
+        // course(msg, "Calcolo numerico", "", "", "2021/320581", ["elena.loli"]);
         break;
       case "/ottimizzazione":
-        course(msg, "Ottimizzazione combinatoria", "", "", "2021/460495", ["ugo.dallago"]);
+        answer(msg, "In arrivo...");
+        // course(msg, "Ottimizzazione combinatoria", "", "", "2021/460495", ["ugo.dallago"]);
         break;
       case "/linguaggi":
-        course(msg, "Linguaggi di programmazione", "", "", "2021/320579", ["roberto.gorrieri", "maurizio.gabbrielli", "saverio.giallorenzo2"]);
+        answer(msg, "In arrivo...");
+        // course(msg, "Linguaggi di programmazione", "", "", "2021/320579", ["roberto.gorrieri", "maurizio.gabbrielli", "saverio.giallorenzo2"]);
         break;
       case "/reti":
-        course(msg, "Reti di calcolatori", "", "", "2021/455456", ["luciano.bononi"]);
+        answer(msg, "In arrivo...");
+        // course(msg, "Reti di calcolatori", "", "", "2021/455456", ["luciano.bononi"]);
         break;
       case "/sistemi":
-        course(msg, "Sistemi operativi", "", "", "2021/320578", ["renzo.davoli"]);
+        answer(msg, "In arrivo...");
+        // course(msg, "Sistemi operativi", "", "", "2021/320578", ["renzo.davoli"]);
         break;
       // Memes
       case "/alice":
@@ -141,7 +173,17 @@ function onMessage(msg) {
         answer(msg, "<b>yo te rao!</b>");
         break;
       case "/csc":
-        answer(msg, "<b>In nomine Dei Nostri Luciferi Excelsi Ghepardi CSC;\nNel Nome di Claudio Sacerdoti Coen\nDominatore della logica,\nVero meta-Dio,\nOnnipotente e Ineffabile,\nColui che creò l’ uomo\na sua meta-immagine e meta-somiglianza.\nIo invoco\nle Forze di CSC\naffinché infondano\nil loro potere infernale in me.</b>");
+        answer(msg, `< b > In nomine Dei Nostri Luciferi Excelsi Ghepardi CSC;
+        Nel Nome di Claudio Sacerdoti Coen
+        Dominatore della logica,
+          Vero meta - Dio,
+            Onnipotente e Ineffabile,
+              Colui che creò l’ uomo
+        a sua meta - immagine e meta - somiglianza.
+        Io invoco
+        le Forze di CSC
+        affinché infondano
+        il loro potere infernale in me.</b > `);
         break;
       case "/domande":
         answer(msg, "<b>@gabboTRNGL MANCA POCO ALLA FINE DELLA LEZIONE. VEDI DI STARE ZITTO! TU NON HAI DOMANDE!</b>");
@@ -156,7 +198,12 @@ function onMessage(msg) {
         answer(msg, "<b>Vuoi vedere i miei cyberPiedini?</b>");
         break;
       case "/hokage":
-        answer(msg, "<b>Matteo Manuelli, [09.03.21 22:28]</b>\nsemplicemente vi straccerò a mnk game.\nGià pregusto la faccia soddisfatta di zavattarro\n\n<b>Niccolò CEO dei dissing e del flame, [09.03.21 22:29]</b>\nVai bro, sarai Hokage");
+        answer(msg, `< b > Matteo Manuelli, [09.03.21 22: 28]</b >
+          semplicemente vi straccerò a mnk game.
+        Già pregusto la faccia soddisfatta di zavattarro
+
+          < b > Niccolò CEO dei dissing e del flame, [09.03.21 22: 29]</b >
+            Vai bro, sarai Hokage`);
         break;
       case "/laneve":
         answer(msg, "<b>nCi sono dei bug!\nF A N T A S T I C O!</b>");
