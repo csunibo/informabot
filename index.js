@@ -2,7 +2,8 @@
  * Stefano Volpe
  * 08/26/2021
  *
- * index.js: entry point of the project
+ * index.js: entry point of the project. Hardcoding messages is fine, as this is
+ * a very small project.
  */
 
 // Setup
