@@ -1,0 +1,10 @@
+{
+  "start": {
+    "type": "message",
+    "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica immatricolati nell'a.a. 2020/21."
+  },
+  "help": {
+    "type": "message",
+    "text": "La documentazione è disponibile su <a href='https://github.com/foxyseta/informabot'>GitHub</a>."
+  }
+}
