@@ -9,7 +9,7 @@
   },
   "appunti": {
     "type": "message",
-    "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei <b>Notion</b>:\n\n🗒️ <a href='https://www.notion.so/Algebra-a65a99336ccc499ead0637365a3bd0cd'>Algebra e Geometria (Alex)</a>\n\n🗒️ <a href='https://www.notion.so/Algebra-e-geometria-00d4b98a5d974879aaf39457ede3261a'>Algebra e Geometria (Luizo)</a>\n\n🗒️ <a href='https://www.notion.so/Algoritmi-e-strutture-dati-70a01e43fa034859bb0c8cd6d744e6d6'>Algoritmi (Alex)</a>\n\n 🗒️ <a href='https://www.notion.so/Algoritmi-e-Strutture-di-Dati-da9a9d634c6f433cb778cdd02bead894'>Algoritmi (Luizo)</a>\n\n🗒️ <a href='https://www.notion.so/Analisi-1895389f8b9a465e98f2a868fc917c53'>Analisi Alex)</a>\n\n🗒️ <a href='https://www.notion.so/Analisi-Prova-unica-ab60229e9ac5455cb69b24b3c41fd0b1'>Analisi esercizi) (Fabrizio)</a>\n\n🗒️ <a href='https://www.notion.so/Logica-logico-1adfde3168d94cc5ac461da479d113ee'>Logica (modulo 1) (Alex)</a>\n\n🗒️ <a href='https://www.notion.so/Preparazione-logica-3-CFU-8bf160d661d149f9939d5a48e72edf05'>Logica modulo 2) (Alex)</>\n\n🗒️ <a href='https://www.notion.so/Ripasso-bc03206bfa034bed8f3f521778a61254'>Logica (Andrea)</a>\n\n🗒️ <a href='https://www.notion.so/Appunti-784f6703da1447028ea95a52eda74f38'>Programmazione(Andrea)</a>\n\n<b>N.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti.</b>"
+    "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<b>Primo anno</b>\n🗒️ <a href='https://www.notion.so/Algebra-a65a99336ccc499ead0637365a3bd0cd'>Algebra e Geometria (Alex)</a>\n🗒️ <a href='https://www.notion.so/Algebra-e-geometria-00d4b98a5d974879aaf39457ede3261a'>Algebra e Geometria (Luizo)</a>\n🗒️ <a href='https://www.notion.so/Algoritmi-e-strutture-dati-70a01e43fa034859bb0c8cd6d744e6d6'>Algoritmi (Alex)</a>\n🗒️ <a href='https://www.notion.so/Algoritmi-e-Strutture-di-Dati-da9a9d634c6f433cb778cdd02bead894'>Algoritmi (Luizo)</a>\n🗒️ <a href='https://www.notion.so/Analisi-1895389f8b9a465e98f2a868fc917c53'>Analisi Alex)</a>\n🗒️ <a href='https://www.notion.so/Analisi-Prova-unica-ab60229e9ac5455cb69b24b3c41fd0b1'>Analisi esercizi) (Fabrizio)</a>\n🗒️ <a href='https://www.notion.so/Logica-logico-1adfde3168d94cc5ac461da479d113ee'>Logica (modulo 1) (Alex)</a>\n🗒️ <a href='https://www.notion.so/Preparazione-logica-3-CFU-8bf160d661d149f9939d5a48e72edf05'>Logica modulo 2) (Alex)</>\n🗒️ <a href='https://www.notion.so/Ripasso-bc03206bfa034bed8f3f521778a61254'>Logica (Andrea)</a>\n🗒️ <a href='https://www.notion.so/Appunti-784f6703da1447028ea95a52eda74f38'>Programmazione(Andrea)</a>\n\n<b>Secondo anno</b>\nIn arrivo...\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti."
   },
   "lezionidioggi": {
     "type": "timetable"
@@ -37,5 +37,87 @@
   "registrate": {
     "type": "message",
     "text": "<b>Registrazioni</b>\n📽️  <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBf-odnowMZYahxYdPKyP1-g'>Primo anno</a>\n📽️  Secondo anno (in arrivo...)"
+  },
+  "architettura": {
+    "type": "course",
+    "name": "Architettura degli elaboratori",
+    "virtuale": "18282",
+    "teams": "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx",
+    "website": "2020/350960",
+    "professors": [
+      "ivan.lanese"
+    ]
+  },
+  "logica": {
+    "type": "course",
+    "name": "Logica per l'informatica",
+    "virtuale": "21407",
+    "teams": "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk",
+    "website": "2020/455095",
+    "professors": [
+      "claudio.sacerdoticoen"
+    ]
+  },
+  "programmazione": {
+    "type": "course",
+    "name": "Programmazione",
+    "virtuale": "17653",
+    "teams": "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4",
+    "website": "2020/320574",
+    "professors": [
+      "cosimo.laneve"
+    ]
+  },
+  "algebra": {
+    "type": "course",
+    "name": "Algebra e geometria",
+    "virtuale": "17870",
+    "teams": "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw",
+    "website": "2020/366975",
+    "professors": [
+      "marta.morigi"
+    ]
+  },
+  "algoritmi": {
+    "type": "course",
+    "name": "Algoritmi e strutture di dati",
+    "virtuale": "20930",
+    "teams": "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl",
+    "website": "2020/350957",
+    "professors": [
+      "gianluigi.zavattaro",
+      "pietro.dilena"
+    ]
+  },
+  "analisi": {
+    "type": "course",
+    "name": "Analisi matematica",
+    "virtuale": "18045",
+    "teams": "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk",
+    "website": "2020/320573",
+    "professors": [
+      "marco.mughetti",
+      "daniele.morbidelli"
+    ]
+  },
+  "calcolo": {
+    "type": "message",
+    "text": "In arrivo..."
+  },
+  "ottimizzazione": {
+    "type": "message",
+    "text": "In arrivo..."
+  },
+  "linguaggi": {
+    "type": "message",
+    "text": "In arrivo..."
+  },
+  "reti": {
+    "type": "message",
+    "text": "In arrivo..."
+  },
+  "sistemi": {
+    "type": "message",
+    "text": "In arrivo..."
   }
 }

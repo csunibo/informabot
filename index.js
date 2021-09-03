@@ -56,10 +56,9 @@ function timetable(msg) {
 
 function course(msg, name, virtuale, teams, website, professors) {
   const emails = professors.join("@unibo.it\n  ") + "@unibo.it";
-  // Remember to double up every % you want to escape!
   message(msg, `<b>${name}</b>
   <a href='https://virtuale.unibo.it/course/view.php?id=${virtuale}'>Virtuale</a>
-  <a href='https://teams.microsoft.com/l/meetup-join/19%%3ameeting_${teams}%%40thread.v2/0?context=%%7b%%22Tid%%22%%3a%%22e99647dc-1b08-454a-bf8c-699181b389ab%%22%%2c%%22Oid%%22%%3a%%22080683d2-51aa-4842-aa73-291a43203f71%%22%%7d'>Videolezione</a>
+  <a href='https://teams.microsoft.com/l/meetup-join/19%3ameeting_${teams}%40thread.v2/0?context=%7b%22Tid%22%3a%22e99647dc-1b08-454a-bf8c-699181b389ab%22%2c%22Oid%22%3a%22080683d2-51aa-4842-aa73-291a43203f71%22%7d'>Videolezione</a>
   <a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/${website}'>Sito</a>
   <a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/${website}/orariolezioni'>Orario</a>
   ${emails}`);
