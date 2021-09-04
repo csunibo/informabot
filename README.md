@@ -16,12 +16,12 @@ node index.js $TOKEN
 ```
 
 where `$TOKEN` is the authorization token you got from
-[BotFather](https://www.core.telegram.org/bots#6-botfather).
+[BotFather](https://core.telegram.org/bots#6-botfather).
 
 ## Commands
 
 When setting up your bot with
-[BotFather](https://www.core.telegram.org/bots#6-botfather), you'll be
+[BotFather](https://core.telegram.org/bots#6-botfather), you'll be
 asked to "send a list of commands for your bot". Consider using this one:
 
 > appunti - Appunti su Notion
