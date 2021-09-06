@@ -11,8 +11,8 @@ if (process.argv.length != 3)
   console.log("usage: node index.js token");
 process.env.NTBA_FIX_319 = 1;
 const axios = require('axios'),
-  actions = require('./actions.json'),
-  memes = require('./memes.json'),
+  actions = require('./json/actions.json'),
+  memes = require('./json/memes.json'),
   TelegramBot = require('node-telegram-bot-api'),
   bot = new TelegramBot(process.argv[2], {polling: true});
 
