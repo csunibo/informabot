@@ -70,6 +70,16 @@ function course(msg, name, virtuale, teams, website, professors) {
   ${emails}`);
 }
 
+// Adding a user to a list
+function lookingFor(msg) {
+  // TODO Missing implementation
+}
+
+// Removing a user from a list
+function notLookingFor(msg) {
+  // TODO Missing implementation
+}
+
 // Available actions
 function act(msg, action) {
   switch (action.type) {
@@ -79,8 +89,14 @@ function act(msg, action) {
     case 'course':
       course(msg, action.name, action.virtuale, action.teams, action.website, action.professors);
       break;
+    case 'lookingFor':
+      lookingFor(msg);
+      break;
     case 'message':
       message(msg, action.text);
+      break;
+    case 'notLookingFor':
+      notLookingFor(msg);
       break;
     case 'timetable':
       timetable(msg, action.fallbackText);
