@@ -24,13 +24,11 @@ const options = {
   'disable_web_page_preview': 1,
 };
 
-// String formatting via placeholders
+// String formatting via placeholders: has troubles with placeholders injections
 String.format = function () {
   var s = arguments[0].slice();
-  for (var i = 0; i < arguments.length - 1; i++) {
-    var reg = new RegExp("\\{" + i + "\\}", "gm");
-    s = s.replace(reg, arguments[i + 1]);
-  }
+  for (var i = 0; i < arguments.length - 1; ++i)
+    s = s.replace(new RegExp("\\{" + i + "\\}", "gm"), arguments[i + 1]);
   return s;
 }
 
