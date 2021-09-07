@@ -11,10 +11,11 @@ if (process.argv.length != 3)
   console.log('usage: node index.js token');
 process.env.NTBA_FIX_319 = 1;
 const axios = require('axios'),
+  fs = require('fs'),
+  TelegramBot = require('node-telegram-bot-api'),
   actions = require('./json/actions.json'),
   groups = require('./json/groups.json'),
   memes = require('./json/memes.json'),
-  TelegramBot = require('node-telegram-bot-api'),
   bot = new TelegramBot(process.argv[2], {polling: true});
 
 // Options for replies
@@ -22,6 +23,16 @@ const options = {
   'parse_mode': 'HTML',
   'disable_web_page_preview': 1,
 };
+
+// String formatting via placeholders
+String.format = function () {
+  var s = arguments[0].slice();
+  for (var i = 0; i < arguments.length - 1; i++) {
+    var reg = new RegExp("\\{" + i + "\\}", "gm");
+    s = s.replace(reg, arguments[i + 1]);
+  }
+  return s;
+}
 
 // Simple messages
 function message(msg, text) {
@@ -71,13 +82,58 @@ function course(msg, name, virtuale, teams, website, professors) {
 }
 
 // Adding a user to a list
-function lookingFor(msg) {
-  // TODO Missing implementation
+function lookingFor(msg, singularText, pluralText, chatError) {
+  if (msg.chat.type !== 'group' && msg.chat.type !== 'supergroup')
+    message(msg, chatError);
+  else {
+    const chatId = msg.chat.id, senderId = msg.from.id;
+    if (!(chatId in groups))
+      groups[chatId] = [];
+    const group = groups[chatId];
+    if (!group.includes(senderId))
+      group.push(senderId);
+    fs.writeFileSync('json/groups.json', JSON.stringify(groups));
+    const length = group.length.toString(), promises = Array(length);
+    var list = String.format(length == '1' ? singularText : pluralText, msg.chat.title, length);
+    group.forEach((e, i) => {
+      promises[i] = bot.getChatMember(chatId, e.toString()).then(
+        (result) => {
+          return `👤 @${result.user.username}\n`;
+        }
+      );
+    });
+    Promise.allSettled(promises).then(
+      (result) => {
+        result.forEach(e => {
+          if (e.status === 'fulfilled')
+            list += e.value;
+        });
+        message(msg, list);
+      });
+  }
 }
 
 // Removing a user from a list
-function notLookingFor(msg) {
-  // TODO Missing implementation
+function notLookingFor(msg, text, chatError, notFoundError) {
+  if (msg.chat.type !== 'group' && msg.chat.type !== 'supergroup')
+    message(msg, chatError);
+  else {
+    const chatId = msg.chat.id, title = msg.chat.title;
+    if (!(chatId in groups))
+      message(msg, String.format(notFoundError, title));
+    else {
+      const group = groups[chatId], senderId = msg.from.id;
+      if (!group.includes(senderId))
+        message(msg, String.format(notFoundError, title));
+      else {
+        group.splice(group.indexOf(senderId), 1);
+        if (group.length == 0)
+          delete groups[chatId];
+        fs.writeFileSync('json/groups.json', JSON.stringify(groups));
+        message(msg, String.format(text, title));
+      }
+    }
+  }
 }
 
 // Available actions
@@ -90,13 +146,13 @@ function act(msg, action) {
       course(msg, action.name, action.virtuale, action.teams, action.website, action.professors);
       break;
     case 'lookingFor':
-      lookingFor(msg);
+      lookingFor(msg, action.singularText, action.pluralText, action.chatError);
       break;
     case 'message':
       message(msg, action.text);
       break;
     case 'notLookingFor':
-      notLookingFor(msg);
+      notLookingFor(msg, action.text, action.chatError, action.notFoundError);
       break;
     case 'timetable':
       timetable(msg, action.fallbackText);

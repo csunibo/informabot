@@ -13,7 +13,9 @@
   },
   "cercogruppo": {
     "type": "lookingFor",
-    "text": "%d persone cercano gruppi in \"%s\":"
+    "singularText": "Una persona cerca un gruppo in <b>\"{0}\"</b>:\n",
+    "pluralText": "<b>{1}</b> persone cercano gruppi in <b>\"{0}\"</b>:\n",
+    "chatError": "Questo comando è riservato alle chat di gruppo."
   },
   "gruppi": {
     "type": "message",
@@ -37,7 +39,9 @@
   },
   "noncercogruppo": {
     "type": "notLookingFor",
-    "text": "Non sei più nella lista di chi cerca gruppi in \"%s\"."
+    "text": "Non sei più nella lista di chi cerca gruppi in \"{0}\".",
+    "chatError": "Questo comando è riservato alle chat di gruppo.",
+    "notFoundError": "Neanche prima cercavi gruppi in \"{0}\"."
   },
   "prove": {
     "type": "alias",
