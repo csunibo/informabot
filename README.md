@@ -26,6 +26,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 
 > appunti - Appunti su Notion
 >
+> cercogruppo - Cerca compagni di progetto nel gruppo
+>
 > gruppi - Gruppi Telegram e server Discord
 >
 > lezionidioggi - Orari delle lezioni di oggi
@@ -35,6 +37,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 > link - Alias di "/gruppi"
 >
 > materiali - Alias di "/libri"
+>
+> noncercogruppo - Smetti di cercare compagni di progetto
 >
 > prove - Alias di "/libri"
 >
