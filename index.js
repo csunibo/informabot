@@ -16,6 +16,7 @@ const axios = require('axios'),
   actions = require('./json/actions.json'),
   groups = require('./json/groups.json'),
   memes = require('./json/memes.json'),
+  settings = require('./json/settings.json'),
   bot = new TelegramBot(process.argv[2], {polling: true});
 
 // Options for replies
@@ -39,7 +40,7 @@ function message(msg, text) {
 
 // Web scraping the timetable
 function timetable(msg, fallbackText) {
-  axios.get('https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2')
+  axios.get(settings.timetableUrl)
     .then(res => {
       let now = new Date();
       let todayLectures = [];
@@ -81,7 +82,7 @@ function course(msg, name, virtuale, teams, website, professors) {
 
 // Adding a user to a list
 function lookingFor(msg, singularText, pluralText, chatError) {
-  if (msg.chat.type !== 'group' && msg.chat.type !== 'supergroup')
+  if (msg.chat.type !== 'group' && msg.chat.type !== 'supergroup' || settings.lookingForBlackList.includes(msg.chat.id))
     message(msg, chatError);
   else {
     const chatId = msg.chat.id, senderId = msg.from.id;
@@ -96,7 +97,8 @@ function lookingFor(msg, singularText, pluralText, chatError) {
     group.forEach((e, i) => {
       promises[i] = bot.getChatMember(chatId, e.toString()).then(
         (result) => {
-          return `👤 @${result.user.username}\n`;
+          const username = result.user.username;
+          return `👤 <a href='https://t.me/${username}'>${username}</a>\n`;
         }
       );
     });
@@ -113,7 +115,7 @@ function lookingFor(msg, singularText, pluralText, chatError) {
 
 // Removing a user from a list
 function notLookingFor(msg, text, chatError, notFoundError) {
-  if (msg.chat.type !== 'group' && msg.chat.type !== 'supergroup')
+  if (msg.chat.type !== 'group' && msg.chat.type !== 'supergroup' || settings.lookingForBlackList.includes(msg.chat.id))
     message(msg, chatError);
   else {
     const chatId = msg.chat.id, title = msg.chat.title;
