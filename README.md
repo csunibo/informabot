@@ -44,6 +44,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > registrate - Lezioni registrate su OneDrive
 >
+> stickers - Pacchetti degli adesivi Telegram del corso
+>
 > architettura - Tutto su Architettura degli elaboratori
 >
 > logica - Tutto su Logica per l'informatica
