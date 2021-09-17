@@ -91,8 +91,8 @@ function lookingFor(msg, singularText, pluralText, chatError) {
     group.forEach((e, i) => {
       promises[i] = bot.getChatMember(chatId, e.toString()).then(
         (result) => {
-          const username = result.user.username;
-          return `👤 <a href='https://t.me/${username}'>${username}</a>\n`;
+          const user = result.user;
+          return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${user.last_name ? ' ' + user.last_name : ''}</a>\n`;
         }
       );
     });
