@@ -130,6 +130,24 @@ function notLookingFor(msg, text, chatError, notFoundError) {
   }
 }
 
+function giveHelp(msg) {
+  answer = ""
+  for (command in actions) {
+    // Non vogliamo sapere che esiste un comando senza descrizione lel
+    if (actions[command]["description"] === undefined) {
+      continue
+    }
+    try { 
+      answer += `/${command}: ${actions[command]["description"]}\n`
+    } catch(e) {
+      continue;
+      // Debugging: 
+      // message(msg, `Ho avuto questo errore, debuggame ${e}`)
+    }
+  }
+  message(msg, answer);
+}
+
 // Available actions
 function act(msg, action) {
   switch (action.type) {
@@ -150,6 +168,9 @@ function act(msg, action) {
       break;
     case 'timetable':
       timetable(msg, action.url, action.fallbackText);
+      break;
+    case 'help':
+      giveHelp(msg);
       break;
     default:
       console.error(`Unknown action type "${action.type}"`);
