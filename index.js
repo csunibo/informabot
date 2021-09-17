@@ -19,12 +19,6 @@ const axios = require('axios'),
   settings = require('./json/settings.json'),
   bot = new TelegramBot(process.argv[2], {polling: true});
 
-// Options for replies
-const options = {
-  'parse_mode': 'HTML',
-  'disable_web_page_preview': 1,
-};
-
 // String formatting via placeholders: has troubles with placeholders injections
 String.format = function () {
   var s = arguments[0].slice();
@@ -35,12 +29,12 @@ String.format = function () {
 
 // Simple messages
 function message(msg, text) {
-  bot.sendMessage(msg.chat.id, text, options).catch(e => console.error(e.stack));
+  bot.sendMessage(msg.chat.id, text, settings.messageOptions).catch(e => console.error(e.stack));
 }
 
 // Web scraping the timetable
-function timetable(msg, fallbackText) {
-  axios.get(settings.timetableUrl)
+function timetable(msg, url, fallbackText) {
+  axios.get(url)
     .then(res => {
       let now = new Date();
       let todayLectures = [];
@@ -155,7 +149,7 @@ function act(msg, action) {
       notLookingFor(msg, action.text, action.chatError, action.notFoundError);
       break;
     case 'timetable':
-      timetable(msg, action.fallbackText);
+      timetable(msg, action.url, action.fallbackText);
       break;
     default:
       console.error(`Unknown action type "${action.type}"`);
