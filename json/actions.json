@@ -119,23 +119,49 @@
     ]
   },
   "calcolo": {
-    "type": "message",
-    "text": "In arrivo..."
+    "type": "course",
+    "name": "Calcolo numerico",
+    "virtuale": "25810",
+    "teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
+    "website": "2021/320581",
+    "professors": [
+      "elena.loli"
+    ]
   },
   "ottimizzazione": {
     "type": "message",
     "text": "In arrivo..."
   },
   "linguaggi": {
-    "type": "message",
-    "text": "In arrivo..."
+    "type": "course",
+    "name": "Linguaggi di programmazione",
+    "virtuale": "25802",
+    "teams": "MjljOWZkNTMtNzExMy00OGRiLTlmNTEtM2E5NGVmYzU1YTgx",
+    "website": "2021/320579",
+    "professors": [
+      "roberto.gorrieri",
+      "maurizio.gabbrielli",
+      "saverio.giallorenzo2"
+    ]
   },
   "reti": {
-    "type": "message",
-    "text": "In arrivo..."
+    "type": "course",
+    "name": "Reti di calcolatori",
+    "virtuale": "28376",
+    "teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
+    "website": "2021/455456",
+    "professors": [
+      "luciano.bononi"
+    ]
   },
   "sistemi": {
-    "type": "message",
-    "text": "In arrivo..."
+    "type": "course",
+    "name": "Sistemi operativi",
+    "virtuale": "25797",
+    "teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
+    "website": "2021/320578",
+    "professors": [
+      "renzo.davoli"
+    ]
   }
 }
