@@ -106,3 +106,4 @@ dist
 # Informabot
 
 json/groups.json
+*.env

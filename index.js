@@ -130,6 +130,14 @@ function notLookingFor(msg, text, chatError, notFoundError) {
   }
 }
 
+function giveHelp(msg) {
+  answer = ""
+  for (command in actions)
+    if (actions[command] && actions[command].description)
+        answer += `/${command}: ${actions[command].description}\n`;
+  message(msg, answer);
+}
+
 // Available actions
 function act(msg, action) {
   switch (action.type) {
@@ -150,6 +158,9 @@ function act(msg, action) {
       break;
     case 'timetable':
       timetable(msg, action.url, action.fallbackText);
+      break;
+    case 'help':
+      giveHelp(msg);
       break;
     default:
       console.error(`Unknown action type "${action.type}"`);
