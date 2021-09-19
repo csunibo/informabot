@@ -132,19 +132,9 @@ function notLookingFor(msg, text, chatError, notFoundError) {
 
 function giveHelp(msg) {
   answer = ""
-  for (command in actions) {
-    // Non vogliamo sapere che esiste un comando senza descrizione lel
-    if (actions[command]["description"] === undefined) {
-      continue
-    }
-    try { 
-      answer += `/${command}: ${actions[command]["description"]}\n`
-    } catch(e) {
-      continue;
-      // Debugging: 
-      // message(msg, `Ho avuto questo errore, debuggame ${e}`)
-    }
-  }
+  for (command in actions)
+    if (actions[command] && actions[command].description)
+        answer += `/${command}: ${actions[command].description}\n`;
   message(msg, answer);
 }
 
