@@ -134,7 +134,7 @@ function giveHelp(msg) {
   answer = ""
   for (command in actions)
     if (actions[command] && actions[command].description)
-        answer += `/${command}: ${actions[command].description}\n`;
+        answer += `/${command} - ${actions[command].description}\n`;
   message(msg, answer);
 }
 

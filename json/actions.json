@@ -1,16 +1,11 @@
 {
   "start": {
     "type": "message",
-    "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica immatricolati nell'a.a. 2020/21."
+    "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica immatricolati nell'a.a. 2020/21. Puoi contribuire al progetto su <a href='https://github.com/foxyseta/informabot'>GitHub</a>."
   },
   "help": {
     "type": "help",
-    "description": "Descrivi tutti i messaggi che hanno una descrizione"
-  },
-  "help_classic": {
-    "type": "message",
-    "description": "Vecchio comando Help",
-    "text": "La documentazione è disponibile su <a href='https://github.com/foxyseta/informabot'>GitHub</a>."
+    "description": "Elenca i comandi disponibili"
   },
   "appunti": {
     "type": "message",
