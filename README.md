@@ -30,6 +30,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > gruppi - Gruppi Telegram e server Discord
 >
+> help - Elenca i comandi disponibili
+>
 > lezionidioggi - Orari delle lezioni di oggi
 >
 > libri - Libri, materiali e prove su OneDrive
