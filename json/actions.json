@@ -147,9 +147,15 @@
     ]
   },
   "ottimizzazione": {
-    "type": "message",
+    "type": "course",
     "description": "Tutto su Ottimizzazione combinatoria",
-    "text": "In arrivo..."
+    "name": "Ottimizzazione combinatoria",
+    "virtuale": "29872",
+    "teams": "OGFlMmI5YTQtZDQwMy00ZmQzLTliMDQtMGYzZDNkMGExNjdl",
+    "website": "2021/460495",
+    "professors": [
+      "ugo.dallago"
+    ]
   },
   "linguaggi": {
     "type": "course",
