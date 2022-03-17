@@ -1,75 +1,76 @@
 {
   "start": {
     "type": "message",
-    "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica immatricolati nell'a.a. 2020/21. Puoi contribuire al progetto su <a href='https://github.com/foxyseta/informabot'>GitHub</a>."
+    "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica immatricolati nell'a.a. 2020/21."
   },
   "help": {
-    "type": "help",
-    "description": "Elenca i comandi disponibili"
-  },
-  "appunti": {
     "type": "message",
-    "description": "Appunti su Notion",
-    "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<b>Primo anno</b>\n🗒️ Algebra e geometria (<a href='https://www.notion.so/Algebra-a65a99336ccc499ead0637365a3bd0cd'>Alex</a>, <a href='https://www.notion.so/Algebra-e-geometria-00d4b98a5d974879aaf39457ede3261a'>Luizo</a>)\n🗒️ Algoritmi e strutture di dati (<a href='https://www.notion.so/Algoritmi-e-strutture-dati-70a01e43fa034859bb0c8cd6d744e6d6'>Alex</a>, <a href='https://www.notion.so/Algoritmi-e-Strutture-di-Dati-da9a9d634c6f433cb778cdd02bead894'>Luizo</a>)\n🗒️ Analisi matematica (<a href='https://www.notion.so/Analisi-1895389f8b9a465e98f2a868fc917c53'>Alex</a>, <a href='https://www.notion.so/Analisi-Prova-unica-ab60229e9ac5455cb69b24b3c41fd0b1'>es. Fabrizio</a>)\n🗒️ Architettura degli elaboratori (<a href='https://heavy-baron-6c1.notion.site/Architettura-degli-Elaboratori-5ef689db90a84cd4b59ff79a4e510d03'>Luizo</a>)\n🗒️ Logica (Alex <a href='https://www.notion.so/Logica-logico-1adfde3168d94cc5ac461da479d113ee'>1</a> e <a href='https://www.notion.so/Preparazione-logica-3-CFU-8bf160d661d149f9939d5a48e72edf05'>2</a>, <a href='https://www.notion.so/Ripasso-bc03206bfa034bed8f3f521778a61254'>Andrea</a>)\n🗒️ Programmazione (<a href='https://www.notion.so/Appunti-784f6703da1447028ea95a52eda74f38'>Andrea</a>)\n\n<b>Secondo anno</b>\nIn arrivo...\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti."
+    "text": "Aiutati che Coen ti aiuta."
+  },
+  "appunti1": {
+    "type": "message",
+    "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<b>Primo anno</b>\n🗒️ Algebra e geometria (<a href='https://www.notion.so/Algebra-a65a99336ccc499ead0637365a3bd0cd'>Alex</a>, <a href='https://www.notion.so/Algebra-e-geometria-00d4b98a5d974879aaf39457ede3261a'>Luizo</a>,<a href='https://metal-shelf-848.notion.site/Studio-b359d26c40f7426abd702422e4125194'> Frau</a>)\n🗒️ Algoritmi e strutture di dati (<a href='https://www.notion.so/Algoritmi-e-strutture-dati-70a01e43fa034859bb0c8cd6d744e6d6'>Alex</a>, <a href='https://www.notion.so/Algoritmi-e-Strutture-di-Dati-da9a9d634c6f433cb778cdd02bead894'>Luizo</a>)\n🗒️ Analisi matematica (<a href='https://www.notion.so/Analisi-1895389f8b9a465e98f2a868fc917c53'>Alex</a>, <a href='https://www.notion.so/Analisi-Prova-unica-ab60229e9ac5455cb69b24b3c41fd0b1'>es. Fabrizio</a>)\n🗒️ Architettura degli elaboratori (<a href='https://luizo.notion.site/Architettura-degli-Elaboratori-5ef689db90a84cd4b59ff79a4e510d03'>Luizo</a>, <a href='https://andreaiaia.notion.site/Architettura-degli-Elaboratori-1f92c42beca84f29b6bef821e0a88e6f'>Andrea</a>)\n🗒️ Logica (Alex <a href='https://www.notion.so/Logica-logico-1adfde3168d94cc5ac461da479d113ee'>1</a> e <a href='https://www.notion.so/Preparazione-logica-3-CFU-8bf160d661d149f9939d5a48e72edf05'>2</a>, <a href='https://andreaiaia.notion.site/Logica-per-l-Informatica-717ed42ee8f640a996203429b9b6984c'>Andrea</a>)\n🗒️ Programmazione (<a href='https://andreaiaia.notion.site/Programmazione-9d0911a5fb5141b69d6425d7d6e4b9ca'>Andrea</a>)\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti."
+  },
+   "appunti2": {
+    "type": "message",
+    "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<a href='https://luizo.notion.site/Notion-dei-Notion-20c37e0ee4904a9c898680378f1a50b0'>Notion dei notion</a>\n\n<b>Secondo anno</b>\n\n🗒️ Calcolo numerico (<a href='https://luizo.notion.site/Calcolo-Numerico-c18709d3b5c440638222e9bcaec3523e'>Luizo</a>, <a href='https://andreaiaia.notion.site/Calcolo-Numerico-603be7e6eac04b14bbe3784273ed7c88'>Andrea</a>, <a href='https://glacier-shrew-efc.notion.site/Calcolo-numerico-0ff0b9c9d4d64516bcf4c432cd834b07'>Alex</a>)\n🗒️ Linguaggi di programmazione  (<a href='https://luizo.notion.site/Linguaggi-Di-Programmazione-ae656ea4c0974c6cb2fa72cedce0cc9e'>Luizo</a>, <a href='https://andreaiaia.notion.site/Linguaggi-di-Programmazione-22169e0bb4c34760a5139f916fb4e6f6'>Andrea</a>, <a href='https://glacier-shrew-efc.notion.site/Linguaggi-di-programmazione-c3c8819d0f5d41a68985cf9c5b348865'>Alex</a>)\n🗒️ Ottimizzazione combinatoria (<a href='https://luizo.notion.site/Ottimizzazione-Combinatoria-716be3a19e4b47cbaac33ac0a11dcdc0'>Luizo</a>, <a href='https://andreaiaia.notion.site/Ottimizzazione-Combinatoria-87ce1e46d10e45fd9c41d68b2c1cc945'>Andrea</a>, <a href='https://glacier-shrew-efc.notion.site/Ottimizzazione-combinatoria-fbf976cc844444d780bdeb78d9f2c268'>Alex</a>)\n🗒️ Reti di calcolatori (<a href='https://luizo.notion.site/Reti-Di-Calcolatori-9c995fcb95844b0f93b6c11f234d4a8a'>Luizo</a>, <a href='https://andreaiaia.notion.site/Reti-di-Calcolatori-3b00f8c51327482eafb1605464469f31'>Andrea</a>, <a href='https://glacier-shrew-efc.notion.site/Reti-di-calcolatori-70ddf93b892e40d48815547ba06fec3d'>Alex</a>)\n🗒️ Sistemi Operativi (<a href='https://luizo.notion.site/Sistemi-Operativi-13a8a1ccdbb64f33a401c28f2f559bd9'>Luizo</a>, <a href='https://andreaiaia.notion.site/Sistemi-Operativi-a2c4d38c032647df935a9471f90aa481'>Andrea</a>, <a href='https://glacier-shrew-efc.notion.site/Sistemi-operativi-f073b17b59ce4ef8957574f3e6e40075'>Alex</a>)\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti."
   },
   "cercogruppo": {
     "type": "lookingFor",
-    "description": "Cerca compagni di progetto nel gruppo",
     "singularText": "Una persona cerca un gruppo in <b>\"{0}\"</b>:\n",
     "pluralText": "<b>{1}</b> persone cercano gruppi in <b>\"{0}\"</b>:\n",
     "chatError": "Questo comando è riservato alle chat dei gruppi degli insegnamenti."
   },
   "gruppi": {
     "type": "message",
-    "description": "Gruppi Telegram e server Discord",
-    "text": "<b>Gruppi degli anni di corso 2021/22</b>\n\n<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>1️⃣ Primo anno</a>\n<a href='https://t.me/informaticaunibo2021'>2️⃣ Secondo anno</a>\n<a href='https://t.me/infounibo2020'>3️⃣ Terzo anno</a>\n\n<b>Gruppi degli insegnamenti</b>\n\n<a href='https://t.me/joinchat/h1lypfBFdEZkYzFk'>👥 Calcolo numerico</a>\n<a href='https://t.me/joinchat/klw79l5tkPM1NWQ0'>👥 Ottimizzazione combinatoria</a>\n<a href='https://t.me/joinchat/4v-08oT6QWk0ZmM8'>👥 Linguaggi di programmazione</a>\n<a href='https://t.me/joinchat/Sw2Ykp0-0mM1Zjdk'>👥 Reti di calcolatori</a>\n<a href='https://t.me/joinchat/2hUcGLfY7Gc2MTA8'>👥 Sistemi operativi</a>\n\n<a href='https://discord.gg/YcAc2rdS3H'><b>📡 Discord</b></a>"
+    "text": "<b>Gruppi dell'anno di corso 2021/22</b>\n\n<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>1️⃣ Primo anno</a>\n<a href='https://t.me/informaticaunibo2021'>2️⃣ Secondo anno</a>\n<a href='https://t.me/infounibo2020'>3️⃣ Terzo anno</a>\n\n<b>Gruppi degli insegnamenti</b>\n\n<a href='https://t.me/joinchat/h1lypfBFdEZkYzFk'>👥 Calcolo numerico</a>\n<a href='https://t.me/joinchat/klw79l5tkPM1NWQ0'>👥 Ottimizzazione combinatoria</a>\n<a href='https://t.me/joinchat/4v-08oT6QWk0ZmM8'>👥 Linguaggi di programmazione</a>\n<a href='https://t.me/joinchat/Sw2Ykp0-0mM1Zjdk'>👥 Reti di calcolatori</a>\n<a href='https://t.me/joinchat/2hUcGLfY7Gc2MTA8'>👥 Sistemi operativi</a>\n\n<a href='https://t.me/+j7GRbdJlwPExYzc0'>👥 Probabilità e statistica</a>\n<a href='https://t.me/+Aq__wJAnPrc1MWQ0'>👥 Tecnologie Web</a>\n\n<a href='https://discord.gg/N7NJms8d7v'><b>📡 Discord</b></a>"
   },
-  "lezionidioggi": {
-    "type": "timetable",
-    "description": "Orari delle lezioni di oggi",
+  "lezionioggi": {
+    "type": "lezionioggi",
     "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2",
     "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
   },
+    "lezionidomani": {
+    "type": "lezionidomani",
+    "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2",
+    "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
+  },
   "libri": {
     "type": "message",
-    "description": "Libri, materiali e prove su OneDrive",
     "text": "<b>Libri, materiali e prove</b>\n📚<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EnTEAPe1X-RHoisCwNfQykQBWGOXHfwEqSdQcOqCWsQFgw?e=SYwCR7'>Primo anno</a>\n📚 <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EkH1O5CfQk9FniJopixNv0YBWWtW-GooDFuSx_9kbgOF1Q?e=RX0Gzx'>Secondo anno</a>"
   },
   "link": {
     "type": "alias",
-    "description": "Alias di \"/gruppi\"",
     "command": "gruppi"
   },
   "materiali": {
     "type": "alias",
-    "description": "Alias di \"/libri\"",
     "command": "libri"
   },
   "noncercogruppo": {
     "type": "notLookingFor",
-    "description": "Smetti di cercare compagni di progetto",
     "text": "Non sei più nella lista di chi cerca gruppi in \"{0}\".",
     "chatError": "Questo comando è riservato alle chat dei gruppi degli insegnamenti.",
     "notFoundError": "Neanche prima cercavi gruppi in \"{0}\"."
   },
   "prove": {
     "type": "alias",
-    "description": "Alias di \"/libri\"",
     "command": "libri"
   },
   "registrate": {
     "type": "message",
-    "description": "Lezioni registrate su OneDrive",
     "text": "<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Ep7wMjaQIeJGlM7vRd5T96cBhoND3NZL_y1hQ7BpNHy-_Q'><b>Registrazioni</b></a>\n📽️ <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Etl16eLcHnFAlTeww77XUecBIYZfhRmrkLi4DWWJcYW-yA?e=cu0L9d'>Primo anno</a>\n📽️ <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/EssTTKzajUFJsdpYc2TWOPwBNNFcW-MVVK4IxkH8cIs7vg?e=j1CJyP'>Secondo anno</a>"
   },
   "stickers": {
     "type": "message",
-    "description": "Pacchetti degli adesivi Telegram del corso",
     "text": "<b>Stickers di Luizo e Betto</b>\n🎨 <a href='https://t.me/addstickers/UniboShitpost'>Informatica 20/21</a>\n🎨 <a href='https://t.me/addstickers/InfoUniBOCancer'>InfoUnibo</a>\n🎨 <a href='https://t.me/addstickers/Info2k21'>Informatica 2k20/2k21</a>"
+  },
+   "creator": {
+    "type": "message",
+    "text": "<b>🎬 Supportare i nostri migliori creator! 🎬</b>\n\n<b>Tik Tok</b>\n🎭 <a href='https://www.tiktok.com/@betto3031?'>betto3031</a> AKA il fantastico <a href='tg://user?id=220096840'>Betto</a>\n\n<b>Youtube</b>\n<a href='https://www.youtube.com/channel/UCrLzfP2zfgf6R8V8XWbvq6Q'>Luigibros Nin</a>, canale di 🐰 Luizo CEO di Betto"
   },
   "architettura": {
     "type": "course",
-    "description": "Tutto su Architettura degli elaboratori",
     "name": "Architettura degli elaboratori",
     "virtuale": "18282",
     "teams": "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx",
@@ -80,7 +81,6 @@
   },
   "logica": {
     "type": "course",
-    "description": "Tutto su Logica per l'informatica",
     "name": "Logica per l'informatica",
     "virtuale": "21407",
     "teams": "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk",
@@ -91,7 +91,6 @@
   },
   "programmazione": {
     "type": "course",
-    "description": "Tutto su Programmazione",
     "name": "Programmazione",
     "virtuale": "17653",
     "teams": "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4",
@@ -102,7 +101,6 @@
   },
   "algebra": {
     "type": "course",
-    "description": "Tutto su Algebra e geometria",
     "name": "Algebra e geometria",
     "virtuale": "17870",
     "teams": "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw",
@@ -113,7 +111,6 @@
   },
   "algoritmi": {
     "type": "course",
-    "description": "Tutto su algoritmi e strutture di dati",
     "name": "Algoritmi e strutture di dati",
     "virtuale": "20930",
     "teams": "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl",
@@ -125,7 +122,6 @@
   },
   "analisi": {
     "type": "course",
-    "description": "Tutto su Analisi matematica",
     "name": "Analisi matematica",
     "virtuale": "18045",
     "teams": "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk",
@@ -137,10 +133,9 @@
   },
   "calcolo": {
     "type": "course",
-    "description": "Tutto su Calcolo numerico",
-    "name": "Calcolo numerico",
-    "virtuale": "25810",
-    "teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
+	"name": "Calcolo Numerico",
+	"virtuale": "25810",
+	"teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
     "website": "2021/320581",
     "professors": [
       "elena.loli"
@@ -148,8 +143,7 @@
   },
   "ottimizzazione": {
     "type": "course",
-    "description": "Tutto su Ottimizzazione combinatoria",
-    "name": "Ottimizzazione combinatoria",
+    "name": "Ottimizzazione Combinatoria",
     "virtuale": "29872",
     "teams": "OGFlMmI5YTQtZDQwMy00ZmQzLTliMDQtMGYzZDNkMGExNjdl",
     "website": "2021/460495",
@@ -159,35 +153,52 @@
   },
   "linguaggi": {
     "type": "course",
-    "description": "Tutto su Linguaggi di programmazione",
-    "name": "Linguaggi di programmazione",
-    "virtuale": "25802",
-    "teams": "MjljOWZkNTMtNzExMy00OGRiLTlmNTEtM2E5NGVmYzU1YTgx",
-    "website": "2021/320579",
+	"name": "Linguaggi Di Programmazione",
+	"virtuale": "25802",
+	"teams": "MjljOWZkNTMtNzExMy00OGRiLTlmNTEtM2E5NGVmYzU1YTgx",
+	"website": "2021/320579",
     "professors": [
       "roberto.gorrieri",
       "maurizio.gabbrielli",
-      "saverio.giallorenzo2"
+	  "saverio.giallorenzo2"
     ]
   },
   "reti": {
     "type": "course",
-    "description": "Tutto su Reti di calcolatori",
-    "name": "Reti di calcolatori",
-    "virtuale": "28376",
-    "teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
-    "website": "2021/455456",
+	"name": "Reti Di Calcolatori",
+	"virtuale": "28376",
+	"teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
+	"website": "2021/455456",
     "professors": [
       "luciano.bononi"
     ]
   },
+    "tecnologie": {
+    "type": "course",
+	"name": "Tecnologie Web",
+	"virtuale": "26726",
+	"teams": "NDFkMWJjZTUtZTlkYS00ZWFiLTgxMDctY2Q0YzAxZmZjOThl",
+	"website": "2021/436428",
+    "professors": [
+      "fabio.vitali"
+    ]
+  },
+    "probabilita": {
+    "type": "course",
+	"name": "Probabilità e Statistica",
+	"virtuale": "31906",
+	"teams": "MDg3YjQ1ZDYtY2RmOC00NmYzLThjY2EtYWI1N2FkMjFmMGEx",
+	"website": "2021/320583",
+    "professors": [
+      "andrea.cosso"
+    ]
+  },
   "sistemi": {
     "type": "course",
-    "description": "Tutto su Sistemi operativi",
-    "name": "Sistemi operativi",
-    "virtuale": "25797",
-    "teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
-    "website": "2021/320578",
+	"name": "Sistemi Operativi",
+	"virtuale": "25797",
+	"teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
+	"website": "2021/320578",
     "professors": [
       "renzo.davoli"
     ]
