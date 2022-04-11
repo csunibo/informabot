@@ -24,13 +24,19 @@ When setting up your bot with
 [BotFather](https://core.telegram.org/bots#6-botfather), you'll be
 asked to "send a list of commands for your bot". Consider using this one:
 
-> appunti - Appunti su Notion
+> help - Elenca i comandi disponibili
+>
+> appunti1 - Appunti del primo anno su Notion
+>
+> appunti2 - Appunti del secondo anno su Notion
 >
 > cercogruppo - Cerca compagni di progetto nel gruppo
 >
 > gruppi - Gruppi Telegram e server Discord
 >
 > lezionidioggi - Orari delle lezioni di oggi
+>
+> lezionidioggi - Orari delle lezioni di domani
 >
 > libri - Libri, materiali e prove su OneDrive
 >

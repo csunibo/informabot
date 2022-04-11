@@ -1,5 +1,5 @@
 // Initial setup
-if (process.argv.length != 3) console.log("usage: node index.js token");
+if (process.argv.length != 3) console.log("usage: node index.js <token>");
 process.env.NTBA_FIX_319 = 1;
 const axios = require("axios"),
   fs = require("fs"),
@@ -13,12 +13,19 @@ const axios = require("axios"),
   bot = new TelegramBot(process.argv[2], { polling: true });
 
 // String formatting via placeholders: has troubles with placeholders injections
-String.format = function () {
-  var s = arguments[0].slice();
-  for (var i = 0; i < arguments.length - 1; ++i)
+String.format = function() {
+  let s = arguments[0].slice();
+  for (let i = 0; i < arguments.length - 1; ++i)
     s = s.replace(new RegExp("\\{" + i + "\\}", "gm"), arguments[i + 1]);
   return s;
 };
+
+// Returns a new Date object for tomorrow's Date
+function tomorrowDate() {
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  return d;
+}
 
 // Simple messages
 function message(msg, text) {
@@ -28,98 +35,29 @@ function message(msg, text) {
 }
 
 // Web scraping the timetable -- Lezioni oggi
-function trovalezionioggi(msg, url, fallbackText) {
+function timetable(msg, url, date, title, fallbackText) {
   axios
     .get(url)
     .then((res) => {
-      let now = new Date();
-      let todayLectures = [];
+      let lectures = [];
       for (let i = 0; i < res.data.length; ++i) {
         let start = new Date(res.data[i].start);
         if (
-          start.getFullYear() === now.getFullYear() &&
-          start.getMonth() === now.getMonth() &&
-          start.getDate() === now.getDate()
+          start.getFullYear() === date.getFullYear() &&
+          start.getMonth() === date.getMonth() &&
+          start.getDate() === date.getDate()
         )
-          todayLectures.push(res.data[i]);
+          lectures.push(res.data[i]);
       }
-
-      let text = "<b>Lezioni di oggi:</b>\n";
-      todayLectures.sort((a, b) => {
-        if (a.start > b.start) return 1;
-        if (a.start < b.start) return -1;
-        return 0;
-      });
-      for (let i = 0; i < todayLectures.length; ++i) {
-        text +=
-          "🕘 <b>" +
-          '<a href="' +
-          todayLectures[i].teams +
-          '">' +
-          todayLectures[i].title +
-          "</a></b> " +
-          todayLectures[i].time +
-          "\n";
-        text +=
-          "🏢 " +
-          todayLectures[i].aule[0].des_edificio +
-          " - " +
-          todayLectures[i].aule[0].des_piano +
-          "\n";
-        text += "📍 " + todayLectures[i].aule[0].des_indirizzo + "\n";
-        text += "〰〰〰〰〰〰〰〰〰〰〰\n";
-      }
-      if (todayLectures.length !== 0) message(msg, text);
-      else message(msg, fallbackText);
-    })
-    .catch((e) => console.error(e.stack));
-}
-
-// Web scraping the timetable -- Lezioni domani
-function trovalezionidomani(msg, url, fallbackText) {
-  axios
-    .get(url)
-    .then((res) => {
-      let now = new Date();
-      let domani = new Date(now);
-      domani.setDate(domani.getDate() + 1);
-      let tomorrowLectures = [];
-      for (let i = 0; i < res.data.length; ++i) {
-        let start = new Date(res.data[i].start);
-        if (
-          start.getFullYear() === domani.getFullYear() &&
-          start.getMonth() === domani.getMonth() &&
-          start.getDate() === domani.getDate()
-        )
-          tomorrowLectures.push(res.data[i]);
-      }
-
-      let text = "<b>Lezioni di domani:</b>\n";
-      tomorrowLectures.sort((a, b) => {
-        if (a.start > b.start) return 1;
-        if (a.start < b.start) return -1;
-        return 0;
-      });
-      for (let i = 0; i < tomorrowLectures.length; ++i) {
-        text +=
-          "🕘 <b>" +
-          '<a href="' +
-          tomorrowLectures[i].teams +
-          '">' +
-          tomorrowLectures[i].title +
-          "</a></b> " +
-          tomorrowLectures[i].time +
-          "\n";
-        text +=
-          "🏢 " +
-          tomorrowLectures[i].aule[0].des_edificio +
-          " - " +
-          tomorrowLectures[i].aule[0].des_piano +
-          "\n";
-        text += "📍 " + tomorrowLectures[i].aule[0].des_indirizzo + "\n";
-        text += "〰〰〰〰〰〰〰〰〰〰〰\n";
-      }
-      if (tomorrowLectures.length !== 0) message(msg, text);
+      let text = title;
+      lectures.sort((a, b) => a.start - b.start);
+      for (let i = 0; i < lectures.length; ++i)
+        text += `  🕘 <b><a href="${lectures[i].teams}">${lectures[i].title}</a></b> ${lectures[i].time}
+  🏢 ${lectures[i].aule[0].des_edificio} - ${lectures[i].aule[0].des_piano}
+  📍 ${lectures[i].aule[0].des_indirizzo}
+  〰〰〰〰〰〰〰〰〰〰〰
+`;
+      if (lectures.length !== 0) message(msg, text);
       else message(msg, fallbackText);
     })
     .catch((e) => console.error(e.stack));
@@ -155,19 +93,20 @@ function lookingFor(msg, singularText, pluralText, chatError) {
     fs.writeFileSync("json/groups.json", JSON.stringify(groups));
     const length = group.length.toString(),
       promises = Array(length);
-    var successesCount = 0;
+    let successesCount = 0;
     group.forEach((e, i) => {
-      promises[i] = bot.getChatMember(chatId, e.toString()).then((result) => {
-        ++successesCount;
-        const user = result.user;
-        return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${
-          user.last_name ? " " + user.last_name : ""
-        }</a>\n`;
-      }
-      ).catch(error => console.error(error));
+      promises[i] = bot
+        .getChatMember(chatId, e.toString())
+        .then((result) => {
+          ++successesCount;
+          const user = result.user;
+          return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${user.last_name ? " " + user.last_name : ""
+            }</a>\n`;
+        })
+        .catch((error) => console.error(error));
     });
     Promise.allSettled(promises).then((result) => {
-      var list = String.format(
+      let list = String.format(
         successesCount == "1" ? singularText : pluralText,
         msg.chat.title,
         successesCount
@@ -206,6 +145,15 @@ function notLookingFor(msg, text, chatError, notFoundError) {
   }
 }
 
+// Send help message
+function giveHelp(msg) {
+  answer = "";
+  for (command in actions)
+    if (actions[command] && actions[command].description)
+      answer += `/${command} - ${actions[command].description}\n`;
+  message(msg, answer);
+}
+
 // Available actions
 function act(msg, action) {
   switch (action.type) {
@@ -222,6 +170,9 @@ function act(msg, action) {
         action.professors
       );
       break;
+    case "help":
+      giveHelp(msg);
+      break;
     case "lookingFor":
       lookingFor(msg, action.singularText, action.pluralText, action.chatError);
       break;
@@ -231,11 +182,17 @@ function act(msg, action) {
     case "notLookingFor":
       notLookingFor(msg, action.text, action.chatError, action.notFoundError);
       break;
-    case "lezionioggi":
-      trovalezionioggi(msg, action.url, action.fallbackText);
+    case "todayLectures":
+      timetable(msg, action.url, new Date(), action.title, action.fallbackText);
       break;
-    case "lezionidomani":
-      trovalezionidomani(msg, action.url, action.fallbackText);
+    case "tomorrowLectures":
+      timetable(
+        msg,
+        action.url,
+        tomorrowDate(),
+        action.title,
+        action.fallbackText
+      );
       break;
     default:
       console.error(`Unknown action type "${action.type}"`);
@@ -257,5 +214,5 @@ function onMessage(msg) {
   }
 }
 
-bot.on('message', onMessage);
+bot.on("message", onMessage);
 bot.on("polling_error", console.log);
