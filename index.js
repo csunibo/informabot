@@ -163,7 +163,8 @@ function lookingFor(msg, singularText, pluralText, chatError) {
         return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${
           user.last_name ? " " + user.last_name : ""
         }</a>\n`;
-      });
+      }
+      ).catch(error => console.error(error));
     });
     Promise.allSettled(promises).then((result) => {
       var list = String.format(
@@ -172,7 +173,7 @@ function lookingFor(msg, singularText, pluralText, chatError) {
         successesCount
       );
       result.forEach((e) => {
-        if (e.status === "fulfilled") list += e.value;
+        if (e.status === "fulfilled" && e.value) list += e.value;
       });
       message(msg, list);
     });
@@ -256,4 +257,5 @@ function onMessage(msg) {
   }
 }
 
-bot.on("message", onMessage);
+bot.on('message', onMessage);
+bot.on("polling_error", console.log);
