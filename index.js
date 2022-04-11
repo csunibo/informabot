@@ -145,6 +145,15 @@ function notLookingFor(msg, text, chatError, notFoundError) {
   }
 }
 
+// Send help message
+function giveHelp(msg) {
+  answer = "";
+  for (command in actions)
+    if (actions[command] && actions[command].description)
+      answer += `/${command} - ${actions[command].description}\n`;
+  message(msg, answer);
+}
+
 // Available actions
 function act(msg, action) {
   switch (action.type) {
@@ -160,6 +169,9 @@ function act(msg, action) {
         action.website,
         action.professors
       );
+      break;
+    case "help":
+      giveHelp(msg);
       break;
     case "lookingFor":
       lookingFor(msg, action.singularText, action.pluralText, action.chatError);
