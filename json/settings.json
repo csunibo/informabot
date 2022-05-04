@@ -3,8 +3,5 @@
     "parse_mode": "HTML",
     "disable_web_page_preview": 1
   },
-  "lookingForBlackList": [
-    -1001421361284,
-    -1001303700367
-  ]
+  "lookingForBlackList": [-1001421361284, -1001303700367]
 }

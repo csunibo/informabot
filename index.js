@@ -13,7 +13,7 @@ const axios = require("axios"),
   bot = new TelegramBot(process.argv[2], { polling: true });
 
 // String formatting via placeholders: has troubles with placeholders injections
-String.format = function() {
+String.format = function () {
   let s = arguments[0].slice();
   for (let i = 0; i < arguments.length - 1; ++i)
     s = s.replace(new RegExp("\\{" + i + "\\}", "gm"), arguments[i + 1]);
@@ -100,8 +100,9 @@ function lookingFor(msg, singularText, pluralText, chatError) {
         .then((result) => {
           ++successesCount;
           const user = result.user;
-          return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${user.last_name ? " " + user.last_name : ""
-            }</a>\n`;
+          return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${
+            user.last_name ? " " + user.last_name : ""
+          }</a>\n`;
         })
         .catch((error) => console.error(error));
     });
