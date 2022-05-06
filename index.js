@@ -93,13 +93,11 @@ function lookingFor(msg, singularText, pluralText, chatError) {
     fs.writeFileSync("json/groups.json", JSON.stringify(groups));
     const length = group.length.toString(),
       promises = Array(length);
-    let successesCount = 0;
     group.forEach((e, i) => {
       promises[i] = bot
         .getChatMember(chatId, e.toString())
         .then(
           (result) => {
-            ++successesCount;
             const user = result.user;
             return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${
               user.last_name ? " " + user.last_name : ""
@@ -111,12 +109,15 @@ function lookingFor(msg, singularText, pluralText, chatError) {
     });
     Promise.allSettled(promises).then((result) => {
       let list = String.format(
-        successesCount == "1" ? singularText : pluralText,
+        length == "1" ? singularText : pluralText,
         msg.chat.title,
-        successesCount
+        length
       );
-      result.forEach((e) => {
-        if (e.status === "fulfilled" && e.value) list += e.value;
+      result.forEach((e, i) => {
+        list +=
+          e.status === "fulfilled" && e.value
+            ? e.value
+            : `👤 <a href='tg://user?id=${group[i]}'>??? ???</a>\n`;
       });
       message(msg, list);
     });
