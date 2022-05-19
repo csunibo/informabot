@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/FoxySeta/informabot#readme",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "node-telegram-bot-api": "^0.54.0"
   }
 }

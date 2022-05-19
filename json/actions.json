@@ -45,8 +45,8 @@
   },
   "libri": {
     "type": "message",
-    "description": "Libri, materiali e prove su OneDrive",
-    "text": "<b>Libri, materiali e prove</b>\n📚<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EnTEAPe1X-RHoisCwNfQykQBWGOXHfwEqSdQcOqCWsQFgw?e=SYwCR7'>Primo anno</a>\n📚 <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EkH1O5CfQk9FniJopixNv0YBWWtW-GooDFuSx_9kbgOF1Q?e=RX0Gzx'>Secondo anno</a>"
+    "description": "Libri, materiali, prove ed esercizi su GitHub",
+    "text": "<b>Libri, materiali, prove ed esercizi</b>\n📚<a href='https://csunibo.github.io/'>Sito Statico (...in costruzione)</a>\nPer il momento il Sito Statico è disponibile per i singoli corsi\n📂<a href='http://github.com/csunibo'>Repository GitHub</a>\nCollabora anche tu con le PullRequest e condividi il tuo materiale!"
   },
   "link": {
     "type": "alias",
