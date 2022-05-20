@@ -27,7 +27,7 @@
   "gruppi": {
     "type": "message",
     "description": "Gruppi Telegram e server Discord",
-    "text": "<b>Gruppi dell'anno di corso 2021/22</b>\n\n<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>1️⃣ Primo anno</a>\n<a href='https://t.me/informaticaunibo2021'>2️⃣ Secondo anno</a>\n<a href='https://t.me/infounibo2020'>3️⃣ Terzo anno</a>\n\n<b>Gruppi degli insegnamenti</b>\n\n<a href='https://t.me/joinchat/h1lypfBFdEZkYzFk'>👥 Calcolo numerico</a>\n<a href='https://t.me/joinchat/klw79l5tkPM1NWQ0'>👥 Ottimizzazione combinatoria</a>\n<a href='https://t.me/joinchat/4v-08oT6QWk0ZmM8'>👥 Linguaggi di programmazione</a>\n<a href='https://t.me/joinchat/Sw2Ykp0-0mM1Zjdk'>👥 Reti di calcolatori</a>\n<a href='https://t.me/joinchat/2hUcGLfY7Gc2MTA8'>👥 Sistemi operativi</a>\n\n<a href='https://t.me/+j7GRbdJlwPExYzc0'>👥 Probabilità e statistica</a>\n<a href='https://t.me/+Aq__wJAnPrc1MWQ0'>👥 Tecnologie Web</a>\n\n<a href='https://discord.gg/N7NJms8d7v'><b>📡 Discord</b></a>"
+    "text": "<b>Gruppi dell'anno di corso 2021/22</b>\n\n<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>1️⃣ Primo anno</a>\n<a href='https://t.me/informaticaunibo2021'>2️⃣ Secondo anno</a>\n<a href='https://t.me/infounibo2020'>3️⃣ Terzo anno</a>\n\n<b>Gruppi degli insegnamenti</b>\n\n<a href='https://t.me/joinchat/h1lypfBFdEZkYzFk'>👥 Calcolo numerico</a>\n<a href='https://t.me/joinchat/klw79l5tkPM1NWQ0'>👥 Ottimizzazione combinatoria</a>\n<a href='https://t.me/joinchat/4v-08oT6QWk0ZmM8'>👥 Linguaggi di programmazione</a>\n<a href='https://t.me/joinchat/Sw2Ykp0-0mM1Zjdk'>👥 Reti di calcolatori</a>\n<a href='https://t.me/joinchat/2hUcGLfY7Gc2MTA8'>👥 Sistemi operativi</a>\n\n<a href='https://t.me/+j7GRbdJlwPExYzc0'>👥 Probabilità e statistica</a>\n<a href='https://t.me/+Aq__wJAnPrc1MWQ0'>👥 Tecnologie web</a>\n\n<a href='https://discord.gg/N7NJms8d7v'><b>📡 Discord</b></a>"
   },
   "lezionioggi": {
     "type": "todayLectures",
@@ -45,8 +45,8 @@
   },
   "libri": {
     "type": "message",
-    "description": "Libri, materiali e prove su OneDrive",
-    "text": "<b>Libri, materiali e prove</b>\n📚<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EnTEAPe1X-RHoisCwNfQykQBWGOXHfwEqSdQcOqCWsQFgw?e=SYwCR7'>Primo anno</a>\n📚 <a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/gurjyot_wanga_studio_unibo_it/EkH1O5CfQk9FniJopixNv0YBWWtW-GooDFuSx_9kbgOF1Q?e=RX0Gzx'>Secondo anno</a>"
+    "description": "Libri, materiali, prove ed esercizi su GitHub",
+    "text": "<b>Libri, materiali, prove ed esercizi</b>\n📚 <a href='https://csunibo.github.io/'>Sito statico (...in costruzione)</a>\nPer il momento il Sito Statico è disponibile per i singoli corsi\n📂 <a href='https://github.com/csunibo'>Repository GitHub</a>\nCollabora anche tu con le <i>pull request</i> e condividi il tuo materiale!"
   },
   "link": {
     "type": "alias",
@@ -118,7 +118,7 @@
   },
   "algoritmi": {
     "type": "course",
-    "description": "Tutto su algoritmi e strutture di dati",
+    "description": "Tutto su Algoritmi e strutture di dati",
     "name": "Algoritmi e strutture di dati",
     "virtuale": "20930",
     "teams": "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl",
@@ -137,7 +137,7 @@
   "calcolo": {
     "type": "course",
     "description": "Tutto su Calcolo numerico",
-    "name": "Calcolo Numerico",
+    "name": "Calcolo numerico",
     "virtuale": "25810",
     "teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
     "website": "2021/320581",
@@ -146,7 +146,7 @@
   "ottimizzazione": {
     "type": "course",
     "description": "Tutto su Ottimizzazione combinatoria",
-    "name": "Ottimizzazione Combinatoria",
+    "name": "Ottimizzazione combinatoria",
     "virtuale": "29872",
     "teams": "OGFlMmI5YTQtZDQwMy00ZmQzLTliMDQtMGYzZDNkMGExNjdl",
     "website": "2021/460495",
@@ -155,7 +155,7 @@
   "linguaggi": {
     "type": "course",
     "description": "Tutto su Linguaggi di programmazione",
-    "name": "Linguaggi Di Programmazione",
+    "name": "Linguaggi di programmazione",
     "virtuale": "25802",
     "teams": "MjljOWZkNTMtNzExMy00OGRiLTlmNTEtM2E5NGVmYzU1YTgx",
     "website": "2021/320579",
@@ -168,7 +168,7 @@
   "reti": {
     "type": "course",
     "description": "Tutto su Reti di calcolatori",
-    "name": "Reti Di Calcolatori",
+    "name": "Reti di calcolatori",
     "virtuale": "28376",
     "teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
     "website": "2021/455456",
@@ -176,7 +176,8 @@
   },
   "tecnologie": {
     "type": "course",
-    "name": "Tecnologie Web",
+    "description": "Tutto su Tecnologie web",
+    "name": "Tecnologie web",
     "virtuale": "26726",
     "teams": "NDFkMWJjZTUtZTlkYS00ZWFiLTgxMDctY2Q0YzAxZmZjOThl",
     "website": "2021/436428",
@@ -184,7 +185,8 @@
   },
   "probabilita": {
     "type": "course",
-    "name": "Probabilità e Statistica",
+    "description": "Calcolo delle probabilità e statistica",
+    "name": "Calcolo delle probabilità e statistica",
     "virtuale": "31906",
     "teams": "MDg3YjQ1ZDYtY2RmOC00NmYzLThjY2EtYWI1N2FkMjFmMGEx",
     "website": "2021/320583",
@@ -193,7 +195,7 @@
   "sistemi": {
     "type": "course",
     "description": "Tutto su Sistemi operativi",
-    "name": "Sistemi Operativi",
+    "name": "Sistemi operativi",
     "virtuale": "25797",
     "teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
     "website": "2021/320578",
