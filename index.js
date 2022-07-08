@@ -13,7 +13,7 @@ const axios = require("axios"),
   bot = new TelegramBot(process.argv[2], { polling: true });
 
 // String formatting via placeholders: has troubles with placeholders injections
-String.format = function() {
+String.format = function () {
   let s = arguments[0].slice();
   for (let i = 0; i < arguments.length - 1; ++i)
     s = s.replace(new RegExp("\\{" + i + "\\}", "gm"), arguments[i + 1]);
@@ -70,8 +70,8 @@ function course(msg, name, virtuale, teams, website, professors) {
    * useful for GitHub repository
    *
    * example:
-   * string = Sistemi Operativi
-   * converted_string = toOurCase(string); = sistemi-operativi
+   * string = "Logica per l'informatica"
+   * converted_string = toOurCase(string); = "logica-per-informatica" (sic!)
    */
   const toOurCase = (str) =>
     str &&
@@ -79,8 +79,9 @@ function course(msg, name, virtuale, teams, website, professors) {
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .match(
-        /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+        /(?:[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+)'?/g
       )
+      .filter((value) => value.charAt(value.Length - 1) != "'")
       .map((x) => x.toLowerCase())
       .join("-");
   message(
@@ -92,11 +93,11 @@ function course(msg, name, virtuale, teams, website, professors) {
   <a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/${website}/orariolezioni'>Orario</a>
   ${emails}
   <a href='https://csunibo.github.io/${toOurCase(
-      name
-    )}/'>📚 Risorse: materiali, libri, prove</a>
+    name
+  )}/'>📚 Risorse: materiali, libri, prove</a>
   <a href='https://github.com/csunibo/${toOurCase(
-      name
-    )}/'>📂 Repository GitHub delle risorse</a>`
+    name
+  )}/'>📂 Repository GitHub delle risorse</a>`
   );
 }
 
@@ -122,8 +123,9 @@ function lookingFor(msg, singularText, pluralText, chatError) {
         .then(
           (result) => {
             const user = result.user;
-            return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${user.last_name ? " " + user.last_name : ""
-              }</a>\n`;
+            return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${
+              user.last_name ? " " + user.last_name : ""
+            }</a>\n`;
           },
           (reason) => console.error(reason)
         )
