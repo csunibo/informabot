@@ -81,7 +81,7 @@ function course(msg, name, virtuale, teams, website, professors) {
       .match(
         /(?:[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+)'?/g
       )
-      .filter((value) => value.charAt(value.Length - 1) != "'")
+      .filter((value) => !value.endsWith("'"))
       .map((x) => x.toLowerCase())
       .join("-");
   message(
