@@ -1,7 +1,7 @@
 {
   "start": {
     "type": "message",
-    "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica immatricolati nell'a.a. 2020/21. Puoi contribuire al progetto su <a href='https://github.com/foxyseta/informabot'>GitHub</a>."
+    "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica. Puoi contribuire al progetto su <a href='https://github.com/csunibo/informabot'>GitHub</a>."
   },
   "help": {
     "type": "help",
