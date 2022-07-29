@@ -52,6 +52,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > stickers - Pacchetti degli adesivi Telegram del corso
 >
+> tesi - Tesi DISI proposte e assegnate
+>
 > architettura - Tutto su Architettura degli elaboratori
 >
 > logica - Tutto su Logica per l'informatica
