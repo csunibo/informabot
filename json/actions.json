@@ -80,6 +80,11 @@
     "description": "Pacchetti degli adesivi Telegram del corso",
     "text": "<b>Stickers di Luizo e Betto</b>\n🎨 <a href='https://t.me/addstickers/UniboShitpost'>Informatica 20/21</a>\n🎨 <a href='https://t.me/addstickers/InfoUniBOCancer'>InfoUnibo</a>\n🎨 <a href='https://t.me/addstickers/Info2k21'>Informatica 2k20/2k21</a>"
   },
+  "tesi": {
+    "type": "message",
+    "description": "Tesi DISI proposte e assegnate",
+    "text": "📝 <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>"
+  },
   "architettura": {
     "type": "course",
     "name": "Architettura degli elaboratori",
