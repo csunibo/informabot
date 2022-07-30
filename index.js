@@ -11,9 +11,10 @@ const axios = require("axios"),
   memes = require("./json/memes.json"),
   settings = require("./json/settings.json"),
   bot = new TelegramBot(process.argv[2], { polling: true });
+let botName;
 
 // String formatting via placeholders: has troubles with placeholders injections
-String.format = function () {
+String.format = function() {
   let s = arguments[0].slice();
   for (let i = 0; i < arguments.length - 1; ++i)
     s = s.replace(new RegExp("\\{" + i + "\\}", "gm"), arguments[i + 1]);
@@ -93,11 +94,11 @@ function course(msg, name, virtuale, teams, website, professors) {
   <a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/${website}/orariolezioni'>Orario</a>
   ${emails}
   <a href='https://csunibo.github.io/${toOurCase(
-    name
-  )}/'>📚 Risorse: materiali, libri, prove</a>
+      name
+    )}/'>📚 Risorse: materiali, libri, prove</a>
   <a href='https://github.com/csunibo/${toOurCase(
-    name
-  )}/'>📂 Repository GitHub delle risorse</a>`
+      name
+    )}/'>📂 Repository GitHub delle risorse</a>`
   );
 }
 
@@ -123,9 +124,8 @@ function lookingFor(msg, singularText, pluralText, chatError) {
         .then(
           (result) => {
             const user = result.user;
-            return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${
-              user.last_name ? " " + user.last_name : ""
-            }</a>\n`;
+            return `👤 <a href='tg://user?id=${user.id}'>${user.first_name}${user.last_name ? " " + user.last_name : ""
+              }</a>\n`;
           },
           (reason) => console.error(reason)
         )
@@ -230,18 +230,34 @@ function act(msg, action) {
 
 // Parsing
 function onMessage(msg) {
-  if (msg.text) {
-    const text = msg.text.toString();
-    if (text[0] == "/") {
-      // '/command@bot param0 ... paramN' -> 'command'
-      command = text.toLowerCase().split(" ")[0].substring(1);
-      if (command.includes("@"))
-        command = command.substring(0, command.indexOf("@"));
-      if (command in actions) act(msg, actions[command]);
-      else if (command in memes) message(msg, memes[command]);
+  if (!msg.text) return; // no text
+  const text = msg.text.toString();
+  if (text[0] !== "/") return; // no command
+  // '/command@bot param0 ... paramN' -> 'command@bot'
+  let command = text.split(" ")[0].substring(1);
+  const indexOfAt = command.indexOf("@");
+  if (indexOfAt != -1) {
+    if (command.substring(indexOfAt + 1) !== botName) {
+      return; // command issued to another bot
     }
+    // 'command@bot' -> 'command'
+    command = command.substring(0, command.indexOf("@"));
   }
+  if (command in actions)
+    // action
+    act(msg, actions[command]);
+  else if (command in memes)
+    // meme
+    message(msg, memes[command]);
+  // unkown command
+  else act(msg, actions["unknown"]);
 }
 
-bot.on("message", onMessage);
-bot.on("polling_error", console.log);
+// Bot initialization
+function init(botUser) {
+  botName = botUser.username;
+  bot.on("message", onMessage);
+  bot.on("error", console.error);
+}
+
+bot.getMe().then(init).catch(console.error);

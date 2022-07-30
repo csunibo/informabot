@@ -26,27 +26,37 @@ asked to "send a list of commands for your bot". Consider using this one:
 
 > help - Elenca i comandi disponibili
 >
-> appunti1 - Appunti del primo anno su Notion
+> appunti - Appunti su Notion (ogni anno)
 >
-> appunti2 - Appunti del secondo anno su Notion
+> cercogruppo - Cerca un gruppo di progetto
 >
-> cercogruppo - Cerca compagni di progetto nel gruppo
+> gruppi - Gruppi Telegram e server Discord (tuo anno)
 >
-> gruppi - Gruppi Telegram e server Discord
+> gruppi1 - Gruppi Telegram e server Discord (primo anno)
 >
-> lezionidioggi - Orari delle lezioni di oggi
+> gruppi2 - Gruppi Telegram e server Discord (secondo anno)
 >
-> lezionidioggi - Orari delle lezioni di domani
+> gruppi3 - Gruppi Telegram e server Discord (terzo anno)
 >
-> libri - Libri, materiali e prove su OneDrive
+> lezionioggi - Orari delle lezioni di oggi (tuo anno)
 >
-> link - Alias di "/gruppi"
+> lezionioggi1 - Orari delle lezioni di oggi (primo anno)
 >
-> materiali - Alias di "/libri"
+> lezionioggi2 - Orari delle lezioni di oggi (secondo anno)
 >
-> noncercogruppo - Smetti di cercare compagni di progetto
+> lezionioggi3 - Orari delle lezioni di oggi (terzo anno)
 >
-> prove - Alias di "/libri"
+> lezionidomani - Orari delle lezioni di domani (tuo anno)
+>
+> lezionidomani1 - Orari delle lezioni di domani (primo anno)
+>
+> lezionidomani2 - Orari delle lezioni di domani (secondo anno)
+>
+> lezionidomani3 - Orari delle lezioni di domani (terzo anno)
+>
+> libri - Libri, materiali, prove e altro su CSUnibo
+>
+> noncercogruppo - Smetti di cercare un gruppo di progetto
 >
 > registrate - Lezioni registrate su OneDrive
 >
@@ -78,4 +88,5 @@ asked to "send a list of commands for your bot". Consider using this one:
 
 ## Acknowledgments
 
-Many thanks to Niccolò Alfonso Cicioni, who wrote the original codebase.
+Many thanks to [@Wifino](https://github.com/Wifino), who wrote the original
+codebase.
