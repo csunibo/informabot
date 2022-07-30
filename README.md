@@ -26,27 +26,27 @@ asked to "send a list of commands for your bot". Consider using this one:
 
 > help - Elenca i comandi disponibili
 >
-> appunti - Appunti su Notion (ogni anno)
+> appunti - Appunti su Notion
 >
 > cercogruppo - Cerca un gruppo di progetto
 >
-> gruppi - Gruppi Telegram e server Discord (tuo anno)
+> gruppi - Gruppi Telegram, server Discord e subreddit
 >
-> lezionioggi - Orari delle lezioni di oggi (tuo anno)
+> lezionioggi - Orari lezioni di oggi (tuo anno)
 >
-> lezionioggi1 - Orari delle lezioni di oggi (primo anno)
+> lezionioggi1 - Orari lezioni di oggi (1° anno)
 >
-> lezionioggi2 - Orari delle lezioni di oggi (secondo anno)
+> lezionioggi2 - Orari lezioni di oggi (2° anno)
 >
-> lezionioggi3 - Orari delle lezioni di oggi (terzo anno)
+> lezionioggi3 - Orari lezioni di oggi (3° anno)
 >
-> lezionidomani - Orari delle lezioni di domani (tuo anno)
+> lezionidomani - Orari lezioni di domani (tuo anno)
 >
-> lezionidomani1 - Orari delle lezioni di domani (primo anno)
+> lezionidomani1 - Orari lezioni di domani (1° anno)
 >
-> lezionidomani2 - Orari delle lezioni di domani (secondo anno)
+> lezionidomani2 - Orari lezioni di domani (2° anno)
 >
-> lezionidomani3 - Orari delle lezioni di domani (terzo anno)
+> lezionidomani3 - Orari lezioni di domani (3° anno)
 >
 > materiali - Libri, materiali, prove e altro su CSUnibo
 >
