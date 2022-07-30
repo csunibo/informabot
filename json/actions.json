@@ -26,7 +26,7 @@
   "gruppi": {
     "type": "message",
     "description": "Gruppi Telegram, <i>server</i> Discord e <i>subreddit</i>",
-    "text": "<b>Gruppi dell'anno di corso 2022/23</b>\n\n1️⃣ 1° anno (<a href='https://t.me/uniboinfo2223'>Telegram</a>, <a href='https://discord.gg/2cK8ENJ2Vg'>Discord</a>)\n2️⃣ 2° anno (<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>Telegram</a>, <a href='https://discord.gg/cYFbnGEYAA'>Discord</a>)\n3️⃣ 3° anno (<a href='https://t.me/informaticaunibo2021'>Telegram</a>, <a href='https://discord.gg/N7NJms8d7v'>Discord</a>)\n3️⃣ Ex-3° anno (<a href='https://t.me/infounibo2020'>Telegram</a>)\n\n<a href='https://www.reddit.com/r/unibo_informatica'><b>🗿 Subreddit</b></a>"
+    "text": "<b>Gruppi 2022/23</b>\n\n1️⃣ 1° anno (<a href='https://t.me/uniboinfo2223'>Telegram</a>, <a href='https://discord.gg/2cK8ENJ2Vg'>Discord</a>)\n2️⃣ 2° anno (<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>Telegram</a>, <a href='https://discord.gg/cYFbnGEYAA'>Discord</a>)\n3️⃣ 3° anno (<a href='https://t.me/informaticaunibo2021'>Telegram</a>, <a href='https://discord.gg/N7NJms8d7v'>Discord</a>)\n3️⃣ Ex-3° anno (<a href='https://t.me/infounibo2020'>Telegram</a>)\n\n<a href='https://www.reddit.com/r/unibo_informatica'><b>🗿 Subreddit</b></a>\n\n<b>Lauree Magistrali</b>\n<a href='https://t.me/maginfo202223'>4️⃣ Informatica</a>\n<a href='https://t.me/unibo_ai_2022'>4️⃣ <i>Artificial Intelligence</i></a>\n\n<a href='https://t.me/joinchat/4_SVcmVsRAo3MTlk'>🔢 Tutti i gruppi Unibo</a>"
   },
   "lezionioggi": {
     "type": "alias",
@@ -213,7 +213,7 @@
   "probabilita": {
     "type": "course",
     "description": "Calcolo delle probabilità e statistica",
-    "name": "Calcolo delle probabilità e statistica",
+    "name": "Tutto su calcolo delle probabilità e statistica",
     "virtuale": "31906",
     "teams": "MDg3YjQ1ZDYtY2RmOC00NmYzLThjY2EtYWI1N2FkMjFmMGEx",
     "website": "2021/320583",
