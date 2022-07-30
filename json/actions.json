@@ -47,27 +47,12 @@
     "description": "Libri, materiali, prove ed esercizi su GitHub",
     "text": "<b>Libri, materiali, prove ed esercizi</b>\n📚 <a href='https://csunibo.github.io/'>Sito statico (...in costruzione)</a>\nPer il momento il Sito Statico è disponibile per i singoli corsi\n📂 <a href='https://github.com/csunibo'>Repository GitHub</a>\nCollabora anche tu con le <i>pull request</i> e condividi il tuo materiale!"
   },
-  "link": {
-    "type": "alias",
-    "description": "Alias di \"/gruppi\"",
-    "command": "gruppi"
-  },
-  "materiali": {
-    "type": "alias",
-    "description": "Alias di \"/libri\"",
-    "command": "libri"
-  },
   "noncercogruppo": {
     "type": "notLookingFor",
     "description": "Smetti di cercare compagni di progetto",
     "text": "Non sei più nella lista di chi cerca gruppi in \"{0}\".",
     "chatError": "Questo comando è riservato alle chat dei gruppi degli insegnamenti.",
     "notFoundError": "Neanche prima cercavi gruppi in \"{0}\"."
-  },
-  "prove": {
-    "type": "alias",
-    "description": "Alias di \"/libri\"",
-    "command": "libri"
   },
   "registrate": {
     "type": "message",

@@ -253,6 +253,7 @@ function onMessage(msg) {
   else act(msg, actions["unknown"]);
 }
 
+// Bot initialization
 function init(botUser) {
   botName = botUser.username;
   bot.on("message", onMessage);

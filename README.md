@@ -56,13 +56,7 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > libri - Libri, materiali, prove e altro su CSUnibo
 >
-> link - Alias di "/gruppi"
->
-> materiali - Alias di "/libri"
->
 > noncercogruppo - Smetti di cercare un gruppo di progetto
->
-> prove - Alias di "/libri"
 >
 > registrate - Lezioni registrate su OneDrive
 >
