@@ -26,9 +26,7 @@ asked to "send a list of commands for your bot". Consider using this one:
 
 > help - Elenca i comandi disponibili
 >
-> appunti1 - Appunti del primo anno su Notion
->
-> appunti2 - Appunti del secondo anno su Notion
+> appunti - Appunti di qualsiasi anno su Notion
 >
 > cercogruppo - Cerca compagni di progetto nel gruppo
 >
@@ -78,4 +76,5 @@ asked to "send a list of commands for your bot". Consider using this one:
 
 ## Acknowledgments
 
-Many thanks to Niccolò Alfonso Cicioni, who wrote the original codebase.
+Many thanks to [@Wifino](https://github.com/Wifino), who wrote the original
+codebase.
