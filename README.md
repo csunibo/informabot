@@ -32,12 +32,6 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > gruppi - Gruppi Telegram e server Discord (tuo anno)
 >
-> gruppi1 - Gruppi Telegram e server Discord (primo anno)
->
-> gruppi2 - Gruppi Telegram e server Discord (secondo anno)
->
-> gruppi3 - Gruppi Telegram e server Discord (terzo anno)
->
 > lezionioggi - Orari delle lezioni di oggi (tuo anno)
 >
 > lezionioggi1 - Orari delle lezioni di oggi (primo anno)
@@ -54,7 +48,7 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > lezionidomani3 - Orari delle lezioni di domani (terzo anno)
 >
-> libri - Libri, materiali, prove e altro su CSUnibo
+> materiali - Libri, materiali, prove e altro su CSUnibo
 >
 > noncercogruppo - Smetti di cercare un gruppo di progetto
 >
