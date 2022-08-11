@@ -30,6 +30,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > cercogruppo - Cerca un gruppo di progetto
 >
+> dns - I DNS di ALMAWIFI
+>
 > gruppi - Gruppi Telegram, server Discord e subreddit
 >
 > lezionioggi - Orari lezioni di oggi (tuo anno)
@@ -79,6 +81,24 @@ asked to "send a list of commands for your bot". Consider using this one:
 > reti - Tutto su Reti di calcolatori
 >
 > sistemi - Tutto su Sistemi operativi
+>
+> basi - Tutto su Basi di dati
+>
+> ingegneria - Tutto su Ingegneria del software
+>
+> apprendimento - Tutto su Apprendimento automatico
+>
+> cybersecurity - Tutto su Fondamenti di cybersecurity
+>
+> teorica - Tutto su Informatica teorica
+>
+> fisica - Tutto su Fisica
+>
+> applicazioni - Tutto su Laboratorio di applicazioni mobili
+>
+> storia - Tutto su Storia dell'informatica e dei dispositivi di calcolo
+>
+> strategia - Tutto su Strategia aziendale
 
 ## Adding new commands
 

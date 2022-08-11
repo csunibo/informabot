@@ -23,6 +23,11 @@
     "pluralText": "<b>{1}</b> persone cercano gruppi in <b>\"{0}\"</b>:\n",
     "chatError": "Questo comando è riservato alle chat dei gruppi degli insegnamenti."
   },
+  "dns": {
+    "type": "message",
+    "description": "I DNS di ALMAWIFI",
+    "text": "<b>DNS di ALMAWIFI</b>\n  💻 137.204.25.71\n  💻 137.204.25.213"
+  },
   "gruppi": {
     "type": "message",
     "description": "Gruppi Telegram, <i>server</i> Discord e <i>subreddit</i>",
@@ -242,5 +247,82 @@
     "website": "2021/320578",
     "professors": ["renzo.davoli"],
     "telegram": "joinchat/2hUcGLfY7Gc2MTA8"
+  },
+  "basi": {
+    "type": "course",
+    "description": "Tutto su Basi di dati",
+    "name": "Basi di dati",
+    "website": "2022/443720",
+    "professors": ["danilo.montesi"],
+    "telegram": "datidibasi"
+  },
+  "ingegneria": {
+    "type": "course",
+    "description": "Tutto su Ingegneria del software",
+    "name": "Ingegneria del software",
+    "website": "2022/443719",
+    "professors": ["paolo.ciancarini"],
+    "telegram": "softwaredellingegneria"
+  },
+  "apprendimento": {
+    "type": "course",
+    "description": "Tutto su Introduzione all'apprendimento automatico",
+    "name": "Introduzione all'apprendimento automatico",
+    "virtuale": "35964",
+    "website": "2022/455112",
+    "professors": ["andrea.asperti"],
+    "telegram": "appr_auto"
+  },
+  "cybersecurity": {
+    "type": "course",
+    "description": "Tutto su Fondamenti di cybersecurity",
+    "name": "Fondamenti di cybersecurity",
+    "telegram": "+_NRNOm34gOcxZTQ0"
+  },
+  "teorica": {
+    "type": "course",
+    "description": "Tutto su Informatica teorica",
+    "name": "Informatica teorica",
+    "website": "2022/455107",
+    "professors": ["claudio.sacerdoticoen"],
+    "telegram": "teoricainformatica"
+  },
+  "sistemi": {
+    "type": "course",
+    "description": "Tutto su Progetto di sistemi virtuali",
+    "name": "Progetto di sistemi virtuali",
+    "website": "2022/354042",
+    "professors": ["renzo.davoli"],
+    "telegram": "p_sis_virt"
+  },
+  "fisica": {
+    "type": "course",
+    "description": "Tutto su Fisica",
+    "name": "Fisica",
+    "telegram": "joinchat/EagakhBfGx7hcGXuj4uvBA"
+  },
+  "applicazioni": {
+    "type": "course",
+    "description": "Tutto su Laboratorio di applicazioni mobili",
+    "name": "Laboratorio di applicazioni mobili",
+    "website": "2022/366984",
+    "professors": ["luciano.bononni", "federico.montori2"],
+    "telegram": "+kGgOP9VgHotlMDg8"
+  },
+  "storia": {
+    "type": "course",
+    "description": "Tutto su Storia dell'informatica e dei dispositivi di calcolo",
+    "name": "Storia dell'informatica e dei dispositivi di calcolo",
+    "website": "2022/447912",
+    "professors": ["giorgio.casadei"],
+    "telegram": "+82Kca29dpGFiMmY0"
+  },
+  "strategia": {
+    "type": "course",
+    "description": "Tutto su Strategia aziendale",
+    "name": "Strategia aziendale",
+    "website": "2022/422036",
+    "professors": ["sabrina.scarito"],
+    "telegram": "+swAgagE7-2M5Y2Y8"
   }
 }
