@@ -116,7 +116,8 @@
     "virtuale": "18282",
     "teams": "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx",
     "website": "2020/350960",
-    "professors": ["ivan.lanese"]
+    "professors": ["ivan.lanese"],
+    "telegram": "joinchat/kXM-_CadypQwOGVk"
   },
   "logica": {
     "type": "course",
@@ -125,7 +126,8 @@
     "virtuale": "21407",
     "teams": "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk",
     "website": "2020/455095",
-    "professors": ["claudio.sacerdoticoen"]
+    "professors": ["claudio.sacerdoticoen"],
+    "telegram": "joinchat/HEBiPjOx_SpmYzY0"
   },
   "programmazione": {
     "type": "course",
@@ -134,7 +136,8 @@
     "virtuale": "17653",
     "teams": "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4",
     "website": "2020/320574",
-    "professors": ["cosimo.laneve"]
+    "professors": ["cosimo.laneve"],
+    "telegram": "joinchat/z1kz0BRjFr8zYjI0"
   },
   "algebra": {
     "type": "course",
@@ -143,7 +146,8 @@
     "virtuale": "17870",
     "teams": "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw",
     "website": "2020/366975",
-    "professors": ["marta.morigi"]
+    "professors": ["marta.morigi"],
+    "telegram": "joinchat/m5fn6ZffZvk0NGZk"
   },
   "algoritmi": {
     "type": "course",
@@ -152,7 +156,8 @@
     "virtuale": "20930",
     "teams": "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl",
     "website": "2020/350957",
-    "professors": ["gianluigi.zavattaro", "pietro.dilena"]
+    "professors": ["gianluigi.zavattaro", "pietro.dilena"],
+    "telegram": "joinchat/wSafC8l9ul1iNTE8"
   },
   "analisi": {
     "type": "course",
@@ -161,7 +166,8 @@
     "virtuale": "18045",
     "teams": "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk",
     "website": "2020/320573",
-    "professors": ["marco.mughetti", "daniele.morbidelli"]
+    "professors": ["marco.mughetti", "daniele.morbidelli"],
+    "telegram": "joinchat/60_5FO9onfo4YmJk"
   },
   "calcolo": {
     "type": "course",
@@ -170,7 +176,8 @@
     "virtuale": "25810",
     "teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
     "website": "2021/320581",
-    "professors": ["elena.loli"]
+    "professors": ["elena.loli"],
+    "telegram": "joinchat/h1lypfBFdEZkYzFk"
   },
   "ottimizzazione": {
     "type": "course",
@@ -179,7 +186,8 @@
     "virtuale": "29872",
     "teams": "OGFlMmI5YTQtZDQwMy00ZmQzLTliMDQtMGYzZDNkMGExNjdl",
     "website": "2021/460495",
-    "professors": ["ugo.dallago"]
+    "professors": ["ugo.dallago"],
+    "telegram": "joinchat/klw79l5tkPM1NWQ0"
   },
   "linguaggi": {
     "type": "course",
@@ -192,7 +200,8 @@
       "roberto.gorrieri",
       "maurizio.gabbrielli",
       "saverio.giallorenzo2"
-    ]
+    ],
+    "telegram": "joinchat/4v-08oT6QWk0ZmM8"
   },
   "reti": {
     "type": "course",
@@ -201,7 +210,8 @@
     "virtuale": "28376",
     "teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
     "website": "2021/455456",
-    "professors": ["luciano.bononi"]
+    "professors": ["luciano.bononi"],
+    "telegram": "joinchat/Sw2Ykp0-0mM1Zjdk"
   },
   "tecnologie": {
     "type": "course",
@@ -210,7 +220,8 @@
     "virtuale": "26726",
     "teams": "NDFkMWJjZTUtZTlkYS00ZWFiLTgxMDctY2Q0YzAxZmZjOThl",
     "website": "2021/436428",
-    "professors": ["fabio.vitali"]
+    "professors": ["fabio.vitali"],
+    "telegram": "+Aq__wJAnPrc1MWQ0"
   },
   "probabilita": {
     "type": "course",
@@ -219,7 +230,8 @@
     "virtuale": "31906",
     "teams": "MDg3YjQ1ZDYtY2RmOC00NmYzLThjY2EtYWI1N2FkMjFmMGEx",
     "website": "2021/320583",
-    "professors": ["andrea.cosso"]
+    "professors": ["andrea.cosso"],
+    "telegram": "+j7GRbdJlwPExYzc0"
   },
   "sistemi": {
     "type": "course",
@@ -228,6 +240,7 @@
     "virtuale": "25797",
     "teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
     "website": "2021/320578",
-    "professors": ["renzo.davoli"]
+    "professors": ["renzo.davoli"],
+    "telegram": "joinchat/2hUcGLfY7Gc2MTA8"
   }
 }
