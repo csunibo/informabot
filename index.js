@@ -197,7 +197,7 @@ function yearly(msg, command, noYear) {
   bot
     .getChat(msg.chat.id)
     .then((chat) => {
-      const title = chat.title?.toLowerCase() ?? "";
+      const title = chat.title ? chat.title.toLowerCase() : "";
       if (title.includes("primo")) act(msg, actions[command + "1"]);
       else if (title.includes("secondo")) act(msg, actions[command + "2"]);
       else if (title.includes("terzo")) act(msg, actions[command + "3"]);
