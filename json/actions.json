@@ -287,7 +287,7 @@
     "professors": ["claudio.sacerdoticoen"],
     "telegram": "teoricainformatica"
   },
-  "sistemi": {
+  "progetto": {
     "type": "course",
     "description": "Tutto su Progetto di sistemi virtuali",
     "name": "Progetto di sistemi virtuali",

@@ -92,6 +92,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > teorica - Tutto su Informatica teorica
 >
+> progetto - Tutto su Progetto di sistemi virtuali
+>
 > fisica - Tutto su Fisica
 >
 > applicazioni - Tutto su Laboratorio di applicazioni mobili
