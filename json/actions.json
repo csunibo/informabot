@@ -29,9 +29,10 @@
     "text": "<b>Gruppi 2022/23</b>\n\n1️⃣ 1° anno (<a href='https://t.me/uniboinfo2223'>Telegram</a>, <a href='https://discord.gg/2cK8ENJ2Vg'>Discord</a>)\n2️⃣ 2° anno (<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>Telegram</a>, <a href='https://discord.gg/cYFbnGEYAA'>Discord</a>)\n3️⃣ 3° anno (<a href='https://t.me/informaticaunibo2021'>Telegram</a>, <a href='https://discord.gg/N7NJms8d7v'>Discord</a>)\n3️⃣ Ex-3° anno (<a href='https://t.me/infounibo2020'>Telegram</a>)\n\n<a href='https://www.reddit.com/r/unibo_informatica'><b>🗿 Subreddit</b></a>\n\n<b>Lauree Magistrali</b>\n<a href='https://t.me/maginfo202223'>4️⃣ Informatica</a>\n<a href='https://t.me/unibo_ai_2022'>4️⃣ <i>Artificial Intelligence</i></a>\n\n<a href='https://t.me/joinchat/4_SVcmVsRAo3MTlk'>🔢 Tutti i gruppi Unibo</a>"
   },
   "lezionioggi": {
-    "type": "alias",
+    "type": "yearly",
     "description": "Orari lezioni di oggi (tuo anno)",
-    "command": "lezionioggi3"
+    "command": "lezionioggi",
+    "noYear": "Questo non sembra essere un gruppo generale per nessun anno di corso. Per usare questo comando da qui, devi specificare /lezionioggi1, /lezionioggi2 o /lezionioggi3."
   },
   "lezionioggi1": {
     "type": "todayLectures",
@@ -55,9 +56,10 @@
     "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
   },
   "lezionidomani": {
-    "type": "alias",
+    "type": "yearly",
     "description": "Orari lezioni di domani (tuo anno)",
-    "command": "lezionidomani3"
+    "command": "lezionidomani",
+    "noYear": "Questo non sembra essere un gruppo generale per nessun anno di corso. Per usare questo comando da qui, devi specificare /lezionidomani1, /lezionidomani2 o /lezionidomani3."
   },
   "lezionidomani1": {
     "type": "tomorrowLectures",

@@ -80,6 +80,76 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > sistemi - Tutto su Sistemi operativi
 
+## Adding new commands
+
+### Actions
+
+Actions are stored in `json/actions.json`. Each key is the name of the command
+triggering the action, while each value is an object describing the action
+itself through several attributes:
+
+- `type` specifies the command logic. Available types are listed below, each
+  with its own specialized attributes;
+- `description` (optional) sums up the objective of the action.
+
+### `message`
+
+The bot replies with a static message, specified by the `text` attribute.
+
+### `help`
+
+The bot replies listing each command-description pair. If a command has no
+description, it is not listed.
+
+### `alias`
+
+These commands are just aliases for others. The `command` attribute specifies
+which command this alias is referring to. Beware of circular alias chains, which
+will result in a stack overflow.
+
+### `lookingFor`
+
+The bot adds the user to the list of people looking for project mates in this
+chat, and replies with the updated list. `singularText`, `pluralText`, and
+`chatError` attributes are used as custom messages to communicate with the user.
+
+### `notLookingFor`
+
+The bot removes the user from the list of people looking for project mates in
+this chat. `chatError` and `notFoundError` messages are used to communicate with
+the user.
+
+### `yearly`
+
+Much like an alias with `abc` as its `command` attribute value runs the `abc`
+action, a `yearly` action with `abc` as its `command` attribute value may run
+either the `abc1`, `abc2`, or the `abc3` command, depending on the chat. The
+bot inspects the chat title, and attempts to figure out the appropriate year.
+If the bot can't figure out the year, the `noYear` attribute value is used as
+a default reply.
+
+### `todayLectures`
+
+Scrapes today's timetable from `url`, using `title` as header. On faliure,
+`fallbackText` is used as a reply.
+
+### `tomorrowLectures`
+
+Scrapes tomorrow's timetable from `url`, using `title` as header. On faliure,
+`fallbackText` is used as a reply.
+
+### `course`
+
+Puts together a summary for a given course, featuring its `name`, Virtuale link
+(`virtuale`), Teams link (`teams`), official `website` link, as well as the
+email addresses of the `professors`.
+
+### Memes
+
+Memes are stored in `json/memes.json`. Each key is the name of the command
+triggering the meme, while each value is the content of the reply by the bot (a
+simple static message).
+
 ## Acknowledgments
 
 Many thanks to [@Wifino](https://github.com/Wifino), who wrote the original
