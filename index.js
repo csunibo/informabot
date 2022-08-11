@@ -183,6 +183,19 @@ function giveHelp(msg) {
   message(msg, answer);
 }
 
+// Yearly command
+function yearly(msg, command, noYear) {
+  bot
+    .getChat(msg.chat.id)
+    .then((chat) => {
+      const title = chat.title?.toLowerCase() ?? "";
+      if (title.includes("primo")) act(msg, actions[command + "1"]);
+      else if (title.includes("secondo")) act(msg, actions[command + "2"]);
+      else if (title.includes("terzo")) act(msg, actions[command + "3"]);
+      else message(msg, noYear);
+    })
+    .catch(console.error);
+}
 // Available actions
 function act(msg, action) {
   switch (action.type) {
@@ -222,6 +235,9 @@ function act(msg, action) {
         action.title,
         action.fallbackText
       );
+      break;
+    case "yearly":
+      yearly(msg, action.command, action.noYear);
       break;
     default:
       console.error(`Unknown action type "${action.type}"`);
