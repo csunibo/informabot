@@ -5,7 +5,7 @@ University of Bologna.
 
 ## Dependencies
 
-[Node.js](https://www.nodejs.dev) is required.
+[Node.js](https://www.nodejs.dev) 12.2.2 or higher is required.
 
 ## Running
 
