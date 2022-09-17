@@ -218,6 +218,18 @@ function yearly(msg, command, noYear) {
       console.error(e.stack);
     });
 }
+
+// List commands
+function list(msg, header, template, items) {
+  let text = header.slice();
+  for (let i = 0; i < items.length; ++i) {
+    const params = items[i].slice();
+    params.unshift(template);
+    text += String.format.apply(this, params);
+  }
+  message(msg, text);
+}
+
 // Available actions
 function act(msg, action) {
   switch (action.type) {
@@ -261,6 +273,9 @@ function act(msg, action) {
       break;
     case "yearly":
       yearly(msg, action.command, action.noYear);
+      break;
+    case "list":
+      list(msg, action.header, action.template, action.items);
       break;
     default:
       console.error(`Unknown action type "${action.type}"`);
