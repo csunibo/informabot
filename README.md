@@ -56,6 +56,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > registrate - Lezioni registrate su OneDrive
 >
+> scelta -  Elenchi esami a scelta
+>
 > stickers - Pacchetti degli adesivi Telegram del corso
 >
 > tesi - Tesi DISI proposte e assegnate
