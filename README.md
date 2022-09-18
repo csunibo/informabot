@@ -116,34 +116,41 @@ itself through several attributes:
   with its own specialized attributes;
 - `description` (optional) sums up the objective of the action.
 
-### `message`
+#### `message`
 
 The bot replies with a static message, specified by the `text` attribute.
 
-### `help`
+#### `list`
+
+The bot replies with an automatically generated list, preceeded by the `header`
+attribute. Each element in the list is generated substituting the placeholders
+in the `template` attribute with the elements of a different array from the
+`items` attribute matrix.
+
+#### `help`
 
 The bot replies listing each command-description pair. If a command has no
 description, it is not listed.
 
-### `alias`
+#### `alias`
 
 These commands are just aliases for others. The `command` attribute specifies
 which command this alias is referring to. Beware of circular alias chains, which
 will result in a stack overflow.
 
-### `lookingFor`
+#### `lookingFor`
 
 The bot adds the user to the list of people looking for project mates in this
 chat, and replies with the updated list. `singularText`, `pluralText`, and
 `chatError` attributes are used as custom messages to communicate with the user.
 
-### `notLookingFor`
+#### `notLookingFor`
 
 The bot removes the user from the list of people looking for project mates in
 this chat. `chatError` and `notFoundError` messages are used to communicate with
 the user.
 
-### `yearly`
+#### `yearly`
 
 Much like an alias with `abc` as its `command` attribute value runs the `abc`
 action, a `yearly` action with `abc` as its `command` attribute value may run
@@ -152,17 +159,17 @@ bot inspects the chat title, and attempts to figure out the appropriate year.
 If the bot can't figure out the year, the `noYear` attribute value is used as
 a default reply.
 
-### `todayLectures`
+#### `todayLectures`
 
 Scrapes today's timetable from `url`, using `title` as header. On faliure,
 `fallbackText` is used as a reply.
 
-### `tomorrowLectures`
+#### `tomorrowLectures`
 
 Scrapes tomorrow's timetable from `url`, using `title` as header. On faliure,
 `fallbackText` is used as a reply.
 
-### `course`
+#### `course`
 
 Puts together a summary for a given course, featuring its `name`, Virtuale link
 (`virtuale`), Teams link (`teams`), official `website` link, as well as the
