@@ -376,6 +376,7 @@
     "type": "course",
     "description": "Tutto su Ingegneria del software",
     "name": "Ingegneria del software",
+    "virtuale": "35949",
     "website": "2022/443719",
     "professors": ["paolo.ciancarini"],
     "telegram": "ingegneriaSWunibo"
