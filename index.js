@@ -291,20 +291,23 @@ function onMessage(msg) {
   let command = text.split(" ")[0].substring(1);
   const indexOfAt = command.indexOf("@");
   if (indexOfAt != -1) {
-    if (command.substring(indexOfAt + 1) !== botName) {
+    if (command.substring(indexOfAt + 1) !== botName)
       return; // command issued to another bot
-    }
     // 'command@bot' -> 'command'
     command = command.substring(0, command.indexOf("@"));
   }
-  if (command in actions)
-    // action
-    act(msg, actions[command]);
-  else if (command in memes)
-    // meme
-    message(msg, memes[command]);
-  // unkown command
-  else act(msg, actions["unknown"]);
+  try {
+    if (command in actions)
+      // action
+      act(msg, actions[command]);
+    else if (command in memes)
+      // meme
+      message(msg, memes[command]);
+    // unkown command
+    else act(msg, actions["unknown"]);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 // Bot initialization
