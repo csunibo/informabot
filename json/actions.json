@@ -102,7 +102,7 @@
   "registrate": {
     "type": "message",
     "description": "Lezioni registrate su OneDrive",
-    "text": "<b>Registrazioni</b>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/alessandro_tomaiuol2_studio_unibo_it/Esf_hfRwz1NErD_O8UGh-T0B5PQo0GVMShvW5A5wb3nSpg'>1️⃣  Primo anno</a>\n<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/EssTTKzajUFJsdpYc2TWOPwBNNFcW-MVVK4IxkH8cIs7vg?e=j1CJyP'>2️⃣ Secondo anno</a>"
+    "text": "<b>Registrazioni</b>\n1️⃣  Primo anno (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/alessandro_tomaiuol2_studio_unibo_it/Esf_hfRwz1NErD_O8UGh-T0B5PQo0GVMShvW5A5wb3nSpg'>2021/22</a>)\n2️⃣ Secondo anno (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/EssTTKzajUFJsdpYc2TWOPwBNNFcW-MVVK4IxkH8cIs7vg?e=j1CJyP'>2021/22</a>)\n3️⃣ Terzo anno (<a href='https://liveunibo-my.sharepoint.com/personal/simone_folli2_studio_unibo_it/_layouts/15/onedrive.aspx?originalPath=aHR0cHM6Ly9saXZldW5pYm8tbXkuc2hhcmVwb2ludC5jb20vOmY6L2cvcGVyc29uYWwvc2ltb25lX2ZvbGxpMl9zdHVkaW9fdW5pYm9faXQvRXA3d01qYVFJZUpHbE03dlJkNVQ5NmNCaG9ORDNOWkxfeTFoUTdCcE5IeS1fUT9ydGltZT1kWkVmQlM3NzJFZw&id=%2Fpersonal%2Fsimone%5Ffolli2%5Fstudio%5Funibo%5Fit%2FDocuments%2FCorso%20di%20Informatica%2Fterzo%20anno'>2022/23</a>)"
   },
   "scelta": {
     "type": "list",
