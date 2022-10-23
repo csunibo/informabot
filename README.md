@@ -32,6 +32,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > dns - I DNS di ALMAWIFI
 >
+> admstaff - Tutto su AdmStaff
+>
 > gruppi - Gruppi Telegram, server Discord e subreddit
 >
 > lezionioggi - Orari lezioni di oggi (tuo anno)
