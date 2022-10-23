@@ -28,6 +28,11 @@
     "description": "I DNS di ALMAWIFI",
     "text": "<b>DNS di ALMAWIFI</b>\n  💻 137.204.25.71\n  💻 137.204.25.213"
   },
+  "admstaff":{
+    "type": "message",
+    "description": "Tutte le info di AdmStaff",
+    "text": "<b><i>AdmStaff</i></b>💻\n\n<a href='https://http://admstaff.students.cs.unibo.it'>🌐Sito Ufficiale</a>\n<a href='https://wiki.students.cs.unibo.it/#!index.md'>📖Wiki</a>\n<a href='mailto:admstaff@cs.unibo.it'>📧E-mail admstaff@cs.unibo.it</a>"
+  },
   "gruppi": {
     "type": "message",
     "description": "Gruppi Telegram, <i>server</i> Discord e <i>subreddit</i>",
