@@ -26,6 +26,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 
 > help - Elenca i comandi disponibili
 >
+> admstaff - Tutto su AdmStaff
+
 > aggiorna - Aggiorna le azioni del bot
 >
 > appunti - Appunti su Notion
@@ -33,8 +35,6 @@ asked to "send a list of commands for your bot". Consider using this one:
 > cercogruppo - Cerca un gruppo di progetto
 >
 > dns - I DNS di ALMAWIFI
->
-> admstaff - Tutto su AdmStaff
 >
 > gruppi - Gruppi Telegram, server Discord e subreddit
 >
