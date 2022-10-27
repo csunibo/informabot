@@ -254,8 +254,8 @@ function checkIfInAdmins(msg, admins, noMod, started, ended, failed) {
 // Update the bot's actions (with checks)
 function considerUpdating(msg, noYear, noMod, started, ended, failed) {
   if (
-    (msg.chat.type !== "group" && msg.chat.type !== "supergroup") //||
-    // !settings.generalGroups.includes(msg.chat.id)
+    (msg.chat.type !== "group" && msg.chat.type !== "supergroup") ||
+    !settings.generalGroups.includes(msg.chat.id)
   ) 
     message(msg, noYear);
   else
