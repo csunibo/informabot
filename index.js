@@ -4,13 +4,12 @@ process.env.NTBA_FIX_319 = 1;
 const axios = require("axios"),
   fs = require("fs"),
   TelegramBot = require("node-telegram-bot-api"),
-  actions = require("./json/actions.json"),
-  groups = fs.existsSync("./json/groups.json")
-    ? require("./json/groups.json")
-    : {},
-  memes = require("./json/memes.json"),
-  settings = require("./json/settings.json"),
+  git = require("simple-git")(),
   bot = new TelegramBot(process.argv[2], { polling: true });
+let actions,
+    groups,
+    memes,
+    settings;
 let botName;
 
 // String formatting via placeholders: has troubles with placeholders injections
@@ -20,6 +19,15 @@ String.format = function () {
     s = s.replace(new RegExp("\\{" + i + "\\}", "gm"), arguments[i + 1]);
   return s;
 };
+
+function readJsons() {
+  actions = require("./json/actions.json");
+  groups = fs.existsSync("./json/groups.json")
+    ? require("./json/groups.json")
+    : {},
+  memes = require("./json/memes.json");
+  settings = require("./json/settings.json");
+}
 
 // Returns a new Date object for tomorrow's Date
 function tomorrowDate() {
@@ -230,6 +238,33 @@ function list(msg, header, template, items) {
   message(msg, text);
 }
 
+// Update the bot's actions (no checks)
+function update(msg, started, ended, failed) {
+  message(msg, started);
+  git.pull().then(_ => {readJsons(); message(msg, ended); }).catch(_ => message(msg, failed));
+}
+
+function checkIfInAdmins(msg, admins, noMod, started, ended, failed) {
+  if (admins.map(x => x.user.id).includes(msg.from.id))
+    update(msg, started, ended, failed);
+  else
+    message(msg, noMod);
+}
+
+// Update the bot's actions (with checks)
+function considerUpdating(msg, noYear, noMod, started, ended, failed) {
+  if (
+    (msg.chat.type !== "group" && msg.chat.type !== "supergroup") //||
+    // !settings.generalGroups.includes(msg.chat.id)
+  ) 
+    message(msg, noYear);
+  else
+    bot.getChatAdministrators(msg.chat.id)
+      .then(admins =>
+        checkIfInAdmins(msg, admins, noMod, started, ended, failed))
+      .catch(console.error);
+}
+
 // Available actions
 function act(msg, action) {
   switch (action.type) {
@@ -277,6 +312,16 @@ function act(msg, action) {
     case "list":
       list(msg, action.header, action.template, action.items);
       break;
+    case "update":
+      considerUpdating(
+        msg,
+        action.noYear,
+        action.noMod,
+        action.started,
+        action.ended,
+        action.failed
+      );
+      break;
     default:
       console.error(`Unknown action type "${action.type}"`);
   }
@@ -313,6 +358,7 @@ function onMessage(msg) {
 // Bot initialization
 function init(botUser) {
   botName = botUser.username;
+  readJsons();
   bot.on("message", onMessage);
   bot.on("error", console.error);
   bot.on("polling_error", console.error);

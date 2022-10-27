@@ -16,6 +16,15 @@
     "description": "Appunti su Notion",
     "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<a href='https://luizo.notion.site/Notion-dei-Notion-20c37e0ee4904a9c898680378f1a50b0'>🗒️ Notion dei notion</a>\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti."
   },
+  "aggiorna": {
+    "type": "update",
+    "description": "Aggiorna le azioni del bot",
+    "noYear": "Puoi usare questo comando solo in un gruppo generale di un anno di corso.",
+    "noMod": "Solo le moderatrici e i moderatori possono invocare questo comando.",
+    "started": "Aggiornamento delle azioni in corso...",
+    "ended": "Aggiornamento delle azioni completato.",
+    "failed": "Aggiornamento delle azioni fallito. Contatta il supporto."
+  },
   "cercogruppo": {
     "type": "lookingFor",
     "description": "Cerca un gruppo di progetto",
