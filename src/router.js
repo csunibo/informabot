@@ -102,7 +102,7 @@ module.exports.act = function (bot, msg, action) {
  * @param {string} command The command name's.
  * @param {string} noYear Error message for missing year.
  */
-module.exports.yearly = function (bot, msg, command, noYear) {
+function yearly(bot, msg, command, noYear) {
   bot
     .getChat(msg.chat.id)
     .then((chat) => {
@@ -118,4 +118,6 @@ module.exports.yearly = function (bot, msg, command, noYear) {
       message(bot, msg, `Yearly: "${e}")`);
       console.error(e.stack);
     });
-};
+}
+
+module.exports.yearly = yearly;
