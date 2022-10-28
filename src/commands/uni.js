@@ -1,8 +1,7 @@
-const
-  { message } = require("./basics"),
+const { message } = require("./basics"),
   { toKebabCase } = require("../util"),
-  fetch = import("node-fetch"),
-  TelegramBot = require("node-telegram-bot-api");
+  fetch = require("node-fetch");
+TelegramBot = require("node-telegram-bot-api");
 
 /**
  * Webscrape the lessons timetable.
@@ -13,18 +12,19 @@ const
  * @param {string} title Calendar title.
  * @param {string} fallbackText Text for empty calendar.
  */
-module.exports.timetable = function(bot, msg, url, date, title, fallbackText) {
+module.exports.timetable = function (bot, msg, url, date, title, fallbackText) {
   fetch(url)
-    .then((res) => {
+    .then((res) => res.json())
+    .then((data) => {
       let lectures = [];
-      for (let i = 0; i < res.data.length; ++i) {
-        let start = new Date(res.data[i].start);
+      for (let i = 0; i < data.length; ++i) {
+        let start = new Date(data[i].start);
         if (
           start.getFullYear() === date.getFullYear() &&
           start.getMonth() === date.getMonth() &&
           start.getDate() === date.getDate()
         )
-          lectures.push(res.data[i]);
+          lectures.push(data[i]);
       }
       let text = title;
       lectures.sort((a, b) => a.start - b.start);
@@ -37,10 +37,10 @@ module.exports.timetable = function(bot, msg, url, date, title, fallbackText) {
       message(bot, msg, lectures.length !== 0 ? text : fallbackText);
     })
     .catch((e) => {
-      message(bot, msg, `Timetable: "${e}")`);
+      message(bot, msg, `Timetable: "${e}"`);
       console.error(e.stack);
     });
-}
+};
 
 /**
  * Describe a given course.
@@ -53,7 +53,16 @@ module.exports.timetable = function(bot, msg, url, date, title, fallbackText) {
  * @param {string} professor List of professors' usernames.
  * @param {string} telegram Telegram group's ID.
  */
-module.exports.course = function(bot, msg, name, virtuale, teams, website, professors, telegram) {
+module.exports.course = function (
+  bot,
+  msg,
+  name,
+  virtuale,
+  teams,
+  website,
+  professors,
+  telegram
+) {
   const emails = professors
     ? professors.join("@unibo.it\n  ") + "@unibo.it\n  "
     : "";
@@ -80,4 +89,4 @@ module.exports.course = function(bot, msg, name, virtuale, teams, website, profe
         : ``) +
       (telegram ? `  <a href='t.me/${telegram}'>👥 Gruppo Studenti</a>\n` : ``)
   );
-}
+};

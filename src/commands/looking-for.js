@@ -1,5 +1,4 @@
-const
-  { message } = require("./basics"),
+const { message } = require("./basics"),
   { format } = require("../util"),
   { data } = require("../jsons"),
   fs = require("fs"),
@@ -14,7 +13,7 @@ const
  * @param {string} pluralText Plural header for non-singlet lists.
  * @param {string} chatError Error message for wrong chats.
  */
-module.exports = function(bot, msg, singularText, pluralText, chatError) {
+module.exports = function (bot, msg, singularText, pluralText, chatError) {
   if (
     (msg.chat.type !== "group" && msg.chat.type !== "supergroup") ||
     settings.lookingForBlackList.includes(msg.chat.id)
@@ -61,8 +60,7 @@ module.exports = function(bot, msg, singularText, pluralText, chatError) {
       message(bot, msg, list);
     });
   }
-}
-
+};
 
 /**
  * Remove a user to the "looking for" list.
@@ -72,7 +70,13 @@ module.exports = function(bot, msg, singularText, pluralText, chatError) {
  * @param {string} chatError Error message for wrong chats.
  * @param {string} notFoundError Error message for users not in list.
  */
-module.exports.notLookingFor = function(bot, msg, text, chatError, notFoundError) {
+module.exports.notLookingFor = function (
+  bot,
+  msg,
+  text,
+  chatError,
+  notFoundError
+) {
   if (
     (msg.chat.type !== "group" && msg.chat.type !== "supergroup") ||
     settings.lookingForBlackList.includes(msg.chat.id)
@@ -81,7 +85,8 @@ module.exports.notLookingFor = function(bot, msg, text, chatError, notFoundError
   else {
     const chatId = msg.chat.id,
       title = msg.chat.title;
-    if (!(chatId in data.groups)) message(bot, msg, format(notFoundError, title));
+    if (!(chatId in data.groups))
+      message(bot, msg, format(notFoundError, title));
     else {
       const group = data.groups[chatId],
         senderId = msg.from.id;
@@ -98,4 +103,4 @@ module.exports.notLookingFor = function(bot, msg, text, chatError, notFoundError
       }
     }
   }
-}
+};

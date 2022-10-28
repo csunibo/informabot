@@ -1,5 +1,4 @@
-const
-  { data } = require("./jsons"),
+const { data } = require("./jsons"),
   { tomorrowDate } = require("./util"),
   { message, giveHelp, list } = require("./commands/basics"),
   { lookingFor, notLookingFor } = require("./commands/looking-for"),
@@ -13,7 +12,7 @@ const
  * @param {TelegramBot.Message} msg The message that triggered this action.
  * @param {Object} action The action to be interpreted.
  */
-module.exports.act = function(bot, msg, action) {
+module.exports.act = function (bot, msg, action) {
   switch (action.type) {
     case "alias":
       act(bot, msg, data.actions[action.command]);
@@ -34,16 +33,35 @@ module.exports.act = function(bot, msg, action) {
       giveHelp(bot, msg);
       break;
     case "lookingFor":
-      lookingFor(bot, msg, action.singularText, action.pluralText, action.chatError);
+      lookingFor(
+        bot,
+        msg,
+        action.singularText,
+        action.pluralText,
+        action.chatError
+      );
       break;
     case "message":
       message(bot, msg, action.text);
       break;
     case "notLookingFor":
-      notLookingFor(bot, msg, action.text, action.chatError, action.notFoundError);
+      notLookingFor(
+        bot,
+        msg,
+        action.text,
+        action.chatError,
+        action.notFoundError
+      );
       break;
     case "todayLectures":
-      timetable(bot, msg, action.url, new Date(), action.title, action.fallbackText);
+      timetable(
+        bot,
+        msg,
+        action.url,
+        new Date(),
+        action.title,
+        action.fallbackText
+      );
       break;
     case "tomorrowLectures":
       timetable(
@@ -75,7 +93,7 @@ module.exports.act = function(bot, msg, action) {
     default:
       console.error(`Unknown action type "${action.type}"`);
   }
-}
+};
 
 /**
  * Picks a different command based on the year of the current group.
@@ -84,18 +102,20 @@ module.exports.act = function(bot, msg, action) {
  * @param {string} command The command name's.
  * @param {string} noYear Error message for missing year.
  */
-module.exports.yearly = function(bot, msg, command, noYear) {
+module.exports.yearly = function (bot, msg, command, noYear) {
   bot
     .getChat(msg.chat.id)
     .then((chat) => {
       const title = chat.title ? chat.title.toLowerCase() : "";
       if (title.includes("primo")) act(bot, msg, data.actions[command + "1"]);
-      else if (title.includes("secondo")) act(bot, msg, data.actions[command + "2"]);
-      else if (title.includes("terzo")) act(bot, msg, data.actions[command + "3"]);
+      else if (title.includes("secondo"))
+        act(bot, msg, data.actions[command + "2"]);
+      else if (title.includes("terzo"))
+        act(bot, msg, data.actions[command + "3"]);
       else message(bot, msg, noYear);
     })
     .catch((e) => {
       message(bot, msg, `Yearly: "${e}")`);
       console.error(e.stack);
     });
-}
+};

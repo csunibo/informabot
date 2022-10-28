@@ -1,5 +1,4 @@
-const
-  { data } = require("../jsons"),
+const { data } = require("../jsons"),
   { format } = require("../util"),
   TelegramBot = require("node-telegram-bot-api");
 
@@ -23,13 +22,13 @@ module.exports.message = message;
  * @param {TelegramBot.Message} msg The message that triggered this action.
  * @param {Object[]} actions The list of all possible actions.
  */
-module.exports.giveHelp = function(bot, msg, actions) {
+module.exports.giveHelp = function (bot, msg, actions) {
   answer = "";
   for (command in data.actions)
     if (data.actions[command] && data.actions[command].description)
       answer += `/${command} - ${data.actions[command].description}\n`;
   message(bot, msg, answer);
-}
+};
 
 /**
  * Sends a list message.
@@ -40,7 +39,7 @@ module.exports.giveHelp = function(bot, msg, actions) {
  * @param {*[][]} items Each array features the substitutions to the
  *                placholders.
  */
-module.exports.list = function(bot, msg, header, template, items) {
+module.exports.list = function (bot, msg, header, template, items) {
   let text = header.slice();
   for (let i = 0; i < items.length; ++i) {
     const params = items[i].slice();
@@ -48,4 +47,4 @@ module.exports.list = function(bot, msg, header, template, items) {
     text += format.apply(this, params);
   }
   message(bot, msg, text);
-}
+};

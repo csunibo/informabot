@@ -1,5 +1,4 @@
-const
-  { data, readJsons } = require("../jsons"),
+const { data, readJsons } = require("../jsons"),
   { message } = require("./basics"),
   git = require("simple-git")(),
   TelegramBot = require("node-telegram-bot-api");
@@ -14,8 +13,13 @@ const
  */
 function update(bot, msg, started, ended, failed) {
   message(bot, msg, started);
-  git.pull().then(_ => {readJsons(); message(msg, ended); })
-            .catch(_ => message(msg, failed));
+  git
+    .pull()
+    .then((_) => {
+      readJsons();
+      message(msg, ended);
+    })
+    .catch((_) => message(msg, failed));
 }
 
 /**
@@ -28,19 +32,27 @@ function update(bot, msg, started, ended, failed) {
  * @param {string} ended Text on update end.
  * @param {string} failed Text on update failure.
  */
-module.exports.considerUpdating = function(bot, msg, noYear, noMod, started, ended, failed) {
+module.exports.considerUpdating = function (
+  bot,
+  msg,
+  noYear,
+  noMod,
+  started,
+  ended,
+  failed
+) {
   if (
     (msg.chat.type !== "group" && msg.chat.type !== "supergroup") ||
     !data.settings.generalGroups.includes(msg.chat.id)
-  ) 
+  )
     message(bot, msg, noYear);
   else
-    bot.getChatAdministrators(msg.chat.id)
-      .then(admins => {
-        if (admins.map(x => x.user.id).includes(msg.from.id))
+    bot
+      .getChatAdministrators(msg.chat.id)
+      .then((admins) => {
+        if (admins.map((x) => x.user.id).includes(msg.from.id))
           update(msg, started, ended, failed);
-        else
-          message(bot, msg, noMod);
+        else message(bot, msg, noMod);
       })
       .catch(console.error);
-}
+};

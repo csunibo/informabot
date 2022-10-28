@@ -37,7 +37,7 @@
     "description": "I DNS di ALMAWIFI",
     "text": "<b>DNS di ALMAWIFI</b>\n  💻 137.204.25.71\n  💻 137.204.25.213"
   },
-  "admstaff":{
+  "admstaff": {
     "type": "message",
     "description": "Tutte le info di AdmStaff",
     "text": "<b><i>AdmStaff</i></b>💻\n\n<a href='https://admstaff.students.cs.unibo.it'>🌐Sito Ufficiale</a>\n<a href='https://wiki.students.cs.unibo.it/#!index.md'>📖Wiki</a>\n📧E-mail admstaff@cs.unibo.it"
@@ -124,114 +124,33 @@
     "header": "<b>Esami a libera scelta:</b>\n",
     "template": "<a href='https://www.unibo.it/it/didattica/insegnamenti?search=True&codiceSSD={0}&SSDInsegnamentoButton=cerca'>🏫 {1}</a>\n",
     "items": [
-      [
-        "INF%2F01",
-        "INF/01 Informatica"
-      ],
-      [
-        "MAT%2F01",
-        "MAT/01 Logica matematica"
-      ],
-      [
-        "MAT%2F02",
-        "MAT/02 Algebra"
-      ],
-      [
-        "MAT%2F03",
-        "MAT/03 Geometria"
-      ],
-      [
-        "MAT%2F04",
-        "MAT/04 Matematiche compl."
-      ],
-      [
-        "MAT%2F05",
-        "MAT/05 Analisi matematica"
-      ],
-      [
-        "MAT%2F06",
-        "MAT/06 Prob. e stat. mat."
-      ],
-      [
-        "MAT%2F07",
-        "MAT/07 Fisica matematica"
-      ],
-      [
-        "MAT%2F08",
-        "MAT/08 Analisi numerica"
-      ],
-      [
-        "MAT%2F09",
-        "MAT/09 Ricerca operativa"
-      ],
-      [
-        "FIS%2F01",
-        "FIS/01 Fis. sperimentale"
-      ],
-      [
-        "FIS%2F02",
-        "FIS/02 Fisica teorica"
-      ],
-      [
-        "FIS%2F03",
-        "FIS/03 Fis. della materia"
-      ],
-      [
-        "FIS%2F07",
-        "FIS/07 Fisica applicata"
-      ],
-      [
-        "ING-INF%2F01",
-        "ING-INF/01 Elettronica"
-      ],
-      [
-        "ING-INF%2F02",
-        "ING-INF/02 Campi elettromagn."
-      ],
-      [
-        "ING-INF%2F03",
-        "ING-INF/03 Telecomunicazioni"
-      ],
-      [
-        "ING-INF%2F04",
-        "ING-INF/04 Automatica"
-      ],
-      [
-        "ING-INF%2F05",
-        "ING-INF/05 Sis. elab. info."
-      ],
-      [
-        "ING-INF%2F06",
-        "ING-INF/06 Bioing. el. inf."
-      ],
-      [
-        "ING-INF%2F07",
-        "ING-INF/07 Misure elettriche"
-      ],
-      [
-        "SECS-P%2F07",
-        "SECS-P/07 Economia aziendale"
-      ],
-      [
-        "SECS-P%2F08",
-        "SECS-P/08 Economia, gest. impr."
-      ],
-      [
-        "SECS-P%2F09",
-        "SECS-P/09 Finanza aziendale"
-      ],
-      [
-        "SECS-P%2F10",
-        "SECS-P/10 Org. aziendale"
-      ],
-      [
-        "IUS%2F20",
-        "IUS/20 Filsofia del diritto"
-      ],
-      [
-        "M-FIL%2F02",
-        "M-FIL/02 Logica, filo. scienza"
-      ]
+      ["INF%2F01", "INF/01 Informatica"],
+      ["MAT%2F01", "MAT/01 Logica matematica"],
+      ["MAT%2F02", "MAT/02 Algebra"],
+      ["MAT%2F03", "MAT/03 Geometria"],
+      ["MAT%2F04", "MAT/04 Matematiche compl."],
+      ["MAT%2F05", "MAT/05 Analisi matematica"],
+      ["MAT%2F06", "MAT/06 Prob. e stat. mat."],
+      ["MAT%2F07", "MAT/07 Fisica matematica"],
+      ["MAT%2F08", "MAT/08 Analisi numerica"],
+      ["MAT%2F09", "MAT/09 Ricerca operativa"],
+      ["FIS%2F01", "FIS/01 Fis. sperimentale"],
+      ["FIS%2F02", "FIS/02 Fisica teorica"],
+      ["FIS%2F03", "FIS/03 Fis. della materia"],
+      ["FIS%2F07", "FIS/07 Fisica applicata"],
+      ["ING-INF%2F01", "ING-INF/01 Elettronica"],
+      ["ING-INF%2F02", "ING-INF/02 Campi elettromagn."],
+      ["ING-INF%2F03", "ING-INF/03 Telecomunicazioni"],
+      ["ING-INF%2F04", "ING-INF/04 Automatica"],
+      ["ING-INF%2F05", "ING-INF/05 Sis. elab. info."],
+      ["ING-INF%2F06", "ING-INF/06 Bioing. el. inf."],
+      ["ING-INF%2F07", "ING-INF/07 Misure elettriche"],
+      ["SECS-P%2F07", "SECS-P/07 Economia aziendale"],
+      ["SECS-P%2F08", "SECS-P/08 Economia, gest. impr."],
+      ["SECS-P%2F09", "SECS-P/09 Finanza aziendale"],
+      ["SECS-P%2F10", "SECS-P/10 Org. aziendale"],
+      ["IUS%2F20", "IUS/20 Filsofia del diritto"],
+      ["M-FIL%2F02", "M-FIL/02 Logica, filo. scienza"]
     ]
   },
   "stickers": {

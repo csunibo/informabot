@@ -9,10 +9,10 @@ module.exports.data = data;
  */
 function readJsons() {
   data.actions = require("../json/actions.json");
-  data.groups = existsSync("../json/groups.json")
+  (data.groups = existsSync("../json/groups.json")
     ? require("../json/groups.json")
-    : {},
-  data.memes = require("../json/memes.json");
+    : {}),
+    (data.memes = require("../json/memes.json"));
   data.settings = require("../json/settings.json");
 }
 module.exports.readJsons = readJsons();
