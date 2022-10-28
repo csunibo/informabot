@@ -12,7 +12,7 @@ University of Bologna.
 To run the bot from the project directory, simply use
 
 ```bash
-node index.js $TOKEN
+npm start -- $TOKEN
 ```
 
 where `$TOKEN` is the authorization token you got from
@@ -60,7 +60,7 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > registrate - Lezioni registrate su OneDrive
 >
-> scelta -  Elenchi esami a scelta
+> scelta - Elenchi esami a scelta
 >
 > stickers - Pacchetti degli adesivi Telegram del corso
 >
