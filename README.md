@@ -12,7 +12,7 @@ University of Bologna.
 To run the bot from the project directory, simply use
 
 ```bash
-node index.js $TOKEN
+npm start -- $TOKEN
 ```
 
 where `$TOKEN` is the authorization token you got from
