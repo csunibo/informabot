@@ -12,7 +12,9 @@ const { data } = require("./jsons"),
  * @param {TelegramBot.Message} msg The message that triggered this action.
  * @param {Object} action The action to be interpreted.
  */
-module.exports.act = function (bot, msg, action) {
+module.exports.act = act;
+
+function act(bot, msg, action) {
   switch (action.type) {
     case "alias":
       act(bot, msg, data.actions[action.command]);
