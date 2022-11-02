@@ -17,9 +17,9 @@ function update(bot, msg, started, ended, failed) {
     .pull()
     .then((_) => {
       readJsons();
-      message(msg, ended);
+      message(bot, msg, ended);
     })
-    .catch((_) => message(msg, failed));
+    .catch((_) => message(bot, msg, failed));
 }
 
 /**
