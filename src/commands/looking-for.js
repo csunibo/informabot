@@ -16,7 +16,7 @@ const { message } = require("./basics"),
 module.exports.lookingFor = function (bot, msg, singularText, pluralText, chatError) {
   if (
     (msg.chat.type !== "group" && msg.chat.type !== "supergroup") ||
-    settings.lookingForBlackList.includes(msg.chat.id)
+    data.settings.lookingForBlackList.includes(msg.chat.id)
   )
     message(bot, msg, chatError);
   else {
@@ -79,7 +79,7 @@ module.exports.notLookingFor = function (
 ) {
   if (
     (msg.chat.type !== "group" && msg.chat.type !== "supergroup") ||
-    settings.lookingForBlackList.includes(msg.chat.id)
+    data.settings.lookingForBlackList.includes(msg.chat.id)
   )
     message(bot, msg, chatError);
   else {
