@@ -51,7 +51,7 @@ module.exports.considerUpdating = function (
       .getChatAdministrators(msg.chat.id)
       .then((admins) => {
         if (admins.map((x) => x.user.id).includes(msg.from.id))
-          update(msg, started, ended, failed);
+          update(bot, msg, started, ended, failed);
         else message(bot, msg, noMod);
       })
       .catch(console.error);
