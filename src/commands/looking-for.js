@@ -13,7 +13,7 @@ const { message } = require("./basics"),
  * @param {string} pluralText Plural header for non-singlet lists.
  * @param {string} chatError Error message for wrong chats.
  */
-module.exports = function (bot, msg, singularText, pluralText, chatError) {
+module.exports.lookingFor = function (bot, msg, singularText, pluralText, chatError) {
   if (
     (msg.chat.type !== "group" && msg.chat.type !== "supergroup") ||
     settings.lookingForBlackList.includes(msg.chat.id)
