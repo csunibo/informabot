@@ -15,5 +15,5 @@ function readJsons() {
     (data.memes = require("../json/memes.json"));
   data.settings = require("../json/settings.json");
 }
-module.exports.readJsons = readJsons();
+module.exports.readJsons = readJsons;
 readJsons();
