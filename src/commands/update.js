@@ -19,7 +19,10 @@ function update(bot, msg, started, ended, failed) {
       readJsons();
       message(bot, msg, ended);
     })
-    .catch((_) => message(bot, msg, failed));
+    .catch(e => {
+      message(bot, msg, failed);
+      console.error(e);
+    });
 }
 
 /**
