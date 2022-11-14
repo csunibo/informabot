@@ -11,7 +11,13 @@ const { data } = require("./jsons"),
 function onMessage(bot, msg) {
   if (!msg.text) return; // no text
   const text = msg.text.toString();
-  if (text[0] !== "/") return; // no command
+  if (text[0] !== "/") {
+    Object.entries(data.autoreply).forEach(([regexp,value]) => {
+      const indexOfAt = text.search(new RegExp(regexp,"i")); //case insensitive search
+      if(indexOfAt != -1) message(bot, msg, value);
+    });
+    return; // no command
+  }
   // '/command@bot param0 ... paramN' -> 'command@bot'
   let command = text.split(" ")[0].substring(1);
   const indexOfAt = command.indexOf("@");
