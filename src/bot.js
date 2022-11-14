@@ -11,7 +11,11 @@ const { data } = require("./jsons"),
 function onMessage(bot, msg) {
   if (!msg.text) return; // no text
   const text = msg.text.toString();
-  if (text[0] !== "/") return; // no command
+  if (text[0] !== "/") {
+    const indexOfAt = text.search(/vendo appunti/i); //case insensitive search
+    if(indexOfAt != -1) { message(bot, msg, data.memes["vendoappunti"]); return; }
+    else return; // no command nor interesting string
+  }
   // '/command@bot param0 ... paramN' -> 'command@bot'
   let command = text.split(" ")[0].substring(1);
   const indexOfAt = command.indexOf("@");
