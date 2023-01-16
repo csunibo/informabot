@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/FoxySeta/informabot#readme",
   "dependencies": {
-    "node-fetch": "2.6.7",
+    "node-fetch": "2.6.8",
     "node-telegram-bot-api": "^0.61.0",
     "simple-git": "^3.15.1"
   }
