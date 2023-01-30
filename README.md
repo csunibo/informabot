@@ -66,6 +66,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > tesi - Tesi DISI proposte e assegnate
 >
+> tirocinio - Diario tirocinio 
+>
 > architettura - Tutto su Architettura degli elaboratori
 >
 > logica - Tutto su Logica per l'informatica
