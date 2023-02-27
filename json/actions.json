@@ -244,9 +244,9 @@
     "description": "Tesi DISI proposte e assegnate",
     "text": "📝 <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>"
   },
-  "course-description": {
+  "coursedesc": {
     "type": "message",
-    "description": "Documento con tutte le descrizione dei corsi in inglese",
+    "description": "Documento con tutte le descrizioni dei corsi in inglese",
     "text": "📝 <a href='https://csunibo.github.io/course-description-merged/course-description-merged.pdf'>Course description merged</a>"
   },
   "tirocinio": {
