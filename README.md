@@ -26,15 +26,15 @@ asked to "send a list of commands for your bot". Consider using this one:
 
 > help - Elenca i comandi disponibili
 >
-> admstaff - Tutto su AdmStaff
-
-> aggiorna - Aggiorna le azioni del bot
->
 > appunti - Appunti su Notion
+>
+> aggiorna - Aggiorna le azioni del bot
 >
 > cercogruppo - Cerca un gruppo di progetto
 >
 > dns - I DNS di ALMAWIFI
+>
+> admstaff - Tutte le info di AdmStaff
 >
 > gruppi - Gruppi Telegram, server Discord e subreddit
 >
@@ -68,7 +68,7 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > coursedesc - Documento con tutte le descrizioni dei corsi in inglese
 >
-> tirocinio - Diario tirocinio 
+> tirocinio - Strumento per riassumere le attività svolte durante il proprio tirocinio
 >
 > architettura - Tutto su Architettura degli elaboratori
 >
@@ -78,7 +78,7 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > algebra - Tutto su Algebra e geometria
 >
-> algoritmi - Tutto su algoritmi e strutture di dati
+> algoritmi - Tutto su Algoritmi e strutture di dati
 >
 > analisi - Tutto su Analisi matematica
 >
@@ -90,13 +90,17 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > reti - Tutto su Reti di calcolatori
 >
+> tecnologie - Tutto su Tecnologie web
+>
+> probabilita - Tutto su calcolo delle probabilità e statistica
+>
 > sistemi - Tutto su Sistemi operativi
 >
 > basi - Tutto su Basi di dati
 >
 > ingegneria - Tutto su Ingegneria del software
 >
-> apprendimento - Tutto su Apprendimento automatico
+> apprendimento - Tutto su Introduzione all'apprendimento automatico
 >
 > cybersecurity - Tutto su Fondamenti di cybersecurity
 >
