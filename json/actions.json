@@ -35,7 +35,7 @@
   "coursedesc": {
     "type": "message",
     "description": "Documento con tutte le descrizioni dei corsi in inglese",
-    "text": "📝 <a href='https://csunibo.github.io/course-description-merged/course-description-merged.md'>Course description merged (MD)</a>\n📝 <a href='https://csunibo.github.io/course-description-merged/course-description-merged.pdf'>Course description merged (PDF)</a>\n💻 <a href='https://github.com/csunibo/course-description-merged'>Sorgente</a>"
+    "text": "📝 <a href='https://csunibo.github.io/course-description-merged/description.md'>Course description merged (MD)</a>\n📝 <a href='https://csunibo.github.io/course-description-merged/description.pdf'>Course description merged (PDF)</a>\n💻 <a href='https://github.com/csunibo/course-description-merged'>Sorgente</a>"
   },
   "dns": {
     "type": "message",
