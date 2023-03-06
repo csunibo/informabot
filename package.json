@@ -27,6 +27,6 @@
   "dependencies": {
     "node-fetch": "2.6.9",
     "node-telegram-bot-api": "^0.61.0",
-    "simple-git": "^3.16.1"
+    "simple-git": "^3.17.0"
   }
 }
