@@ -108,4 +108,3 @@ dist
 json/groups.json
 *.env
 informabot
-go.sum
