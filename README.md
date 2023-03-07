@@ -58,6 +58,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > noncercogruppo - Smetti di cercare un gruppo di progetto
 >
+> registrate - Lezioni registrate su OneDrive
+
 > ludopatico - Tenta la fortuna
 >
 > scelta - Elenchi esami a scelta
