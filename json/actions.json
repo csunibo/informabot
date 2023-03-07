@@ -118,6 +118,10 @@
     "chatError": "Questo comando è riservato alle chat dei gruppi degli insegnamenti.",
     "notFoundError": "Neanche prima cercavi gruppi in \"{0}\"."
   },
+  "ludopatico": {
+    "type": "luck",
+    "description": "Tenta la fortuna"
+  },
   "registrate": {
     "type": "message",
     "description": "Lezioni registrate su OneDrive",

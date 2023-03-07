@@ -58,7 +58,7 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > noncercogruppo - Smetti di cercare un gruppo di progetto
 >
-> registrate - Lezioni registrate su OneDrive
+> ludopatico - Tenta la fortuna
 >
 > scelta - Elenchi esami a scelta
 >
@@ -143,6 +143,10 @@ in the `template` attribute with the elements of a different array from the
 
 The bot replies listing each command-description pair. If a command has no
 description, it is not listed.
+
+#### `luck`
+
+Tests your luck.
 
 #### `alias`
 
