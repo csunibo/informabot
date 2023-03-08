@@ -1,6 +1,6 @@
 const { data } = require("./jsons"),
   { tomorrowDate } = require("./util"),
-  { message, giveHelp, list } = require("./commands/basics"),
+  { message, giveHelp, list, dice } = require("./commands/basics"),
   { lookingFor, notLookingFor } = require("./commands/looking-for"),
   { timetable, course } = require("./commands/uni"),
   { considerUpdating } = require("./commands/update"),
@@ -33,6 +33,9 @@ function act(bot, msg, action) {
       break;
     case "help":
       giveHelp(bot, msg);
+      break;
+    case "luck":
+      dice(bot, msg);
       break;
     case "lookingFor":
       lookingFor(
@@ -95,7 +98,7 @@ function act(bot, msg, action) {
     default:
       console.error(`Unknown action type "${action.type}"`);
   }
-};
+}
 
 /**
  * Picks a different command based on the year of the current group.
