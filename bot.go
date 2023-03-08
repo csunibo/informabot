@@ -7,6 +7,8 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
+var autoreplies AutoReply
+
 func StartInformaBot(token string, debug bool) {
 	bot, err := tgbotapi.NewBotAPI(token)
 	if err != nil {
@@ -15,6 +17,11 @@ func StartInformaBot(token string, debug bool) {
 	bot.Debug = debug
 
 	log.Printf("Authorized on account %s", bot.Self.UserName)
+
+	autoreplies, err = ParseAutoReplies()
+	if err != nil {
+		log.Fatalf("Error reading autoreply.json file: %s", err.Error())
+	}
 
 	run(bot)
 }
@@ -34,13 +41,25 @@ func run(bot *tgbotapi.BotAPI) {
 			continue
 		}
 
-		// TODO: fetch commands and replies list
-		if strings.ToLower(update.Message.Command()) == "start" {
-			log.Printf("@%s: \t%s -> %s", update.Message.From.UserName, update.Message.Text, "hello world")
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "hello world")
-			bot.Send(msg)
+		if update.Message.IsCommand() {
+			// commands
+			if strings.ToLower(update.Message.Command()) == "start" {
+				log.Printf("@%s: \t%s -> %s", update.Message.From.UserName, update.Message.Text, "hello world")
+				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "hello world")
+				bot.Send(msg)
+			} else {
+				log.Printf("@%s: \t%s -> COMMAND NOT AVAILABLE", update.Message.From.UserName, update.Message.Text)
+			}
 		} else {
-			log.Printf("@%s: \t%s -> COMMAND NOT AVAILABLE", update.Message.From.UserName, update.Message.Text)
+			// text message
+			for i := 0; i < len(autoreplies); i++ {
+				if strings.Contains(strings.ToLower(update.Message.Text), strings.ToLower(autoreplies[i].Text)) {
+					msg := tgbotapi.NewMessage(update.Message.Chat.ID, autoreplies[i].Reply)
+					msg.ParseMode = tgbotapi.ModeHTML
+					bot.Send(msg)
+				}
+			}
 		}
+
 	}
 }
