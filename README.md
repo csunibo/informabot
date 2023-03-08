@@ -5,7 +5,7 @@ University of Bologna.
 
 ## Dependencies
 
-[Go](https://go.dev/) go 1.18 or higher is required.
+[Go](https://go.dev/) 1.18 or higher is required.
 
 ## Build
 
