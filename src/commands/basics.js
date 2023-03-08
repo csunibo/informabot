@@ -1,5 +1,6 @@
 const { data } = require("../jsons"),
   { format } = require("../util"),
+  { randomInt } = require("crypto"),
   TelegramBot = require("node-telegram-bot-api");
 
 /**
@@ -13,8 +14,30 @@ function message(bot, msg, text) {
     .sendMessage(msg.chat.id, text, data.settings.messageOptions)
     .catch((e) => console.error(e.stack));
 }
-
 module.exports.message = message;
+
+/**
+ * Sends a dice message.
+ * @param {TelegramBot} bot The bot that should send the message.
+ * @param {TelegramBot.Message} msg The message that triggered this action.
+ * @param {'🎲'|'🎯'|'🏀'|'⚽'|'🎳'|'🎰'} [emoji] The emoji that should be sent, must be one of:
+ */
+function dice(bot, msg, emoji) {
+  if (!emoji) {
+    const emojis = ["🎲", "🎯", "🏀", "⚽", "🎳", "🎰"];
+    // Don't send last sent emoji
+    while (emoji === this.last) emoji = emojis[randomInt(emojis.length)];
+  }
+  this.last = emoji;
+  bot
+    .sendDice(msg.chat.id, {
+      allow_sending_without_reply: true,
+      disable_notification: true,
+      emoji
+    })
+    .catch((e) => console.error(e.stack));
+}
+module.exports.dice = dice;
 
 /**
  * Sends a help message.
