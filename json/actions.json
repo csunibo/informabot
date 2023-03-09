@@ -177,6 +177,11 @@
     "description": "Strumento per riassumere le attività svolte durante il proprio tirocinio",
     "text": "📝 <a href='https://csunibo.github.io/diario-tirocinio/'>Diario Tirocinio</a>\n💻 <a href='https://github.com/csunibo/diario-tirocinio'>Sorgente</a>"
   },
+  "wiki": {
+    "type": "message",
+    "description": "Il wiki di CSUnibo",
+    "text": "📝 <a href='https://csunibo.github.io/wiki'>Wiki</a>\n💻 <a href='https://github.com/csunibo/wiki'>Sorgente</a>"
+  },
   "architettura": {
     "type": "course",
     "name": "Architettura degli elaboratori",

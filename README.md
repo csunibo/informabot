@@ -72,6 +72,8 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > tirocinio - Strumento per riassumere le attività svolte durante il proprio tirocinio
 >
+> wiki - Il wiki di CSUnibo
+>
 > architettura - Tutto su Architettura degli elaboratori
 >
 > logica - Tutto su Logica per l'informatica
