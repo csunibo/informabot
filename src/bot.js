@@ -10,14 +10,11 @@ const { data } = require("./jsons"),
  */
 function onMessage(bot, msg)
 {
-	//console.error(msg.dice);
 	//Comando per eliminare l'emoji delle macchinette e altre che possono dar
 	//fastidio a causa di spam nei gruppi importanti
-
-	
 	if (msg.dice)
 	{
-		message(bot, msg, "Hey hai mandato una macchinetta!");
+		bot.deleteMessage(msg.chat.id, msg.message_id);
 		return;
 	}
 
