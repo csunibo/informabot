@@ -1,6 +1,6 @@
 const { data } = require("./jsons"),
   { tomorrowDate } = require("./util"),
-  { message, giveHelp, list, dice } = require("./commands/basics"),
+  { message, giveHelp, list, dice, considerLuck } = require("./commands/basics"),
   { lookingFor, notLookingFor } = require("./commands/looking-for"),
   { timetable, course } = require("./commands/uni"),
   { considerUpdating } = require("./commands/update"),
@@ -35,7 +35,12 @@ function act(bot, msg, action) {
       giveHelp(bot, msg);
       break;
     case "luck":
-      dice(bot, msg);
+	considerLuck(
+		bot,
+		msg,
+		action.importantGroup
+	);
+      //dice(bot, msg);
       break;
     case "lookingFor":
       lookingFor(

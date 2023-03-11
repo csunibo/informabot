@@ -43,12 +43,12 @@ function onMessage(bot, msg)
 	try 
 	{
 		if (command in data.actions)
-		// action
-		act(bot, msg, data.actions[command]);
+			// action
+			act(bot, msg, data.actions[command]);
 		else if (command in data.memes)
-		// meme
-		message(bot, msg, data.memes[command]);
-		// unkown command
+			// meme
+			message(bot, msg, data.memes[command]);
+			// unkown command
 		else act(bot, msg, data.actions["unknown"]);
 	}
 	catch (e)

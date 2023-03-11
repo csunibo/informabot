@@ -40,6 +40,27 @@ function dice(bot, msg, emoji) {
 module.exports.dice = dice;
 
 /**
+ * Controlla se ha senso limitare il comando /ludopatico
+ * @param {TelegramBot} bot The bot that should send the message.
+ * @param {TelegramBot.Message} msg The message that triggered this action.
+ * @param {string} importantGroup Text on the importance of the group
+ */
+
+module.exports.considerLuck = function (bot, msg, importantGroup)
+{
+	var isImportant = false;
+	const groupChatId = [-1563447632];
+
+	if (groupChatId.includes(msg.chat.id))
+		isImportant = true;
+
+	if (!isImportant)
+		dice(bot, msg);
+	else
+		message(bot, msg, importantGroup);
+}
+
+/**
  * Sends a help message.
  * @param {TelegramBot} bot The bot that should send the message.
  * @param {TelegramBot.Message} msg The message that triggered this action.
