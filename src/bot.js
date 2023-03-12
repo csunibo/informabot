@@ -9,8 +9,17 @@ const { data } = require("./jsons"),
  * @param {TelegramBot.Message} msg The message that triggered this action.
  */
 function onMessage(bot, msg) {
+  //Comando per eliminare l'emoji delle macchinette e altre che possono dar
+  //fastidio a causa di spam nei gruppi importanti
+  if (msg.dice) {
+    bot.deleteMessage(msg.chat.id, msg.message_id);
+    return;
+  }
+
   if (!msg.text) return; // no text
+
   const text = msg.text.toString();
+
   if (text[0] !== "/") {
     Object.entries(data.autoreply).forEach(([regexp, value]) => {
       const indexOfAt = text.search(new RegExp(regexp, "i")); //case insensitive search
@@ -18,9 +27,11 @@ function onMessage(bot, msg) {
     });
     return; // no command
   }
+
   // '/command@bot param0 ... paramN' -> 'command@bot'
   let command = text.split(" ")[0].substring(1);
   const indexOfAt = command.indexOf("@");
+
   if (indexOfAt != -1) {
     if (command.substring(indexOfAt + 1) !== bot.username) return; // command issued to another bot
     // 'command@bot' -> 'command'

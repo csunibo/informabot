@@ -40,6 +40,20 @@ function dice(bot, msg, emoji) {
 module.exports.dice = dice;
 
 /**
+ * Send a "dice" message if the chat is considered not important
+ * @param {TelegramBot} bot The bot that should send the message.
+ * @param {TelegramBot.Message} msg The message that triggered this action.
+ * @param {string} importantGroup Text on the importance of the group
+ */
+
+module.exports.considerLuck = function (bot, msg, importantGroup) {
+  const isImportant = data.settings.generalGroups.includes(msg.chat.id);
+
+  if (!isImportant) dice(bot, msg);
+  else message(bot, msg, importantGroup);
+};
+
+/**
  * Sends a help message.
  * @param {TelegramBot} bot The bot that should send the message.
  * @param {TelegramBot.Message} msg The message that triggered this action.
