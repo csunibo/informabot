@@ -120,7 +120,7 @@
   },
   "ludopatico": {
     "type": "luck",
-    "importantGroup": "Non puoi usare questo comando in quanto questo gruppo è ritentuo importante",
+    "importantGroup": "Questo gruppo è troppo importante per usare questo comando.",
     "description": "Tenta la fortuna"
   },
   "registrate": {
