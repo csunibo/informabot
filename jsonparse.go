@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/mitchellh/mapstructure"
 )
 
 type AutoReply []struct {
@@ -37,16 +39,21 @@ func ParseActions() ([]Action, error) {
 	defer jsonFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
+	return ParseActionsBytes(byteValue)
+}
 
-	var JSON map[string]interface{}
-	json.Unmarshal(byteValue, &JSON)
+func ParseActionsBytes(bytes []byte) ([]Action, error) {
+	var mapData map[string]interface{}
+	json.Unmarshal(bytes, &mapData)
 
 	var actions []Action
-	for key, value := range JSON {
-		action := GetActionFromType(key)
-		byteData, _ := json.Marshal(value)
-		json.Unmarshal(byteData, &action)
+	for key, value := range mapData {
+		action := GetActionFromType(value.(map[string]interface{})["type"].(string))
 		action.Name = key
+		err := mapstructure.Decode(value, &action)
+		if err != nil {
+			return nil, err
+		}
 
 		actions = append(actions, action)
 	}

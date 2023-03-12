@@ -9,22 +9,24 @@ func GetActionFromType(commandType string) Action {
 		data = MessageData{}
 	case "help":
 		data = HelpData{}
-	case "aggiorna":
-		data = AggiornaData{}
+	case "update":
+		data = UpdateData{}
 	case "lookingFor":
 		data = LookingForData{}
 	case "notLookingFor":
 		data = NotLookingForData{}
 	case "yearly":
 		data = YearlyData{}
-	case "todayLecture":
-		data = TodayLectureData{}
-	case "tomorrowLecture":
-		data = TomorrowLectureData{}
-	case "scelta":
-		data = SceltaData{}
+	case "todayLectures":
+		data = TodayLecturesData{}
+	case "tomorrowLectures":
+		data = TomorrowLecturesData{}
+	case "list":
+		data = ListData{}
 	case "course":
 		data = CourseData{}
+	case "luck":
+		data = LuckData{}
 	default:
 		data = MessageData{}
 	}
@@ -50,7 +52,7 @@ type HelpData struct {
 	Description string `json:"description"`
 }
 
-type AggiornaData struct {
+type UpdateData struct {
 	Description string `json:"description"`
 	NoYear      string `json:"noYear"`
 	NoMod       string `json:"noMod"`
@@ -79,16 +81,16 @@ type YearlyData struct {
 	NoYear      string `json:"noYear"`
 }
 
-type TodayLectureData struct {
+type TodayLecturesData struct {
 	Description  string `json:"description"`
 	Url          string `json:"url"`
 	Title        string `json:"title"`
 	FallbackText string `json:"fallbackText"`
 }
 
-type TomorrowLectureData TodayLectureData
+type TomorrowLecturesData TodayLecturesData
 
-type SceltaData struct {
+type ListData struct {
 	Description string     `json:"description"`
 	Header      string     `json:"header"`
 	Template    string     `json:"template"`
@@ -96,11 +98,15 @@ type SceltaData struct {
 }
 
 type CourseData struct {
-	Name         string   `json:"name"`
-	Description  string   `json:"description"`
-	Virtuale     string   `json:"virtuale"`
-	Teams        string   `json:"teams"`
-	Website      string   `json:"website"`
-	Professors   []string `json:"professors"`
-	TelegramLink string   `json:"telegram"`
+	Name        string   `json:"name"`
+	Description string   `json:"description"`
+	Virtuale    string   `json:"virtuale"`
+	Teams       string   `json:"teams"`
+	Website     string   `json:"website"`
+	Professors  []string `json:"professors"`
+	Telegram    string   `json:"telegram"`
+}
+
+type LuckData struct {
+	Description string `json:"description"`
 }
