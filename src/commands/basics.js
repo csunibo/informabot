@@ -10,6 +10,9 @@ const { data } = require("../jsons"),
  * @param {string} text The context of the message that should be sent.
  */
 function message(bot, msg, text) {
+  if (msg.is_topic_message)
+    data.settings.messageOptions.message_thread_id = msg.message_thread_id;
+
   bot
     .sendMessage(msg.chat.id, text, data.settings.messageOptions)
     .catch((e) => console.error(e.stack));
