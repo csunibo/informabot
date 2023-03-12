@@ -1,37 +1,45 @@
 package main
 
-// TODO: capire come implementare funzioni di questo tipo
-func GetActionFromType(commandType string) Action[T] {
+type DataInterface interface{}
+
+func GetActionFromType(commandType string) Action {
+	var data DataInterface
 	switch commandType {
 	case "message":
-		return Action[MessageData]()
+		data = MessageData{}
 	case "help":
-		return Action[HelpData]()
+		data = HelpData{}
 	case "aggiorna":
-		return Action[AggiornaData]()
+		data = AggiornaData{}
 	case "lookingFor":
-		return Action[LookingForData]()
+		data = LookingForData{}
 	case "notLookingFor":
-		return Action[NotLookingForData]()
+		data = NotLookingForData{}
 	case "yearly":
-		return Action[YearlyData]()
+		data = YearlyData{}
 	case "todayLecture":
-		return Action[TodayLectureData]()
+		data = TodayLectureData{}
 	case "tomorrowLecture":
-		return Action[TomorrowLectureData]()
+		data = TomorrowLectureData{}
 	case "scelta":
-		return Action[SceltaData]()
+		data = SceltaData{}
 	case "course":
-		return Action[CourseData]()
+		data = CourseData{}
 	default:
-		return Action[MessageData]()
+		data = MessageData{}
+	}
+
+	return Action{
+		Name: "UNINITIALIZED",
+		Type: commandType,
+		Data: data,
 	}
 }
 
-type Action[T any] struct {
+type Action struct {
 	Name string
-	Type string `json:"type"`
-	Data T
+	Type string        `json:"type"`
+	Data DataInterface `json:"data"`
 }
 
 type MessageData struct {
