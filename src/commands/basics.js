@@ -46,19 +46,14 @@ module.exports.dice = dice;
  * @param {string} importantGroup Text on the importance of the group
  */
 
-module.exports.considerLuck = function (bot, msg, importantGroup)
-{
-	var isImportant = false;
-	const groupChatId = [-1563447632];
+module.exports.considerLuck = function (bot, msg, importantGroup) {
+  var isImportant = false;
 
-	if (groupChatId.includes(msg.chat.id))
-		isImportant = true;
+  if (data.settings.generalGroups.includes(msg.chat.id)) isImportant = true;
 
-	if (!isImportant)
-		dice(bot, msg);
-	else
-		message(bot, msg, importantGroup);
-}
+  if (!isImportant) dice(bot, msg);
+  else message(bot, msg, importantGroup);
+};
 
 /**
  * Sends a help message.
