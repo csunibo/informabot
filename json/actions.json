@@ -1,392 +1,614 @@
 {
   "start": {
     "type": "message",
-    "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica. Puoi contribuire al progetto su <a href='https://github.com/csunibo/informabot'>GitHub</a>."
+    "data": {
+      "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica. Puoi contribuire al progetto su <a href='https://github.com/csunibo/informabot'>GitHub</a>."
+    }
   },
   "help": {
     "type": "help",
-    "description": "Elenca i comandi disponibili"
+    "data": {
+      "description": "Elenca i comandi disponibili"
+    }
   },
   "unknown": {
     "type": "message",
-    "text": "Comando sconosciuto. Usa /help per elencare i comandi disponibili."
+    "data": {
+      "text": "Comando sconosciuto. Usa /help per elencare i comandi disponibili."
+    }
   },
   "appunti": {
     "type": "message",
-    "description": "Appunti su Notion",
-    "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<a href='https://luizo.notion.site/Notion-dei-Notion-20c37e0ee4904a9c898680378f1a50b0'>🗒️ Notion dei notion</a>\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilità riguardo eventuali informazioni errate presenti all'interno degli appunti."
+    "data": {
+      "description": "Appunti su Notion",
+      "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<a href='https://luizo.notion.site/Notion-dei-Notion-20c37e0ee4904a9c898680378f1a50b0'>\ud83d\uddd2\ufe0f Notion dei notion</a>\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilit\u00e0 riguardo eventuali informazioni errate presenti all'interno degli appunti."
+    }
   },
   "aggiorna": {
     "type": "update",
-    "description": "Aggiorna le azioni del bot",
-    "noYear": "Puoi usare questo comando solo in un gruppo generale di un anno di corso.",
-    "noMod": "Solo le moderatrici e i moderatori possono invocare questo comando.",
-    "started": "Aggiornamento delle azioni in corso...",
-    "ended": "Aggiornamento delle azioni completato.",
-    "failed": "Aggiornamento delle azioni fallito. Contatta il supporto."
+    "data": {
+      "description": "Aggiorna le azioni del bot",
+      "noYear": "Puoi usare questo comando solo in un gruppo generale di un anno di corso.",
+      "noMod": "Solo le moderatrici e i moderatori possono invocare questo comando.",
+      "started": "Aggiornamento delle azioni in corso...",
+      "ended": "Aggiornamento delle azioni completato.",
+      "failed": "Aggiornamento delle azioni fallito. Contatta il supporto."
+    }
   },
   "cercogruppo": {
     "type": "lookingFor",
-    "description": "Cerca un gruppo di progetto",
-    "singularText": "Una persona cerca un gruppo in <b>\"{0}\"</b>:\n",
-    "pluralText": "<b>{1}</b> persone cercano gruppi in <b>\"{0}\"</b>:\n",
-    "chatError": "Questo comando è riservato alle chat dei gruppi degli insegnamenti."
+    "data": {
+      "description": "Cerca un gruppo di progetto",
+      "singularText": "Una persona cerca un gruppo in <b>\"{0}\"</b>:\n",
+      "pluralText": "<b>{1}</b> persone cercano gruppi in <b>\"{0}\"</b>:\n",
+      "chatError": "Questo comando \u00e8 riservato alle chat dei gruppi degli insegnamenti."
+    }
   },
   "coursedesc": {
     "type": "message",
-    "description": "Documento con tutte le descrizioni dei corsi in inglese",
-    "text": "📝 <a href='https://csunibo.github.io/course-description-merged/description.md'>Course description merged (MD)</a>\n📝 <a href='https://csunibo.github.io/course-description-merged/description.pdf'>Course description merged (PDF)</a>\n💻 <a href='https://github.com/csunibo/course-description-merged'>Sorgente</a>"
+    "data": {
+      "description": "Documento con tutte le descrizioni dei corsi in inglese",
+      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/course-description-merged/description.md'>Course description merged (MD)</a>\n\ud83d\udcdd <a href='https://csunibo.github.io/course-description-merged/description.pdf'>Course description merged (PDF)</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/course-description-merged'>Sorgente</a>"
+    }
   },
   "dns": {
     "type": "message",
-    "description": "I DNS di ALMAWIFI",
-    "text": "<b>DNS di ALMAWIFI</b>\n  💻 137.204.25.71\n  💻 137.204.25.213"
+    "data": {
+      "description": "I DNS di ALMAWIFI",
+      "text": "<b>DNS di ALMAWIFI</b>\n  \ud83d\udcbb 137.204.25.71\n  \ud83d\udcbb 137.204.25.213"
+    }
   },
   "admstaff": {
     "type": "message",
-    "description": "Tutte le info di AdmStaff",
-    "text": "<b><i>AdmStaff</i></b>💻\n\n<a href='https://admstaff.students.cs.unibo.it'>🌐Sito Ufficiale</a>\n<a href='https://wiki.students.cs.unibo.it/#!index.md'>📖Wiki</a>\n📧E-mail admstaff@cs.unibo.it"
+    "data": {
+      "description": "Tutte le info di AdmStaff",
+      "text": "<b><i>AdmStaff</i></b>\ud83d\udcbb\n\n<a href='https://admstaff.students.cs.unibo.it'>\ud83c\udf10Sito Ufficiale</a>\n<a href='https://wiki.students.cs.unibo.it/#!index.md'>\ud83d\udcd6Wiki</a>\n\ud83d\udce7E-mail admstaff@cs.unibo.it"
+    }
   },
   "gruppi": {
     "type": "message",
-    "description": "Gruppi Telegram, <i>server</i> Discord e <i>subreddit</i>",
-    "text": "<b>Gruppi 2022/23</b>\n\n1️⃣ 1° anno (<a href='https://t.me/uniboinfo2223'>Telegram</a>, <a href='https://discord.gg/2cK8ENJ2Vg'>Discord</a>)\n2️⃣ 2° anno (<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>Telegram</a>, <a href='https://discord.gg/cYFbnGEYAA'>Discord</a>)\n3️⃣ 3° anno (<a href='https://t.me/informaticaunibo2021'>Telegram</a>, <a href='https://discord.gg/N7NJms8d7v'>Discord</a>)\n3️⃣ Ex-3° anno (<a href='https://t.me/infounibo2020'>Telegram</a>)\n\n<a href='https://www.reddit.com/r/unibo_informatica'><b>🗿 Subreddit</b></a>\n\n<b>Lauree Magistrali</b>\n<a href='https://t.me/mag_info_2022'>4️⃣ Informatica</a>\n<a href='https://t.me/unibo_ai_2022'>4️⃣ <i>Artificial Intelligence</i></a>\n\n<a href='https://t.me/joinchat/4_SVcmVsRAo3MTlk'>🔢 Tutti i gruppi Unibo</a>"
+    "data": {
+      "description": "Gruppi Telegram, <i>server</i> Discord e <i>subreddit</i>",
+      "text": "<b>Gruppi 2022/23</b>\n\n1\ufe0f\u20e3 1\u00b0 anno (<a href='https://t.me/uniboinfo2223'>Telegram</a>, <a href='https://discord.gg/2cK8ENJ2Vg'>Discord</a>)\n2\ufe0f\u20e3 2\u00b0 anno (<a href='https://t.me/joinchat/jTyZ03cqDRliOTY0'>Telegram</a>, <a href='https://discord.gg/cYFbnGEYAA'>Discord</a>)\n3\ufe0f\u20e3 3\u00b0 anno (<a href='https://t.me/informaticaunibo2021'>Telegram</a>, <a href='https://discord.gg/N7NJms8d7v'>Discord</a>)\n3\ufe0f\u20e3 Ex-3\u00b0 anno (<a href='https://t.me/infounibo2020'>Telegram</a>)\n\n<a href='https://www.reddit.com/r/unibo_informatica'><b>\ud83d\uddff Subreddit</b></a>\n\n<b>Lauree Magistrali</b>\n<a href='https://t.me/mag_info_2022'>4\ufe0f\u20e3 Informatica</a>\n<a href='https://t.me/unibo_ai_2022'>4\ufe0f\u20e3 <i>Artificial Intelligence</i></a>\n\n<a href='https://t.me/joinchat/4_SVcmVsRAo3MTlk'>\ud83d\udd22 Tutti i gruppi Unibo</a>"
+    }
   },
   "lezionioggi": {
     "type": "yearly",
-    "description": "Orari lezioni di oggi (tuo anno)",
-    "command": "lezionioggi",
-    "noYear": "Questo non sembra essere un gruppo generale per nessun anno di corso. Per usare questo comando da qui, devi specificare /lezionioggi1, /lezionioggi2 o /lezionioggi3."
+    "data": {
+      "description": "Orari lezioni di oggi (tuo anno)",
+      "command": "lezionioggi",
+      "noYear": "Questo non sembra essere un gruppo generale per nessun anno di corso. Per usare questo comando da qui, devi specificare /lezionioggi1, /lezionioggi2 o /lezionioggi3."
+    }
   },
   "lezionioggi1": {
     "type": "todayLectures",
-    "description": "Orari lezioni di oggi (1° anno)",
-    "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1",
-    "title": "<b>Lezioni di oggi (1° anno):</b>\n",
-    "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
+    "data": {
+      "description": "Orari lezioni di oggi (1\u00b0 anno)",
+      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1",
+      "title": "<b>Lezioni di oggi (1\u00b0 anno):</b>\n",
+      "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
+    }
   },
   "lezionioggi2": {
     "type": "todayLectures",
-    "description": "Orari lezioni di oggi (2° anno)",
-    "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2",
-    "title": "<b>Lezioni di oggi (2° anno):</b>\n",
-    "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
+    "data": {
+      "description": "Orari lezioni di oggi (2\u00b0 anno)",
+      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2",
+      "title": "<b>Lezioni di oggi (2\u00b0 anno):</b>\n",
+      "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
+    }
   },
   "lezionioggi3": {
     "type": "todayLectures",
-    "description": "Orari lezioni di oggi (3° anno)",
-    "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=3",
-    "title": "<b>Lezioni di oggi:</b>\n",
-    "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
+    "data": {
+      "description": "Orari lezioni di oggi (3\u00b0 anno)",
+      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=3",
+      "title": "<b>Lezioni di oggi:</b>\n",
+      "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
+    }
   },
   "lezionidomani": {
     "type": "yearly",
-    "description": "Orari lezioni di domani (tuo anno)",
-    "command": "lezionidomani",
-    "noYear": "Questo non sembra essere un gruppo generale per nessun anno di corso. Per usare questo comando da qui, devi specificare /lezionidomani1, /lezionidomani2 o /lezionidomani3."
+    "data": {
+      "description": "Orari lezioni di domani (tuo anno)",
+      "command": "lezionidomani",
+      "noYear": "Questo non sembra essere un gruppo generale per nessun anno di corso. Per usare questo comando da qui, devi specificare /lezionidomani1, /lezionidomani2 o /lezionidomani3."
+    }
   },
   "lezionidomani1": {
     "type": "tomorrowLectures",
-    "description": "Orari lezioni di domani (1° anno)",
-    "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1",
-    "title": "<b>Lezioni di domani (1° anno):</b>\n",
-    "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
+    "data": {
+      "description": "Orari lezioni di domani (1\u00b0 anno)",
+      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1",
+      "title": "<b>Lezioni di domani (1\u00b0 anno):</b>\n",
+      "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
+    }
   },
   "lezionidomani2": {
     "type": "tomorrowLectures",
-    "description": "Orari lezioni di domani (2° anno)",
-    "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2",
-    "title": "<b>Lezioni di domani (2° anno):</b>\n",
-    "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
+    "data": {
+      "description": "Orari lezioni di domani (2\u00b0 anno)",
+      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2",
+      "title": "<b>Lezioni di domani (2\u00b0 anno):</b>\n",
+      "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
+    }
   },
   "lezionidomani3": {
     "type": "tomorrowLectures",
-    "description": "Orari lezioni di domani (3° anno)",
-    "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=3",
-    "title": "<b>Lezioni di domani (3° anno):</b>\n",
-    "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
+    "data": {
+      "description": "Orari lezioni di domani (3\u00b0 anno)",
+      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=3",
+      "title": "<b>Lezioni di domani (3\u00b0 anno):</b>\n",
+      "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
+    }
   },
   "materiali": {
     "type": "message",
-    "description": "Libri, materiali, prove e altro su CSUnibo",
-    "text": "<b>Libri, materiali, prove ed esercizi</b>\n📚 <a href='https://csunibo.github.io/'>Sito statico (...in costruzione)</a>\nPer il momento il Sito Statico è disponibile per i singoli corsi\n📂 <a href='https://github.com/csunibo'>Repository GitHub</a>\nCollabora anche tu con le <i>pull request</i> e condividi il tuo materiale!"
+    "data": {
+      "description": "Libri, materiali, prove e altro su CSUnibo",
+      "text": "<b>Libri, materiali, prove ed esercizi</b>\n\ud83d\udcda <a href='https://csunibo.github.io/'>Sito statico (...in costruzione)</a>\nPer il momento il Sito Statico \u00e8 disponibile per i singoli corsi\n\ud83d\udcc2 <a href='https://github.com/csunibo'>Repository GitHub</a>\nCollabora anche tu con le <i>pull request</i> e condividi il tuo materiale!"
+    }
   },
   "noncercogruppo": {
     "type": "notLookingFor",
-    "description": "Smetti di cercare un gruppo di progetto",
-    "text": "Non sei più nella lista di chi cerca gruppi in \"{0}\".",
-    "chatError": "Questo comando è riservato alle chat dei gruppi degli insegnamenti.",
-    "notFoundError": "Neanche prima cercavi gruppi in \"{0}\"."
+    "data": {
+      "description": "Smetti di cercare un gruppo di progetto",
+      "text": "Non sei pi\u00f9 nella lista di chi cerca gruppi in \"{0}\".",
+      "chatError": "Questo comando \u00e8 riservato alle chat dei gruppi degli insegnamenti.",
+      "notFoundError": "Neanche prima cercavi gruppi in \"{0}\"."
+    }
   },
   "ludopatico": {
     "type": "luck",
-    "description": "Tenta la fortuna"
+    "data": {
+      "description": "Tenta la fortuna"
+    }
   },
   "registrate": {
     "type": "message",
-    "description": "Lezioni registrate su OneDrive",
-    "text": "<b>Registrazioni</b>\n1️⃣  Primo anno (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/alessandro_tomaiuol2_studio_unibo_it/Esf_hfRwz1NErD_O8UGh-T0B5PQo0GVMShvW5A5wb3nSpg'>2021/22</a>)\n2️⃣ Secondo anno (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/EssTTKzajUFJsdpYc2TWOPwBNNFcW-MVVK4IxkH8cIs7vg?e=j1CJyP'>2021/22</a>)\n3️⃣ Terzo anno (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/EoXDDiW-s2pLryZsyll5Q2wBldQ6uuRDkmdjLIFPLVhHzQ?e=rQ2bQ8'>2022/23</a>)\n⁉️ Altro (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Epf1MuRAM7pNsS-qBRBvaVsBetilGEFe4w68ZBJrXgXOeg?e=0lSCvQ'>2022/23</a>)"
+    "data": {
+      "description": "Lezioni registrate su OneDrive",
+      "text": "<b>Registrazioni</b>\n1\ufe0f\u20e3  Primo anno (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/alessandro_tomaiuol2_studio_unibo_it/Esf_hfRwz1NErD_O8UGh-T0B5PQo0GVMShvW5A5wb3nSpg'>2021/22</a>)\n2\ufe0f\u20e3 Secondo anno (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/EssTTKzajUFJsdpYc2TWOPwBNNFcW-MVVK4IxkH8cIs7vg?e=j1CJyP'>2021/22</a>)\n3\ufe0f\u20e3 Terzo anno (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/EoXDDiW-s2pLryZsyll5Q2wBldQ6uuRDkmdjLIFPLVhHzQ?e=rQ2bQ8'>2022/23</a>)\n\u2049\ufe0f Altro (<a href='https://liveunibo-my.sharepoint.com/:f:/g/personal/simone_folli2_studio_unibo_it/Epf1MuRAM7pNsS-qBRBvaVsBetilGEFe4w68ZBJrXgXOeg?e=0lSCvQ'>2022/23</a>)"
+    }
   },
   "scelta": {
     "type": "list",
-    "description": "Elenchi esami a scelta",
-    "header": "<b>Esami a libera scelta:</b>\n",
-    "template": "<a href='https://www.unibo.it/it/didattica/insegnamenti?search=True&codiceSSD={0}&SSDInsegnamentoButton=cerca'>🏫 {1}</a>\n",
-    "items": [
-      ["INF%2F01", "INF/01 Informatica"],
-      ["MAT%2F01", "MAT/01 Logica matematica"],
-      ["MAT%2F02", "MAT/02 Algebra"],
-      ["MAT%2F03", "MAT/03 Geometria"],
-      ["MAT%2F04", "MAT/04 Matematiche compl."],
-      ["MAT%2F05", "MAT/05 Analisi matematica"],
-      ["MAT%2F06", "MAT/06 Prob. e stat. mat."],
-      ["MAT%2F07", "MAT/07 Fisica matematica"],
-      ["MAT%2F08", "MAT/08 Analisi numerica"],
-      ["MAT%2F09", "MAT/09 Ricerca operativa"],
-      ["FIS%2F01", "FIS/01 Fis. sperimentale"],
-      ["FIS%2F02", "FIS/02 Fisica teorica"],
-      ["FIS%2F03", "FIS/03 Fis. della materia"],
-      ["FIS%2F07", "FIS/07 Fisica applicata"],
-      ["ING-INF%2F01", "ING-INF/01 Elettronica"],
-      ["ING-INF%2F02", "ING-INF/02 Campi elettromagn."],
-      ["ING-INF%2F03", "ING-INF/03 Telecomunicazioni"],
-      ["ING-INF%2F04", "ING-INF/04 Automatica"],
-      ["ING-INF%2F05", "ING-INF/05 Sis. elab. info."],
-      ["ING-INF%2F06", "ING-INF/06 Bioing. el. inf."],
-      ["ING-INF%2F07", "ING-INF/07 Misure elettriche"],
-      ["SECS-P%2F07", "SECS-P/07 Economia aziendale"],
-      ["SECS-P%2F08", "SECS-P/08 Economia, gest. impr."],
-      ["SECS-P%2F09", "SECS-P/09 Finanza aziendale"],
-      ["SECS-P%2F10", "SECS-P/10 Org. aziendale"],
-      ["IUS%2F20", "IUS/20 Filsofia del diritto"],
-      ["M-FIL%2F02", "M-FIL/02 Logica, filo. scienza"]
-    ]
+    "data": {
+      "description": "Elenchi esami a scelta",
+      "header": "<b>Esami a libera scelta:</b>\n",
+      "template": "<a href='https://www.unibo.it/it/didattica/insegnamenti?search=True&codiceSSD={0}&SSDInsegnamentoButton=cerca'>\ud83c\udfeb {1}</a>\n",
+      "items": [
+        [
+          "INF%2F01",
+          "INF/01 Informatica"
+        ],
+        [
+          "MAT%2F01",
+          "MAT/01 Logica matematica"
+        ],
+        [
+          "MAT%2F02",
+          "MAT/02 Algebra"
+        ],
+        [
+          "MAT%2F03",
+          "MAT/03 Geometria"
+        ],
+        [
+          "MAT%2F04",
+          "MAT/04 Matematiche compl."
+        ],
+        [
+          "MAT%2F05",
+          "MAT/05 Analisi matematica"
+        ],
+        [
+          "MAT%2F06",
+          "MAT/06 Prob. e stat. mat."
+        ],
+        [
+          "MAT%2F07",
+          "MAT/07 Fisica matematica"
+        ],
+        [
+          "MAT%2F08",
+          "MAT/08 Analisi numerica"
+        ],
+        [
+          "MAT%2F09",
+          "MAT/09 Ricerca operativa"
+        ],
+        [
+          "FIS%2F01",
+          "FIS/01 Fis. sperimentale"
+        ],
+        [
+          "FIS%2F02",
+          "FIS/02 Fisica teorica"
+        ],
+        [
+          "FIS%2F03",
+          "FIS/03 Fis. della materia"
+        ],
+        [
+          "FIS%2F07",
+          "FIS/07 Fisica applicata"
+        ],
+        [
+          "ING-INF%2F01",
+          "ING-INF/01 Elettronica"
+        ],
+        [
+          "ING-INF%2F02",
+          "ING-INF/02 Campi elettromagn."
+        ],
+        [
+          "ING-INF%2F03",
+          "ING-INF/03 Telecomunicazioni"
+        ],
+        [
+          "ING-INF%2F04",
+          "ING-INF/04 Automatica"
+        ],
+        [
+          "ING-INF%2F05",
+          "ING-INF/05 Sis. elab. info."
+        ],
+        [
+          "ING-INF%2F06",
+          "ING-INF/06 Bioing. el. inf."
+        ],
+        [
+          "ING-INF%2F07",
+          "ING-INF/07 Misure elettriche"
+        ],
+        [
+          "SECS-P%2F07",
+          "SECS-P/07 Economia aziendale"
+        ],
+        [
+          "SECS-P%2F08",
+          "SECS-P/08 Economia, gest. impr."
+        ],
+        [
+          "SECS-P%2F09",
+          "SECS-P/09 Finanza aziendale"
+        ],
+        [
+          "SECS-P%2F10",
+          "SECS-P/10 Org. aziendale"
+        ],
+        [
+          "IUS%2F20",
+          "IUS/20 Filsofia del diritto"
+        ],
+        [
+          "M-FIL%2F02",
+          "M-FIL/02 Logica, filo. scienza"
+        ]
+      ]
+    }
   },
   "stickers": {
     "type": "message",
-    "description": "Pacchetti degli adesivi Telegram del corso",
-    "text": "<b>Stickers di Luizo e Betto</b>\n🎨 <a href='https://t.me/addstickers/UniboShitpost'>Informatica 20/21</a>\n🎨 <a href='https://t.me/addstickers/InfoUniBOCancer'>InfoUnibo</a>\n🎨 <a href='https://t.me/addstickers/Info2k21'>Informatica 2k20/2k21</a>"
+    "data": {
+      "description": "Pacchetti degli adesivi Telegram del corso",
+      "text": "<b>Stickers di Luizo e Betto</b>\n\ud83c\udfa8 <a href='https://t.me/addstickers/UniboShitpost'>Informatica 20/21</a>\n\ud83c\udfa8 <a href='https://t.me/addstickers/InfoUniBOCancer'>InfoUnibo</a>\n\ud83c\udfa8 <a href='https://t.me/addstickers/Info2k21'>Informatica 2k20/2k21</a>"
+    }
   },
   "tesi": {
     "type": "message",
-    "description": "Tesi DISI proposte e assegnate",
-    "text": "📝 <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>\n💻 <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>"
+    "data": {
+      "description": "Tesi DISI proposte e assegnate",
+      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>"
+    }
   },
   "tirocinio": {
     "type": "message",
-    "description": "Strumento per riassumere le attività svolte durante il proprio tirocinio",
-    "text": "📝 <a href='https://csunibo.github.io/diario-tirocinio/'>Diario Tirocinio</a>\n💻 <a href='https://github.com/csunibo/diario-tirocinio'>Sorgente</a>"
+    "data": {
+      "description": "Strumento per riassumere le attivit\u00e0 svolte durante il proprio tirocinio",
+      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/diario-tirocinio/'>Diario Tirocinio</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/diario-tirocinio'>Sorgente</a>"
+    }
   },
   "architettura": {
     "type": "course",
-    "name": "Architettura degli elaboratori",
-    "description": "Tutto su Architettura degli elaboratori",
-    "virtuale": "18282",
-    "teams": "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx",
-    "website": "2020/350960",
-    "professors": ["ivan.lanese"],
-    "telegram": "joinchat/kXM-_CadypQwOGVk"
+    "data": {
+      "name": "Architettura degli elaboratori",
+      "description": "Tutto su Architettura degli elaboratori",
+      "virtuale": "18282",
+      "teams": "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx",
+      "website": "2020/350960",
+      "professors": [
+        "ivan.lanese"
+      ],
+      "telegram": "joinchat/kXM-_CadypQwOGVk"
+    }
   },
   "logica": {
     "type": "course",
-    "name": "Logica per l'informatica",
-    "description": "Tutto su Logica per l'informatica",
-    "virtuale": "21407",
-    "teams": "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk",
-    "website": "2020/455095",
-    "professors": ["claudio.sacerdoticoen"],
-    "telegram": "joinchat/HEBiPjOx_SpmYzY0"
+    "data": {
+      "name": "Logica per l'informatica",
+      "description": "Tutto su Logica per l'informatica",
+      "virtuale": "21407",
+      "teams": "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk",
+      "website": "2020/455095",
+      "professors": [
+        "claudio.sacerdoticoen"
+      ],
+      "telegram": "joinchat/HEBiPjOx_SpmYzY0"
+    }
   },
   "programmazione": {
     "type": "course",
-    "name": "Programmazione",
-    "description": "Tutto su Programmazione",
-    "virtuale": "17653",
-    "teams": "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4",
-    "website": "2020/320574",
-    "professors": ["cosimo.laneve"],
-    "telegram": "joinchat/z1kz0BRjFr8zYjI0"
+    "data": {
+      "name": "Programmazione",
+      "description": "Tutto su Programmazione",
+      "virtuale": "17653",
+      "teams": "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4",
+      "website": "2020/320574",
+      "professors": [
+        "cosimo.laneve"
+      ],
+      "telegram": "joinchat/z1kz0BRjFr8zYjI0"
+    }
   },
   "algebra": {
     "type": "course",
-    "description": "Tutto su Algebra e geometria",
-    "name": "Algebra e geometria",
-    "virtuale": "17870",
-    "teams": "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw",
-    "website": "2020/366975",
-    "professors": ["marta.morigi"],
-    "telegram": "joinchat/m5fn6ZffZvk0NGZk"
+    "data": {
+      "description": "Tutto su Algebra e geometria",
+      "name": "Algebra e geometria",
+      "virtuale": "17870",
+      "teams": "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw",
+      "website": "2020/366975",
+      "professors": [
+        "marta.morigi"
+      ],
+      "telegram": "joinchat/m5fn6ZffZvk0NGZk"
+    }
   },
   "algoritmi": {
     "type": "course",
-    "description": "Tutto su Algoritmi e strutture di dati",
-    "name": "Algoritmi e strutture di dati",
-    "virtuale": "20930",
-    "teams": "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl",
-    "website": "2020/350957",
-    "professors": ["gianluigi.zavattaro", "pietro.dilena"],
-    "telegram": "joinchat/wSafC8l9ul1iNTE8"
+    "data": {
+      "description": "Tutto su Algoritmi e strutture di dati",
+      "name": "Algoritmi e strutture di dati",
+      "virtuale": "20930",
+      "teams": "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl",
+      "website": "2020/350957",
+      "professors": [
+        "gianluigi.zavattaro",
+        "pietro.dilena"
+      ],
+      "telegram": "joinchat/wSafC8l9ul1iNTE8"
+    }
   },
   "analisi": {
     "type": "course",
-    "description": "Tutto su Analisi matematica",
-    "name": "Analisi matematica",
-    "virtuale": "18045",
-    "teams": "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk",
-    "website": "2020/320573",
-    "professors": ["marco.mughetti", "daniele.morbidelli"],
-    "telegram": "joinchat/60_5FO9onfo4YmJk"
+    "data": {
+      "description": "Tutto su Analisi matematica",
+      "name": "Analisi matematica",
+      "virtuale": "18045",
+      "teams": "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk",
+      "website": "2020/320573",
+      "professors": [
+        "marco.mughetti",
+        "daniele.morbidelli"
+      ],
+      "telegram": "joinchat/60_5FO9onfo4YmJk"
+    }
   },
   "calcolo": {
     "type": "course",
-    "description": "Tutto su Calcolo numerico",
-    "name": "Calcolo numerico",
-    "virtuale": "25810",
-    "teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
-    "website": "2021/320581",
-    "professors": ["elena.loli"],
-    "telegram": "joinchat/h1lypfBFdEZkYzFk"
+    "data": {
+      "description": "Tutto su Calcolo numerico",
+      "name": "Calcolo numerico",
+      "virtuale": "25810",
+      "teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
+      "website": "2021/320581",
+      "professors": [
+        "elena.loli"
+      ],
+      "telegram": "joinchat/h1lypfBFdEZkYzFk"
+    }
   },
   "ottimizzazione": {
     "type": "course",
-    "description": "Tutto su Ottimizzazione combinatoria",
-    "name": "Ottimizzazione combinatoria",
-    "virtuale": "29872",
-    "teams": "OGFlMmI5YTQtZDQwMy00ZmQzLTliMDQtMGYzZDNkMGExNjdl",
-    "website": "2021/460495",
-    "professors": ["ugo.dallago"],
-    "telegram": "joinchat/klw79l5tkPM1NWQ0"
+    "data": {
+      "description": "Tutto su Ottimizzazione combinatoria",
+      "name": "Ottimizzazione combinatoria",
+      "virtuale": "29872",
+      "teams": "OGFlMmI5YTQtZDQwMy00ZmQzLTliMDQtMGYzZDNkMGExNjdl",
+      "website": "2021/460495",
+      "professors": [
+        "ugo.dallago"
+      ],
+      "telegram": "joinchat/klw79l5tkPM1NWQ0"
+    }
   },
   "linguaggi": {
     "type": "course",
-    "description": "Tutto su Linguaggi di programmazione",
-    "name": "Linguaggi di programmazione",
-    "virtuale": "25802",
-    "teams": "MjljOWZkNTMtNzExMy00OGRiLTlmNTEtM2E5NGVmYzU1YTgx",
-    "website": "2021/320579",
-    "professors": [
-      "roberto.gorrieri",
-      "maurizio.gabbrielli",
-      "saverio.giallorenzo2"
-    ],
-    "telegram": "joinchat/4v-08oT6QWk0ZmM8"
+    "data": {
+      "description": "Tutto su Linguaggi di programmazione",
+      "name": "Linguaggi di programmazione",
+      "virtuale": "25802",
+      "teams": "MjljOWZkNTMtNzExMy00OGRiLTlmNTEtM2E5NGVmYzU1YTgx",
+      "website": "2021/320579",
+      "professors": [
+        "roberto.gorrieri",
+        "maurizio.gabbrielli",
+        "saverio.giallorenzo2"
+      ],
+      "telegram": "joinchat/4v-08oT6QWk0ZmM8"
+    }
   },
   "reti": {
     "type": "course",
-    "description": "Tutto su Reti di calcolatori",
-    "name": "Reti di calcolatori",
-    "virtuale": "28376",
-    "teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
-    "website": "2021/455456",
-    "professors": ["luciano.bononi"],
-    "telegram": "joinchat/Sw2Ykp0-0mM1Zjdk"
+    "data": {
+      "description": "Tutto su Reti di calcolatori",
+      "name": "Reti di calcolatori",
+      "virtuale": "28376",
+      "teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
+      "website": "2021/455456",
+      "professors": [
+        "luciano.bononi"
+      ],
+      "telegram": "joinchat/Sw2Ykp0-0mM1Zjdk"
+    }
   },
   "tecnologie": {
     "type": "course",
-    "description": "Tutto su Tecnologie web",
-    "name": "Tecnologie web",
-    "virtuale": "26726",
-    "teams": "NDFkMWJjZTUtZTlkYS00ZWFiLTgxMDctY2Q0YzAxZmZjOThl",
-    "website": "2021/436428",
-    "professors": ["fabio.vitali"],
-    "telegram": "+Aq__wJAnPrc1MWQ0"
+    "data": {
+      "description": "Tutto su Tecnologie web",
+      "name": "Tecnologie web",
+      "virtuale": "26726",
+      "teams": "NDFkMWJjZTUtZTlkYS00ZWFiLTgxMDctY2Q0YzAxZmZjOThl",
+      "website": "2021/436428",
+      "professors": [
+        "fabio.vitali"
+      ],
+      "telegram": "+Aq__wJAnPrc1MWQ0"
+    }
   },
   "probabilita": {
     "type": "course",
-    "description": "Tutto su calcolo delle probabilità e statistica",
-    "name": "Calcolo delle probabilità e statistica",
-    "virtuale": "31906",
-    "teams": "MDg3YjQ1ZDYtY2RmOC00NmYzLThjY2EtYWI1N2FkMjFmMGEx",
-    "website": "2021/320583",
-    "professors": ["andrea.cosso"],
-    "telegram": "+j7GRbdJlwPExYzc0"
+    "data": {
+      "description": "Tutto su calcolo delle probabilit\u00e0 e statistica",
+      "name": "Calcolo delle probabilit\u00e0 e statistica",
+      "virtuale": "31906",
+      "teams": "MDg3YjQ1ZDYtY2RmOC00NmYzLThjY2EtYWI1N2FkMjFmMGEx",
+      "website": "2021/320583",
+      "professors": [
+        "andrea.cosso"
+      ],
+      "telegram": "+j7GRbdJlwPExYzc0"
+    }
   },
   "sistemi": {
     "type": "course",
-    "description": "Tutto su Sistemi operativi",
-    "name": "Sistemi operativi",
-    "virtuale": "25797",
-    "teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
-    "website": "2021/320578",
-    "professors": ["renzo.davoli"],
-    "telegram": "joinchat/2hUcGLfY7Gc2MTA8"
+    "data": {
+      "description": "Tutto su Sistemi operativi",
+      "name": "Sistemi operativi",
+      "virtuale": "25797",
+      "teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
+      "website": "2021/320578",
+      "professors": [
+        "renzo.davoli"
+      ],
+      "telegram": "joinchat/2hUcGLfY7Gc2MTA8"
+    }
   },
   "basi": {
     "type": "course",
-    "description": "Tutto su Basi di dati",
-    "name": "Basi di dati",
-    "website": "2022/443720",
-    "professors": ["danilo.montesi"],
-    "telegram": "datidibasi"
+    "data": {
+      "description": "Tutto su Basi di dati",
+      "name": "Basi di dati",
+      "website": "2022/443720",
+      "professors": [
+        "danilo.montesi"
+      ],
+      "telegram": "datidibasi"
+    }
   },
   "ingegneria": {
     "type": "course",
-    "description": "Tutto su Ingegneria del software",
-    "name": "Ingegneria del software",
-    "virtuale": "35949",
-    "website": "2022/443719",
-    "professors": ["paolo.ciancarini"],
-    "telegram": "ingegneriaSWunibo"
+    "data": {
+      "description": "Tutto su Ingegneria del software",
+      "name": "Ingegneria del software",
+      "virtuale": "35949",
+      "website": "2022/443719",
+      "professors": [
+        "paolo.ciancarini"
+      ],
+      "telegram": "ingegneriaSWunibo"
+    }
   },
   "apprendimento": {
     "type": "course",
-    "description": "Tutto su Introduzione all'apprendimento automatico",
-    "name": "Introduzione all'apprendimento automatico",
-    "virtuale": "35964",
-    "website": "2022/455112",
-    "professors": ["andrea.asperti"],
-    "telegram": "appr_auto"
+    "data": {
+      "description": "Tutto su Introduzione all'apprendimento automatico",
+      "name": "Introduzione all'apprendimento automatico",
+      "virtuale": "35964",
+      "website": "2022/455112",
+      "professors": [
+        "andrea.asperti"
+      ],
+      "telegram": "appr_auto"
+    }
   },
   "cybersecurity": {
     "type": "course",
-    "description": "Tutto su Fondamenti di cybersecurity",
-    "name": "Fondamenti di cybersecurity",
-    "telegram": "+_NRNOm34gOcxZTQ0"
+    "data": {
+      "description": "Tutto su Fondamenti di cybersecurity",
+      "name": "Fondamenti di cybersecurity",
+      "telegram": "+_NRNOm34gOcxZTQ0"
+    }
   },
   "teorica": {
     "type": "course",
-    "description": "Tutto su Informatica teorica",
-    "name": "Informatica teorica",
-    "website": "2022/455107",
-    "professors": ["claudio.sacerdoticoen"],
-    "telegram": "infoteorica"
+    "data": {
+      "description": "Tutto su Informatica teorica",
+      "name": "Informatica teorica",
+      "website": "2022/455107",
+      "professors": [
+        "claudio.sacerdoticoen"
+      ],
+      "telegram": "infoteorica"
+    }
   },
   "progetto": {
     "type": "course",
-    "description": "Tutto su Progetto di sistemi virtuali",
-    "name": "Progetto di sistemi virtuali",
-    "website": "2022/354042",
-    "professors": ["renzo.davoli"],
-    "telegram": "p_sis_virt"
+    "data": {
+      "description": "Tutto su Progetto di sistemi virtuali",
+      "name": "Progetto di sistemi virtuali",
+      "website": "2022/354042",
+      "professors": [
+        "renzo.davoli"
+      ],
+      "telegram": "p_sis_virt"
+    }
   },
   "fisica": {
     "type": "course",
-    "description": "Tutto su Fisica",
-    "name": "Fisica",
-    "telegram": "joinchat/EagakhBfGx7hcGXuj4uvBA"
+    "data": {
+      "description": "Tutto su Fisica",
+      "name": "Fisica",
+      "telegram": "joinchat/EagakhBfGx7hcGXuj4uvBA"
+    }
   },
   "applicazioni": {
     "type": "course",
-    "description": "Tutto su Laboratorio di applicazioni mobili",
-    "name": "Laboratorio di applicazioni mobili",
-    "website": "2022/366984",
-    "professors": ["luciano.bononni", "federico.montori2"],
-    "telegram": "+kGgOP9VgHotlMDg8"
+    "data": {
+      "description": "Tutto su Laboratorio di applicazioni mobili",
+      "name": "Laboratorio di applicazioni mobili",
+      "website": "2022/366984",
+      "professors": [
+        "luciano.bononni",
+        "federico.montori2"
+      ],
+      "telegram": "+kGgOP9VgHotlMDg8"
+    }
   },
   "storia": {
     "type": "course",
-    "description": "Tutto su Storia dell'informatica e dei dispositivi di calcolo",
-    "name": "Storia dell'informatica e dei dispositivi di calcolo",
-    "website": "2022/447912",
-    "professors": ["giorgio.casadei"],
-    "telegram": "+82Kca29dpGFiMmY0"
+    "data": {
+      "description": "Tutto su Storia dell'informatica e dei dispositivi di calcolo",
+      "name": "Storia dell'informatica e dei dispositivi di calcolo",
+      "website": "2022/447912",
+      "professors": [
+        "giorgio.casadei"
+      ],
+      "telegram": "+82Kca29dpGFiMmY0"
+    }
   },
   "strategia": {
     "type": "course",
-    "description": "Tutto su Strategia aziendale",
-    "name": "Strategia aziendale",
-    "website": "2022/422036",
-    "professors": ["sabrina.scarito"],
-    "telegram": "+DmlZ4Q31uTQ5YTE0"
+    "data": {
+      "description": "Tutto su Strategia aziendale",
+      "name": "Strategia aziendale",
+      "website": "2022/422036",
+      "professors": [
+        "sabrina.scarito"
+      ],
+      "telegram": "+DmlZ4Q31uTQ5YTE0"
+    }
   }
 }
