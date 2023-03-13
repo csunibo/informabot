@@ -44,8 +44,7 @@ func ParseActionsBytes(bytes []byte) ([]model.Action, error) {
 
 	var actions []model.Action
 	for key, value := range mapData {
-		action := model.GetActionFromType(value.(map[string]interface{})["type"].(string))
-		action.Name = key
+		action := model.GetActionFromType(key, value.(map[string]interface{})["type"].(string))
 		err := mapstructure.Decode(value, &action)
 		if err != nil {
 			return nil, err

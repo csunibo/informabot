@@ -2,7 +2,7 @@ package model
 
 type DataInterface interface{}
 
-func GetActionFromType(commandType string) Action {
+func GetActionFromType(name string, commandType string) Action {
 	var data DataInterface
 	switch commandType {
 	case "message":
@@ -28,11 +28,11 @@ func GetActionFromType(commandType string) Action {
 	case "luck":
 		data = LuckData{}
 	default:
-		data = MessageData{}
+		data = InvalidData{}
 	}
 
 	return Action{
-		Name: "UNINITIALIZED",
+		Name: name,
 		Type: commandType,
 		Data: data,
 	}
@@ -115,3 +115,5 @@ type CourseData struct {
 type LuckData struct {
 	Description string `json:"description"`
 }
+
+type InvalidData struct{}
