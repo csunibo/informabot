@@ -1,6 +1,12 @@
 package model
 
-type DataInterface interface{}
+import (
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+)
+
+type DataInterface interface {
+	HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string
+}
 
 func GetActionFromType(name string, commandType string) Action {
 	var data DataInterface
@@ -117,3 +123,51 @@ type LuckData struct {
 }
 
 type InvalidData struct{}
+
+func (data MessageData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data HelpData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data UpdateData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data LookingForData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data NotLookingForData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data YearlyData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data TodayLecturesData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data TomorrowLecturesData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data ListData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data CourseData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data LuckData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
+
+func (data InvalidData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
+	panic("implement me")
+}
