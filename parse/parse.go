@@ -1,4 +1,4 @@
-package main
+package parse
 
 import (
 	"encoding/json"
@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/csunibo/informabot/model"
 	"github.com/mitchellh/mapstructure"
 )
 
@@ -30,7 +31,7 @@ func ParseAutoReplies() (AutoReply, error) {
 	return autoreplies, nil
 }
 
-func ParseActions() ([]Action, error) {
+func ParseActions() ([]model.Action, error) {
 	jsonFile, err := os.Open("./json/actions.json")
 	if err != nil {
 		fmt.Println(err)
@@ -42,13 +43,13 @@ func ParseActions() ([]Action, error) {
 	return ParseActionsBytes(byteValue)
 }
 
-func ParseActionsBytes(bytes []byte) ([]Action, error) {
+func ParseActionsBytes(bytes []byte) ([]model.Action, error) {
 	var mapData map[string]interface{}
 	json.Unmarshal(bytes, &mapData)
 
-	var actions []Action
+	var actions []model.Action
 	for key, value := range mapData {
-		action := GetActionFromType(value.(map[string]interface{})["type"].(string))
+		action := model.GetActionFromType(value.(map[string]interface{})["type"].(string))
 		action.Name = key
 		err := mapstructure.Decode(value, &action)
 		if err != nil {

@@ -1,4 +1,4 @@
-module informabot
+module github.com/csunibo/informabot
 
 go 1.18
 

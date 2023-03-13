@@ -1,13 +1,14 @@
-package main
+package bot
 
 import (
 	"log"
 	"strings"
 
+	"github.com/csunibo/informabot/parse"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-var autoreplies AutoReply
+var autoreplies parse.AutoReply
 
 func StartInformaBot(token string, debug bool) {
 	bot, err := tgbotapi.NewBotAPI(token)
@@ -18,7 +19,7 @@ func StartInformaBot(token string, debug bool) {
 
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
-	autoreplies, err = ParseAutoReplies()
+	autoreplies, err = parse.ParseAutoReplies()
 	if err != nil {
 		log.Fatalf("Error reading autoreply.json file: %s", err.Error())
 	}
