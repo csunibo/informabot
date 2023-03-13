@@ -4,11 +4,12 @@ import (
 	"log"
 	"strings"
 
+	"github.com/csunibo/informabot/model"
 	"github.com/csunibo/informabot/parse"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-var autoreplies parse.AutoReply
+var autoreplies []model.AutoReply
 
 func StartInformaBot(token string, debug bool) {
 	bot, err := tgbotapi.NewBotAPI(token)

@@ -38,6 +38,11 @@ func GetActionFromType(commandType string) Action {
 	}
 }
 
+type AutoReply struct {
+	Text  string `json:"text"`
+	Reply string `json:"reply"`
+}
+
 type Action struct {
 	Name string
 	Type string        `json:"type"`

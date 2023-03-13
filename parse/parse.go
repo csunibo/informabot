@@ -10,12 +10,7 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
-type AutoReply []struct {
-	Text  string `json:"text"`
-	Reply string `json:"reply"`
-}
-
-func ParseAutoReplies() (AutoReply, error) {
+func ParseAutoReplies() ([]model.AutoReply, error) {
 	jsonFile, err := os.Open("./json/autoreply.json")
 	if err != nil {
 		fmt.Println(err)
@@ -25,7 +20,7 @@ func ParseAutoReplies() (AutoReply, error) {
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	var autoreplies AutoReply
+	var autoreplies []model.AutoReply
 	json.Unmarshal(byteValue, &autoreplies)
 
 	return autoreplies, nil
