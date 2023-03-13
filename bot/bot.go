@@ -48,6 +48,7 @@ func run(bot *tgbotapi.BotAPI) {
 			for i := 0; i < len(model.Autoreplies); i++ {
 				if strings.Contains(strings.ToLower(update.Message.Text), strings.ToLower(model.Autoreplies[i].Text)) {
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, model.Autoreplies[i].Reply)
+					msg.ReplyToMessageID = update.Message.MessageID
 					msg.ParseMode = tgbotapi.ModeHTML
 					bot.Send(msg)
 				}
