@@ -2,7 +2,9 @@ package model
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/csunibo/informabot/commands"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
@@ -171,7 +173,19 @@ func (data YearlyData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.
 }
 
 func (data TodayLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO TodayLecturesData: notimplemented, Got: %s\n", message.Text))
+	var todayTime time.Time = time.Now()
+	var todayString string = todayTime.Format("2006-01-02")
+	url := data.Url + fmt.Sprintf("&start=%s&end=%s", todayString, todayString)
+	// TODO: print this url if bot debug mode is active
+
+	var response string = commands.GetTimeTable(url)
+
+	var msg tgbotapi.MessageConfig
+	if response != "" {
+		msg = tgbotapi.NewMessage(message.Chat.ID, data.Title+response)
+	} else {
+		msg = tgbotapi.NewMessage(message.Chat.ID, data.FallbackText)
+	}
 	bot.Send(msg)
 
 	return ""

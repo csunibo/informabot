@@ -1,7 +1,8 @@
-package main
+package commands
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -46,8 +47,10 @@ func (t *LezioniTime) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func Uni() {
-	resp, err := http.Get("https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1&start=2023-03-13&end=2023-03-13")
+// GetTimeTable returns the timetable for the Unibo url
+// returns empty string if there are no lessons.
+func GetTimeTable(url string) string {
+	resp, err := http.Get(url)
 	if err != nil {
 		log.Printf("Error getting json when requesting orario lezioni: %s\n", err)
 	}
@@ -61,5 +64,13 @@ func Uni() {
 		return (*time.Time)(&result[i].StartTime).Before((time.Time)(result[j].StartTime))
 	})
 
-	log.Println(result)
+	// Create the message
+	var message string = ""
+	for _, lezione := range result {
+		message += fmt.Sprintf(`  🕘 <b><a href="%s">%s</a></b> %s`, lezione.Teams, lezione.Title, lezione.Time) + "\n"
+		message += fmt.Sprintf("  🏢 %s - %s\n", lezione.Aule[0].Edificio, lezione.Aule[0].Piano)
+		message += fmt.Sprintf("  📍 %s\n", lezione.Aule[0].Indirizzo)
+	}
+
+	return message
 }
