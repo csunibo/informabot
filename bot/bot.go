@@ -9,7 +9,10 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-var autoreplies []model.AutoReply
+var (
+	autoreplies []model.AutoReply
+	actions     []model.Action
+)
 
 func StartInformaBot(token string, debug bool) {
 	bot, err := tgbotapi.NewBotAPI(token)
@@ -23,6 +26,11 @@ func StartInformaBot(token string, debug bool) {
 	autoreplies, err = parse.ParseAutoReplies()
 	if err != nil {
 		log.Fatalf("Error reading autoreply.json file: %s", err.Error())
+	}
+
+	actions, err = parse.ParseActions()
+	if err != nil {
+		log.Fatalf("Error reading actions.json file: %s", err.Error())
 	}
 
 	run(bot)
@@ -44,11 +52,24 @@ func run(bot *tgbotapi.BotAPI) {
 		}
 
 		if update.Message.IsCommand() {
-			// commands
-			if strings.ToLower(update.Message.Command()) == "start" {
-				log.Printf("@%s: \t%s -> %s", update.Message.From.UserName, update.Message.Text, "hello world")
-				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "hello world")
-				bot.Send(msg)
+			commandName := strings.ToLower(update.Message.Command())
+
+			comparator := func(action model.Action, commandName string) bool {
+				return action.Name == commandName
+			}
+			index := Find(actions, commandName, comparator)
+			if index != -1 {
+				log.Printf("@%s: \t%s -> %s", update.Message.From.UserName, update.Message.Text, commandName)
+				commandName = actions[index].Name
+				for commandName != "" {
+					commandName = actions[index].Data.HandleBotCommand(bot, update.Message)
+					index = Find(actions, commandName, comparator)
+				}
+
+				// NOTA: un pattern di questo genere ha senso?
+				// invece di chiamare direttamente il metodo su Data, ci teniamo un passaggio di mezzo
+				// come se fosse middleware, per cose come log.
+				// actions[index].Execute(bot, update)
 			} else {
 				log.Printf("@%s: \t%s -> COMMAND NOT AVAILABLE", update.Message.From.UserName, update.Message.Text)
 			}
@@ -64,4 +85,13 @@ func run(bot *tgbotapi.BotAPI) {
 		}
 
 	}
+}
+
+func Find[T any, Q any](a []T, x Q, compare func(T, Q) bool) int {
+	for i, n := range a {
+		if compare(n, x) {
+			return i
+		}
+	}
+	return -1
 }

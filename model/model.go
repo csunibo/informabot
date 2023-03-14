@@ -1,11 +1,15 @@
 package model
 
 import (
+	"fmt"
+
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 type DataInterface interface {
-	HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string
+	// Returns another command to be executed, or emtpy string if no command is to be executed
+	// NOTE: we assume that everything returned by this function is a valid command
+	HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string
 }
 
 func GetActionFromType(name string, commandType string) Action {
@@ -124,50 +128,86 @@ type LuckData struct {
 
 type InvalidData struct{}
 
-func (data MessageData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data MessageData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, data.Text)
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data HelpData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data HelpData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO HelpData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data UpdateData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data UpdateData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO UpdateData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data LookingForData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO LookingForData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data NotLookingForData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data NotLookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO NotLookingForData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data YearlyData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data YearlyData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO YearlyData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data TodayLecturesData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data TodayLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO TodayLecturesData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data TomorrowLecturesData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data TomorrowLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO TomorrowLecturesData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data ListData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data ListData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO ListData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data CourseData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data CourseData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO CourseData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data LuckData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data LuckData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO LuckData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
 
-func (data InvalidData) HandleBotCommand(message *tgbotapi.Message, bot *tgbotapi.BotAPI) string {
-	panic("implement me")
+func (data InvalidData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO InvalidData: notimplemented, Got: %s\n", message.Text))
+	bot.Send(msg)
+
+	return ""
 }
