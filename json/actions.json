@@ -171,7 +171,7 @@
   "tesi": {
     "type": "message",
     "description": "Tesi DISI proposte e assegnate",
-    "text": "📝 <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>\n💻 <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>"
+    "text": "📝 <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>\n💻 <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>\n\n📄 <a href='https://github.com/latex-thesis'>Modello tesi LaTeX DISI</a>\n📄 <a href='https://github.com/asciidoc-thesis'>Modello tesi AsciiDoc DISI</a>"
   },
   "tirocinio": {
     "type": "message",
