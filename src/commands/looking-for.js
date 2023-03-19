@@ -5,6 +5,8 @@ const { message } = require("./basics"),
   path = require("path"),
   TelegramBot = require("node-telegram-bot-api");
 
+const groupsFile = path.join(__dirname, "..", "..", "json", "groups.json");
+
 /**
  * Add a user to the "looking for" list.
  * @param {TelegramBot} bot The bot that should send the message.
@@ -13,7 +15,13 @@ const { message } = require("./basics"),
  * @param {string} pluralText Plural header for non-singlet lists.
  * @param {string} chatError Error message for wrong chats.
  */
-module.exports.lookingFor = function (bot, msg, singularText, pluralText, chatError) {
+module.exports.lookingFor = function (
+  bot,
+  msg,
+  singularText,
+  pluralText,
+  chatError
+) {
   if (
     (msg.chat.type !== "group" && msg.chat.type !== "supergroup") ||
     data.settings.lookingForBlackList.includes(msg.chat.id)
@@ -25,7 +33,7 @@ module.exports.lookingFor = function (bot, msg, singularText, pluralText, chatEr
     if (!(chatId in data.groups)) data.groups[chatId] = [];
     const group = data.groups[chatId];
     if (!group.includes(senderId)) group.push(senderId);
-    fs.writeFileSync("json/groups.json", JSON.stringify(data.groups));
+    fs.writeFileSync(groupsFile, JSON.stringify(data.groups));
     const length = group.length.toString(),
       promises = Array(length);
     group.forEach((e, i) => {
@@ -95,10 +103,7 @@ module.exports.notLookingFor = function (
       else {
         group.splice(group.indexOf(senderId), 1);
         if (group.length == 0) delete data.groups[chatId];
-        fs.writeFileSync(
-          path.join(__dirname, "..", "..", "json", "groups.json"),
-          JSON.stringify(data.groups)
-        );
+        fs.writeFileSync(groupsFile, JSON.stringify(data.groups));
         message(bot, msg, format(text, title));
       }
     }
