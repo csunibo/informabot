@@ -64,12 +64,14 @@ func GetTimeTable(url string) string {
 		return (*time.Time)(&result[i].StartTime).Before((time.Time)(result[j].StartTime))
 	})
 
-	// Create the message
 	var message string = ""
 	for _, lezione := range result {
-		message += fmt.Sprintf(`  🕘 <b><a href="%s">%s</a></b> %s`, lezione.Teams, lezione.Title, lezione.Time) + "\n"
-		message += fmt.Sprintf("  🏢 %s - %s\n", lezione.Aule[0].Edificio, lezione.Aule[0].Piano)
-		message += fmt.Sprintf("  📍 %s\n", lezione.Aule[0].Indirizzo)
+		message += fmt.Sprintf(`  🕘 <b><a href="%s">%s</a></b>`, lezione.Teams, lezione.Title) +
+			"\n" + lezione.Time + "\n"
+		if len(lezione.Aule) > 0 {
+			message += fmt.Sprintf("  🏢 %s - %s\n", lezione.Aule[0].Edificio, lezione.Aule[0].Piano)
+			message += fmt.Sprintf("  📍 %s\n", lezione.Aule[0].Indirizzo)
+		}
 	}
 
 	return message

@@ -45,14 +45,14 @@ func (data NotLookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tg
 }
 
 func (data YearlyData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	var chatTitle string = message.Chat.Title
+	var chatTitle string = strings.ToLower(message.Chat.Title)
 
 	// check if string starts with "Yearly"
-	if strings.HasPrefix(chatTitle, "primo") {
+	if strings.Contains(chatTitle, "primo") {
 		return data.Command + "1"
-	} else if strings.HasPrefix(chatTitle, "secondo") {
+	} else if strings.Contains(chatTitle, "secondo") {
 		return data.Command + "2"
-	} else if strings.HasPrefix(chatTitle, "terzo") {
+	} else if strings.Contains(chatTitle, "terzo") {
 		return data.Command + "3"
 	} else {
 		msg := tgbotapi.NewMessage(message.Chat.ID, data.NoYear)
