@@ -26,6 +26,22 @@ func ParseAutoReplies() ([]model.AutoReply, error) {
 	return autoreplies, nil
 }
 
+func ParseSettings() (model.Settings, error) {
+	jsonFile, err := os.Open("./json/settings.json")
+	if err != nil {
+		fmt.Println(err)
+		return model.Settings{}, err
+	}
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	var settings model.Settings
+	json.Unmarshal(byteValue, &settings)
+
+	return settings, nil
+}
+
 func ParseActions() ([]model.Action, error) {
 	jsonFile, err := os.Open("./json/actions.json")
 	if err != nil {
@@ -54,4 +70,29 @@ func ParseActionsBytes(bytes []byte) ([]model.Action, error) {
 	}
 
 	return actions, nil
+}
+
+func ParseMemeList() ([]model.Meme, error) {
+	jsonFile, err := os.Open("./json/memes.json")
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	var mapData map[string]interface{}
+	json.Unmarshal(byteValue, &mapData)
+
+	var memes []model.Meme
+	for key, value := range mapData {
+		meme := model.Meme{
+			Name: key,
+			Text: value.(string),
+		}
+		memes = append(memes, meme)
+	}
+
+	return memes, nil
 }
