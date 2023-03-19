@@ -28,12 +28,13 @@ module.exports.timetable = function (bot, msg, url, date, title, fallbackText) {
       }
       let text = title;
       lectures.sort((a, b) => a.start - b.start);
-      for (let i = 0; i < lectures.length; ++i)
-        text += `  🕘 <b><a href="${lectures[i].teams}">${lectures[i].title}</a></b> ${lectures[i].time}
-  🏢 ${lectures[i].aule[0].des_edificio} - ${lectures[i].aule[0].des_piano}
-  📍 ${lectures[i].aule[0].des_indirizzo}
-  〰〰〰〰〰〰〰〰〰〰〰
-`;
+      for (let i = 0; i < lectures.length; ++i) {
+        text += `  🕘 <b><a href="${lectures[i].teams}">${lectures[i].title}</a></b> ${lectures[i].time}` + "\n"
+        if (lectures[i].aule.length > 0) {
+          text += `  🏢 ${lectures[i].aule[0].des_edificio} - ${lectures[i].aule[0].des_piano}` + "\n"
+          text += `  📍 ${lectures[i].aule[0].des_indirizzo}` + "\n"
+        }
+      }
       message(bot, msg, lectures.length !== 0 ? text : fallbackText);
     })
     .catch((e) => {
