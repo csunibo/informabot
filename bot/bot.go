@@ -78,13 +78,13 @@ func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 // if invalid index, does nothing
 func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex int) {
 	if commandIndex >= 0 && commandIndex < len(model.Actions) {
+		log.Printf("@%s: \t%s -> COMMAND", update.Message.From.UserName, update.Message.Text)
 		newCommand := model.Actions[commandIndex].Data.HandleBotCommand(bot, update.Message)
 		if newCommand != "" {
 			// NOTA: un pattern di questo genere ha senso?
 			// invece di chiamare direttamente il metodo su Data, ci teniamo un passaggio di mezzo
 			// come se fosse middleware, per cose come log.
 			// actions[index].Execute(bot, update)
-			log.Printf("@%s: \t%s -> COMMAND", update.Message.From.UserName, update.Message.Text)
 			executeCommandWithName(bot, update, newCommand)
 		}
 	}

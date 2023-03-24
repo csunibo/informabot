@@ -85,7 +85,31 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 }
 
 func (data NotLookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO NotLookingForData: notimplemented, Got: %s\n", message.Text))
+	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") || slices.Contains(Settings.LookingForBlackList, message.Chat.ID) {
+		utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, data.ChatError))
+		log.Print("Error [NotLookingForData]: not a group or blacklisted")
+		return ""
+	} else if _, ok := Groups[message.Chat.ID]; !ok {
+		log.Print("Info [NotLookingForData]: group empty, user not found")
+		utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf(data.NotFoundError, chatTitle)))
+		return ""
+	}
+
+	var chatId = message.Chat.ID
+	var senderId = message.From.ID
+	var chatTitle = message.Chat.Title
+
+	var msg tgbotapi.MessageConfig
+
+	if idx := slices.Index(Groups[chatId], senderId); idx == -1 {
+		log.Print("Info [NotLookingForData]: user not found in group")
+		msg = tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf(data.NotFoundError, chatTitle))
+	} else {
+		Groups[chatId] = append(Groups[chatId][:idx], Groups[chatId][idx+1:]...)
+		SaveGroups()
+		msg = tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf(data.Text, chatTitle))
+	}
+
 	utils.SendHTML(bot, msg)
 
 	return ""
