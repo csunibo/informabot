@@ -14,6 +14,7 @@ var (
 	Actions     []Action
 	MemeList    []Meme
 	Settings    SettingsStruct
+	Groups      GroupsStruct
 )
 
 func InitGlobals() {
@@ -38,4 +39,8 @@ func InitGlobals() {
 		log.Fatalf("Error reading memes.json file: %s", err.Error())
 	}
 
+	Groups, err = ParseOrCreateGroups()
+	if err != nil {
+		log.Fatalf("Error reading or creating groups.json file: %s", err.Error())
+	}
 }

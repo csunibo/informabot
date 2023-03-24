@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"encoding/json"
+	"os"
 	"regexp"
 	"strings"
 
@@ -40,6 +42,7 @@ func ToKebabCase(str string) string {
 	return strings.Join(splitted, "-")
 }
 
+// TODO: this function is already implemented in Slices Index, use that.
 func Find[T any, Q any](a []T, x Q, compare func(T, Q) bool) int {
 	for i, n := range a {
 		if compare(n, x) {
@@ -47,4 +50,16 @@ func Find[T any, Q any](a []T, x Q, compare func(T, Q) bool) int {
 		}
 	}
 	return -1
+}
+
+func WriteJSONFile(filename string, data interface{}) error {
+	file, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	encoder := json.NewEncoder(file)
+	encoder.SetIndent("", "  ")
+	return encoder.Encode(data)
 }

@@ -6,8 +6,11 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/csunibo/informabot/utils"
 	"github.com/mitchellh/mapstructure"
 )
+
+const groupsPath = "./json/groups.json"
 
 func ParseAutoReplies() ([]AutoReply, error) {
 	jsonFile, err := os.Open("./json/autoreply.json")
@@ -94,4 +97,31 @@ func ParseMemeList() ([]Meme, error) {
 	}
 
 	return memes, nil
+}
+
+func ParseOrCreateGroups() (GroupsStruct, error) {
+	jsonFile, err := os.Open(groupsPath)
+	if err != nil {
+		jsonFile, err = os.Create(groupsPath)
+		if err != nil {
+			fmt.Println(err)
+			return nil, err
+		}
+	}
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	var groups GroupsStruct
+	json.Unmarshal(byteValue, &groups)
+
+	if groups == nil {
+		groups = make(GroupsStruct)
+	}
+
+	return groups, nil
+}
+
+func SaveGroups() error {
+	return utils.WriteJSONFile(groupsPath, Groups)
 }

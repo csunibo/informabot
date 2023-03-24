@@ -39,8 +39,8 @@
     "type": "lookingFor",
     "data": {
       "description": "Cerca un gruppo di progetto",
-      "singularText": "Una persona cerca un gruppo in <b>\"{0}\"</b>:\n",
-      "pluralText": "<b>{1}</b> persone cercano gruppi in <b>\"{0}\"</b>:\n",
+      "singularText": "Una persona cerca un gruppo in <b>\"%s\"</b>:\n",
+      "pluralText": "<b>%d</b> persone cercano gruppi in <b>\"%s\"</b>:\n",
       "chatError": "Questo comando \u00e8 riservato alle chat dei gruppi degli insegnamenti."
     }
   },

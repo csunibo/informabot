@@ -40,10 +40,45 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 		return ""
 	}
 
-	// var chatId = message.Chat.ID
-	// var senderID = message.From.ID
+	var chatId = message.Chat.ID
+	var senderID = message.From.ID
 
-	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO LookingForData: notimplemented, Got: %s\n", message.Text))
+	log.Printf("LookingForData: %d, %d", chatId, senderID)
+	if chatArray, ok := Groups[chatId]; ok {
+		if !slices.Contains(chatArray, senderID) {
+			Groups[chatId] = append(chatArray, senderID)
+		}
+	} else {
+		Groups[chatId] = []int{senderID}
+	}
+	SaveGroups()
+
+	chatMembers, err := utils.GetChatMembers(bot, message.Chat.ID, Groups[chatId])
+	if err != nil {
+		log.Printf("Error [LookingForData]: %s", err)
+		return ""
+	}
+
+	var resultMsg string
+	// NOTA: c'è una dipendenza molto forte con il json del testo qui.
+	if len(chatMembers) == 1 {
+		resultMsg = fmt.Sprintf(data.SingularText, message.Chat.Title)
+	} else {
+		resultMsg = fmt.Sprintf(data.PluralText, message.Chat.Title, len(chatMembers))
+	}
+
+	for _, member := range chatMembers {
+		userLastName := ""
+		if member.User.LastName != "" {
+			userLastName = " " + member.User.LastName
+		}
+		resultMsg += fmt.Sprintf("👤 <a href='tg://user?id=%d'>%s%s</a>\n",
+			member.User.ID,
+			member.User.FirstName,
+			userLastName)
+	}
+
+	msg := tgbotapi.NewMessage(message.Chat.ID, resultMsg)
 	utils.SendHTML(bot, msg)
 
 	return ""

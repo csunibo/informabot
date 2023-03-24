@@ -46,6 +46,8 @@ func GetActionFromType(name string, commandType string) Action {
 	}
 }
 
+type GroupsStruct = map[int64][]int
+
 type AutoReply struct {
 	Text  string `json:"text"`
 	Reply string `json:"reply"`
