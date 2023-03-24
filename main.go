@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/csunibo/informabot/bot"
-	"github.com/csunibo/informabot/parse"
 )
 
 func main() {
@@ -13,6 +12,4 @@ func main() {
 		log.Fatalf("Usage: go run main.go <telegram-bot-token>")
 	}
 	bot.StartInformaBot(os.Args[1], false)
-	parse.ParseActions()
-
 }

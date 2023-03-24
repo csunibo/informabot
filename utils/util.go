@@ -1,4 +1,4 @@
-package model
+package utils
 
 import (
 	"regexp"
@@ -38,4 +38,13 @@ func ToKebabCase(str string) string {
 	}
 
 	return strings.Join(splitted, "-")
+}
+
+func Find[T any, Q any](a []T, x Q, compare func(T, Q) bool) int {
+	for i, n := range a {
+		if compare(n, x) {
+			return i
+		}
+	}
+	return -1
 }

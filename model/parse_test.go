@@ -1,9 +1,7 @@
-package parse
+package model
 
 import (
 	"testing"
-
-	"github.com/csunibo/informabot/model"
 )
 
 func TestActions(t *testing.T) {
@@ -34,7 +32,7 @@ func TestActions(t *testing.T) {
 		t.Errorf("Expected action type 'message', got '%s'", actions[0].Type)
 	}
 
-	if actions[0].Data.(model.MessageData).Text != "..." {
-		t.Errorf("Expected action data '...', got '%s'", actions[0].Data.(model.MessageData).Text)
+	if actions[0].Data.(MessageData).Text != "..." {
+		t.Errorf("Expected action data '...', got '%s'", actions[0].Data.(MessageData).Text)
 	}
 }

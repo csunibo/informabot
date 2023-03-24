@@ -51,13 +51,13 @@ type AutoReply struct {
 	Reply string `json:"reply"`
 }
 
-type Settings struct {
+type SettingsStruct struct {
 	MessageOptions struct {
 		ParseMode             string `json:"parse_mode"`
 		DisableWebPagePreview bool   `json:"disable_web_page_preview"`
 	} `json:"messageOptions"`
-	LookingForBlackList string `json:"lookingForBlackList"`
-	GeneralGroups       string `json:"generalGroups"`
+	LookingForBlackList []int64 `json:"lookingForBlackList"`
+	GeneralGroups       []int64 `json:"generalGroups"`
 }
 
 type Meme struct {

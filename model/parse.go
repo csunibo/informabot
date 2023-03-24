@@ -1,4 +1,4 @@
-package parse
+package model
 
 import (
 	"encoding/json"
@@ -6,11 +6,10 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/csunibo/informabot/model"
 	"github.com/mitchellh/mapstructure"
 )
 
-func ParseAutoReplies() ([]model.AutoReply, error) {
+func ParseAutoReplies() ([]AutoReply, error) {
 	jsonFile, err := os.Open("./json/autoreply.json")
 	if err != nil {
 		fmt.Println(err)
@@ -20,29 +19,29 @@ func ParseAutoReplies() ([]model.AutoReply, error) {
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	var autoreplies []model.AutoReply
+	var autoreplies []AutoReply
 	json.Unmarshal(byteValue, &autoreplies)
 
 	return autoreplies, nil
 }
 
-func ParseSettings() (model.Settings, error) {
+func ParseSettings() (SettingsStruct, error) {
 	jsonFile, err := os.Open("./json/settings.json")
 	if err != nil {
 		fmt.Println(err)
-		return model.Settings{}, err
+		return SettingsStruct{}, err
 	}
 	defer jsonFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	var settings model.Settings
+	var settings SettingsStruct
 	json.Unmarshal(byteValue, &settings)
 
 	return settings, nil
 }
 
-func ParseActions() ([]model.Action, error) {
+func ParseActions() ([]Action, error) {
 	jsonFile, err := os.Open("./json/actions.json")
 	if err != nil {
 		fmt.Println(err)
@@ -54,13 +53,13 @@ func ParseActions() ([]model.Action, error) {
 	return ParseActionsBytes(byteValue)
 }
 
-func ParseActionsBytes(bytes []byte) ([]model.Action, error) {
+func ParseActionsBytes(bytes []byte) ([]Action, error) {
 	var mapData map[string]interface{}
 	json.Unmarshal(bytes, &mapData)
 
-	var actions []model.Action
+	var actions []Action
 	for key, value := range mapData {
-		action := model.GetActionFromType(key, value.(map[string]interface{})["type"].(string))
+		action := GetActionFromType(key, value.(map[string]interface{})["type"].(string))
 		err := mapstructure.Decode(value, &action)
 		if err != nil {
 			return nil, err
@@ -72,7 +71,7 @@ func ParseActionsBytes(bytes []byte) ([]model.Action, error) {
 	return actions, nil
 }
 
-func ParseMemeList() ([]model.Meme, error) {
+func ParseMemeList() ([]Meme, error) {
 	jsonFile, err := os.Open("./json/memes.json")
 	if err != nil {
 		fmt.Println(err)
@@ -85,9 +84,9 @@ func ParseMemeList() ([]model.Meme, error) {
 	var mapData map[string]interface{}
 	json.Unmarshal(byteValue, &mapData)
 
-	var memes []model.Meme
+	var memes []Meme
 	for key, value := range mapData {
-		meme := model.Meme{
+		meme := Meme{
 			Name: key,
 			Text: value.(string),
 		}
