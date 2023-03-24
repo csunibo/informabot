@@ -8,6 +8,7 @@ type DataInterface interface {
 	// Returns another command to be executed, or emtpy string if no command is to be executed
 	// NOTE: we assume that everything returned by this function is a valid command
 	HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string
+	GetDescription() string
 }
 
 func GetActionFromType(name string, commandType string) Action {
@@ -72,7 +73,8 @@ type Action struct {
 }
 
 type MessageData struct {
-	Text string `json:"text"`
+	Text        string `json:"text"`
+	Description string `json:"description"`
 }
 
 type HelpData struct {
@@ -126,7 +128,8 @@ type CourseData struct {
 }
 
 type LuckData struct {
-	Description string `json:"description"`
+	Description     string `json:"description"`
+	NoLuckGroupText string `json:"noLuckGroupText"`
 }
 
 type InvalidData struct{}

@@ -8,6 +8,7 @@ import (
 
 	"github.com/csunibo/informabot/utils"
 	"github.com/mitchellh/mapstructure"
+	"golang.org/x/exp/slices"
 )
 
 const groupsPath = "./json/groups.json"
@@ -70,6 +71,10 @@ func ParseActionsBytes(bytes []byte) ([]Action, error) {
 
 		actions = append(actions, action)
 	}
+
+	slices.SortFunc(actions, func(a, b Action) bool {
+		return a.Name < b.Name
+	})
 
 	return actions, nil
 }

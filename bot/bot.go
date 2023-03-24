@@ -7,6 +7,7 @@ import (
 	"github.com/csunibo/informabot/model"
 	"github.com/csunibo/informabot/utils"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	"golang.org/x/exp/slices"
 )
 
 func StartInformaBot(token string, debug bool) {
@@ -36,6 +37,8 @@ func run(bot *tgbotapi.BotAPI) {
 	for update := range updates {
 		if update.Message == nil {
 			continue
+		} else if filterMessage(bot, update.Message) {
+			continue
 		}
 
 		if update.Message.IsCommand() {
@@ -59,6 +62,7 @@ func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 
 	hasExecutedCommand := executeCommandWithName(bot, update, commandName)
 	if !hasExecutedCommand {
+		// NOTE: we coul use binary search instead of linear search
 		memeIndex := utils.Find(model.MemeList, commandName, func(meme model.Meme, commandName string) bool {
 			return meme.Name == commandName
 		})
@@ -99,6 +103,20 @@ func executeCommandWithName(bot *tgbotapi.BotAPI, update *tgbotapi.Update, comma
 
 	if idx != -1 {
 		executeCommand(bot, update, idx)
+		return true
+	}
+
+	return false
+}
+
+func filterMessage(bot *tgbotapi.BotAPI, message *tgbotapi.Message) bool {
+	var dices = []string{"🎲", "🎯", "🏀", "⚽", "🎳", "🎰"}
+
+	// TODO: filtra messaggi con emoji
+	receivedText := strings.ToLower(message.Text)
+	if idx := slices.Index(dices, receivedText); idx != -1 {
+		msg := tgbotapi.NewMessage(message.Chat.ID, "found a dice")
+		bot.Send(msg)
 		return true
 	}
 

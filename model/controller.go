@@ -3,6 +3,7 @@ package model
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"strings"
 	"time"
 
@@ -20,9 +21,14 @@ func (data MessageData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi
 }
 
 func (data HelpData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO HelpData: notimplemented, Got: %s\n", message.Text))
-	utils.SendHTML(bot, msg)
+	answer := ""
+	for _, action := range Actions {
+		if description := action.Data.GetDescription(); description != "" {
+			answer += "/" + action.Name + " - " + description + "\n"
+		}
+	}
 
+	utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, answer))
 	return ""
 }
 
@@ -84,7 +90,7 @@ func (data NotLookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tg
 		return ""
 	} else if _, ok := Groups[message.Chat.ID]; !ok {
 		log.Print("Info [NotLookingForData]: group empty, user not found")
-		utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf(data.NotFoundError, chatTitle)))
+		utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf(data.NotFoundError, message.Chat.Title)))
 		return ""
 	}
 
@@ -196,14 +202,32 @@ func (data CourseData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.
 }
 
 func (data LuckData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO LuckData: notimplemented, Got: %s\n", message.Text))
-	utils.SendHTML(bot, msg)
+	var emojis = []string{"🎲", "🎯", "🏀", "⚽", "🎳", "🎰"}
+	var noLuckGroups = []int64{-1563447632} // NOTE: better way to handle this?
+
+	var canLuckGroup = true
+
+	if slices.Index(noLuckGroups, message.Chat.ID) != -1 {
+		canLuckGroup = false
+	}
+
+	if canLuckGroup {
+		rand.NewSource(time.Now().Unix())
+		emoji := emojis[rand.Intn(len(emojis))]
+
+		msg := tgbotapi.NewMessage(message.Chat.ID, emoji)
+		bot.Send(msg)
+	} else {
+		msg := tgbotapi.NewMessage(message.Chat.ID, data.NoLuckGroupText)
+		utils.SendHTML(bot, msg)
+	}
 
 	return ""
 }
 
 func (data InvalidData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO InvalidData: notimplemented, Got: %s\n", message.Text))
+	log.Printf("Probably a bug in the JSON action dictionary, got invalid data in command")
+	msg := tgbotapi.NewMessage(message.Chat.ID, "Bot internal Error, contact developers")
 	utils.SendHTML(bot, msg)
 
 	return ""
