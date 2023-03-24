@@ -26,13 +26,6 @@ func (data HelpData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Me
 	return ""
 }
 
-func (data UpdateData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO UpdateData: notimplemented, Got: %s\n", message.Text))
-	utils.SendHTML(bot, msg)
-
-	return ""
-}
-
 func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
 	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") || slices.Contains(Settings.LookingForBlackList, message.Chat.ID) {
 		utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, data.ChatError))

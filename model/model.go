@@ -17,8 +17,6 @@ func GetActionFromType(name string, commandType string) Action {
 		data = MessageData{}
 	case "help":
 		data = HelpData{}
-	case "update":
-		data = UpdateData{}
 	case "lookingFor":
 		data = LookingForData{}
 	case "notLookingFor":
@@ -79,15 +77,6 @@ type MessageData struct {
 
 type HelpData struct {
 	Description string `json:"description"`
-}
-
-type UpdateData struct {
-	Description string `json:"description"`
-	NoYear      string `json:"noYear"`
-	NoMod       string `json:"noMod"`
-	Started     string `json:"started"`
-	Ended       string `json:"ended"`
-	Failed      string `json:"failed"`
 }
 
 type LookingForData struct {
