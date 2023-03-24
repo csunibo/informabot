@@ -171,7 +171,17 @@ func (data TomorrowLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message 
 }
 
 func (data ListData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	msg := tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf("TODO ListData: notimplemented, Got: %s\n", message.Text))
+	resultText := data.Header
+
+	for _, item := range data.Items {
+		itemInterface := make([]interface{}, len(item))
+		for i, v := range item {
+			itemInterface[i] = v
+		}
+		resultText += fmt.Sprintf(data.Template, itemInterface...)
+	}
+
+	msg := tgbotapi.NewMessage(message.Chat.ID, resultText)
 	utils.SendHTML(bot, msg)
 
 	return ""

@@ -166,7 +166,7 @@
     "data": {
       "description": "Elenchi esami a scelta",
       "header": "<b>Esami a libera scelta:</b>\n",
-      "template": "<a href='https://www.unibo.it/it/didattica/insegnamenti?search=True&codiceSSD={0}&SSDInsegnamentoButton=cerca'>\ud83c\udfeb {1}</a>\n",
+      "template": "<a href='https://www.unibo.it/it/didattica/insegnamenti?search=True&codiceSSD=%s&SSDInsegnamentoButton=cerca'>\ud83c\udfeb %s</a>\n",
       "items": [
         [
           "INF%2F01",
