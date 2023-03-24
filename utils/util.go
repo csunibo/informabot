@@ -13,6 +13,7 @@ import (
 // Wrapper for the send function, to send HTML messages
 func SendHTML(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) {
 	msg.ParseMode = "HTML"
+	msg.DisableWebPagePreview = true
 	bot.Send(msg)
 }
 

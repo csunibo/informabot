@@ -53,10 +53,6 @@ type AutoReply struct {
 }
 
 type SettingsStruct struct {
-	MessageOptions struct {
-		ParseMode             string `json:"parse_mode"`
-		DisableWebPagePreview bool   `json:"disable_web_page_preview"`
-	} `json:"messageOptions"`
 	LookingForBlackList []int64 `json:"lookingForBlackList"`
 	GeneralGroups       []int64 `json:"generalGroups"`
 }
