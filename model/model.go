@@ -1,3 +1,4 @@
+// In this file we define all the structs used to parse JSON files into Go structs
 package model
 
 import (
@@ -5,9 +6,7 @@ import (
 )
 
 type DataInterface interface {
-	// Returns another command to be executed, or emtpy string if no command is to be executed
-	// NOTE: we assume that everything returned by this function is a valid command
-	HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string
+	HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse
 	GetDescription() string
 }
 
@@ -45,6 +44,7 @@ func GetActionFromType(name string, commandType string) Action {
 	}
 }
 
+// SECTION GLOBAL JSON STRUCTS
 type GroupsStruct = map[int64][]int
 
 type AutoReply struct {
@@ -68,6 +68,7 @@ type Action struct {
 	Data DataInterface `json:"data"`
 }
 
+// SECTION ACTION STRUCTS DATA
 type MessageData struct {
 	Text        string `json:"text"`
 	Description string `json:"description"`

@@ -13,14 +13,11 @@ import (
 	"golang.org/x/exp/slices"
 )
 
-func (data MessageData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
-	msg := tgbotapi.NewMessage(message.Chat.ID, data.Text)
-	utils.SendHTML(bot, msg)
-
-	return ""
+func (data MessageData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
+	return makeResponseWithText(data.Text)
 }
 
-func (data HelpData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data HelpData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	answer := ""
 	for _, action := range Actions {
 		if description := action.Data.GetDescription(); description != "" {
@@ -28,15 +25,13 @@ func (data HelpData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Me
 		}
 	}
 
-	utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, answer))
-	return ""
+	return makeResponseWithText(answer)
 }
 
-func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") || slices.Contains(Settings.LookingForBlackList, message.Chat.ID) {
-		utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, data.ChatError))
 		log.Print("Error [LookingForData]: not a group or blacklisted")
-		return ""
+		return makeResponseWithText(data.ChatError)
 	}
 
 	var chatId = message.Chat.ID
@@ -55,7 +50,7 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 	chatMembers, err := utils.GetChatMembers(bot, message.Chat.ID, Groups[chatId])
 	if err != nil {
 		log.Printf("Error [LookingForData]: %s", err)
-		return ""
+		return makeResponseWithText("Errore nel caricamento dei membri del gruppo")
 	}
 
 	var resultMsg string
@@ -77,62 +72,51 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 			userLastName)
 	}
 
-	msg := tgbotapi.NewMessage(message.Chat.ID, resultMsg)
-	utils.SendHTML(bot, msg)
-
-	return ""
+	return makeResponseWithText(resultMsg)
 }
 
-func (data NotLookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data NotLookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") || slices.Contains(Settings.LookingForBlackList, message.Chat.ID) {
-		utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, data.ChatError))
 		log.Print("Error [NotLookingForData]: not a group or blacklisted")
-		return ""
+		return makeResponseWithText(data.ChatError)
 	} else if _, ok := Groups[message.Chat.ID]; !ok {
 		log.Print("Info [NotLookingForData]: group empty, user not found")
-		utils.SendHTML(bot, tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf(data.NotFoundError, message.Chat.Title)))
-		return ""
+		return makeResponseWithText(fmt.Sprintf(data.NotFoundError, message.Chat.Title))
 	}
 
 	var chatId = message.Chat.ID
 	var senderId = message.From.ID
 	var chatTitle = message.Chat.Title
 
-	var msg tgbotapi.MessageConfig
-
+	var msg string
 	if idx := slices.Index(Groups[chatId], senderId); idx == -1 {
 		log.Print("Info [NotLookingForData]: user not found in group")
-		msg = tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf(data.NotFoundError, chatTitle))
+		msg = fmt.Sprintf(data.NotFoundError, chatTitle)
 	} else {
 		Groups[chatId] = append(Groups[chatId][:idx], Groups[chatId][idx+1:]...)
 		SaveGroups()
-		msg = tgbotapi.NewMessage(message.Chat.ID, fmt.Sprintf(data.Text, chatTitle))
+		msg = fmt.Sprintf(data.Text, chatTitle)
 	}
 
-	utils.SendHTML(bot, msg)
-
-	return ""
+	return makeResponseWithText(msg)
 }
 
-func (data YearlyData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data YearlyData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	var chatTitle string = strings.ToLower(message.Chat.Title)
 
 	// check if string starts with "Yearly"
 	if strings.Contains(chatTitle, "primo") {
-		return data.Command + "1"
+		return makeResponseWithNextCommand(data.Command + "1")
 	} else if strings.Contains(chatTitle, "secondo") {
-		return data.Command + "2"
+		return makeResponseWithNextCommand(data.Command + "2")
 	} else if strings.Contains(chatTitle, "terzo") {
-		return data.Command + "3"
+		return makeResponseWithNextCommand(data.Command + "3")
 	} else {
-		msg := tgbotapi.NewMessage(message.Chat.ID, data.NoYear)
-		utils.SendHTML(bot, msg)
+		return makeResponseWithText(data.NoYear)
 	}
-
-	return ""
 }
 
-func (data TodayLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data TodayLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	var todayTime time.Time = time.Now()
 	var todayString string = todayTime.Format("2006-01-02")
 	url := data.Url + fmt.Sprintf("&start=%s&end=%s", todayString, todayString)
@@ -140,18 +124,17 @@ func (data TodayLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tg
 
 	var response string = commands.GetTimeTable(url)
 
-	var msg tgbotapi.MessageConfig
+	var msg string
 	if response != "" {
-		msg = tgbotapi.NewMessage(message.Chat.ID, data.Title+response)
+		msg = data.Title + response
 	} else {
-		msg = tgbotapi.NewMessage(message.Chat.ID, data.FallbackText)
+		msg = data.FallbackText
 	}
-	utils.SendHTML(bot, msg)
 
-	return ""
+	return makeResponseWithText(msg)
 }
 
-func (data TomorrowLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data TomorrowLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	var todayTime time.Time = time.Now()
 	var tomorrowTime time.Time = todayTime.AddDate(0, 0, 1)
 	var tomorrowString string = tomorrowTime.Format("2006-01-02")
@@ -159,18 +142,17 @@ func (data TomorrowLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message 
 
 	var response string = commands.GetTimeTable(url)
 
-	var msg tgbotapi.MessageConfig
+	var msg string
 	if response != "" {
-		msg = tgbotapi.NewMessage(message.Chat.ID, data.Title+response)
+		msg = data.Title + response
 	} else {
-		msg = tgbotapi.NewMessage(message.Chat.ID, data.FallbackText)
+		msg = data.FallbackText
 	}
-	utils.SendHTML(bot, msg)
 
-	return ""
+	return makeResponseWithText(msg)
 }
 
-func (data ListData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data ListData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	resultText := data.Header
 
 	for _, item := range data.Items {
@@ -181,13 +163,10 @@ func (data ListData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Me
 		resultText += fmt.Sprintf(data.Template, itemInterface...)
 	}
 
-	msg := tgbotapi.NewMessage(message.Chat.ID, resultText)
-	utils.SendHTML(bot, msg)
-
-	return ""
+	return makeResponseWithText(resultText)
 }
 
-func (data CourseData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data CourseData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	emails := strings.Join(data.Professors, "@unibo.it\n ") + "@unibo.it\n"
 	ternary_assignment := func(condition bool, true_value string) string {
 		if condition {
@@ -197,21 +176,19 @@ func (data CourseData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.
 		}
 	}
 
-	msg := tgbotapi.NewMessage(message.Chat.ID,
-		ternary_assignment(data.Name != "", fmt.Sprintf("<b>%s</b>\n", data.Name))+
-			ternary_assignment(data.Virtuale != "", fmt.Sprintf("<a href='https://virtuale.unibo.it/course/view.php?id=%s'>Virtuale</a>", data.Virtuale))+"\n"+
-			ternary_assignment(data.Teams != "", fmt.Sprintf("<a href='https://teams.microsoft.com/l/meetup-join/19%%3ameeting_%s", data.Teams))+"%40thread.v2/0?context=%7b%22Tid%22%3a%22e99647dc-1b08-454a-bf8c-699181b389ab%22%2c%22Oid%22%3a%22080683d2-51aa-4842-aa73-291a43203f71%22%7d'>Videolezione</a>\n"+
-			ternary_assignment(data.Website != "", fmt.Sprintf("<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s'>Sito</a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/orariolezioni'>Orario</a>", data.Website, data.Website))+"\n"+
-			ternary_assignment(data.Professors != nil, fmt.Sprintf("Professori:\n %s", emails))+
-			ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://csunibo.github.io/%s/'>📚 Risorse: materiali, libri, prove</a>\n", utils.ToKebabCase(data.Name)))+
-			ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://github.com/csunibo/%s/'>📂 Repository GitHub delle risorse</a>\n", utils.ToKebabCase(data.Name)))+
-			ternary_assignment(data.Telegram != "", fmt.Sprintf("<a href='t.me/$%s'>👥 Gruppo Studenti</a>\n", data.Telegram)))
-	utils.SendHTML(bot, msg)
+	msg := ternary_assignment(data.Name != "", fmt.Sprintf("<b>%s</b>\n", data.Name)) +
+		ternary_assignment(data.Virtuale != "", fmt.Sprintf("<a href='https://virtuale.unibo.it/course/view.php?id=%s'>Virtuale</a>", data.Virtuale)) + "\n" +
+		ternary_assignment(data.Teams != "", fmt.Sprintf("<a href='https://teams.microsoft.com/l/meetup-join/19%%3ameeting_%s", data.Teams)) + "%40thread.v2/0?context=%7b%22Tid%22%3a%22e99647dc-1b08-454a-bf8c-699181b389ab%22%2c%22Oid%22%3a%22080683d2-51aa-4842-aa73-291a43203f71%22%7d'>Videolezione</a>\n" +
+		ternary_assignment(data.Website != "", fmt.Sprintf("<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s'>Sito</a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/orariolezioni'>Orario</a>", data.Website, data.Website)) + "\n" +
+		ternary_assignment(data.Professors != nil, fmt.Sprintf("Professori:\n %s", emails)) +
+		ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://csunibo.github.io/%s/'>📚 Risorse: materiali, libri, prove</a>\n", utils.ToKebabCase(data.Name))) +
+		ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://github.com/csunibo/%s/'>📂 Repository GitHub delle risorse</a>\n", utils.ToKebabCase(data.Name))) +
+		ternary_assignment(data.Telegram != "", fmt.Sprintf("<a href='t.me/$%s'>👥 Gruppo Studenti</a>\n", data.Telegram))
 
-	return ""
+	return makeResponseWithText(msg)
 }
 
-func (data LuckData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data LuckData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	var emojis = []string{"🎲", "🎯", "🏀", "⚽", "🎳", "🎰"}
 	var noLuckGroups = []int64{-1563447632} // NOTE: better way to handle this?
 
@@ -221,24 +198,21 @@ func (data LuckData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Me
 		canLuckGroup = false
 	}
 
+	var msg string
 	if canLuckGroup {
 		rand.NewSource(time.Now().Unix())
 		emoji := emojis[rand.Intn(len(emojis))]
 
-		msg := tgbotapi.NewMessage(message.Chat.ID, emoji)
-		bot.Send(msg)
+		msg = emoji
 	} else {
-		msg := tgbotapi.NewMessage(message.Chat.ID, data.NoLuckGroupText)
-		utils.SendHTML(bot, msg)
+		msg = data.NoLuckGroupText
 	}
 
-	return ""
+	return makeResponseWithText(msg)
 }
 
-func (data InvalidData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) string {
+func (data InvalidData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	log.Printf("Probably a bug in the JSON action dictionary, got invalid data in command")
-	msg := tgbotapi.NewMessage(message.Chat.ID, "Bot internal Error, contact developers")
-	utils.SendHTML(bot, msg)
 
-	return ""
+	return makeResponseWithText("Bot internal Error, contact developers")
 }
