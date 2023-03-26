@@ -12,7 +12,7 @@ import (
 
 // Wrapper for the send function, to send HTML messages
 func SendHTML(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) {
-	msg.ParseMode = "HTML"
+	msg.ParseMode = tgbotapi.ModeHTML
 	msg.DisableWebPagePreview = true
 	bot.Send(msg)
 }
@@ -41,16 +41,6 @@ func ToKebabCase(str string) string {
 	}
 
 	return strings.Join(splitted, "-")
-}
-
-// TODO: this function is already implemented in Slices Index, use that.
-func Find[T any, Q any](a []T, x Q, compare func(T, Q) bool) int {
-	for i, n := range a {
-		if compare(n, x) {
-			return i
-		}
-	}
-	return -1
 }
 
 func WriteJSONFile(filename string, data interface{}) error {

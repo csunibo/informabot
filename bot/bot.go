@@ -49,8 +49,7 @@ func run(bot *tgbotapi.BotAPI) {
 				if strings.Contains(strings.ToLower(update.Message.Text), strings.ToLower(model.Autoreplies[i].Text)) {
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, model.Autoreplies[i].Reply)
 					msg.ReplyToMessageID = update.Message.MessageID
-					msg.ParseMode = tgbotapi.ModeHTML
-					bot.Send(msg)
+					utils.SendHTML(bot, msg)
 				}
 			}
 		}
@@ -63,15 +62,15 @@ func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 
 	hasExecutedCommand := executeCommandWithName(bot, update, commandName)
 	if !hasExecutedCommand {
-		// NOTE: we coul use binary search instead of linear search
-		memeIndex := utils.Find(model.MemeList, commandName, func(meme model.Meme, commandName string) bool {
-			return meme.Name == commandName
+		// NOTE: we could use binary search instead of linear search
+		memeIndex := slices.IndexFunc(model.MemeList, func(meme model.Meme) bool {
+			return strings.ToLower(meme.Name) == commandName
 		})
 
 		if memeIndex != -1 {
 			log.Printf("@%s: \t%s -> MEMES", update.Message.From.UserName, update.Message.Text)
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, model.MemeList[memeIndex].Text)
-			bot.Send(msg)
+			utils.SendHTML(bot, msg)
 		} else {
 			executeCommandWithName(bot, update, "unknown")
 			log.Printf("@%s: \t%s -> COMMAND NOT AVAILABLE", update.Message.From.UserName, update.Message.Text)
@@ -98,7 +97,7 @@ func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex 
 // executes a given command in the command list, given its name
 // @return true if command was found, false otherwise
 func executeCommandWithName(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandName string) bool {
-	idx := utils.Find(model.Actions, commandName, func(action model.Action, commandName string) bool {
+	idx := slices.IndexFunc(model.Actions, func(action model.Action) bool {
 		return action.Name == commandName
 	})
 
