@@ -5,14 +5,22 @@ University of Bologna.
 
 ## Dependencies
 
-[Node.js](https://www.nodejs.dev) 12.2.2 or higher is required.
+[Go](https://go.dev/) 1.18 or higher is required.
+
+## Build
+
+To build the bot from the main directory use
+
+```bash
+go build
+```
 
 ## Running
 
 To run the bot from the project directory, simply use
 
 ```bash
-npm start -- $TOKEN
+go run main.go $TOKEN
 ```
 
 where `$TOKEN` is the authorization token you got from

@@ -1,8 +1,4 @@
 {
-  "messageOptions": {
-    "parse_mode": "HTML",
-    "disable_web_page_preview": 1
-  },
   "lookingForBlackList": [
     -1001563447632, -1001529143812, -1001421361284, -1001303700367,
     -1001453098170
