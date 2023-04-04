@@ -36,9 +36,9 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > appunti - Appunti su Notion
 >
-> aggiorna - Aggiorna le azioni del bot
->
 > cercogruppo - Cerca un gruppo di progetto
+>
+> coursedesc - Documento con tutte le descrizioni dei corsi in inglese
 >
 > dns - I DNS di ALMAWIFI
 >
@@ -66,17 +66,15 @@ asked to "send a list of commands for your bot". Consider using this one:
 >
 > noncercogruppo - Smetti di cercare un gruppo di progetto
 >
-> registrate - Lezioni registrate su OneDrive
->
 > ludopatico - Tenta la fortuna
+>
+> registrate - Lezioni registrate su OneDrive
 >
 > scelta - Elenchi esami a scelta
 >
 > stickers - Pacchetti degli adesivi Telegram del corso
 >
 > tesi - Tesi DISI proposte e assegnate
->
-> coursedesc - Documento con tutte le descrizioni dei corsi in inglese
 >
 > tirocinio - Strumento per riassumere le attività svolte durante il proprio tirocinio
 >
@@ -202,16 +200,6 @@ Scrapes tomorrow's timetable from `url`, using `title` as header. On faliure,
 Puts together a summary for a given course, featuring its `name`, Virtuale link
 (`virtuale`), Teams link (`teams`), official `website` link, as well as the
 email addresses of the `professors`.
-
-#### `update`
-
-Pulls from the original repo and reloads all of the JSON files, without
-restarting the bot. It can only be run by administrators in a general group.
-If it is not run in a general group, a `noYear` message is sent. Otherwise, if
-it is not run by an administrator, a `noMod` message is sent. Otherwise the
-update is attempted, and the `started` message is sent. At the end of the
-operation, depending on the outcome, either the `ended` or the `failed` message
-may be sent.
 
 ### Memes
 
