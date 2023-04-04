@@ -33,6 +33,8 @@ module.exports.timetable = function (bot, msg, url, date, title, fallbackText) {
         if (lectures[i].aule.length > 0) {
           text += `  🏢 ${lectures[i].aule[0].des_edificio} - ${lectures[i].aule[0].des_piano}` + "\n"
           text += `  📍 ${lectures[i].aule[0].des_indirizzo}` + "\n"
+        } else {
+          text += `  ⚠️ something go wrong with aula... try look on <a href='${lectures[i].url}'>${lectures[i].url}</a> ( maybe teacher said it as announcement )` + "\n"
         }
       }
       message(bot, msg, lectures.length !== 0 ? text : fallbackText);
