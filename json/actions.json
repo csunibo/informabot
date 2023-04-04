@@ -168,114 +168,33 @@
       "header": "<b>Esami a libera scelta:</b>\n",
       "template": "<a href='https://www.unibo.it/it/didattica/insegnamenti?search=True&codiceSSD=%s&SSDInsegnamentoButton=cerca'>\ud83c\udfeb %s</a>\n",
       "items": [
-        [
-          "INF%2F01",
-          "INF/01 Informatica"
-        ],
-        [
-          "MAT%2F01",
-          "MAT/01 Logica matematica"
-        ],
-        [
-          "MAT%2F02",
-          "MAT/02 Algebra"
-        ],
-        [
-          "MAT%2F03",
-          "MAT/03 Geometria"
-        ],
-        [
-          "MAT%2F04",
-          "MAT/04 Matematiche compl."
-        ],
-        [
-          "MAT%2F05",
-          "MAT/05 Analisi matematica"
-        ],
-        [
-          "MAT%2F06",
-          "MAT/06 Prob. e stat. mat."
-        ],
-        [
-          "MAT%2F07",
-          "MAT/07 Fisica matematica"
-        ],
-        [
-          "MAT%2F08",
-          "MAT/08 Analisi numerica"
-        ],
-        [
-          "MAT%2F09",
-          "MAT/09 Ricerca operativa"
-        ],
-        [
-          "FIS%2F01",
-          "FIS/01 Fis. sperimentale"
-        ],
-        [
-          "FIS%2F02",
-          "FIS/02 Fisica teorica"
-        ],
-        [
-          "FIS%2F03",
-          "FIS/03 Fis. della materia"
-        ],
-        [
-          "FIS%2F07",
-          "FIS/07 Fisica applicata"
-        ],
-        [
-          "ING-INF%2F01",
-          "ING-INF/01 Elettronica"
-        ],
-        [
-          "ING-INF%2F02",
-          "ING-INF/02 Campi elettromagn."
-        ],
-        [
-          "ING-INF%2F03",
-          "ING-INF/03 Telecomunicazioni"
-        ],
-        [
-          "ING-INF%2F04",
-          "ING-INF/04 Automatica"
-        ],
-        [
-          "ING-INF%2F05",
-          "ING-INF/05 Sis. elab. info."
-        ],
-        [
-          "ING-INF%2F06",
-          "ING-INF/06 Bioing. el. inf."
-        ],
-        [
-          "ING-INF%2F07",
-          "ING-INF/07 Misure elettriche"
-        ],
-        [
-          "SECS-P%2F07",
-          "SECS-P/07 Economia aziendale"
-        ],
-        [
-          "SECS-P%2F08",
-          "SECS-P/08 Economia, gest. impr."
-        ],
-        [
-          "SECS-P%2F09",
-          "SECS-P/09 Finanza aziendale"
-        ],
-        [
-          "SECS-P%2F10",
-          "SECS-P/10 Org. aziendale"
-        ],
-        [
-          "IUS%2F20",
-          "IUS/20 Filsofia del diritto"
-        ],
-        [
-          "M-FIL%2F02",
-          "M-FIL/02 Logica, filo. scienza"
-        ]
+        ["INF%2F01", "INF/01 Informatica"],
+        ["MAT%2F01", "MAT/01 Logica matematica"],
+        ["MAT%2F02", "MAT/02 Algebra"],
+        ["MAT%2F03", "MAT/03 Geometria"],
+        ["MAT%2F04", "MAT/04 Matematiche compl."],
+        ["MAT%2F05", "MAT/05 Analisi matematica"],
+        ["MAT%2F06", "MAT/06 Prob. e stat. mat."],
+        ["MAT%2F07", "MAT/07 Fisica matematica"],
+        ["MAT%2F08", "MAT/08 Analisi numerica"],
+        ["MAT%2F09", "MAT/09 Ricerca operativa"],
+        ["FIS%2F01", "FIS/01 Fis. sperimentale"],
+        ["FIS%2F02", "FIS/02 Fisica teorica"],
+        ["FIS%2F03", "FIS/03 Fis. della materia"],
+        ["FIS%2F07", "FIS/07 Fisica applicata"],
+        ["ING-INF%2F01", "ING-INF/01 Elettronica"],
+        ["ING-INF%2F02", "ING-INF/02 Campi elettromagn."],
+        ["ING-INF%2F03", "ING-INF/03 Telecomunicazioni"],
+        ["ING-INF%2F04", "ING-INF/04 Automatica"],
+        ["ING-INF%2F05", "ING-INF/05 Sis. elab. info."],
+        ["ING-INF%2F06", "ING-INF/06 Bioing. el. inf."],
+        ["ING-INF%2F07", "ING-INF/07 Misure elettriche"],
+        ["SECS-P%2F07", "SECS-P/07 Economia aziendale"],
+        ["SECS-P%2F08", "SECS-P/08 Economia, gest. impr."],
+        ["SECS-P%2F09", "SECS-P/09 Finanza aziendale"],
+        ["SECS-P%2F10", "SECS-P/10 Org. aziendale"],
+        ["IUS%2F20", "IUS/20 Filsofia del diritto"],
+        ["M-FIL%2F02", "M-FIL/02 Logica, filo. scienza"]
       ]
     }
   },
@@ -290,7 +209,7 @@
     "type": "message",
     "data": {
       "description": "Tesi DISI proposte e assegnate",
-      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>"
+      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>\n\n\ud83d\udcdd <a href='https://github.com/csunibo/latex-thesis'>Modello tesi LaTeX DISI</a>\n\ud83d\udcdd <a href='https://github.com/csunibo/asciidoc-thesis'>Modello tesi AsciiDoc DISI</a>"
     }
   },
   "tirocinio": {
@@ -300,6 +219,11 @@
       "text": "\ud83d\udcdd <a href='https://csunibo.github.io/diario-tirocinio/'>Diario Tirocinio</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/diario-tirocinio'>Sorgente</a>"
     }
   },
+  "wiki": {
+    "type": "message",
+    "description": "Il wiki di CSUnibo",
+    "text": "\ud83d\udcdd <a href='https://csunibo.github.io/wiki'>Wiki</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/wiki'>Sorgente</a>"
+  },
   "architettura": {
     "type": "course",
     "data": {
@@ -308,9 +232,7 @@
       "virtuale": "18282",
       "teams": "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx",
       "website": "2020/350960",
-      "professors": [
-        "ivan.lanese"
-      ],
+      "professors": ["ivan.lanese"],
       "telegram": "joinchat/kXM-_CadypQwOGVk"
     }
   },
@@ -322,9 +244,7 @@
       "virtuale": "21407",
       "teams": "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk",
       "website": "2020/455095",
-      "professors": [
-        "claudio.sacerdoticoen"
-      ],
+      "professors": ["claudio.sacerdoticoen"],
       "telegram": "joinchat/HEBiPjOx_SpmYzY0"
     }
   },
@@ -336,9 +256,7 @@
       "virtuale": "17653",
       "teams": "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4",
       "website": "2020/320574",
-      "professors": [
-        "cosimo.laneve"
-      ],
+      "professors": ["cosimo.laneve"],
       "telegram": "joinchat/z1kz0BRjFr8zYjI0"
     }
   },
@@ -350,9 +268,7 @@
       "virtuale": "17870",
       "teams": "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw",
       "website": "2020/366975",
-      "professors": [
-        "marta.morigi"
-      ],
+      "professors": ["marta.morigi"],
       "telegram": "joinchat/m5fn6ZffZvk0NGZk"
     }
   },
@@ -364,10 +280,7 @@
       "virtuale": "20930",
       "teams": "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl",
       "website": "2020/350957",
-      "professors": [
-        "gianluigi.zavattaro",
-        "pietro.dilena"
-      ],
+      "professors": ["gianluigi.zavattaro", "pietro.dilena"],
       "telegram": "joinchat/wSafC8l9ul1iNTE8"
     }
   },
@@ -379,10 +292,7 @@
       "virtuale": "18045",
       "teams": "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk",
       "website": "2020/320573",
-      "professors": [
-        "marco.mughetti",
-        "daniele.morbidelli"
-      ],
+      "professors": ["marco.mughetti", "daniele.morbidelli"],
       "telegram": "joinchat/60_5FO9onfo4YmJk"
     }
   },
@@ -394,9 +304,7 @@
       "virtuale": "25810",
       "teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
       "website": "2021/320581",
-      "professors": [
-        "elena.loli"
-      ],
+      "professors": ["elena.loli"],
       "telegram": "joinchat/h1lypfBFdEZkYzFk"
     }
   },
@@ -408,9 +316,7 @@
       "virtuale": "29872",
       "teams": "OGFlMmI5YTQtZDQwMy00ZmQzLTliMDQtMGYzZDNkMGExNjdl",
       "website": "2021/460495",
-      "professors": [
-        "ugo.dallago"
-      ],
+      "professors": ["ugo.dallago"],
       "telegram": "joinchat/klw79l5tkPM1NWQ0"
     }
   },
@@ -438,9 +344,7 @@
       "virtuale": "28376",
       "teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
       "website": "2021/455456",
-      "professors": [
-        "luciano.bononi"
-      ],
+      "professors": ["luciano.bononi"],
       "telegram": "joinchat/Sw2Ykp0-0mM1Zjdk"
     }
   },
@@ -452,9 +356,7 @@
       "virtuale": "26726",
       "teams": "NDFkMWJjZTUtZTlkYS00ZWFiLTgxMDctY2Q0YzAxZmZjOThl",
       "website": "2021/436428",
-      "professors": [
-        "fabio.vitali"
-      ],
+      "professors": ["fabio.vitali"],
       "telegram": "+Aq__wJAnPrc1MWQ0"
     }
   },
@@ -466,9 +368,7 @@
       "virtuale": "31906",
       "teams": "MDg3YjQ1ZDYtY2RmOC00NmYzLThjY2EtYWI1N2FkMjFmMGEx",
       "website": "2021/320583",
-      "professors": [
-        "andrea.cosso"
-      ],
+      "professors": ["andrea.cosso"],
       "telegram": "+j7GRbdJlwPExYzc0"
     }
   },
@@ -480,9 +380,7 @@
       "virtuale": "25797",
       "teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
       "website": "2021/320578",
-      "professors": [
-        "renzo.davoli"
-      ],
+      "professors": ["renzo.davoli"],
       "telegram": "joinchat/2hUcGLfY7Gc2MTA8"
     }
   },
@@ -492,9 +390,7 @@
       "description": "Tutto su Basi di dati",
       "name": "Basi di dati",
       "website": "2022/443720",
-      "professors": [
-        "danilo.montesi"
-      ],
+      "professors": ["danilo.montesi"],
       "telegram": "datidibasi"
     }
   },
@@ -505,9 +401,7 @@
       "name": "Ingegneria del software",
       "virtuale": "35949",
       "website": "2022/443719",
-      "professors": [
-        "paolo.ciancarini"
-      ],
+      "professors": ["paolo.ciancarini"],
       "telegram": "ingegneriaSWunibo"
     }
   },
@@ -518,9 +412,7 @@
       "name": "Introduzione all'apprendimento automatico",
       "virtuale": "35964",
       "website": "2022/455112",
-      "professors": [
-        "andrea.asperti"
-      ],
+      "professors": ["andrea.asperti"],
       "telegram": "appr_auto"
     }
   },
@@ -538,9 +430,7 @@
       "description": "Tutto su Informatica teorica",
       "name": "Informatica teorica",
       "website": "2022/455107",
-      "professors": [
-        "claudio.sacerdoticoen"
-      ],
+      "professors": ["claudio.sacerdoticoen"],
       "telegram": "infoteorica"
     }
   },
@@ -550,9 +440,7 @@
       "description": "Tutto su Progetto di sistemi virtuali",
       "name": "Progetto di sistemi virtuali",
       "website": "2022/354042",
-      "professors": [
-        "renzo.davoli"
-      ],
+      "professors": ["renzo.davoli"],
       "telegram": "p_sis_virt"
     }
   },
@@ -570,10 +458,7 @@
       "description": "Tutto su Laboratorio di applicazioni mobili",
       "name": "Laboratorio di applicazioni mobili",
       "website": "2022/366984",
-      "professors": [
-        "luciano.bononni",
-        "federico.montori2"
-      ],
+      "professors": ["luciano.bononni", "federico.montori2"],
       "telegram": "+kGgOP9VgHotlMDg8"
     }
   },
@@ -583,9 +468,7 @@
       "description": "Tutto su Storia dell'informatica e dei dispositivi di calcolo",
       "name": "Storia dell'informatica e dei dispositivi di calcolo",
       "website": "2022/447912",
-      "professors": [
-        "giorgio.casadei"
-      ],
+      "professors": ["giorgio.casadei"],
       "telegram": "+82Kca29dpGFiMmY0"
     }
   },
@@ -595,9 +478,7 @@
       "description": "Tutto su Strategia aziendale",
       "name": "Strategia aziendale",
       "website": "2022/422036",
-      "professors": [
-        "sabrina.scarito"
-      ],
+      "professors": ["sabrina.scarito"],
       "telegram": "+DmlZ4Q31uTQ5YTE0"
     }
   }
