@@ -24,6 +24,13 @@
       "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<a href='https://luizo.notion.site/Notion-dei-Notion-20c37e0ee4904a9c898680378f1a50b0'>\ud83d\uddd2\ufe0f Notion dei notion</a>\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilit\u00e0 riguardo eventuali informazioni errate presenti all'interno degli appunti."
     }
   },
+  "calendario": {
+    "type": "message",
+    "data": {
+      "description": "Aggiungi lezioni al tuo calendario",
+      "text": "\ud83d\udcdd <a href='https://calendar.students.cs.unibo.it/'>Calendario</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/unibo-calendar'>Sorgente</a>"
+    }
+  },
   "cercogruppo": {
     "type": "lookingFor",
     "data": {
