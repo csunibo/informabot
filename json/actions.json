@@ -51,7 +51,7 @@
     "type": "message",
     "data": {
       "description": "Tutte le info di AdmStaff",
-      "text": "<b><i>AdmStaff</i></b>\ud83d\udcbb\n\n<a href='https://admstaff.students.cs.unibo.it'>\ud83c\udf10Sito Ufficiale</a>\n<a href='https://wiki.students.cs.unibo.it/#!index.md'>\ud83d\udcd6Wiki</a>\n\ud83d\udce7E-mail admstaff@cs.unibo.it"
+      "text": "<b><i>AdmStaff</i></b>\ud83d\udcbb\n\n<a href='https://students.cs.unibo.it'>\ud83c\udf10Sito Ufficiale e Wiki</a>\n\ud83d\udce7E-mail admstaff@cs.unibo.it"
     }
   },
   "gruppi": {
