@@ -195,7 +195,7 @@ func (data CourseData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.
 		ternary_assignment(data.Professors != nil, fmt.Sprintf("Professori:\n %s", emails)) +
 		ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://csunibo.github.io/%s/'>📚 Risorse: materiali, libri, prove</a>\n", utils.ToKebabCase(data.Name))) +
 		ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://github.com/csunibo/%s/'>📂 Repository GitHub delle risorse</a>\n", utils.ToKebabCase(data.Name))) +
-		ternary_assignment(data.Telegram != "", fmt.Sprintf("<a href='t.me/%s'>👥 Gruppo Studenti</a>\n", data.Telegram))
+		ternary_assignment(data.Telegram != "", fmt.Sprintf("<a href='https://t.me/%s'>👥 Gruppo Studenti</a>\n", data.Telegram))
 
 	return makeResponseWithText(msg)
 }
