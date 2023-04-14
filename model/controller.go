@@ -58,7 +58,7 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 	if len(chatMembers) == 1 {
 		resultMsg = fmt.Sprintf(data.SingularText, message.Chat.Title)
 	} else {
-		resultMsg = fmt.Sprintf(data.PluralText, message.Chat.Title, len(chatMembers))
+		resultMsg = fmt.Sprintf(data.PluralText, len(chatMembers), message.Chat.Title)
 	}
 
 	for _, member := range chatMembers {

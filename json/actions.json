@@ -24,6 +24,13 @@
       "text": "Grazie ai nostri gentili contribuenti, ecco l'elenco dei Notion:\n\n<a href='https://luizo.notion.site/Notion-dei-Notion-20c37e0ee4904a9c898680378f1a50b0'>\ud83d\uddd2\ufe0f Notion dei notion</a>\n\nN.B. Ai sensi delle Leggi Infernali del Sommo CSC, i relatori non hanno alcuna responsabilit\u00e0 riguardo eventuali informazioni errate presenti all'interno degli appunti."
     }
   },
+  "calendario": {
+    "type": "message",
+    "data": {
+      "description": "Aggiungi lezioni al tuo calendario",
+      "text": "\ud83d\udcdd <a href='https://calendar.students.cs.unibo.it/'>Calendario</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/unibo-calendar'>Sorgente</a>"
+    }
+  },
   "cercogruppo": {
     "type": "lookingFor",
     "data": {
@@ -51,7 +58,7 @@
     "type": "message",
     "data": {
       "description": "Tutte le info di AdmStaff",
-      "text": "<b><i>AdmStaff</i></b>\ud83d\udcbb\n\n<a href='https://admstaff.students.cs.unibo.it'>\ud83c\udf10Sito Ufficiale</a>\n<a href='https://wiki.students.cs.unibo.it/#!index.md'>\ud83d\udcd6Wiki</a>\n\ud83d\udce7E-mail admstaff@cs.unibo.it"
+      "text": "<b><i>AdmStaff</i></b>\ud83d\udcbb\n\n<a href='https://students.cs.unibo.it'>\ud83c\udf10Sito Ufficiale e Wiki</a>\n\ud83d\udce7E-mail admstaff@cs.unibo.it"
     }
   },
   "gruppi": {
@@ -357,7 +364,7 @@
       "teams": "NDFkMWJjZTUtZTlkYS00ZWFiLTgxMDctY2Q0YzAxZmZjOThl",
       "website": "2021/436428",
       "professors": ["fabio.vitali"],
-      "telegram": "+Aq__wJAnPrc1MWQ0"
+      "telegram": "+nwEQesjR6FRmYzk0+Aq__wJAnPrc1MWQ0"
     }
   },
   "probabilita": {
