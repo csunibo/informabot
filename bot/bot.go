@@ -62,7 +62,6 @@ func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 
 	hasExecutedCommand := executeCommandWithName(bot, update, commandName)
 	if !hasExecutedCommand {
-		// NOTE: we could use binary search instead of linear search
 		memeIndex := slices.IndexFunc(model.MemeList, func(meme model.Meme) bool {
 			return strings.ToLower(meme.Name) == commandName
 		})
@@ -114,7 +113,6 @@ func executeCommandWithName(bot *tgbotapi.BotAPI, update *tgbotapi.Update, comma
 func filterMessage(bot *tgbotapi.BotAPI, message *tgbotapi.Message) bool {
 	var dices = []string{"🎲", "🎯", "🏀", "⚽", "🎳", "🎰"}
 
-	// TODO: filtra messaggi con emoji
 	receivedText := strings.ToLower(message.Text)
 	if idx := slices.Index(dices, receivedText); idx != -1 {
 		msg := tgbotapi.NewMessage(message.Chat.ID, "found a dice")

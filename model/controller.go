@@ -54,7 +54,7 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 	}
 
 	var resultMsg string
-	// NOTA: c'è una dipendenza molto forte con il json del testo qui.
+	// Careful: additional arguments must be passed in the right order!
 	if len(chatMembers) == 1 {
 		resultMsg = fmt.Sprintf(data.SingularText, message.Chat.Title)
 	} else {
@@ -120,7 +120,7 @@ func (data TodayLecturesData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tg
 	var todayTime time.Time = time.Now()
 	var todayString string = todayTime.Format("2006-01-02")
 	url := data.Url + fmt.Sprintf("&start=%s&end=%s", todayString, todayString)
-	// TODO: print this url if bot debug mode is active
+	log.Printf("URL: %s\n", url)
 
 	var response string = commands.GetTimeTable(url)
 
