@@ -238,7 +238,7 @@
       "description": "Tutto su Architettura degli elaboratori",
       "virtuale": "18282",
       "teams": "ZjM2MGUxNTAtODA1NC00N2NiLWEwOWMtYTllMzZkOGQ0MjMx",
-      "website": "2020/350960",
+      "website": "350960",
       "professors": ["ivan.lanese"],
       "telegram": "joinchat/kXM-_CadypQwOGVk"
     }
@@ -250,7 +250,7 @@
       "description": "Tutto su Logica per l'informatica",
       "virtuale": "21407",
       "teams": "YTNjMjI0NzctNzU2OC00MWI3LTlkNDctMTcwZDg4OGVjNjRk",
-      "website": "2020/455095",
+      "website": "455095",
       "professors": ["claudio.sacerdoticoen"],
       "telegram": "joinchat/HEBiPjOx_SpmYzY0"
     }
@@ -262,7 +262,7 @@
       "description": "Tutto su Programmazione",
       "virtuale": "17653",
       "teams": "OTQyM2U2MzEtNjc3NS00N2ZmLWJlOTgtOGMzM2JmMGJhNDA4",
-      "website": "2020/320574",
+      "website": "320574",
       "professors": ["cosimo.laneve"],
       "telegram": "joinchat/z1kz0BRjFr8zYjI0"
     }
@@ -274,7 +274,7 @@
       "name": "Algebra e geometria",
       "virtuale": "17870",
       "teams": "MGU2ZWEyNjgtYThmZi00ZTMyLTg4YWUtZTAwZDViZTY1Nzkw",
-      "website": "2020/366975",
+      "website": "366975",
       "professors": ["marta.morigi"],
       "telegram": "joinchat/m5fn6ZffZvk0NGZk"
     }
@@ -286,7 +286,7 @@
       "name": "Algoritmi e strutture di dati",
       "virtuale": "20930",
       "teams": "NDJjMTA4ZGEtODMzNy00NjZmLThhNmYtMmUzYWU4YzhiMjVl",
-      "website": "2020/350957",
+      "website": "350957",
       "professors": ["gianluigi.zavattaro", "pietro.dilena"],
       "telegram": "joinchat/wSafC8l9ul1iNTE8"
     }
@@ -298,7 +298,7 @@
       "name": "Analisi matematica",
       "virtuale": "18045",
       "teams": "ODk1NjI3MGMtZThhOC00MmU4LTljYmQtOWNlZDdiYjhhYjhk",
-      "website": "2020/320573",
+      "website": "320573",
       "professors": ["marco.mughetti", "daniele.morbidelli"],
       "telegram": "joinchat/60_5FO9onfo4YmJk"
     }
@@ -310,7 +310,7 @@
       "name": "Calcolo numerico",
       "virtuale": "25810",
       "teams": "ZDY3ODgzOGItOGE2NC00ZjFjLWIyYTktNzJmOTRiMzViYmQ4",
-      "website": "2021/320581",
+      "website": "320581",
       "professors": ["elena.loli"],
       "telegram": "joinchat/h1lypfBFdEZkYzFk"
     }
@@ -322,7 +322,7 @@
       "name": "Ottimizzazione combinatoria",
       "virtuale": "29872",
       "teams": "OGFlMmI5YTQtZDQwMy00ZmQzLTliMDQtMGYzZDNkMGExNjdl",
-      "website": "2021/460495",
+      "website": "460495",
       "professors": ["ugo.dallago"],
       "telegram": "joinchat/klw79l5tkPM1NWQ0"
     }
@@ -334,7 +334,7 @@
       "name": "Linguaggi di programmazione",
       "virtuale": "25802",
       "teams": "MjljOWZkNTMtNzExMy00OGRiLTlmNTEtM2E5NGVmYzU1YTgx",
-      "website": "2021/320579",
+      "website": "320579",
       "professors": [
         "roberto.gorrieri",
         "maurizio.gabbrielli",
@@ -350,7 +350,7 @@
       "name": "Reti di calcolatori",
       "virtuale": "28376",
       "teams": "ODA5MzIzMTYtNzI1Yi00OGJhLWFmMTgtYzViYzhjNmRjMjQ2",
-      "website": "2021/455456",
+      "website": "455456",
       "professors": ["luciano.bononi"],
       "telegram": "joinchat/Sw2Ykp0-0mM1Zjdk"
     }
@@ -362,7 +362,7 @@
       "name": "Tecnologie web",
       "virtuale": "26726",
       "teams": "NDFkMWJjZTUtZTlkYS00ZWFiLTgxMDctY2Q0YzAxZmZjOThl",
-      "website": "2021/436428",
+      "website": "436428",
       "professors": ["fabio.vitali"],
       "telegram": "+nwEQesjR6FRmYzk0"
     }
@@ -374,7 +374,7 @@
       "name": "Calcolo delle probabilit\u00e0 e statistica",
       "virtuale": "31906",
       "teams": "MDg3YjQ1ZDYtY2RmOC00NmYzLThjY2EtYWI1N2FkMjFmMGEx",
-      "website": "2021/320583",
+      "website": "320583",
       "professors": ["andrea.cosso"],
       "telegram": "+j7GRbdJlwPExYzc0"
     }
@@ -386,7 +386,7 @@
       "name": "Sistemi operativi",
       "virtuale": "25797",
       "teams": "YTMwYjY3NWEtZGI0OS00NzNhLWJhMmItNGM0Y2MxYjUwNGU3",
-      "website": "2021/320578",
+      "website": "320578",
       "professors": ["renzo.davoli"],
       "telegram": "joinchat/2hUcGLfY7Gc2MTA8"
     }
@@ -396,7 +396,7 @@
     "data": {
       "description": "Tutto su Basi di dati",
       "name": "Basi di dati",
-      "website": "2022/443720",
+      "website": "443720",
       "professors": ["danilo.montesi"],
       "telegram": "datidibasi"
     }
@@ -407,7 +407,7 @@
       "description": "Tutto su Ingegneria del software",
       "name": "Ingegneria del software",
       "virtuale": "35949",
-      "website": "2022/443719",
+      "website": "443719",
       "professors": ["paolo.ciancarini"],
       "telegram": "ingegneriaSWunibo"
     }
@@ -418,7 +418,7 @@
       "description": "Tutto su Introduzione all'apprendimento automatico",
       "name": "Introduzione all'apprendimento automatico",
       "virtuale": "35964",
-      "website": "2022/455112",
+      "website": "455112",
       "professors": ["andrea.asperti"],
       "telegram": "appr_auto"
     }
@@ -436,7 +436,7 @@
     "data": {
       "description": "Tutto su Informatica teorica",
       "name": "Informatica teorica",
-      "website": "2022/455107",
+      "website": "455107",
       "professors": ["claudio.sacerdoticoen"],
       "telegram": "infoteorica"
     }
@@ -446,7 +446,7 @@
     "data": {
       "description": "Tutto su Progetto di sistemi virtuali",
       "name": "Progetto di sistemi virtuali",
-      "website": "2022/354042",
+      "website": "354042",
       "professors": ["renzo.davoli"],
       "telegram": "p_sis_virt"
     }
@@ -464,7 +464,7 @@
     "data": {
       "description": "Tutto su Laboratorio di applicazioni mobili",
       "name": "Laboratorio di applicazioni mobili",
-      "website": "2022/366984",
+      "website": "366984",
       "professors": ["luciano.bononni", "federico.montori2"],
       "telegram": "+kGgOP9VgHotlMDg8"
     }
@@ -474,7 +474,7 @@
     "data": {
       "description": "Tutto su Storia dell'informatica e dei dispositivi di calcolo",
       "name": "Storia dell'informatica e dei dispositivi di calcolo",
-      "website": "2022/447912",
+      "website": "447912",
       "professors": ["giorgio.casadei"],
       "telegram": "+82Kca29dpGFiMmY0"
     }
@@ -484,7 +484,7 @@
     "data": {
       "description": "Tutto su Strategia aziendale",
       "name": "Strategia aziendale",
-      "website": "2022/422036",
+      "website": "422036",
       "professors": ["sabrina.scarito"],
       "telegram": "+DmlZ4Q31uTQ5YTE0"
     }
