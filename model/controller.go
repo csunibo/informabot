@@ -47,11 +47,7 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 	}
 	SaveGroups()
 
-	chatMembers, err := utils.GetChatMembers(bot, message.Chat.ID, Groups[chatId])
-	if err != nil {
-		log.Printf("Error [LookingForData]: %s", err)
-		return makeResponseWithText("Errore nel caricamento dei membri del gruppo")
-	}
+	chatMembers := utils.GetChatMembers(bot, message.Chat.ID, Groups[chatId])
 
 	var resultMsg string
 	// Careful: additional arguments must be passed in the right order!

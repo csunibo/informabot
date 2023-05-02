@@ -15,7 +15,7 @@ func makeUnknownMember(chatConfigWithUser tgbotapi.ChatConfigWithUser) tgbotapi.
 	}
 }
 
-func GetChatMembers(bot *tgbotapi.BotAPI, chatID int64, memberIds []int) ([]tgbotapi.ChatMember, error) {
+func GetChatMembers(bot *tgbotapi.BotAPI, chatID int64, memberIds []int) []tgbotapi.ChatMember {
 	var members []tgbotapi.ChatMember
 
 	for _, id := range memberIds {
@@ -30,5 +30,5 @@ func GetChatMembers(bot *tgbotapi.BotAPI, chatID int64, memberIds []int) ([]tgbo
 		members = append(members, member)
 	}
 
-	return members, nil
+	return members
 }
