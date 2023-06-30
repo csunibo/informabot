@@ -215,8 +215,7 @@
   "tesi": {
     "type": "message",
     "data": {
-      "description": "Tesi DISI proposte e assegnate",
-      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/raccoglitesi/disi.pdf'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>\n\n\ud83d\udcdd <a href='https://github.com/csunibo/latex-thesis'>Modello tesi LaTeX DISI</a>\n\ud83d\udcdd <a href='https://github.com/csunibo/asciidoc-thesis'>Modello tesi AsciiDoc DISI</a>"
+      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/raccoglitesi/disi.html'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>\n\n\ud83d\udcdd <a href='https://github.com/csunibo/latex-thesis'>Modello tesi LaTeX DISI</a>\n\ud83d\udcdd <a href='https://github.com/csunibo/asciidoc-thesis'>Modello tesi AsciiDoc DISI</a>"
     }
   },
   "tirocinio": {
