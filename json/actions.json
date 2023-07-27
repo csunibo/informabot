@@ -487,5 +487,45 @@
       "professors": ["sabrina.scarito"],
       "telegram": "+DmlZ4Q31uTQ5YTE0"
     }
-  }
+  },
+  "comp_linguaggi": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Complementi di linguaggi di programmazione",
+      "name": "Complementi di linguaggi di programmazione",
+      "website": "482040",
+      "professors": ["cosimo.laneve"],
+      "telegram": "CLP_unibo"
+    }
+  },
+  "usability_user_exp": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Usability & user experience design",
+      "name": "Usability & user experience design",
+      "website": "479019",
+      "professors": ["fabio.vitali"],
+      "telegram": "uux_unibo"
+    }
+  },
+  "comp_basi": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Complementi di basi di dati",
+      "name": "Complementi di basi di dati",
+      "website": "479021",
+      "professors": ["danilo.montesi"],
+      "telegram": "cdb_unibo"
+    }
+  },
+  "intelligenza_artificiale": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Intelligenza artificiale",
+      "name": "Intelligenza artificiale",
+      "website": "479022",
+      "professors": ["maurizio.gabbrielli"],
+      "telegram": "ai_unibo"
+    }
+  },
 }
