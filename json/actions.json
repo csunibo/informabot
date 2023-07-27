@@ -495,7 +495,7 @@
       "name": "Complementi di linguaggi di programmazione",
       "website": "482040",
       "professors": ["cosimo.laneve"],
-      "telegram": "???"
+      "telegram": "CLP_unibo"
     }
   },
   "usability_user_exp": {
@@ -505,7 +505,7 @@
       "name": "Usability & user experience design",
       "website": "479019",
       "professors": ["fabio.vitali"],
-      "telegram": "???"
+      "telegram": "uux_unibo"
     }
   },
   "comp_basi": {
@@ -515,7 +515,7 @@
       "name": "Complementi di basi di dati",
       "website": "479021",
       "professors": ["danilo.montesi"],
-      "telegram": "???"
+      "telegram": "cdb_unibo"
     }
   },
   "intelligenza_artificiale": {
@@ -525,7 +525,7 @@
       "name": "Intelligenza artificiale",
       "website": "479022",
       "professors": ["maurizio.gabbrielli"],
-      "telegram": "???"
+      "telegram": "ai_unibo"
     }
   },
 }
