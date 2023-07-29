@@ -142,7 +142,7 @@
     "type": "message",
     "data": {
       "description": "Libri, materiali, prove e altro su CSUnibo",
-      "text": "<b>Libri, materiali, prove ed esercizi</b>\n\ud83d\udcda <a href='https://dynamik.vercel.app/'>Come applicazione web (nuovo)</a>\n<a href='https://csunibo.github.io'>Come sito statico (vecchio)</a>\n<a href='https://github.com/csunibo'>Repository GitHub</a>\nCollabora anche tu con le <i>pull request</i> e condividi il tuo materiale!"
+      "text": "<b>Libri, materiali, prove ed esercizi</b>\n\ud83d\udcda <a href='https://dynamik.vercel.app/'>Come applicazione web (nuovo)</a>\n<a href='https://csunibo.github.io'>Come sito statico (vecchio)</a>\n<a href='https://csunibo.github.io/wiki/raccolte-di-risorse/contribuire-a-un-insegnamento/index.html'>Come carico il mio materiale?</a>"
     }
   },
   "noncercogruppo": {
