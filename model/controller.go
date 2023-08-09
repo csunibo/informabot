@@ -9,7 +9,7 @@ import (
 
 	"github.com/csunibo/informabot/commands"
 	"github.com/csunibo/informabot/utils"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/exp/slices"
 )
 
@@ -43,7 +43,7 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 			Groups[chatId] = append(chatArray, senderID)
 		}
 	} else {
-		Groups[chatId] = []int{senderID}
+		Groups[chatId] = []int64{senderID}
 	}
 	SaveGroups()
 
