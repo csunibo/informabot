@@ -43,8 +43,18 @@ func run(bot *tgbotapi.BotAPI) {
 		} else {
 			// text message
 			for i := 0; i < len(model.Autoreplies); i++ {
-				if strings.Contains(strings.ToLower(update.Message.Text), strings.ToLower(model.Autoreplies[i].Text)) {
-					msg := tgbotapi.NewMessage(update.Message.Chat.ID, model.Autoreplies[i].Reply)
+				if strings.Contains(strings.ToLower(update.Message.Text),
+					strings.ToLower(model.Autoreplies[i].Text)) {
+					var msg tgbotapi.MessageConfig
+
+					if update.Message.IsTopicMessage {
+						msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
+							update.Message.MessageThreadID, model.Autoreplies[i].Reply)
+					} else {
+						msg = tgbotapi.NewMessage(update.Message.Chat.ID,
+							model.Autoreplies[i].Reply)
+					}
+
 					msg.ReplyToMessageID = update.Message.MessageID
 					utils.SendHTML(bot, msg)
 				}
@@ -82,7 +92,14 @@ func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex 
 		newCommand := model.Actions[commandIndex].Data.HandleBotCommand(bot, update.Message)
 
 		if newCommand.HasText() {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, newCommand.Text)
+			var msg tgbotapi.MessageConfig
+
+			if update.Message.IsTopicMessage {
+				msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
+					update.Message.MessageThreadID, newCommand.Text)
+			} else {
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, newCommand.Text)
+			}
 			utils.SendHTML(bot, msg)
 		}
 

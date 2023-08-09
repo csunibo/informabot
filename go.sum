@@ -1,12 +1,8 @@
-github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible h1:2cauKuaELYAEARXRkq2LrJ0yDDv1rW7+wrTEdVL3uaU=
-github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible/go.mod h1:qf9acutJ8cwBUhm1bqgz6Bei9/C/c93FPDljKWwsOgM=
 github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=
 github.com/mitchellh/mapstructure v1.5.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
-github.com/musianisamuele/telegram-bot-api v0.0.3 h1:8BTfHOPYTMkn0AX4FhicW1CyzU1NQdCIqlggfuT3P/I=
-github.com/musianisamuele/telegram-bot-api v0.0.3/go.mod h1:f8epVo400dyxqaQpXt3la1mnhdQW25R1w3yqYT3GQc4=
-github.com/technoweenie/multipartstreamer v1.0.1 h1:XRztA5MXiR1TIRHxH2uNxXxaIkKQDeX7m2XsSOlQEnM=
-github.com/technoweenie/multipartstreamer v1.0.1/go.mod h1:jNVxdtShOxzAsukZwTSw6MDx5eUJoiEBsSvzDU9uzog=
-golang.org/x/exp v0.0.0-20230321023759-10a507213a29 h1:ooxPy7fPvB4kwsA2h+iBNHkAbp/4JxTSwCmvdjEYmug=
-golang.org/x/exp v0.0.0-20230321023759-10a507213a29/go.mod h1:CxIveKay+FTh1D0yPZemJVgC/95VzuuOLq5Qi4xnoYc=
+github.com/musianisamuele/telegram-bot-api v0.0.4 h1:kQoE4Ih/rnyf2i8iCOwcN+zflx+H1A7+PhZx9Kkqppk=
+github.com/musianisamuele/telegram-bot-api v0.0.4/go.mod h1:f8epVo400dyxqaQpXt3la1mnhdQW25R1w3yqYT3GQc4=
+golang.org/x/exp v0.0.0-20230809094429-853ea248256d h1:wu5bD43Ana/nF1ZmaLr3lW/FQeJU8CcI+Ln7yWHViXE=
+golang.org/x/exp v0.0.0-20230809094429-853ea248256d/go.mod h1:FXUEEKJgO7OQYeo8N01OfiKP8RXMtf6e8aTskBGqWdc=
 golang.org/x/text v0.12.0 h1:k+n5B8goJNdU7hSvEtMUz3d1Q6D/XW4COJSJR6fN0mc=
 golang.org/x/text v0.12.0/go.mod h1:TvPlkZtksWOMsz7fbANvkp4WM8x/WCo/om8BMLbz+aE=

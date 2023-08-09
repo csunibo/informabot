@@ -72,8 +72,14 @@ func ParseActionsBytes(bytes []byte) ([]Action, error) {
 		actions = append(actions, action)
 	}
 
-	slices.SortFunc(actions, func(a, b Action) bool {
-		return a.Name < b.Name
+	slices.SortFunc(actions, func(a, b Action) int {
+		if a.Name < b.Name {
+			return -1
+		} else if a.Name > b.Name {
+			return 1
+		} else {
+			return 0
+		}
 	})
 
 	return actions, nil
