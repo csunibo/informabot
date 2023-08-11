@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/text/unicode/norm"
 )
 

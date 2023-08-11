@@ -1,7 +1,7 @@
 package utils
 
 import (
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 )
 
 func makeUnknownMember(chatConfigWithUser tgbotapi.ChatConfigWithUser) tgbotapi.ChatMember {
@@ -15,7 +15,7 @@ func makeUnknownMember(chatConfigWithUser tgbotapi.ChatConfigWithUser) tgbotapi.
 	}
 }
 
-func GetChatMembers(bot *tgbotapi.BotAPI, chatID int64, memberIds []int) []tgbotapi.ChatMember {
+func GetChatMembers(bot *tgbotapi.BotAPI, chatID int64, memberIds []int64) []tgbotapi.ChatMember {
 	var members []tgbotapi.ChatMember
 
 	for _, id := range memberIds {
@@ -23,7 +23,12 @@ func GetChatMembers(bot *tgbotapi.BotAPI, chatID int64, memberIds []int) []tgbot
 			ChatID: chatID,
 			UserID: id,
 		}
-		member, err := bot.GetChatMember(chatConfigWithUser)
+
+		getChatMemberConfig := tgbotapi.GetChatMemberConfig{
+			ChatConfigWithUser: chatConfigWithUser,
+		}
+
+		member, err := bot.GetChatMember(getChatMemberConfig)
 		if err != nil {
 			member = makeUnknownMember(chatConfigWithUser)
 		}
