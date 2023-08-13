@@ -125,14 +125,10 @@ func executeCommandWithName(bot *tgbotapi.BotAPI, update *tgbotapi.Update, comma
 }
 
 func filterMessage(bot *tgbotapi.BotAPI, message *tgbotapi.Message) bool {
-	var dices = []string{"🎲", "🎯", "🏀", "⚽", "🎳", "🎰"}
-
-	receivedText := strings.ToLower(message.Text)
-	if idx := slices.Index(dices, receivedText); idx != -1 {
-		msg := tgbotapi.NewMessage(message.Chat.ID, "found a dice")
-		bot.Send(msg)
+	if message.Dice != nil {
+		// msg := tgbotapi.NewMessage(message.Chat.ID, "Found a dice")
+		// bot.Send(msg)
 		return true
 	}
-
 	return false
 }
