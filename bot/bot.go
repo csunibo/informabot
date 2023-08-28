@@ -75,7 +75,14 @@ func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 
 		if memeIndex != -1 {
 			log.Printf("@%s: \t%s -> MEMES", update.Message.From.UserName, update.Message.Text)
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, model.MemeList[memeIndex].Text)
+
+			var msg tgbotapi.MessageConfig
+			if update.Message.IsTopicMessage {
+				msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
+					update.Message.MessageThreadID, model.MemeList[memeIndex].Text)
+			} else {
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, model.MemeList[memeIndex].Text)
+			}
 			utils.SendHTML(bot, msg)
 		} else {
 			executeCommandWithName(bot, update, "unknown")
