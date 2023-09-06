@@ -501,8 +501,8 @@
   "usability_user_exp": {
     "type": "course",
     "data": {
-      "description": "Tutto su Usability & user experience design",
-      "name": "Usability & user experience design",
+      "description": "Tutto su Usability e user experience design",
+      "name": "Usability e user experience design",
       "website": "479019",
       "professors": ["fabio.vitali"],
       "telegram": "uux_unibo"
