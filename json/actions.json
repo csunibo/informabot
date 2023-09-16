@@ -534,7 +534,8 @@
       "description": "Tutto su decision making",
       "name": "Decision making with constraint programming",
       "website": "479038",
-      "professors": ["zeynep.kiziltan"]
+      "professors": ["zeynep.kiziltan"],
+      "telegram": "CP_unibo"
     }
   },
   "digital_forensics": {
@@ -543,7 +544,8 @@
       "description": "Tutto su digital forensics",
       "name": "Digital forensics",
       "website": "479039",
-      "professors": ["alessandro.amoroso"]
+      "professors": ["alessandro.amoroso"],
+      "telegram": "dforensics_unibo"
     }
   },
   "ingegneria_servizi": {
@@ -552,7 +554,8 @@
       "description": "Tutto su ingegneria del software orientata ai servizi",
       "name": "Ingegneria del software orientata ai servizi",
       "website": "479037",
-      "professors": ["daviderossi", "ivan.lanese"]
+      "professors": ["daviderossi", "ivan.lanese"],
+      "telegram": "ISOS_unibo"
     }
   },
   "simulazione": {
@@ -561,7 +564,8 @@
       "description": "Tutto su simulazione di sistemi",
       "name": "Simulazione di sistemi",
       "website": "479034",
-      "professors": ["lorenzo.donatiello"]
+      "professors": ["lorenzo.donatiello"],
+      "telegram": "+dfw4FnUAFEE3MWQ0"
     }
   },
   "didattica": {
@@ -570,7 +574,8 @@
       "description": "Tutto su didattica dell'informatica",
       "name": "Didattica dell'informatica",
       "website": "479040",
-      "professors": ["renzo.davoli", "michael.lodi"]
+      "professors": ["renzo.davoli", "michael.lodi"],
+      "telegram": "didatticainfo_unibo"
     }
   },
   "concorrenti": {
@@ -579,7 +584,8 @@
       "description": "Tutto su modelli e sistemi concorrenti",
       "name": "Modelli e sistemi concorrenti",
       "website": "479035",
-      "professors": ["roberto.gorrieri"]
+      "professors": ["roberto.gorrieri"],
+      "telegram": "MSC_unibo"
     }
   },
   "context": {
@@ -588,7 +594,8 @@
       "description": "Tutto su sistemi context-aware",
       "name": "Sistemi context-aware",
       "website": "479036",
-      "professors": ["marco.difelice3"]
+      "professors": ["marco.difelice3"],
+      "telegram": "SCA_unibo"
     }
   },
   "fisica_complessi": {
@@ -606,7 +613,8 @@
       "description": "Tutto su fondamenti logici",
       "name": "Fondamenti logici dell'informatica",
       "website": "479027",
-      "professors": ["claudio.sacerdoticoen", "fabio.zanasi"]
+      "professors": ["claudio.sacerdoticoen", "fabio.zanasi"],
+      "telegram": "fondamenti_unibo"
     }
   },
   "graphics": {
@@ -615,32 +623,36 @@
       "description": "Tutto su computer graphics",
       "name": "Computer graphics",
       "website": "479028",
-      "professors": ["giulio.casciola"]
+      "professors": ["giulio.casciola"],
+      "telegram": "graphics_unibo"
     }
   },
-  "matematica": {
+  "mat_comp": {
     "type": "course",
     "data": {
       "description": "Tutto su matematica computazionale",
       "name": "Matematica computazionale",
       "website": "479026",
-      "professors": ["giulia.spaletta"]
+      "professors": ["giulia.spaletta"],
+      "telegram": "matcomp_unibo"
     }
   },
   "modelli_prob": {
     "type": "course",
     "data": {
       "description": "Tutto su modelli probabilistici",
-      "name": "Modelli probabilistici"
+      "name": "Modelli probabilistici",
+      "telegram": "modprob_unibo"
     }
   },
   "crypto": {
     "type": "course",
     "data": {
-      "description": "Tutto sul cryptography",
+      "description": "Tutto su cryptography",
       "name": "Cryptography",
       "website": "479060",
-      "professors": ["ugo.dallago"]
+      "professors": ["ugo.dallago"],
+      "telegram": "cryptography_unibo"
     }
   },
   "deep": {
