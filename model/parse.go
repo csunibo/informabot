@@ -59,7 +59,10 @@ func ParseActions() ([]Action, error) {
 
 func ParseActionsBytes(bytes []byte) ([]Action, error) {
 	var mapData map[string]interface{}
-	json.Unmarshal(bytes, &mapData)
+	err := json.Unmarshal(bytes, &mapData)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	var actions []Action
 	for key, value := range mapData {
