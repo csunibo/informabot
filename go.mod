@@ -9,5 +9,5 @@ require (
 
 require (
 	golang.org/x/exp v0.0.0-20230809094429-853ea248256d
-	golang.org/x/text v0.12.0
+	golang.org/x/text v0.13.0
 )
