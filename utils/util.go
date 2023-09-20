@@ -34,30 +34,10 @@ func ToKebabCase(str string) string {
 
 	splitted := strings.Split(normalizedStr, " ")
 
-	// This is not garanteed to work, fix me if error.
+	// removing words before "'" character.
 	for i := range splitted {
 		apostropheSplit := strings.Split(splitted[i], "'")
-
-		/*
-			If a "'" character is present, it should be just one character (so two
-			words), then there are two cases:
-			1) the first word is a single-character word -> the word is discarded
-			2) the first word is not a single-character word -> the last character
-			of the word is replaced by a "-" character
-		*/
-		if len(apostropheSplit) == 2 {
-			last := len(apostropheSplit[0]) - 1
-
-			// Discarding the last character
-			remaining := apostropheSplit[0][:last]
-			if remaining == "" {
-				// Single-character word case, it is discarded
-				splitted[i] = apostropheSplit[1]
-			} else {
-				// Multiple character word case, adding "-" character to the word
-				splitted[i] = remaining + "-" + apostropheSplit[1]
-			}
-		}
+		splitted[i] = apostropheSplit[len(apostropheSplit)-1]
 	}
 
 	return strings.Join(splitted, "-")
