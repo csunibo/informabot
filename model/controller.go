@@ -189,7 +189,8 @@ func (data CourseData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.
 	msg := ternary_assignment(data.Name != "", fmt.Sprintf("<b>%s</b>\n", data.Name)) +
 		ternary_assignment(data.Website != "", fmt.Sprintf("<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/%s'>Sito</a>\n<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/%s/orariolezioni'>Orario</a>", currentAcademicYear, data.Website, currentAcademicYear, data.Website)+"\n") +
 		ternary_assignment(data.Professors != nil, fmt.Sprintf("Professori:\n %s", emails)) +
-		ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://dynamik.vercel.app/%s/'>📚 Risorse: materiali, libri, prove</a>\n", utils.ToKebabCase(data.Name))) +
+		ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://risorse.students.cs.unibo.it/%s/'>📚 Risorse (istanza principale)</a>\n", utils.ToKebabCase(data.Name))) +
+		ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://csunibo.github.io/dynamik/%s/'>📚 Risorse (istanza di riserva)</a>\n", utils.ToKebabCase(data.Name))) +
 		ternary_assignment(data.Name != "", fmt.Sprintf("<a href='https://github.com/csunibo/%s/'>📂 Repository GitHub delle risorse</a>\n", utils.ToKebabCase(data.Name))) +
 		ternary_assignment(data.Telegram != "", fmt.Sprintf("<a href='https://t.me/%s'>👥 Gruppo Studenti</a>\n", data.Telegram))
 
