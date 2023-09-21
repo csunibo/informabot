@@ -2,8 +2,8 @@ package model
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 
 	"github.com/csunibo/informabot/utils"
@@ -16,7 +16,7 @@ const groupsPath = "./json/groups.json"
 func ParseAutoReplies() ([]AutoReply, error) {
 	jsonFile, err := os.Open("./json/autoreply.json")
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return nil, err
 	}
 	defer jsonFile.Close()
@@ -32,7 +32,7 @@ func ParseAutoReplies() ([]AutoReply, error) {
 func ParseSettings() (SettingsStruct, error) {
 	jsonFile, err := os.Open("./json/settings.json")
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return SettingsStruct{}, err
 	}
 	defer jsonFile.Close()
@@ -48,7 +48,7 @@ func ParseSettings() (SettingsStruct, error) {
 func ParseActions() ([]Action, error) {
 	jsonFile, err := os.Open("./json/actions.json")
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return nil, err
 	}
 	defer jsonFile.Close()
@@ -59,7 +59,10 @@ func ParseActions() ([]Action, error) {
 
 func ParseActionsBytes(bytes []byte) ([]Action, error) {
 	var mapData map[string]interface{}
-	json.Unmarshal(bytes, &mapData)
+	err := json.Unmarshal(bytes, &mapData)
+	if err != nil {
+		log.Println(err)
+	}
 
 	var actions []Action
 	for key, value := range mapData {
@@ -88,7 +91,7 @@ func ParseActionsBytes(bytes []byte) ([]Action, error) {
 func ParseMemeList() ([]Meme, error) {
 	jsonFile, err := os.Open("./json/memes.json")
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return nil, err
 	}
 	defer jsonFile.Close()
@@ -115,7 +118,7 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 	if err != nil {
 		jsonFile, err = os.Create(groupsPath)
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 			return nil, err
 		}
 	}

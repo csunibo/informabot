@@ -527,5 +527,319 @@
       "professors": ["maurizio.gabbrielli"],
       "telegram": "ai_unibo"
     }
+  },
+  "decision_making": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Decision making",
+      "name": "Decision making with constraint programming",
+      "website": "479038",
+      "professors": ["zeynep.kiziltan"],
+      "telegram": "CP_unibo"
+    }
+  },
+  "digital_forensics": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Digital forensics",
+      "name": "Digital forensics",
+      "website": "479039",
+      "professors": ["alessandro.amoroso"],
+      "telegram": "dforensics_unibo"
+    }
+  },
+  "ingegneria_servizi": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Ingegneria del software orientata ai servizi",
+      "name": "Ingegneria del software orientata ai servizi",
+      "website": "479037",
+      "professors": ["daviderossi", "ivan.lanese"],
+      "telegram": "ISOS_unibo"
+    }
+  },
+  "simulazione": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Simulazione di sistemi",
+      "name": "Simulazione di sistemi",
+      "website": "479034",
+      "professors": ["lorenzo.donatiello"],
+      "telegram": "+dfw4FnUAFEE3MWQ0"
+    }
+  },
+  "didattica": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Didattica dell'informatica",
+      "name": "Didattica dell'informatica",
+      "website": "479040",
+      "professors": ["renzo.davoli", "michael.lodi"],
+      "telegram": "didatticainfo_unibo"
+    }
+  },
+  "concorrenti": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Modelli e sistemi concorrenti",
+      "name": "Modelli e sistemi concorrenti",
+      "website": "479035",
+      "professors": ["roberto.gorrieri"],
+      "telegram": "MSC_unibo"
+    }
+  },
+  "context": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Sistemi context-aware",
+      "name": "Sistemi context-aware",
+      "website": "479036",
+      "professors": ["marco.difelice3"],
+      "telegram": "SCA_unibo"
+    }
+  },
+  "fisica_complessi": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Fisica dei sistemi complessi",
+      "name": "Fisica dei sistemi complessi",
+      "website": "479024",
+      "professors": ["armando.bazzani"]
+    }
+  },
+  "fondamenti": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Fondamenti logici",
+      "name": "Fondamenti logici dell'informatica",
+      "website": "479027",
+      "professors": ["claudio.sacerdoticoen", "fabio.zanasi"],
+      "telegram": "fondamenti_unibo"
+    }
+  },
+  "graphics": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Computer graphics",
+      "name": "Computer graphics",
+      "website": "479028",
+      "professors": ["giulio.casciola"],
+      "telegram": "graphics_unibo"
+    }
+  },
+  "mat_comp": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Matematica computazionale",
+      "name": "Matematica computazionale",
+      "website": "479026",
+      "professors": ["giulia.spaletta"],
+      "telegram": "matcomp_unibo"
+    }
+  },
+  "modelli_prob": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Modelli probabilistici",
+      "name": "Modelli probabilistici",
+      "telegram": "modprob_unibo"
+    }
+  },
+  "crypto": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Cryptography",
+      "name": "Cryptography",
+      "website": "479060",
+      "professors": ["ugo.dallago"],
+      "telegram": "cryptography_unibo"
+    }
+  },
+  "deep": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Deep learning",
+      "name": "Deep learning"
+    }
+  },
+  "scalable": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Scalable and cloud programming",
+      "name": "Scalable and cloud programming",
+      "website": "479058",
+      "professors": ["gianluigi.zavattaro"]
+    }
+  },
+  "emerging": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Emerging programming",
+      "name": "Emerging programming paradigms",
+      "website": "479059",
+      "professors": ["claudio.sacerdoticoen"]
+    }
+  },
+  "quantum": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Quantum computing",
+      "name": "Introduction to quantum computing",
+      "website": "497857",
+      "professors": ["paolo.pistone2"]
+    }
+  },
+  "complex_sys": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Complex systems",
+      "name": "Complex systems and network science",
+      "website": "479029",
+      "professors": ["ozalp.babaoglu"]
+    }
+  },
+  "realta": {
+    "type": "course",
+    "data": {
+      "description": "Tutto sul Laboratorio di realtà virtuale",
+      "name": "Laboratorio di realtà virtuale e realtà aumentata",
+      "website": "479047",
+      "professors": ["gustavo.marfia"]
+    }
+  },
+  "nlp": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Natural language processing",
+      "name": "Natural language processing",
+      "website": "479050",
+      "professors": ["fabio.tamburini"]
+    }
+  },
+  "blockchain": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Blockchain",
+      "name": "Artificial intelligence, blockchain e criptovalute nello sviluppo software",
+      "website": "495981",
+      "professors": ["giancarlo.succi2"],
+      "telegram": "ai_blockchain_sw_unibo"
+    }
+  },
+  "computer_vision": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Computer vision",
+      "name": "Computer vision",
+      "website": "479049",
+      "professors": ["giuseppe.lisanti"]
+    }
+  },
+  "iot": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Internet of things",
+      "name": "Internet of things",
+      "website": "479055",
+      "professors": ["luciano.bononi", "marco.difelice3"]
+    }
+  },
+  "making": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Laboratorio di making",
+      "name": "Laboratorio di making",
+      "website": "479045",
+      "professors": ["renzo.davoli", "federico.montori2"]
+    }
+  },
+  "multimedia": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Multimedia data management",
+      "name": "Multimedia data management",
+      "website": "479051",
+      "professors": ["ilaria.bartolini"]
+    }
+  },
+  "business": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Business intelligence",
+      "name": "Business intelligence",
+      "website": "479052",
+      "professors": ["furio.camillo"]
+    }
+  },
+  "social_robots": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Social robots",
+      "name": "Social robots"
+    }
+  },
+  "blockchain_crypto": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Blockchain and cryptocurrencies",
+      "name": "Blockchain and cryptocurrencies",
+      "website": "461739",
+      "professors": ["s.ferretti"],
+      "telegram": "blockchain_crypto_unibo"
+    }
+  },
+  "cybersecurity_lm": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Cybersecurity (magistrale)",
+      "name": "Cybersecurity",
+      "website": "479056",
+      "professors": ["michele.colajanni"]
+    }
+  },
+  "distributed_sys": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Distributed software systems",
+      "name": "Distributed software systems",
+      "website": "479053",
+      "professors": ["paolo.ciancarini"]
+    }
+  },
+  "human_data": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Human data science",
+      "name": "Human data science",
+      "website": "479054",
+      "professors": ["marco.roccetti"]
+    }
+  },
+  "data_analytics": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Data analytics",
+      "name": "Data analytics",
+      "website": "479030",
+      "professors": ["marco.difelice3", "giuseppe.lisanti"]
+    }
+  },
+  "social_analysis": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Social network analysis",
+      "name": "Social network analysis",
+      "website": "479048",
+      "professors": ["saverio.giallorenzo2"]
+    }
+  },
+  "responsabilita": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Responsabilità sociale d'impresa",
+      "name": "Responsabilità sociale ed etica d'impresa",
+      "website": "479031",
+      "professors": ["edoardo.mollona"]
+    }
   }
 }
