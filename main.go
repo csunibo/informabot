@@ -12,7 +12,8 @@ const tokenKey = "TOKEN"
 func main() {
 	token, found := os.LookupEnv(tokenKey)
 	if !found {
-		log.Fatal("token not found. please set the TOKEN environment variable")
+		log.Fatalf("token not found. please set the %s environment variable",
+			tokenKey)
 	}
 
 	bot.StartInformaBot(token, false)
