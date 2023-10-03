@@ -2,7 +2,7 @@
 package model
 
 import (
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 )
 
 type DataInterface interface {
@@ -45,7 +45,7 @@ func GetActionFromType(name string, commandType string) Action {
 }
 
 // SECTION GLOBAL JSON STRUCTS
-type GroupsStruct = map[int64][]int
+type GroupsStruct = map[int64][]int64
 
 type AutoReply struct {
 	Text  string `json:"text"`

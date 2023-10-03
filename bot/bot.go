@@ -6,7 +6,7 @@ import (
 
 	"github.com/csunibo/informabot/model"
 	"github.com/csunibo/informabot/utils"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/exp/slices"
 )
 
@@ -29,10 +29,7 @@ func run(bot *tgbotapi.BotAPI) {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
 
-	updates, err := bot.GetUpdatesChan(u)
-	if err != nil {
-		log.Fatalf("Error getting updates: %s", err)
-	}
+	updates := bot.GetUpdatesChan(u)
 
 	for update := range updates {
 		if update.Message == nil {
@@ -46,8 +43,18 @@ func run(bot *tgbotapi.BotAPI) {
 		} else {
 			// text message
 			for i := 0; i < len(model.Autoreplies); i++ {
-				if strings.Contains(strings.ToLower(update.Message.Text), strings.ToLower(model.Autoreplies[i].Text)) {
-					msg := tgbotapi.NewMessage(update.Message.Chat.ID, model.Autoreplies[i].Reply)
+				if strings.Contains(strings.ToLower(update.Message.Text),
+					strings.ToLower(model.Autoreplies[i].Text)) {
+					var msg tgbotapi.MessageConfig
+
+					if update.Message.IsTopicMessage {
+						msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
+							update.Message.MessageThreadID, model.Autoreplies[i].Reply)
+					} else {
+						msg = tgbotapi.NewMessage(update.Message.Chat.ID,
+							model.Autoreplies[i].Reply)
+					}
+
 					msg.ReplyToMessageID = update.Message.MessageID
 					utils.SendHTML(bot, msg)
 				}
@@ -62,14 +69,20 @@ func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 
 	hasExecutedCommand := executeCommandWithName(bot, update, commandName)
 	if !hasExecutedCommand {
-		// NOTE: we could use binary search instead of linear search
 		memeIndex := slices.IndexFunc(model.MemeList, func(meme model.Meme) bool {
 			return strings.ToLower(meme.Name) == commandName
 		})
 
 		if memeIndex != -1 {
 			log.Printf("@%s: \t%s -> MEMES", update.Message.From.UserName, update.Message.Text)
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, model.MemeList[memeIndex].Text)
+
+			var msg tgbotapi.MessageConfig
+			if update.Message.IsTopicMessage {
+				msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
+					update.Message.MessageThreadID, model.MemeList[memeIndex].Text)
+			} else {
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, model.MemeList[memeIndex].Text)
+			}
 			utils.SendHTML(bot, msg)
 		} else {
 			executeCommandWithName(bot, update, "unknown")
@@ -86,7 +99,14 @@ func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex 
 		newCommand := model.Actions[commandIndex].Data.HandleBotCommand(bot, update.Message)
 
 		if newCommand.HasText() {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, newCommand.Text)
+			var msg tgbotapi.MessageConfig
+
+			if update.Message.IsTopicMessage {
+				msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
+					update.Message.MessageThreadID, newCommand.Text)
+			} else {
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, newCommand.Text)
+			}
 			utils.SendHTML(bot, msg)
 		}
 
@@ -112,15 +132,10 @@ func executeCommandWithName(bot *tgbotapi.BotAPI, update *tgbotapi.Update, comma
 }
 
 func filterMessage(bot *tgbotapi.BotAPI, message *tgbotapi.Message) bool {
-	var dices = []string{"🎲", "🎯", "🏀", "⚽", "🎳", "🎰"}
-
-	// TODO: filtra messaggi con emoji
-	receivedText := strings.ToLower(message.Text)
-	if idx := slices.Index(dices, receivedText); idx != -1 {
-		msg := tgbotapi.NewMessage(message.Chat.ID, "found a dice")
-		bot.Send(msg)
+	if message.Dice != nil {
+		// msg := tgbotapi.NewMessage(message.Chat.ID, "Found a dice")
+		// bot.Send(msg)
 		return true
 	}
-
 	return false
 }

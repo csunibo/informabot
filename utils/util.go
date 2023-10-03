@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/text/unicode/norm"
 )
 
@@ -34,7 +34,7 @@ func ToKebabCase(str string) string {
 
 	splitted := strings.Split(normalizedStr, " ")
 
-	// This is not garanteed to work, fix me if error.
+	// removing words before "'" character.
 	for i := range splitted {
 		apostropheSplit := strings.Split(splitted[i], "'")
 		splitted[i] = apostropheSplit[len(apostropheSplit)-1]
