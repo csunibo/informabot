@@ -2,7 +2,6 @@ package utils
 
 import (
 	"encoding/json"
-	"log"
 	"os"
 	"regexp"
 	"strings"
@@ -11,24 +10,17 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-// Wrapper for the send function, to send HTML messages
-func SendHTML(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) {
+// SendHTML is a wrapper for the send function, to send HTML messages
+func SendHTML(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) (tgbotapi.Message, error) {
 	msg.ParseMode = tgbotapi.ModeHTML
 	msg.DisableWebPagePreview = true
-
-	_, err := bot.Send(msg)
-	if err != nil {
-		log.Println(err.Error())
-	}
+	return bot.Send(msg)
 }
 
-/* convert a string into kebab case
- * useful for GitHub repository
- *
- * example:
- * string = "Logica per l'informatica"
- * converted_string = ToKebabCase(string); = "logica-per-informatica" (sic!)
- */
+/*
+ToKebabCase convert a string into kebab case. Useful for GitHub repository
+names.
+*/
 func ToKebabCase(str string) string {
 	// normalize the string to NFD form
 	normalizedStr := norm.NFD.String(strings.ToLower(strings.TrimSpace(str)))
@@ -53,9 +45,15 @@ func WriteJSONFile(filename string, data interface{}) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
 
 	encoder := json.NewEncoder(file)
 	encoder.SetIndent("", "  ")
-	return encoder.Encode(data)
+
+	err = encoder.Encode(data)
+	if err != nil {
+		return err
+	}
+
+	err = file.Close()
+	return err
 }

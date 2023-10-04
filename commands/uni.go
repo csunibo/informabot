@@ -3,11 +3,12 @@ package commands
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
-	"net/http"
-	"sort"
+	"strings"
 	"time"
+
+	"github.com/csunibo/unibo-go/timetable"
+	"golang.org/x/exp/slices"
 )
 
 const TIMEFORMAT = "2006-01-02T15:04:05"
@@ -47,32 +48,33 @@ func (t *LezioniTime) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// GetTimeTable returns the timetable for the Unibo url
-// returns empty string if there are no lessons.
-func GetTimeTable(url string) string {
-	resp, err := http.Get(url)
+// GetTimeTable returns an HTML string containing the timetable for the given
+// course on the given date. Returns an empty string if there are no lessons.
+func GetTimeTable(courseType, courseName string, year int, day time.Time) (string, error) {
+
+	interval := &timetable.Interval{Start: day, End: day}
+	events, err := timetable.FetchTimetable(courseType, courseName, "", year, interval)
 	if err != nil {
-		log.Printf("Error getting json when requesting orario lezioni: %s\n", err)
+		log.Printf("Error getting timetable: %s\n", err)
+		return "", err
 	}
-	defer resp.Body.Close()
 
-	result := []OrarioLezioni{}
-	body, _ := ioutil.ReadAll(resp.Body)
-	json.Unmarshal(body, &result)
-
-	sort.Slice(result, func(i, j int) bool {
-		return (*time.Time)(&result[i].StartTime).Before((time.Time)(result[j].StartTime))
+	// Sort the events by start time
+	slices.SortFunc(events, func(a, b timetable.Event) int {
+		return int(b.Start.Time.Sub(a.Start.Time).Nanoseconds())
 	})
 
-	var message string = ""
-	for _, lezione := range result {
-		message += fmt.Sprintf(`  🕘 <b><a href="%s">%s</a></b>`, lezione.Teams, lezione.Title) +
-			"\n" + lezione.Time + "\n"
-		if len(lezione.Aule) > 0 {
-			message += fmt.Sprintf("  🏢 %s - %s\n", lezione.Aule[0].Edificio, lezione.Aule[0].Piano)
-			message += fmt.Sprintf("  📍 %s\n", lezione.Aule[0].Indirizzo)
+	b := strings.Builder{}
+	for _, event := range events {
+		b.WriteString(fmt.Sprintf(`  🕘 <b><a href="%s">%s</a></b>`, event.Teams, event.Title))
+		b.WriteString("\n")
+		b.WriteString(event.Start.Format("15:04"))
+		b.WriteString("\n")
+		if len(event.Classrooms) > 0 {
+			b.WriteString(fmt.Sprintf("  🏢 %s - %s\n", event.Classrooms[0].BuildingDesc, event.Classrooms[0].FloorDesc))
+			b.WriteString(fmt.Sprintf("  📍 %s\n", event.Classrooms[0].AddressDesc))
 		}
 	}
 
-	return message
+	return b.String(), nil
 }

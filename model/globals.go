@@ -1,13 +1,15 @@
+// This file contains all the global variables of the bot, that are initialized
+// with the start of the bot.
+//
+// This file should be here because it had circular imports with the Model (bot
+// imported model, which imported bot in order to access the global variables,
+// especially for the settings)
+
 package model
 
 import (
 	"log"
 )
-
-// This file contains all the global variables of the bot, that are initialized
-// with the start of the bot, this file should be here because it had circular
-// imports with the Model (bot imported model, which imported bot in order to access
-// the global variables (expecially for the settings))
 
 var (
 	Autoreplies []AutoReply

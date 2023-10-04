@@ -4,10 +4,11 @@ import (
 	"log"
 	"strings"
 
-	"github.com/csunibo/informabot/model"
-	"github.com/csunibo/informabot/utils"
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/exp/slices"
+
+	"github.com/csunibo/informabot/model"
+	"github.com/csunibo/informabot/utils"
 )
 
 func StartInformaBot(token string, debug bool) {
@@ -54,7 +55,6 @@ func run(bot *tgbotapi.BotAPI) {
 						msg = tgbotapi.NewMessage(update.Message.Chat.ID,
 							model.Autoreplies[i].Reply)
 					}
-
 					msg.ReplyToMessageID = update.Message.MessageID
 					utils.SendHTML(bot, msg)
 				}

@@ -47,7 +47,7 @@ func TestLezioniTime_Format(t *testing.T) {
 }
 
 func TestLezioniTime_UnmarshalJSON(t *testing.T) {
-	var time LezioniTime
+	var lezioniTime LezioniTime
 	type args struct {
 		data []byte
 	}
@@ -59,7 +59,7 @@ func TestLezioniTime_UnmarshalJSON(t *testing.T) {
 	}{
 		{
 			name: "Not an error",
-			tr:   &time,
+			tr:   &lezioniTime,
 			args: args{
 				data: []byte{34, 50, 48, 50, 51, 45, 48, 51, 45, 49, 51, 84, 49, 50, 58, 48, 48, 58, 48, 48, 34},
 			},
@@ -67,7 +67,7 @@ func TestLezioniTime_UnmarshalJSON(t *testing.T) {
 		},
 		{
 			name: "Error #1",
-			tr:   &time,
+			tr:   &lezioniTime,
 			args: args{
 				data: []byte("A"),
 			},
@@ -75,7 +75,7 @@ func TestLezioniTime_UnmarshalJSON(t *testing.T) {
 		},
 		{
 			name: "Error #2",
-			tr:   &time,
+			tr:   &lezioniTime,
 			args: args{
 				data: []byte{},
 			},
@@ -83,7 +83,7 @@ func TestLezioniTime_UnmarshalJSON(t *testing.T) {
 		},
 		{
 			name: "Error #2",
-			tr:   &time,
+			tr:   &lezioniTime,
 			args: args{
 				data: []byte{34},
 			},
@@ -102,44 +102,72 @@ func TestLezioniTime_UnmarshalJSON(t *testing.T) {
 
 func TestGetTimeTable(t *testing.T) {
 	type args struct {
-		url string
+		courseType string
+		courseName string
+		year       int
+		day        time.Time
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name  string
+		args  args
+		want  string
+		error bool
 	}{
 		{
 			name: "Weekend",
 			args: args{
-				url: "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1&start=2023-03-11&end=2023-03-11",
+				courseType: "laurea",
+				courseName: "informatica",
+				year:       1,
+				day:        time.Date(2023, 3, 11, 0, 0, 0, 0, time.UTC),
 			},
 			want: "",
 		},
 		{
 			name: "Weekday",
 			args: args{
-				url: "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1&start=2023-10-31&end=2023-10-31",
+				courseType: "laurea",
+				courseName: "informatica",
+				year:       1,
+				day:        time.Date(2023, 10, 31, 0, 0, 0, 0, time.UTC),
 			},
 			want: `🕘`,
 		},
 		{
 			name: "Not a valid url",
 			args: args{
-				url: "https://example.com",
+				courseType: "test",
+				courseName: "test",
 			},
-			want: "",
+			want:  "",
+			error: true,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := GetTimeTable(tt.args.url)
-			got = strings.ReplaceAll(got, " ", "")
-			want := strings.ReplaceAll(tt.want, " ", "")
-			want = strings.ReplaceAll(want, "\t", "")
-			if !strings.Contains(got, want) {
-				t.Errorf("GetTimeTable() = %v, want %v", got, want)
+			got, err := GetTimeTable(tt.args.courseType, tt.args.courseName, tt.args.year, tt.args.day)
+			if err != nil && !tt.error {
+				t.Errorf("GetTimeTable() error = %v", err)
+				return
+			} else {
+				got = strings.ReplaceAll(got, " ", "")
+				want := strings.ReplaceAll(tt.want, " ", "")
+				want = strings.ReplaceAll(want, "\t", "")
+				if !strings.Contains(got, want) {
+					t.Errorf("GetTimeTable() = %v, want %v", got, want)
+				}
 			}
 		})
+	}
+}
+func TestWeekend(t *testing.T) {
+
+	date := time.Date(2023, 3, 11, 0, 0, 0, 0, time.UTC)
+	result, err := GetTimeTable("laurea", "informatica", 1, date)
+	if err != nil {
+		t.Fatalf("Error while getting timetable: %s", err)
+	}
+	if result != "" {
+		t.Errorf("Expected empty string in weekend, got %s", result)
 	}
 }

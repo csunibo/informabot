@@ -1,4 +1,6 @@
-// In this file we define all the structs used to parse JSON files into Go structs
+// In this file we define all the structs used to parse JSON files into Go
+// structs
+
 package model
 
 import (
@@ -10,6 +12,8 @@ type DataInterface interface {
 	GetDescription() string
 }
 
+// GetActionFromType returns an Action struct with the right DataInterface,
+// inferred from the commandType string
 func GetActionFromType(name string, commandType string) Action {
 	var data DataInterface
 	switch commandType {
@@ -98,11 +102,17 @@ type YearlyData struct {
 	NoYear      string `json:"noYear"`
 }
 
+type CourseId struct {
+	Type string `json:"type"`
+	Name string `json:"name"`
+	Year int    `json:"year"`
+}
+
 type TodayLecturesData struct {
-	Description  string `json:"description"`
-	Url          string `json:"url"`
-	Title        string `json:"title"`
-	FallbackText string `json:"fallbackText"`
+	Description  string   `json:"description"`
+	Course       CourseId `json:"course"`
+	Title        string   `json:"title"`
+	FallbackText string   `json:"fallbackText"`
 }
 
 type TomorrowLecturesData TodayLecturesData

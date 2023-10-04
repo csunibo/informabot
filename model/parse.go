@@ -2,132 +2,123 @@ package model
 
 import (
 	"encoding/json"
-	"io/ioutil"
-	"log"
+	"errors"
+	"fmt"
+	"io"
 	"os"
+	"strings"
 
-	"github.com/csunibo/informabot/utils"
 	"github.com/mitchellh/mapstructure"
 	"golang.org/x/exp/slices"
+
+	"github.com/csunibo/informabot/utils"
 )
 
 const groupsPath = "./json/groups.json"
 
-func ParseAutoReplies() ([]AutoReply, error) {
-	jsonFile, err := os.Open("./json/autoreply.json")
+func ParseAutoReplies() (autoReplies []AutoReply, err error) {
+	file, err := os.Open("./json/autoreply.json")
 	if err != nil {
-		log.Println(err)
-		return nil, err
+		return nil, fmt.Errorf("error reading autoreply.json file: %w", err)
 	}
-	defer jsonFile.Close()
 
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	err = json.NewDecoder(file).Decode(&autoReplies)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing autoreply.json file: %w", err)
+	}
 
-	var autoreplies []AutoReply
-	json.Unmarshal(byteValue, &autoreplies)
-
-	return autoreplies, nil
+	return
 }
 
-func ParseSettings() (SettingsStruct, error) {
-	jsonFile, err := os.Open("./json/settings.json")
+func ParseSettings() (settings SettingsStruct, err error) {
+	file, err := os.Open("./json/settings.json")
 	if err != nil {
-		log.Println(err)
-		return SettingsStruct{}, err
+		return SettingsStruct{}, fmt.Errorf("error reading settings.json file: %w", err)
 	}
-	defer jsonFile.Close()
 
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	err = json.NewDecoder(file).Decode(&settings)
+	if err != nil {
+		return SettingsStruct{}, fmt.Errorf("error parsing settings.json file: %w", err)
+	}
 
-	var settings SettingsStruct
-	json.Unmarshal(byteValue, &settings)
+	err = file.Close()
+	if err != nil {
+		return SettingsStruct{}, fmt.Errorf("error closing settings.json file: %w", err)
+	}
 
-	return settings, nil
+	return
 }
 
-func ParseActions() ([]Action, error) {
-	jsonFile, err := os.Open("./json/actions.json")
+func ParseActions() (actions []Action, err error) {
+	byteValue, err := os.Open("./json/actions.json")
 	if err != nil {
-		log.Println(err)
-		return nil, err
+		return nil, fmt.Errorf("error reading actions.json file: %w", err)
 	}
-	defer jsonFile.Close()
 
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-	return ParseActionsBytes(byteValue)
+	actions, err = ParseActionsBytes(byteValue)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing actions.json file: %w", err)
+	}
+
+	return
 }
 
-func ParseActionsBytes(bytes []byte) ([]Action, error) {
+func ParseActionsBytes(reader io.Reader) (actions []Action, err error) {
 	var mapData map[string]interface{}
-	err := json.Unmarshal(bytes, &mapData)
+
+	err = json.NewDecoder(reader).Decode(&mapData)
 	if err != nil {
-		log.Println(err)
+		return
 	}
 
-	var actions []Action
 	for key, value := range mapData {
 		action := GetActionFromType(key, value.(map[string]interface{})["type"].(string))
-		err := mapstructure.Decode(value, &action)
+		err = mapstructure.Decode(value, &action)
 		if err != nil {
-			return nil, err
+			return
 		}
 
 		actions = append(actions, action)
 	}
 
-	slices.SortFunc(actions, func(a, b Action) int {
-		if a.Name < b.Name {
-			return -1
-		} else if a.Name > b.Name {
-			return 1
-		} else {
-			return 0
-		}
-	})
-
-	return actions, nil
+	slices.SortFunc(actions, func(a, b Action) int { return strings.Compare(a.Name, b.Name) })
+	return
 }
 
-func ParseMemeList() ([]Meme, error) {
-	jsonFile, err := os.Open("./json/memes.json")
+func ParseMemeList() (memes []Meme, err error) {
+	byteValue, err := os.Open("./json/memes.json")
 	if err != nil {
-		log.Println(err)
-		return nil, err
+		return nil, fmt.Errorf("error reading memes.json file: %w", err)
 	}
-	defer jsonFile.Close()
 
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	var mapData map[string]string
+	err = json.NewDecoder(byteValue).Decode(&mapData)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing memes.json file: %w", err)
+	}
 
-	var mapData map[string]interface{}
-	json.Unmarshal(byteValue, &mapData)
-
-	var memes []Meme
 	for key, value := range mapData {
-		meme := Meme{
-			Name: key,
-			Text: value.(string),
-		}
+		meme := Meme{Name: key, Text: value}
 		memes = append(memes, meme)
 	}
 
-	return memes, nil
+	return
 }
 
 func ParseOrCreateGroups() (GroupsStruct, error) {
-	jsonFile, err := os.Open(groupsPath)
-	if err != nil {
-		jsonFile, err = os.Create(groupsPath)
-		if err != nil {
-			log.Println(err)
-			return nil, err
-		}
+	byteValue, err := os.ReadFile(groupsPath)
+	if errors.Is(err, os.ErrNotExist) {
+		_, _ = os.Create(groupsPath)
+		return make(GroupsStruct), nil
+	} else if err != nil {
+		return nil, fmt.Errorf("error reading groups.json file: %w", err)
 	}
-	defer jsonFile.Close()
-
-	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	var groups GroupsStruct
-	json.Unmarshal(byteValue, &groups)
+	err = json.Unmarshal(byteValue, &groups)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing groups.json file: %w", err)
+	}
 
 	if groups == nil {
 		groups = make(GroupsStruct)
@@ -136,6 +127,4 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 	return groups, nil
 }
 
-func SaveGroups() error {
-	return utils.WriteJSONFile(groupsPath, Groups)
-}
+func SaveGroups() error { return utils.WriteJSONFile(groupsPath, Groups) }

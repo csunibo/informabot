@@ -1,11 +1,12 @@
 package model
 
 import (
+	"strings"
 	"testing"
 )
 
 func TestActions(t *testing.T) {
-	bytes := []byte(`{
+	reader := strings.NewReader(`{
 		"start": {
 		  "type": "message",
 		  "data": {
@@ -14,10 +15,10 @@ func TestActions(t *testing.T) {
 		}
 	}`)
 
-	actions, err := ParseActionsBytes(bytes)
+	actions, err := ParseActionsBytes(reader)
 	t.Log(actions)
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
 
 	if len(actions) != 1 {

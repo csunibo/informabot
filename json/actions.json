@@ -87,7 +87,11 @@
     "type": "todayLectures",
     "data": {
       "description": "Orari lezioni di oggi (1\u00b0 anno)",
-      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1",
+      "course": {
+        "year": 1,
+        "type": "laurea",
+        "name": "Informatica"
+      },
       "title": "<b>Lezioni di oggi (1\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
     }
@@ -96,7 +100,11 @@
     "type": "todayLectures",
     "data": {
       "description": "Orari lezioni di oggi (2\u00b0 anno)",
-      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2",
+      "course": {
+        "year": 2,
+        "type": "laurea",
+        "name": "Informatica"
+      },
       "title": "<b>Lezioni di oggi (2\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
     }
@@ -105,7 +113,11 @@
     "type": "todayLectures",
     "data": {
       "description": "Orari lezioni di oggi (3\u00b0 anno)",
-      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=3",
+      "course": {
+        "year": 3,
+        "type": "laurea",
+        "name": "Informatica"
+      },
       "title": "<b>Lezioni di oggi:</b>\n",
       "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
     }
@@ -122,7 +134,11 @@
     "type": "tomorrowLectures",
     "data": {
       "description": "Orari lezioni di domani (1\u00b0 anno)",
-      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=1",
+      "course": {
+        "year": 1,
+        "type": "laurea",
+        "name": "Informatica"
+      },
       "title": "<b>Lezioni di domani (1\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
     }
@@ -131,7 +147,11 @@
     "type": "tomorrowLectures",
     "data": {
       "description": "Orari lezioni di domani (2\u00b0 anno)",
-      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=2",
+      "course": {
+        "year": 2,
+        "type": "laurea",
+        "name": "Informatica"
+      },
       "title": "<b>Lezioni di domani (2\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
     }
@@ -140,7 +160,11 @@
     "type": "tomorrowLectures",
     "data": {
       "description": "Orari lezioni di domani (3\u00b0 anno)",
-      "url": "https://corsi.unibo.it/laurea/informatica/orario-lezioni/@@orario_reale_json?anno=3",
+      "course": {
+        "year": 3,
+        "type": "laurea",
+        "name": "Informatica"
+      },
       "title": "<b>Lezioni di domani (3\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
     }
