@@ -58,7 +58,14 @@
     "type": "message",
     "data": {
       "description": "Tutte le info di AdmStaff",
-      "text": "<b><i>AdmStaff</i></b>\ud83d\udcbb\n\n<a href='https://students.cs.unibo.it'>\ud83c\udf10Sito Ufficiale e Wiki</a>\n\ud83d\udce7E-mail admstaff@cs.unibo.it"
+      "text": "<b><i>\ud83d\udcbb AdmStaff</i></b>\n\n<a href='https://students.cs.unibo.it'>\ud83c\udf10Sito ufficiale e wiki</a>\n\ud83d\udce7E-mail admstaff@cs.unibo.it"
+    }
+  },
+  "csunibo": {
+    "type": "message",
+    "data": {
+      "description": "La pagina principale di CSUnibo",
+      "text": "<b><i>\ud83d\udcbb CSUnibo</i></b>\n\n<a href='https://csunibo.github.io'>\ud83c\udf10Sito ufficiale</a>"
     }
   },
   "gruppi": {
@@ -142,7 +149,7 @@
     "type": "message",
     "data": {
       "description": "Libri, materiali, prove e altro su CSUnibo",
-      "text": "<b>Libri, materiali, prove ed esercizi</b>\n\ud83d\udcda <a href='https://dynamik.vercel.app/'>Come applicazione web (nuovo)</a>\n\ud83d\udcda <a href='https://csunibo.github.io/wiki/raccolte-di-risorse/contribuire-a-un-insegnamento/index.html'>Come carico il mio materiale?</a>"
+      "text": "<b>Appunti, esercizi, libri, prove e altre risorse</b>\n\ud83d\udcda <a href='https://risorse.students.cs.unibo.it'>Istanza principale</a>\n\ud83d\udcda <a href='https://csunibo.github.io/dynamik'>Istanza di riserva</a>\n\ud83d\udcda <a href='https://csunibo.github.io/wiki/raccolte-di-risorse/contribuire-a-un-insegnamento/index.html'>Come carico il mio materiale?</a>"
     }
   },
   "noncercogruppo": {
