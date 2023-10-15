@@ -232,11 +232,6 @@
       "text": "\ud83d\udcdd <a href='https://csunibo.github.io/diario-tirocinio/'>Diario Tirocinio</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/diario-tirocinio'>Sorgente</a>"
     }
   },
-  "wiki": {
-    "type": "message",
-    "description": "Il wiki di CSUnibo",
-    "text": "\ud83d\udcdd <a href='https://csunibo.github.io/wiki'>Wiki</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/wiki'>Sorgente</a>"
-  },
   "architettura": {
     "type": "course",
     "data": {
