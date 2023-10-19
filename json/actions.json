@@ -44,7 +44,7 @@
     "type": "message",
     "data": {
       "description": "Documento con tutte le descrizioni dei corsi in inglese",
-      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/course-description-merged/description.md'>Course description merged (MD)</a>\n\ud83d\udcdd <a href='https://csunibo.github.io/course-description-merged/description.pdf'>Course description merged (PDF)</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/course-description-merged'>Sorgente</a>"
+      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/course-description-merged'>Course description merged</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/course-description-merged'>Sorgente</a> e <a href='https://csunibo.github.io/wiki/web-scraper/course-description-merged/'>documentazione</a>"
     }
   },
   "dns": {
