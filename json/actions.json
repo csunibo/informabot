@@ -490,6 +490,16 @@
       "telegram": "+DmlZ4Q31uTQ5YTE0"
     }
   },
+  "metodi": {
+    "type": "course",
+    "data": {
+      "description": "Tutto su Metodi logici per la filosofia",
+      "name": "Metodi logici per la filosofia",
+      "website": "422963",
+      "professors": ["eugenio.orlandelli"],
+      "telegram": "unibologica2"
+    }
+  },
   "comp_linguaggi": {
     "type": "course",
     "data": {
