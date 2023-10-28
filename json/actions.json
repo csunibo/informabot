@@ -65,7 +65,7 @@
     "type": "message",
     "data": {
       "description": "La pagina principale di CSUnibo",
-      "text": "<b><i>\ud83d\udcbb CSUnibo</i></b>\n\n<a href='https://csunibo.github.io'>\ud83c\udf10Sito ufficiale</a>"
+      "text": "<b><i>\ud83d\udcbb CSUnibo</i></b>\n\n<a href='https://csunibo.students.cs.unibo.it'>\ud83c\udf10Sito ufficiale</a>"
     }
   },
   "gruppi": {
