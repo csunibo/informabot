@@ -4,8 +4,6 @@
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](LICENSE)
 [![Actions Status](https://github.com/csunibo/informabot/actions/workflows/go.yml/badge.svg)](https://github.com/csunibo/informabot/actions/)
 
-https://github.com/csunibo/informabot/actions/workflows/go.yml/badge.svg
-
 Un bot Telegram per assistere gli studenti del DISI dell'Università di Bologna.
 
 Scopri di più sulla [wiki di
