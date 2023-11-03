@@ -149,7 +149,7 @@
     "type": "message",
     "data": {
       "description": "Libri, materiali, prove e altro su CSUnibo",
-      "text": "<b>Appunti, esercizi, libri, prove e altre risorse</b>\n\ud83d\udcda <a href='https://risorse.students.cs.unibo.it'>Istanza principale</a>\n\ud83d\udcda <a href='https://csunibo.github.io/dynamik'>Istanza di riserva</a>\n\ud83d\udcda <a href='https://csunibo.github.io/wiki/raccolte-di-risorse/contribuire-a-un-insegnamento/index.html'>Come carico il mio materiale?</a>"
+      "text": "<b>Appunti, esercizi, libri, prove e altre risorse</b>\n\ud83d\udcda <a href='https://risorse.students.cs.unibo.it'>Istanza principale</a>\n\ud83d\udcda <a href='https://dynamik.vercel.app'>Istanza di riserva</a>\n\ud83d\udcda <a href='https://csunibo.github.io/wiki/raccolte-di-risorse/contribuire-a-un-insegnamento/index.html'>Come carico il mio materiale?</a>"
     }
   },
   "noncercogruppo": {
