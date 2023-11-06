@@ -4,5 +4,5 @@ github.com/musianisamuele/telegram-bot-api v0.0.4 h1:kQoE4Ih/rnyf2i8iCOwcN+zflx+
 github.com/musianisamuele/telegram-bot-api v0.0.4/go.mod h1:f8epVo400dyxqaQpXt3la1mnhdQW25R1w3yqYT3GQc4=
 golang.org/x/exp v0.0.0-20230809094429-853ea248256d h1:wu5bD43Ana/nF1ZmaLr3lW/FQeJU8CcI+Ln7yWHViXE=
 golang.org/x/exp v0.0.0-20230809094429-853ea248256d/go.mod h1:FXUEEKJgO7OQYeo8N01OfiKP8RXMtf6e8aTskBGqWdc=
-golang.org/x/text v0.13.0 h1:ablQoSUd0tRdKxZewP80B+BaqeKJuVhuRxj/dkrun3k=
-golang.org/x/text v0.13.0/go.mod h1:TvPlkZtksWOMsz7fbANvkp4WM8x/WCo/om8BMLbz+aE=
+golang.org/x/text v0.14.0 h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ=
+golang.org/x/text v0.14.0/go.mod h1:18ZOQIKpY8NJVqYksKHtTdi31H5itFRjB5/qKTNYzSU=
