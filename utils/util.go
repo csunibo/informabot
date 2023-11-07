@@ -2,6 +2,7 @@ package utils
 
 import (
 	"encoding/json"
+	"log"
 	"os"
 	"regexp"
 	"strings"
@@ -14,7 +15,11 @@ import (
 func SendHTML(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) {
 	msg.ParseMode = tgbotapi.ModeHTML
 	msg.DisableWebPagePreview = true
-	bot.Send(msg)
+
+	_, err := bot.Send(msg)
+	if err != nil {
+		log.Println(err.Error())
+	}
 }
 
 /* convert a string into kebab case
