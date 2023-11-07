@@ -20,7 +20,9 @@ func (data MessageData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi
 func (data HelpData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	answer := ""
 	for _, action := range Actions {
-		if description := action.Data.GetDescription(); description != "" {
+		description := action.Data.GetDescription()
+
+		if description != "" && action.Type != "course" {
 			answer += "/" + action.Name + " - " + description + "\n"
 		}
 	}
