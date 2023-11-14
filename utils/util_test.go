@@ -1,55 +1,53 @@
 package utils
 
 import (
+	"fmt"
 	"testing"
 )
 
-func TestToKebabCase(t *testing.T) {
-	// Test strings
-	str1 := "Logica per l'informatica"
-	str2 := "Informatica e Societa"
-	str3 := "Sistemi Operativi"
-
-	// Expected results
-	exp1 := "logica-per-informatica"
-	exp2 := "informatica-e-societa"
-	exp3 := "sistemi-operativi"
-
-	// Test
-	res1 := ToKebabCase(str1)
-	res2 := ToKebabCase(str2)
-	res3 := ToKebabCase(str3)
-
-	// Check results
-
-	if res1 != exp1 {
-		t.Errorf("Expected %s, got %s", exp1, res1)
-	}
-
-	if res2 != exp2 {
-		t.Errorf("Expected %s, got %s", exp2, res2)
-	}
-
-	if res3 != exp3 {
-		t.Errorf("Expected %s, got %s", exp3, res3)
-	}
+func ExampleToKebabCase() {
+	fmt.Println(ToKebabCase("Hello World"))
+	// Output: hello-world
 }
 
-func TestAccents(t *testing.T) {
-	str := "Informatica e Società"
-	exp := "informatica-e-societa"
+func TestToKebabCase(t *testing.T) {
 
-	str2 := "à è ì ò ù"
-	exp2 := "a-e-i-o-u"
-
-	res := ToKebabCase(str)
-	res2 := ToKebabCase(str2)
-
-	if res != exp {
-		t.Errorf("Expected %s, got %s", exp, res)
+	tests := []struct {
+		name string
+		args string
+		want string
+	}{
+		{
+			"Standard",
+			"Logica per l'informatica",
+			"logica-per-informatica",
+		},
+		{
+			"Standard",
+			"Informatica e Societa",
+			"informatica-e-societa",
+		},
+		{
+			"Standard",
+			"Sistemi Operativi",
+			"sistemi-operativi",
+		},
+		{
+			"Accents",
+			"Informatica e Società",
+			"informatica-e-societa",
+		},
+		{
+			"Accents",
+			"à è ì ò ù",
+			"a-e-i-o-u",
+		},
 	}
-
-	if res2 != exp2 {
-		t.Errorf("Expected %s, got %s", exp2, res2)
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ToKebabCase(tt.args); got != tt.want {
+				t.Errorf("ToKebabCase() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
