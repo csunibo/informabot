@@ -115,11 +115,14 @@ func (data YearlyData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Me
 	chatTitle := strings.ToLower(message.Chat.Title)
 
 	// check if string contains the year number
-	if strings.Contains(chatTitle, "primo") {
+	if strings.Contains(chatTitle, "primo") ||
+		strings.Contains(chatTitle, "first") {
 		return makeResponseWithNextCommand(data.Command + "1")
-	} else if strings.Contains(chatTitle, "secondo") {
+	} else if strings.Contains(chatTitle, "secondo") ||
+		strings.Contains(chatTitle, "second") {
 		return makeResponseWithNextCommand(data.Command + "2")
-	} else if strings.Contains(chatTitle, "terzo") {
+	} else if strings.Contains(chatTitle, "terzo") ||
+		strings.Contains(chatTitle, "third") {
 		return makeResponseWithNextCommand(data.Command + "3")
 	} else {
 		return makeResponseWithText(data.NoYear)
