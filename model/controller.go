@@ -34,7 +34,7 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 	chatTitle := strings.ToLower(message.Chat.Title)
 
 	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") ||
-		strings.Contains(chatTitle, "anno") {
+		isAMainGroup(chatTitle) {
 		log.Print("Error [LookingForData]: not a group or blacklisted")
 		return makeResponseWithText(data.ChatError)
 	}
@@ -84,7 +84,7 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 	chatTitle := strings.ToLower(message.Chat.Title)
 
 	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") ||
-		strings.Contains(chatTitle, "anno") {
+		isAMainGroup(chatTitle) {
 		log.Print("Error [NotLookingForData]: not a group or yearly group")
 		return makeResponseWithText(data.ChatError)
 	} else if _, ok := Groups[message.Chat.ID]; !ok {
@@ -251,4 +251,14 @@ func (data LuckData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Mess
 func (data InvalidData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
 	log.Printf("Probably a bug in the JSON action dictionary, got invalid data in command")
 	return makeResponseWithText("Bot internal Error, contact developers")
+}
+
+func isAMainGroup(name string) bool {
+	for _, i := range Settings.MainGroupsIdentifiers {
+		if strings.Contains(name, i) {
+			return true
+		}
+	}
+
+	return false
 }
