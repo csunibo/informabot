@@ -31,7 +31,10 @@ func (data HelpData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) Comma
 }
 
 func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
-	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") || slices.Contains(Settings.LookingForBlackList, message.Chat.ID) {
+	chatTitle := strings.ToLower(message.Chat.Title)
+
+	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") ||
+		strings.Contains(chatTitle, "anno") {
 		log.Print("Error [LookingForData]: not a group or blacklisted")
 		return makeResponseWithText(data.ChatError)
 	}
@@ -77,8 +80,12 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 }
 
 func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
-	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") || slices.Contains(Settings.LookingForBlackList, message.Chat.ID) {
-		log.Print("Error [NotLookingForData]: not a group or blacklisted")
+
+	chatTitle := strings.ToLower(message.Chat.Title)
+
+	if (message.Chat.Type != "group" && message.Chat.Type != "supergroup") ||
+		strings.Contains(chatTitle, "anno") {
+		log.Print("Error [NotLookingForData]: not a group or yearly group")
 		return makeResponseWithText(data.ChatError)
 	} else if _, ok := Groups[message.Chat.ID]; !ok {
 		log.Print("Info [NotLookingForData]: group empty, user not found")
@@ -87,7 +94,6 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 
 	var chatId = message.Chat.ID
 	var senderId = message.From.ID
-	var chatTitle = message.Chat.Title
 
 	var msg string
 	if idx := slices.Index(Groups[chatId], senderId); idx == -1 {
@@ -108,7 +114,7 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 func (data YearlyData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	chatTitle := strings.ToLower(message.Chat.Title)
 
-	// check if string starts with "Yearly"
+	// check if string contains the year number
 	if strings.Contains(chatTitle, "primo") {
 		return makeResponseWithNextCommand(data.Command + "1")
 	} else if strings.Contains(chatTitle, "secondo") {
