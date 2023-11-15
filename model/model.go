@@ -57,8 +57,7 @@ type AutoReply struct {
 }
 
 type SettingsStruct struct {
-	LookingForBlackList []int64 `json:"lookingForBlackList"`
-	GeneralGroups       []int64 `json:"generalGroups"`
+	GeneralGroups []int64 `json:"generalGroups"`
 }
 
 type Meme struct {
