@@ -1,3 +1,6 @@
 {
-  "mainGroupsIdentifiers": ["primo", "secondo", "terzo", "anno", "magistrale", "first", "second", "third", "year", "master"]
+  "mainGroupsIdentifiers": [
+    "primo", "secondo", "terzo", "anno", "magistrale", 
+    "first", "second", "third", "year", "master"
+  ]
 }
