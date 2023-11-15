@@ -1,7 +1,6 @@
 {
-  "lookingForBlackList": [
-    -1001563447632, -1001529143812, -1001421361284, -1001303700367,
-    -1001453098170
-  ],
-  "generalGroups": [-1001563447632, -1001529143812, -1001421361284]
+  "mainGroupsIdentifiers": [
+    "primo", "secondo", "terzo", "anno", "magistrale", 
+    "first", "second", "third", "year", "master"
+  ]
 }
