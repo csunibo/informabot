@@ -90,7 +90,7 @@
       "course": {
         "year": 1,
         "type": "laurea",
-        "name": "Informatica"
+        "name": "informatica"
       },
       "title": "<b>Lezioni di oggi (1\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
@@ -103,7 +103,7 @@
       "course": {
         "year": 2,
         "type": "laurea",
-        "name": "Informatica"
+        "name": "informatica"
       },
       "title": "<b>Lezioni di oggi (2\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
@@ -116,7 +116,7 @@
       "course": {
         "year": 3,
         "type": "laurea",
-        "name": "Informatica"
+        "name": "informatica"
       },
       "title": "<b>Lezioni di oggi:</b>\n",
       "fallbackText": "Non ci sono lezioni oggi. SMETTILA DI PRESSARMI"
@@ -137,7 +137,7 @@
       "course": {
         "year": 1,
         "type": "laurea",
-        "name": "Informatica"
+        "name": "informatica"
       },
       "title": "<b>Lezioni di domani (1\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
@@ -150,7 +150,7 @@
       "course": {
         "year": 2,
         "type": "laurea",
-        "name": "Informatica"
+        "name": "informatica"
       },
       "title": "<b>Lezioni di domani (2\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
@@ -163,7 +163,7 @@
       "course": {
         "year": 3,
         "type": "laurea",
-        "name": "Informatica"
+        "name": "informatica"
       },
       "title": "<b>Lezioni di domani (3\u00b0 anno):</b>\n",
       "fallbackText": "Non ci sono lezioni domani. SMETTILA DI PRESSARMI"
