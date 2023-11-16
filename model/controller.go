@@ -50,7 +50,7 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 	} else {
 		Groups[chatId] = []int64{senderID}
 	}
-	err := SaveGroups()
+	err := SaveGroups(Groups)
 	if err != nil {
 		log.Printf("Error [LookingForData]: %s\n", err)
 	}
@@ -101,7 +101,7 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 		msg = fmt.Sprintf(data.NotFoundError, chatTitle)
 	} else {
 		Groups[chatId] = append(Groups[chatId][:idx], Groups[chatId][idx+1:]...)
-		err := SaveGroups()
+		err := SaveGroups(Groups)
 		if err != nil {
 			log.Printf("Error [NotLookingForData]: %s\n", err)
 		}

@@ -106,15 +106,15 @@ func ParseMemeList() (memes []Meme, err error) {
 }
 
 func ParseOrCreateGroups() (GroupsStruct, error) {
+	groups := make(GroupsStruct)
+
 	byteValue, err := os.ReadFile(groupsPath)
 	if errors.Is(err, os.ErrNotExist) {
-		_, _ = os.Create(groupsPath)
-		return make(GroupsStruct), nil
+		return groups, nil
 	} else if err != nil {
 		return nil, fmt.Errorf("error reading groups.json file: %w", err)
 	}
 
-	var groups GroupsStruct
 	err = json.Unmarshal(byteValue, &groups)
 	if err != nil {
 		return nil, fmt.Errorf("error parsing groups.json file: %w", err)
@@ -127,4 +127,4 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 	return groups, nil
 }
 
-func SaveGroups() error { return utils.WriteJSONFile(groupsPath, Groups) }
+func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsPath, groups) }
