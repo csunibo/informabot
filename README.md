@@ -7,4 +7,4 @@
 Un bot Telegram per assistere gli studenti del DISI dell'Università di Bologna.
 
 Scopri di più sulla [wiki di
-CSUnibo](https://csunibo.students.unibo.it/wiki/bot/informabot/index.html).
+CSUnibo](https://csunibo.students.cs.unibo.it/wiki/bot/informabot/index.html).
