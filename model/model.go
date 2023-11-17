@@ -71,6 +71,38 @@ type Action struct {
 	Data DataInterface `json:"data"`
 }
 
+// config/teachings.json
+
+type Teaching struct {
+	Name string `json:"name"`
+	Url  string `json:"url"`
+	Chat string `json:"chat"`
+}
+
+type Teachings = map[string]Teaching
+
+// config/degrees.json
+
+type YearStudyDiagram struct {
+	Mandatory []*Teaching `json:"mandatory"`
+	Electives []*Teaching `json:"electives"`
+}
+
+type Year struct {
+	Year      int64            `json:"year"`
+	Chat      string           `json:"years"`
+	Teachings YearStudyDiagram `json:"teachings"`
+}
+
+type Degree struct {
+	Id    string `json:"id"`
+	Name  string `json:"name"`
+	Icon  string `json:"icon"`
+	Years []Year `json:"year"`
+}
+
+type Degrees = []Degree
+
 // SECTION ACTION STRUCTS DATA
 type MessageData struct {
 	Text        string `json:"text"`
