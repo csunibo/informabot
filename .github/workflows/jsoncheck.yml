@@ -3,7 +3,7 @@ name: JSON check
 on:
   push:
     paths:
-      - '**.json'
+      - "**/*.json"
   pull_request:
   workflow_dispatch:
 
@@ -12,7 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: json-syntax-check
+      - name: Check JSON syntax
         uses: limitusus/json-syntax-check@v2
         with:
           pattern: "\\.json$"
+      - name: Check JSON formatting
+        uses: creyD/prettier_action@v4.3
+        with:
+          prettier_options: --write **/*.json
+          only_changed: True
