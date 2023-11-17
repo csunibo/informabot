@@ -18,10 +18,22 @@ func SendHTML(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) (tgbotapi.Messag
 }
 
 /*
-ToKebabCase convert a string into kebab case. Useful for GitHub repository
+ToKebabCase converts a string into kebab case. Useful for GitHub repository
 names.
 */
 func ToKebabCase(str string) string {
+	return toLowerCaseConvention(str, '-')
+}
+
+/*
+ToSnakeCase converts a string into snake case. Useful for Telegram bots
+commands.
+*/
+func ToSnakeCase(str string) string {
+	return toLowerCaseConvention(str, '_')
+}
+
+func toLowerCaseConvention(str string, delimiter rune) string {
 	// normalize the string to NFD form
 	normalizedStr := norm.NFD.String(strings.ToLower(strings.TrimSpace(str)))
 
@@ -37,7 +49,7 @@ func ToKebabCase(str string) string {
 		splitted[i] = apostropheSplit[len(apostropheSplit)-1]
 	}
 
-	return strings.Join(splitted, "-")
+	return strings.Join(splitted, string(delimiter))
 }
 
 func WriteJSONFile(filename string, data interface{}) error {

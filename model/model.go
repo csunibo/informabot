@@ -79,13 +79,11 @@ type Teaching struct {
 	Chat string `json:"chat"`
 }
 
-type Teachings = map[string]Teaching
-
 // config/degrees.json
 
 type YearStudyDiagram struct {
-	Mandatory []*Teaching `json:"mandatory"`
-	Electives []*Teaching `json:"electives"`
+	Mandatory []string `json:"mandatory"`
+	Electives []string `json:"electives"`
 }
 
 type Year struct {
@@ -100,8 +98,6 @@ type Degree struct {
 	Icon  string `json:"icon"`
 	Years []Year `json:"year"`
 }
-
-type Degrees = []Degree
 
 // SECTION ACTION STRUCTS DATA
 type MessageData struct {
