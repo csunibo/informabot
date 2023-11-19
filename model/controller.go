@@ -18,8 +18,11 @@ func (data MessageData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) Co
 	return makeResponseWithText(data.Text)
 }
 
-func buildHelpLine(builder *strings.Builder, name string, description string) {
-	builder.WriteString("/" + name + " - " + description + "\n")
+func buildHelpLine(builder *strings.Builder, name string, description string, slashes bool) {
+	if slashes {
+		builder.WriteString("/")
+	}
+	builder.WriteString(name + " - " + description + "\n")
 }
 
 func (data HelpData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
@@ -27,11 +30,11 @@ func (data HelpData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) Comma
 	for _, action := range Actions {
 		description := action.Data.GetDescription()
 		if description != "" && action.Type != "course" {
-			buildHelpLine(&answer, action.Name, description)
+			buildHelpLine(&answer, action.Name, description, data.Slashes)
 		}
 	}
 	for command, degree := range Degrees {
-		buildHelpLine(&answer, command, "Menù "+degree.Name)
+		buildHelpLine(&answer, command, "Menù "+degree.Name, data.Slashes)
 	}
 
 	return makeResponseWithText(answer.String())

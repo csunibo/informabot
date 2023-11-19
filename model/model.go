@@ -108,6 +108,7 @@ type MessageData struct {
 
 type HelpData struct {
 	Description string `json:"description"`
+	Slashes     bool   `json:"slashes"`
 }
 
 type LookingForData struct {
