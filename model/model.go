@@ -33,8 +33,6 @@ func GetActionFromType(name string, commandType string) Action {
 		data = TomorrowLecturesData{}
 	case "list":
 		data = ListData{}
-	case "course":
-		data = CourseData{}
 	case "luck":
 		data = LuckData{}
 	default:
@@ -151,16 +149,6 @@ type ListData struct {
 	Header      string     `json:"header"`
 	Template    string     `json:"template"`
 	Items       [][]string `json:"items"`
-}
-
-type CourseData struct {
-	Name        string   `json:"name"`
-	Description string   `json:"description"`
-	Virtuale    string   `json:"virtuale"`
-	Teams       string   `json:"teams"`
-	Website     string   `json:"website"`
-	Professors  []string `json:"professors"`
-	Telegram    string   `json:"telegram"`
 }
 
 type LuckData struct {

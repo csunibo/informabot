@@ -5,6 +5,8 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
+	"unicode"
 
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/text/unicode/norm"
@@ -33,6 +35,10 @@ func ToSnakeCase(str string) string {
 	return toLowerCaseConvention(str, '_')
 }
 
+func isSeparator(r rune) bool {
+	return !unicode.IsLetter(r) && !unicode.IsDigit(r)
+}
+
 func toLowerCaseConvention(str string, delimiter rune) string {
 	// normalize the string to NFD form
 	normalizedStr := norm.NFD.String(strings.ToLower(strings.TrimSpace(str)))
@@ -41,7 +47,7 @@ func toLowerCaseConvention(str string, delimiter rune) string {
 	reg := regexp.MustCompile(`\p{M}`)
 	normalizedStr = reg.ReplaceAllString(normalizedStr, "")
 
-	splitted := strings.Split(normalizedStr, " ")
+	splitted := strings.FieldsFunc(normalizedStr, isSeparator)
 
 	// removing words before "'" character.
 	for i := range splitted {
@@ -68,4 +74,20 @@ func WriteJSONFile(filename string, data interface{}) error {
 
 	err = file.Close()
 	return err
+}
+
+const BEGINNING_MONTH = time.September
+
+/*
+Returns the starting solar year of the current academic year (e.g. returns 2023
+if the current academic year is 2023/24)
+*/
+func GetCurrentAcademicYear() int {
+	now := time.Now()
+	year := now.Year()
+	if now.Month() >= BEGINNING_MONTH {
+		return year
+	} else {
+		return year - 1
+	}
 }

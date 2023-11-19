@@ -64,6 +64,7 @@ func ParseTeachings() (teachings map[string]Teaching, err error) {
 	if err != nil {
 		return nil, fmt.Errorf("error parsing %s file: %w", filepath, err)
 	}
+	teachings = make(map[string]Teaching, len(teachingsArray))
 	for _, t := range teachingsArray {
 		teachings[commandNameFromTeaching(t)] = t
 	}

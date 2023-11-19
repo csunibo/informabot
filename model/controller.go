@@ -180,54 +180,6 @@ func (data ListData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) Comma
 	return makeResponseWithText(resultText)
 }
 
-const BEGINNING_MONTH = time.September
-
-func getCurrentAcademicYear() int {
-	now := time.Now()
-	year := now.Year()
-	if now.Month() >= BEGINNING_MONTH {
-		return year
-	} else {
-		return year - 1
-	}
-}
-
-func (data CourseData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
-
-	currentAcademicYear := fmt.Sprint(getCurrentAcademicYear())
-
-	var b strings.Builder
-
-	if data.Name != "" {
-		b.WriteString(fmt.Sprintf("<b>%s</b>\n", data.Name))
-	}
-
-	if data.Website != "" {
-		b.WriteString(fmt.Sprintf("<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/%s'>Sito</a>\n",
-			currentAcademicYear, data.Website))
-		b.WriteString(fmt.Sprintf("<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/%s/orariolezioni'>Orario</a>\n",
-			currentAcademicYear, data.Website))
-	}
-
-	if data.Professors != nil {
-		emails := strings.Join(data.Professors, "@unibo.it\n ") + "@unibo.it\n"
-		b.WriteString(fmt.Sprintf("Professori:\n %s", emails))
-	}
-
-	if data.Name != "" {
-		b.WriteString(fmt.Sprintf("<a href='https://risorse.students.cs.unibo.it/%s/'>📚 Risorse (istanza principale)</a>\n", utils.ToKebabCase(data.Name)))
-		b.WriteString(fmt.Sprintf("<a href='https://dynamik.vercel.app/%s/'>📚 Risorse (istanza di riserva 1)</a>\n", utils.ToKebabCase(data.Name)))
-		b.WriteString(fmt.Sprintf("<a href='https://csunibo.github.io/dynamik/%s/'>📚 Risorse (istanza di riserva 2)</a>\n", utils.ToKebabCase(data.Name)))
-		b.WriteString(fmt.Sprintf("<a href='https://github.com/csunibo/%s/'>📂 Repository GitHub delle risorse</a>\n", utils.ToKebabCase(data.Name)))
-	}
-
-	if data.Telegram != "" {
-		b.WriteString(fmt.Sprintf("<a href='https://t.me/%s'>👥 Gruppo Studenti</a>\n", data.Telegram))
-	}
-
-	return makeResponseWithText(b.String())
-}
-
 func (data LuckData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	var emojis = []string{"🎲", "🎯", "🏀", "⚽", "🎳", "🎰"}
 	var noLuckGroups = []int64{-1563447632} // NOTE: better way to handle this?
