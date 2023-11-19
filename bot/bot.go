@@ -112,7 +112,7 @@ func teachingToString(teaching model.Teaching) string {
 			currentAcademicYear, teaching.Website))
 	}
 	if teaching.Professors != nil {
-		b.WriteString(fmt.Sprintf("Professori:\n %s", buildEmails(teaching.Professors)))
+		b.WriteString(fmt.Sprintf("Professori:\n%s", buildEmails(teaching.Professors)))
 	}
 	if teaching.Name != "" {
 		b.WriteString(fmt.Sprintf("<a href='https://risorse.students.cs.unibo.it/%s/'>📚 Risorse (istanza principale)</a>\n", teaching.Url))
