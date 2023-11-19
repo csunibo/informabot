@@ -1,4 +1,4 @@
-// This file contains all the global variables of the bot, that are initialized
+// This file contains all the global variables of the bot that are initialized
 // with the start of the bot.
 //
 // This file should be here because it had circular imports with the Model (bot
@@ -14,8 +14,10 @@ import (
 var (
 	Autoreplies []AutoReply
 	Actions     []Action
+	Degrees     map[string]Degree
 	MemeList    []Meme
 	Settings    SettingsStruct
+	Teachings   map[string]Teaching
 	Groups      GroupsStruct
 )
 
@@ -29,6 +31,16 @@ func InitGlobals() {
 	Actions, err = ParseActions()
 	if err != nil {
 		log.Fatalf("Error reading actions.json file: %s", err.Error())
+	}
+
+	Teachings, err = ParseTeachings()
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+
+	Degrees, err = ParseDegrees()
+	if err != nil {
+		log.Fatalf(err.Error())
 	}
 
 	Settings, err = ParseSettings()

@@ -1,6 +1,14 @@
 {
   "mainGroupsIdentifiers": [
-    "primo", "secondo", "terzo", "anno", "magistrale", 
-    "first", "second", "third", "year", "master"
+    "primo",
+    "secondo",
+    "terzo",
+    "anno",
+    "magistrale",
+    "first",
+    "second",
+    "third",
+    "year",
+    "master"
   ]
 }

@@ -5,12 +5,12 @@ import (
 	"testing"
 )
 
-func ExampleToKebabCase() {
-	fmt.Println(ToKebabCase("Hello World"))
-	// Output: hello-world
+func ExampleToSnakeCase() {
+	fmt.Println(ToSnakeCase("Hello World"))
+	// Output: hello_world
 }
 
-func TestToKebabCase(t *testing.T) {
+func TestToSnakeCase(t *testing.T) {
 
 	tests := []struct {
 		name string
@@ -20,33 +20,33 @@ func TestToKebabCase(t *testing.T) {
 		{
 			"Standard",
 			"Logica per l'informatica",
-			"logica-per-informatica",
+			"logica_per_l_informatica",
 		},
 		{
 			"Standard",
 			"Informatica e Societa",
-			"informatica-e-societa",
+			"informatica_e_societa",
 		},
 		{
 			"Standard",
 			"Sistemi Operativi",
-			"sistemi-operativi",
+			"sistemi_operativi",
 		},
 		{
 			"Accents",
 			"Informatica e Società",
-			"informatica-e-societa",
+			"informatica_e_societa",
 		},
 		{
 			"Accents",
 			"à è ì ò ù",
-			"a-e-i-o-u",
+			"a_e_i_o_u",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := ToKebabCase(tt.args); got != tt.want {
-				t.Errorf("ToKebabCase() = %v, want %v", got, tt.want)
+			if got := ToSnakeCase(tt.args); got != tt.want {
+				t.Errorf("ToSnakeCase() = %v, want %v", got, tt.want)
 			}
 		})
 	}
