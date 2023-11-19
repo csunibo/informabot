@@ -45,6 +45,10 @@ func commandNameFromTeaching(t Teaching) string {
 	return commandNameFromString(t.Url)
 }
 
+func commandNameFromDegree(d Degree) string {
+	return commandNameFromString(d.Id)
+}
+
 func commandNamesFromStrings(strings []string) {
 	for i, s := range strings {
 		strings[i] = commandNameFromString(s)
@@ -71,23 +75,28 @@ func ParseTeachings() (teachings map[string]Teaching, err error) {
 	return
 }
 
-func ParseDegrees() (degrees []Degree, err error) {
+func ParseDegrees() (degrees map[string]Degree, err error) {
 	filepath := filepath.Join(jsonPath, configSubpath, degreesFile)
 	file, err := os.Open(filepath)
 	defer file.Close()
 	if err != nil {
 		return nil, fmt.Errorf("error reading %s file: %w", degreesFile, err)
 	}
-	err = json.NewDecoder(file).Decode(&degrees)
+	var degreesArray []Degree
+	err = json.NewDecoder(file).Decode(&degreesArray)
 	if err != nil {
 		return nil, fmt.Errorf("error parsing %s file: %w", degreesFile, err)
 	}
-	for _, d := range degrees {
+	for _, d := range degreesArray {
 		for _, y := range d.Years {
 			t := y.Teachings
 			commandNamesFromStrings(t.Mandatory)
 			commandNamesFromStrings(t.Electives)
 		}
+	}
+	degrees = make(map[string]Degree, len(degreesArray))
+	for _, d := range degreesArray {
+		degrees[commandNameFromDegree(d)] = d
 	}
 	return
 }

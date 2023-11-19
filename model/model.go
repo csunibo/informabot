@@ -88,7 +88,7 @@ type YearStudyDiagram struct {
 
 type Year struct {
 	Year      int64            `json:"year"`
-	Chat      string           `json:"years"`
+	Chat      string           `json:"chat"`
 	Teachings YearStudyDiagram `json:"teachings"`
 }
 
@@ -96,7 +96,8 @@ type Degree struct {
 	Id    string `json:"id"`
 	Name  string `json:"name"`
 	Icon  string `json:"icon"`
-	Years []Year `json:"year"`
+	Years []Year `json:"years"`
+	Chat  string `json:"chat"`
 }
 
 // SECTION ACTION STRUCTS DATA

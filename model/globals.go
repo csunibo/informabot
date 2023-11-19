@@ -14,7 +14,7 @@ import (
 var (
 	Autoreplies []AutoReply
 	Actions     []Action
-	Degrees     []Degree
+	Degrees     map[string]Degree
 	MemeList    []Meme
 	Settings    SettingsStruct
 	Teachings   map[string]Teaching

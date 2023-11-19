@@ -65,17 +65,38 @@ func run(bot *tgbotapi.BotAPI) {
 	}
 }
 
-type handler = func(*tgbotapi.BotAPI, *tgbotapi.Update, string) bool
+type handlerBehavior = func(*tgbotapi.BotAPI, *tgbotapi.Update, string) bool
+type handler = struct {
+	handlerBehavior
+	string
+}
 
-var handlers = []handler{handleAction, handleTeaching, handleMeme}
+var handlers = []handler{
+	{handleAction, "action"},
+	{handleDegree, "degree"},
+	{handleTeaching, "teaching"},
+	{handleMeme, "meme"},
+	{handleUnknown, "unknown"}}
+
+func handleUnknown(bot *tgbotapi.BotAPI, update *tgbotapi.Update, _ string) bool {
+	handleAction(bot, update, "unknown")
+	return true
+}
 
 func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 	commandName := strings.ToLower(update.Message.Command())
 	for _, h := range handlers {
-		if h(bot, update, commandName) {
+		if h.handlerBehavior(bot, update, commandName) {
+			log.Printf("@%s: \t%s -> %s", update.Message.From.UserName, update.Message.Text, h.string)
 			return
 		}
 	}
+}
+
+const DOMAIN = "@unibo.it\n"
+
+func buildEmails(emails []string) string {
+	return strings.Join(emails, DOMAIN) + DOMAIN
 }
 
 func handleTeaching(bot *tgbotapi.BotAPI, update *tgbotapi.Update, teachingName string) bool {
@@ -95,10 +116,8 @@ func handleTeaching(bot *tgbotapi.BotAPI, update *tgbotapi.Update, teachingName 
 			currentAcademicYear, teaching.Website))
 	}
 	if teaching.Professors != nil {
-		emails := strings.Join(teaching.Professors, "@unibo.it\n ") + "@unibo.it\n"
-		b.WriteString(fmt.Sprintf("Professori:\n %s", emails))
+		b.WriteString(fmt.Sprintf("Professori:\n %s", buildEmails(teaching.Professors)))
 	}
-
 	if teaching.Name != "" {
 		b.WriteString(fmt.Sprintf("<a href='https://risorse.students.cs.unibo.it/%s/'>📚 Risorse (istanza principale)</a>\n", teaching.Url))
 		b.WriteString(fmt.Sprintf("<a href='https://dynamik.vercel.app/%s/'>📚 Risorse (istanza di riserva 1)</a>\n", teaching.Url))
@@ -106,7 +125,46 @@ func handleTeaching(bot *tgbotapi.BotAPI, update *tgbotapi.Update, teachingName 
 		b.WriteString(fmt.Sprintf("<a href='https://github.com/csunibo/%s/'>📂 Repository GitHub delle risorse</a>\n", teaching.Url))
 	}
 	if teaching.Chat != "" {
-		b.WriteString(fmt.Sprintf("<a href='https://t.me/%s'>👥 Gruppo Studenti</a>\n", teaching.Chat))
+		b.WriteString(fmt.Sprintf("<a href='%s'>👥 Gruppo Studenti</a>\n", teaching.Chat))
+	}
+	utils.SendHTML(bot, tgbotapi.NewMessage(update.Message.Chat.ID, b.String()))
+	return true
+}
+
+func handleDegree(bot *tgbotapi.BotAPI, update *tgbotapi.Update, degreeId string) bool {
+	degree, ok := model.Degrees[degreeId]
+	if !ok {
+		return false
+	}
+	var b strings.Builder
+	// header
+	if degree.Icon != "" || degree.Name != "" || degree.Chat != "" {
+		b.WriteString("<b>")
+		elements := []string{}
+		if degree.Icon != "" {
+			elements = append(elements, degree.Icon)
+		}
+		if degree.Name != "" {
+			elements = append(elements, degree.Name)
+		}
+		if degree.Chat != "" {
+			elements = append(elements, fmt.Sprintf("(<a href='%s'>👥 Gruppo</a>)", degree.Chat))
+		}
+		b.WriteString(strings.Join(elements, " "))
+		b.WriteString("</b>\n")
+	}
+	// years
+	for _, y := range degree.Years {
+		// header
+		b.WriteString(fmt.Sprintf("%d", y.Year))
+		if y.Chat != "" {
+			b.WriteString(fmt.Sprintf(" (<a href='%s'>👥 Gruppo</a>)", y.Chat))
+		}
+		b.WriteString("\n")
+		teachings := y.Teachings
+		for _, t := range append(teachings.Mandatory, teachings.Electives...) {
+			b.WriteString(fmt.Sprintf("/%s\n", t))
+		}
 	}
 	utils.SendHTML(bot, tgbotapi.NewMessage(update.Message.Chat.ID, b.String()))
 	return true
@@ -118,8 +176,6 @@ func handleMeme(bot *tgbotapi.BotAPI, update *tgbotapi.Update, memeName string) 
 	})
 
 	if memeIndex != -1 {
-		log.Printf("@%s: \t%s -> MEMES", update.Message.From.UserName, update.Message.Text)
-
 		var msg tgbotapi.MessageConfig
 		if update.Message.IsTopicMessage {
 			msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
@@ -129,18 +185,14 @@ func handleMeme(bot *tgbotapi.BotAPI, update *tgbotapi.Update, memeName string) 
 		}
 		utils.SendHTML(bot, msg)
 		return true
-	} else {
-		handleAction(bot, update, "unknown")
-		log.Printf("@%s: \t%s -> COMMAND NOT AVAILABLE", update.Message.From.UserName, update.Message.Text)
-		return false
 	}
+	return false
 }
 
 // executes a given command in the command list, given its index
 // if invalid index, does nothing
 func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex int) {
 	if commandIndex >= 0 && commandIndex < len(model.Actions) {
-		log.Printf("@%s: \t%s -> COMMAND", update.Message.From.UserName, update.Message.Text)
 		newCommand := model.Actions[commandIndex].Data.HandleBotCommand(bot, update.Message)
 
 		if newCommand.HasText() {
