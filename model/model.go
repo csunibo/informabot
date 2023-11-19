@@ -74,9 +74,11 @@ type Action struct {
 // config/teachings.json
 
 type Teaching struct {
-	Name string `json:"name"`
-	Url  string `json:"url"`
-	Chat string `json:"chat"`
+	Name       string   `json:"name"`
+	Url        string   `json:"url"`
+	Chat       string   `json:"chat"`
+	Website    string   `json:"website"`
+	Professors []string `json:"professors"`
 }
 
 // config/degrees.json
