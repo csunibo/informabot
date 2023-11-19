@@ -8,7 +8,15 @@
   "help": {
     "type": "help",
     "data": {
-      "description": "Elenca i comandi disponibili"
+      "description": "Elenca i comandi disponibili",
+      "slashes": true
+    }
+  },
+  "help_botfather": {
+    "type": "help",
+    "data": {
+      "description": "Elenca i comandi disponibili (senza /)",
+      "slashes": false
     }
   },
   "unknown": {

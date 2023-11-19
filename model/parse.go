@@ -37,8 +37,14 @@ func ParseAutoReplies() (autoReplies []AutoReply, err error) {
 	return
 }
 
+const COMMAND_MAX_LENGTH = 32
+
 func commandNameFromString(s string) string {
-	return utils.ToSnakeCase(s)
+	s = utils.ToSnakeCase(s)
+	if len(s) > COMMAND_MAX_LENGTH {
+		return s[:COMMAND_MAX_LENGTH]
+	}
+	return s
 }
 
 func commandNameFromTeaching(t Teaching) string {
