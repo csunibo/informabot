@@ -18,13 +18,20 @@ func (data MessageData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) Co
 	return makeResponseWithText(data.Text)
 }
 
+func buildHelpLine(builder *strings.Builder, name string, description string) {
+	builder.WriteString("/" + name + " - " + description + "\n")
+}
+
 func (data HelpData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
 	answer := strings.Builder{}
 	for _, action := range Actions {
 		description := action.Data.GetDescription()
 		if description != "" && action.Type != "course" {
-			answer.WriteString("/" + action.Name + " - " + description + "\n")
+			buildHelpLine(&answer, action.Name, description)
 		}
+	}
+	for command, degree := range Degrees {
+		buildHelpLine(&answer, command, "Menù "+degree.Name)
 	}
 
 	return makeResponseWithText(answer.String())

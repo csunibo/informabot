@@ -99,17 +99,13 @@ func buildEmails(emails []string) string {
 	return strings.Join(emails, DOMAIN) + DOMAIN
 }
 
-func handleTeaching(bot *tgbotapi.BotAPI, update *tgbotapi.Update, teachingName string) bool {
-	teaching, ok := model.Teachings[teachingName]
-	if !ok {
-		return false
-	}
-	currentAcademicYear := fmt.Sprint(utils.GetCurrentAcademicYear())
+func teachingToString(teaching model.Teaching) string {
 	var b strings.Builder
 	if teaching.Name != "" {
 		b.WriteString(fmt.Sprintf("<b>%s</b>\n", teaching.Name))
 	}
 	if teaching.Website != "" {
+		currentAcademicYear := fmt.Sprint(utils.GetCurrentAcademicYear())
 		b.WriteString(fmt.Sprintf("<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/%s'>Sito</a>\n",
 			currentAcademicYear, teaching.Website))
 		b.WriteString(fmt.Sprintf("<a href='https://www.unibo.it/it/didattica/insegnamenti/insegnamento/%s/%s/orariolezioni'>Orario</a>\n",
@@ -127,14 +123,29 @@ func handleTeaching(bot *tgbotapi.BotAPI, update *tgbotapi.Update, teachingName 
 	if teaching.Chat != "" {
 		b.WriteString(fmt.Sprintf("<a href='%s'>👥 Gruppo Studenti</a>\n", teaching.Chat))
 	}
-	utils.SendHTML(bot, tgbotapi.NewMessage(update.Message.Chat.ID, b.String()))
+	return b.String()
+}
+
+func handleTeaching(bot *tgbotapi.BotAPI, update *tgbotapi.Update, teachingName string) bool {
+	teaching, ok := model.Teachings[teachingName]
+	if !ok {
+		return false
+	}
+	utils.SendHTML(bot, tgbotapi.NewMessage(update.Message.Chat.ID, teachingToString(teaching)))
 	return true
 }
 
-func handleDegree(bot *tgbotapi.BotAPI, update *tgbotapi.Update, degreeId string) bool {
-	degree, ok := model.Degrees[degreeId]
-	if !ok {
-		return false
+func degreeToTeaching(degree model.Degree) model.Teaching {
+	return model.Teaching{
+		Name: degree.Name,
+		Url:  degree.Id,
+		Chat: degree.Chat,
+	}
+}
+
+func degreeToString(degree model.Degree) string {
+	if len(degree.Years) == 0 {
+		return teachingToString(degreeToTeaching(degree))
 	}
 	var b strings.Builder
 	// header
@@ -166,7 +177,15 @@ func handleDegree(bot *tgbotapi.BotAPI, update *tgbotapi.Update, degreeId string
 			b.WriteString(fmt.Sprintf("/%s\n", t))
 		}
 	}
-	utils.SendHTML(bot, tgbotapi.NewMessage(update.Message.Chat.ID, b.String()))
+	return b.String()
+}
+
+func handleDegree(bot *tgbotapi.BotAPI, update *tgbotapi.Update, degreeId string) bool {
+	degree, ok := model.Degrees[degreeId]
+	if !ok {
+		return false
+	}
+	utils.SendHTML(bot, tgbotapi.NewMessage(update.Message.Chat.ID, degreeToString(degree)))
 	return true
 }
 
