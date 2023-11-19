@@ -20,14 +20,6 @@ func SendHTML(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) (tgbotapi.Messag
 }
 
 /*
-ToKebabCase converts a string into kebab case. Useful for GitHub repository
-names.
-*/
-func ToKebabCase(str string) string {
-	return toLowerCaseConvention(str, '-')
-}
-
-/*
 ToSnakeCase converts a string into snake case. Useful for Telegram bots
 commands.
 */
