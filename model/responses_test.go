@@ -3,6 +3,8 @@ package model
 import (
 	"reflect"
 	"testing"
+
+	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 )
 
 func TestCommandResponse_IsEmpty(t *testing.T) {
@@ -160,7 +162,7 @@ func Test_makeResponse(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := makeResponse(tt.args.text, tt.args.nextCommand); !reflect.DeepEqual(got, tt.want) {
+			if got := makeResponse(tt.args.text, tt.args.nextCommand, tgbotapi.InlineKeyboardMarkup{}); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("makeResponse() = %v, want %v", got, tt.want)
 			}
 		})

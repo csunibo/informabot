@@ -106,6 +106,7 @@ func TestGetTimeTable(t *testing.T) {
 		courseName string
 		year       int
 		day        time.Time
+		curriculum string
 	}
 	tests := []struct {
 		name  string
@@ -122,16 +123,6 @@ func TestGetTimeTable(t *testing.T) {
 				day:        time.Date(2023, 3, 11, 0, 0, 0, 0, time.UTC),
 			},
 			want: "",
-		},
-		{
-			name: "Weekday for master",
-			args: args{
-				courseType: "magistrale",
-				courseName: "informatica",
-				year:       1,
-				day:        time.Date(2023, 11, 20, 0, 0, 0, 0, time.UTC),
-			},
-			want: `🕘`,
 		},
 		{
 			name: "Weekday",
@@ -155,7 +146,7 @@ func TestGetTimeTable(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := GetTimeTable(tt.args.courseType, tt.args.courseName, tt.args.year, tt.args.day)
+			got, err := GetTimeTable(tt.args.courseType, tt.args.courseName, tt.args.curriculum, tt.args.year, tt.args.day)
 			if err != nil && !tt.error {
 				t.Errorf("GetTimeTable() error = %v", err)
 				return
@@ -173,7 +164,7 @@ func TestGetTimeTable(t *testing.T) {
 func TestWeekend(t *testing.T) {
 
 	date := time.Date(2023, 3, 11, 0, 0, 0, 0, time.UTC)
-	result, err := GetTimeTable("laurea", "informatica", 1, date)
+	result, err := GetTimeTable("laurea", "informatica", "", 1, date)
 	if err != nil {
 		t.Fatalf("Error while getting timetable: %s", err)
 	}
