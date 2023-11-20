@@ -102,6 +102,21 @@ type Degree struct {
 	Chat  string `json:"chat"`
 }
 
+// cdls.json
+
+type Curriculum struct {
+	Name     string `json:"name"`
+	Callback string `json:"callback"`
+}
+
+// Recognized by a callback string
+type Cdl struct {
+	// Course name
+	Course string `json:"course"`
+	// Array of curricula, each curriculum has a callback too
+	Curricula []Curriculum `json:"curricula"`
+}
+
 // SECTION ACTION STRUCTS DATA
 type MessageData struct {
 	Text        string `json:"text"`
@@ -128,7 +143,7 @@ type NotLookingForData struct {
 }
 
 type Lectures struct {
-    Description string `json:"description"`
+	Description string `json:"description"`
 }
 
 type YearlyData struct {

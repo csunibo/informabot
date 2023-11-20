@@ -19,6 +19,7 @@ var (
 	Settings    SettingsStruct
 	Teachings   map[string]Teaching
 	Groups      GroupsStruct
+	Cdls        map[string]Cdl
 )
 
 func InitGlobals() {
@@ -56,5 +57,10 @@ func InitGlobals() {
 	Groups, err = ParseOrCreateGroups()
 	if err != nil {
 		log.Fatalf("Error reading or creating groups.json file: %s", err.Error())
+	}
+
+	Cdls, err = ParseCdls()
+	if err != nil {
+		log.Fatalf(err.Error())
 	}
 }

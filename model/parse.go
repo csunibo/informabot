@@ -21,6 +21,7 @@ const (
 	configSubpath = "config/"
 	degreesFile   = "degrees.json"
 	teachingsFile = "teachings.json"
+	cdlFile       = "cdls.json"
 )
 
 func ParseAutoReplies() (autoReplies []AutoReply, err error) {
@@ -206,3 +207,22 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 }
 
 func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsFile, groups) }
+
+func ParseCdls() (cdls map[string]Cdl, err error) {
+	filepath := filepath.Join(jsonPath, cdlFile)
+	file, err := os.Open(filepath)
+	defer file.Close()
+	if err != nil {
+		return nil, fmt.Errorf("error reading %s file: %w", cdlFile, err)
+	}
+
+	var mapData map[string]Cdl
+
+	err = json.NewDecoder(file).Decode(&mapData)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing %s file: %w", filepath, err)
+	}
+
+	cdls = mapData
+	return
+}

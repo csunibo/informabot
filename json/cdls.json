@@ -1,0 +1,22 @@
+{
+    "informatica": {
+        "course": "Informatica"
+    },
+    "lm_informatica": {
+        "course": "Informatica magistrale",
+        "curricula": [
+            {
+                "name": "Tecniche del software",
+                "callback": "software_techniques"
+            },
+            {
+                "name": "Informatica per il management",
+                "callback": "management"
+            },
+            {
+                "name": "Sistemi e reti",
+                "callback": "systems_and_networks"
+            }
+        ]
+    }
+}
