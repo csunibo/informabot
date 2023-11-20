@@ -10,7 +10,6 @@ import (
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/exp/slices"
 
-	"github.com/csunibo/informabot/commands"
 	"github.com/csunibo/informabot/utils"
 )
 
@@ -126,69 +125,12 @@ func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Mess
 
 	i := 0
 	for callback, cdl := range Cdls {
-		fmt.Println(callback, cdl.Course)
 		row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(cdl.Course, fmt.Sprintf("lectures_%s", callback)))
 		rows[i] = row
 		i++
 	}
-	fmt.Println(rows)
 	keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 	return makeResponseWithInlineKeyboard(keyboard)
-}
-
-func (data YearlyData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
-	chatTitle := strings.ToLower(message.Chat.Title)
-
-	// check if string contains the year number
-	if strings.Contains(chatTitle, "primo") ||
-		strings.Contains(chatTitle, "first") {
-		return makeResponseWithNextCommand(data.Command + "1")
-	} else if strings.Contains(chatTitle, "secondo") ||
-		strings.Contains(chatTitle, "second") {
-		return makeResponseWithNextCommand(data.Command + "2")
-	} else if strings.Contains(chatTitle, "terzo") ||
-		strings.Contains(chatTitle, "third") {
-		return makeResponseWithNextCommand(data.Command + "3")
-	} else {
-		return makeResponseWithText(data.NoYear)
-	}
-}
-
-func (data TodayLecturesData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
-
-	response, err := commands.GetTimeTable(data.Course.Type, data.Course.Name, data.Course.Curriculum, data.Course.Year, time.Now())
-	if err != nil {
-		log.Printf("Error [TodayLecturesData]: %s\n", err)
-		return makeResponseWithText("Bot internal Error, contact developers")
-	}
-
-	var msg string
-	if response != "" {
-		msg = data.Title + response
-	} else {
-		msg = data.FallbackText
-	}
-
-	return makeResponseWithText(msg)
-}
-
-func (data TomorrowLecturesData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
-	tomorrowTime := time.Now().AddDate(0, 0, 1)
-
-	response, err := commands.GetTimeTable(data.Course.Type, data.Course.Name, data.Course.Curriculum, data.Course.Year, tomorrowTime)
-	if err != nil {
-		log.Printf("Error [TomorrowLecturesData]: %s\n", err)
-		return makeResponseWithText("Bot internal Error, contact developers")
-	}
-
-	var msg string
-	if response != "" {
-		msg = data.Title + response
-	} else {
-		msg = data.FallbackText
-	}
-
-	return makeResponseWithText(msg)
 }
 
 func (data ListData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {

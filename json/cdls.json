@@ -1,22 +1,25 @@
 {
-    "informatica": {
-        "course": "Informatica"
+    "l_informatica": {
+        "course": "Informatica",
+        "type": "laurea",
+        "name": "informatica"
     },
-    "lm_informatica": {
-        "course": "Informatica magistrale",
-        "curricula": [
-            {
-                "name": "Tecniche del software",
-                "callback": "software_techniques"
-            },
-            {
-                "name": "Informatica per il management",
-                "callback": "management"
-            },
-            {
-                "name": "Sistemi e reti",
-                "callback": "systems_and_networks"
-            }
-        ]
+    "lm_informatica_software_techniques": {
+        "course": "Informatica magistrale - Tecniche del software",
+        "type": "magistrale",
+        "name": "informatica",
+        "curricula": "A58-000"
+    },
+    "lm_informatica_management": {
+        "course": "Informatica magistrale - Informatica per il management",
+        "type": "magistrale",
+        "name": "informatica",
+        "curricula": "991-000"
+    },
+    "lm_informatica_systems_and_networks": {
+        "course": "Informatica magistrale - Sistemi e reti",
+        "type": "magistrale",
+        "name": "informatica",
+        "curricula": "992-000"
     }
 }

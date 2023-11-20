@@ -3,11 +3,15 @@ package bot
 import (
 	"fmt"
 	"log"
+	"regexp"
+	"strconv"
 	"strings"
+	"time"
 
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/exp/slices"
 
+	"github.com/csunibo/informabot/commands"
 	"github.com/csunibo/informabot/model"
 	"github.com/csunibo/informabot/utils"
 )
@@ -40,10 +44,58 @@ func run(bot *tgbotapi.BotAPI) {
 				panic(err)
 			}
 
-			msg := tgbotapi.NewMessage(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Data)
-			if _, err := bot.Send(msg); err != nil {
-				panic(err)
+			callback_text := update.CallbackQuery.Data
+
+			if strings.HasPrefix(callback_text, "lectures_") {
+				if strings.HasSuffix(callback_text, "_today") || strings.HasSuffix(callback_text, "_tomorrow") {
+					timeForLectures := time.Now()
+
+					if strings.HasSuffix(callback_text, "_tomorrow") {
+						timeForLectures = timeForLectures.AddDate(0, 0, 1)
+					}
+
+					yearRegex := regexp.MustCompile(`_y_(\d)_`)
+					year, _ := strconv.Atoi(yearRegex.FindString(callback_text)[3:4])
+
+					cdlKey := callback_text[len("lectures_"):strings.Index(callback_text, "_y_")]
+
+					cdl := model.Cdls[cdlKey]
+					response, err := commands.GetTimeTable(cdl.Type, cdl.Name, cdl.Curriculum, year, timeForLectures)
+					if err != nil {
+						log.Printf("Error [TomorrowLecturesData]: %s\n", err)
+					}
+
+					editConfig := tgbotapi.NewEditMessageText(int64(update.CallbackQuery.Message.Chat.ID), update.CallbackQuery.Message.MessageID, response)
+					editConfig.ParseMode = tgbotapi.ModeHTML
+					bot.Send(editConfig)
+
+				} else if strings.Contains(callback_text, "_y_") {
+					rows := make([][]tgbotapi.InlineKeyboardButton, 2)
+					rows[0] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Oggi", fmt.Sprintf("%s_today", callback_text)))
+					rows[1] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Domani", fmt.Sprintf("%s_tomorrow", callback_text)))
+
+					keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
+					editConfig := tgbotapi.NewEditMessageReplyMarkup(int64(update.CallbackQuery.Message.Chat.ID), update.CallbackQuery.Message.MessageID, keyboard)
+					bot.Send(editConfig)
+				} else {
+					years_nro := 3
+					if strings.HasPrefix(callback_text, "lectures_lm") {
+						years_nro = 2
+					}
+					rows := make([][]tgbotapi.InlineKeyboardButton, years_nro)
+
+					i := 1
+					for i <= years_nro {
+						row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(fmt.Sprintf("%s: %d^ anno", model.Cdls[strings.TrimPrefix(callback_text, "lectures_")].Course, i), fmt.Sprintf("%s_y_%d", callback_text, i)))
+						rows[i-1] = row
+						i++
+					}
+					keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
+					editConfig := tgbotapi.NewEditMessageReplyMarkup(int64(update.CallbackQuery.Message.Chat.ID), update.CallbackQuery.Message.MessageID, keyboard)
+					bot.Send(editConfig)
+				}
 			}
+
 			continue
 		} else if filterMessage(bot, update.Message) {
 			continue
