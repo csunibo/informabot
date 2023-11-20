@@ -2,29 +2,39 @@
 // between the computations of the bot and the driver code, in bot.go
 package model
 
+import tgbotapi "github.com/musianisamuele/telegram-bot-api"
+
 // CommandResponse is returned by the command handler, it contains information
 // about the command computation.
 type CommandResponse struct {
 	Text        string
 	NextCommand string
+	Rows        tgbotapi.InlineKeyboardMarkup
 }
 
 // makeResponse creates a CommandResponse with the given text and nextCommand
-func makeResponse(text string, nextCommand string) CommandResponse {
+func makeResponse(text string, nextCommand string, rows tgbotapi.InlineKeyboardMarkup) CommandResponse {
 	return CommandResponse{
 		Text:        text,
 		NextCommand: nextCommand,
+		Rows:        rows,
 	}
 }
 
 // makeResponseWithText creates a CommandResponse with the given text (and no nextCommand)
 func makeResponseWithText(text string) CommandResponse {
-	return makeResponse(text, "")
+	return makeResponse(text, "", tgbotapi.InlineKeyboardMarkup{})
 }
 
 // makeResponseWithNextCommand creates a CommandResponse with the given nextCommand (and no text)
 func makeResponseWithNextCommand(nextCommand string) CommandResponse {
-	return makeResponse("", nextCommand)
+	return makeResponse("", nextCommand, tgbotapi.InlineKeyboardMarkup{})
+}
+
+// makeResponseWithInlineKeyboard creates a CommandResponse with the given array
+// of elements for the keyboard array.
+func makeResponseWithInlineKeyboard(rows tgbotapi.InlineKeyboardMarkup) CommandResponse {
+	return makeResponse("", "", rows)
 }
 
 // IsEmpty returns true if the CommandResponse has no text and no nextCommand
@@ -40,4 +50,9 @@ func (r CommandResponse) HasText() bool {
 // HasNextCommand returns true if the CommandResponse has some nextCommand
 func (r CommandResponse) HasNextCommand() bool {
 	return r.NextCommand != ""
+}
+
+// HasButtonRows returns true if the CommandResponse has some rows
+func (r CommandResponse) HasRows() bool {
+	return len(r.Rows.InlineKeyboard) > 0
 }

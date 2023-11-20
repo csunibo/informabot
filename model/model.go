@@ -25,6 +25,8 @@ func GetActionFromType(name string, commandType string) Action {
 		data = LookingForData{}
 	case "notLookingFor":
 		data = NotLookingForData{}
+	case "buttonsLecture":
+		data = Lectures{}
 	case "yearly":
 		data = YearlyData{}
 	case "todayLectures":
@@ -123,6 +125,10 @@ type NotLookingForData struct {
 	Text          string `json:"text"`
 	ChatError     string `json:"chatError"`
 	NotFoundError string `json:"notFoundError"`
+}
+
+type Lectures struct {
+    Description string `json:"description"`
 }
 
 type YearlyData struct {

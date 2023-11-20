@@ -35,6 +35,15 @@ func run(bot *tgbotapi.BotAPI) {
 
 	for update := range updates {
 		if update.Message == nil {
+			callback := tgbotapi.NewCallback(update.CallbackQuery.ID, update.CallbackQuery.Data)
+			if _, err := bot.Request(callback); err != nil {
+				panic(err)
+			}
+
+			msg := tgbotapi.NewMessage(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Data)
+			if _, err := bot.Send(msg); err != nil {
+				panic(err)
+			}
 			continue
 		} else if filterMessage(bot, update.Message) {
 			continue
@@ -228,6 +237,15 @@ func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex 
 
 		if newCommand.HasNextCommand() {
 			handleAction(bot, update, newCommand.NextCommand)
+		}
+
+		if newCommand.HasRows() {
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
+			msg.ReplyMarkup = newCommand.Rows
+			if _, err := bot.Send(msg); err != nil {
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Error retrieving lectures")
+				bot.Send(msg)
+			}
 		}
 	}
 }

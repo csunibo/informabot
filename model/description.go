@@ -20,6 +20,10 @@ func (d YearlyData) GetDescription() string {
 	return d.Description
 }
 
+func (d Lectures) GetDescription() string {
+	return d.Description
+}
+
 func (d TodayLecturesData) GetDescription() string {
 	return d.Description
 }

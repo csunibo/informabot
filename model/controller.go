@@ -121,6 +121,18 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 	return makeResponseWithText(msg)
 }
 
+func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
+	keyboard := tgbotapi.NewInlineKeyboardMarkup(
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("Informatica", "lectures_informatica"),
+		),
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale", "lectures_lm_informatica"),
+		),
+	)
+	return makeResponseWithInlineKeyboard(keyboard)
+}
+
 func (data YearlyData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	chatTitle := strings.ToLower(message.Chat.Title)
 
