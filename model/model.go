@@ -132,9 +132,10 @@ type YearlyData struct {
 }
 
 type CourseId struct {
-	Type string `json:"type"`
-	Name string `json:"name"`
-	Year int    `json:"year"`
+	Type       string `json:"type"`
+	Name       string `json:"name"`
+	Year       int    `json:"year"`
+	Curriculum string `json:"curriculum"`
 }
 
 type TodayLecturesData struct {

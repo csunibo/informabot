@@ -50,10 +50,10 @@ func (t *LezioniTime) UnmarshalJSON(data []byte) error {
 
 // GetTimeTable returns an HTML string containing the timetable for the given
 // course on the given date. Returns an empty string if there are no lessons.
-func GetTimeTable(courseType, courseName string, year int, day time.Time) (string, error) {
+func GetTimeTable(courseType, courseName string, curriculum string, year int, day time.Time) (string, error) {
 
 	interval := &timetable.Interval{Start: day, End: day}
-	events, err := timetable.FetchTimetable(courseType, courseName, "", year, interval)
+	events, err := timetable.FetchTimetable(courseType, courseName, curriculum, year, interval)
 	if err != nil {
 		log.Printf("Error getting timetable: %s\n", err)
 		return "", err

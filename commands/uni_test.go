@@ -124,6 +124,16 @@ func TestGetTimeTable(t *testing.T) {
 			want: "",
 		},
 		{
+			name: "Weekday for master",
+			args: args{
+				courseType: "magistrale",
+				courseName: "informatica",
+				year:       1,
+				day:        time.Date(2023, 11, 20, 0, 0, 0, 0, time.UTC),
+			},
+			want: `🕘`,
+		},
+		{
 			name: "Weekday",
 			args: args{
 				courseType: "laurea",

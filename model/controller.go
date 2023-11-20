@@ -141,7 +141,7 @@ func (data YearlyData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Me
 
 func (data TodayLecturesData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
 
-	response, err := commands.GetTimeTable(data.Course.Type, data.Course.Name, data.Course.Year, time.Now())
+	response, err := commands.GetTimeTable(data.Course.Type, data.Course.Name, data.Course.Curriculum, data.Course.Year, time.Now())
 	if err != nil {
 		log.Printf("Error [TodayLecturesData]: %s\n", err)
 		return makeResponseWithText("Bot internal Error, contact developers")
@@ -160,7 +160,7 @@ func (data TodayLecturesData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Messa
 func (data TomorrowLecturesData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
 	tomorrowTime := time.Now().AddDate(0, 0, 1)
 
-	response, err := commands.GetTimeTable(data.Course.Type, data.Course.Name, data.Course.Year, tomorrowTime)
+	response, err := commands.GetTimeTable(data.Course.Type, data.Course.Name, data.Course.Curriculum, data.Course.Year, tomorrowTime)
 	if err != nil {
 		log.Printf("Error [TomorrowLecturesData]: %s\n", err)
 		return makeResponseWithText("Bot internal Error, contact developers")
