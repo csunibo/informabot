@@ -37,7 +37,8 @@ func run(bot *tgbotapi.BotAPI) {
 		if update.Message == nil {
 			callback := tgbotapi.NewCallback(update.CallbackQuery.ID, update.CallbackQuery.Data)
 			if _, err := bot.Request(callback); err != nil {
-				panic(err)
+				log.Printf("Error [bot.Request() for the callback]: %s\n", err)
+				continue
 			}
 
 			callback_text := update.CallbackQuery.Data
