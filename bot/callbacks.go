@@ -51,6 +51,10 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 
 		editConfig := tgbotapi.NewEditMessageText(chatId, messageId, response)
 		editConfig.ParseMode = tgbotapi.ModeHTML
+
+		if response == "" {
+			editConfig = tgbotapi.NewEditMessageText(chatId, messageId, "Non ci sono lezioni in questo giorno. SMETTILA DI PRESSARMI")
+		}
 		_, err = bot.Send(editConfig)
 		if err != nil {
 			log.Printf("Error [bot.Send() for the NewEditMessageText]: %s\n", err)

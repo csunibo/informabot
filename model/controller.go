@@ -7,9 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/csunibo/informabot/utils"
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/exp/slices"
+
+	"github.com/csunibo/informabot/utils"
 )
 
 func (data MessageData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
@@ -126,7 +127,6 @@ func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Mess
 	for _, degree := range Degrees {
 		for _, year := range degree.Years {
 			if year.GroupId == message.Chat.ID {
-				println(year.Chat)
 				groupYear = &year
 				break
 			}
@@ -149,7 +149,6 @@ func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Mess
 			rows := GetTimetableCoursesRows(&timetables)
 			keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 			return makeResponseWithInlineKeyboard(keyboard)
-
 		}
 	} else {
 		rows := GetTimetableCoursesRows(&Timetables)

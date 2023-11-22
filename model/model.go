@@ -140,7 +140,7 @@ type NotLookingForData struct {
 }
 
 type Lectures struct {
-	Description string `json:"description"`
+	Description  string `json:"description"`
 }
 
 type ListData struct {
