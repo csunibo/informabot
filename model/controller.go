@@ -136,43 +136,23 @@ func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Mess
 	if groupYear != nil {
 		if len(groupYear.Timetables) == 1 {
 			callback_text := fmt.Sprintf("lectures_%s_y_%d_", groupYear.Timetables[0], groupYear.Year)
-			rows := make([][]tgbotapi.InlineKeyboardButton, 2)
-			rows[0] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Oggi", fmt.Sprintf("%s_today", callback_text)))
-			rows[1] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Domani", fmt.Sprintf("%s_tomorrow", callback_text)))
+			rows := ChooseTimetableDay(callback_text)
 
 			keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 			return makeResponseWithInlineKeyboard(keyboard)
 		} else {
-			callback_text := fmt.Sprintf("lectures_%s", groupYear.Timetables[0])
-			timetableName := strings.TrimPrefix(callback_text, "lectures_")
-			yearsNro := 3
-			// Master degrees has a duration of only 2 years
-			if strings.HasPrefix(callback_text, "lectures_lm") {
-				yearsNro = 2
-			}
-			rows := make([][]tgbotapi.InlineKeyboardButton, yearsNro)
+			timetables := make(map[string]Timetable, len(groupYear.Timetables))
+			for _, t := range groupYear.Timetables {
+				timetables[t] = Timetables[t]
 
-			i := 1
-			for i <= yearsNro {
-				buttonText := fmt.Sprintf("%s: %d^ anno", Timetables[timetableName].Course, i)
-				buttonCallback := fmt.Sprintf("%s_y_%d", callback_text, i)
-				row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(buttonText, buttonCallback))
-				rows[i-1] = row
-
-				i++
 			}
+			rows := GetTimetableCoursesRows(&timetables)
 			keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 			return makeResponseWithInlineKeyboard(keyboard)
+
 		}
 	} else {
-		rows := make([][]tgbotapi.InlineKeyboardButton, len(Timetables))
-
-		i := 0
-		for callback, timetable := range Timetables {
-			row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(timetable.Course, fmt.Sprintf("lectures_%s", callback)))
-			rows[i] = row
-			i++
-		}
+		rows := GetTimetableCoursesRows(&Timetables)
 		keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 		return makeResponseWithInlineKeyboard(keyboard)
 	}

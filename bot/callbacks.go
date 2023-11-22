@@ -1,7 +1,6 @@
 package bot
 
 import (
-	"fmt"
 	"log"
 	"regexp"
 	"strconv"
@@ -57,10 +56,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 			log.Printf("Error [bot.Send() for the NewEditMessageText]: %s\n", err)
 		}
 	} else if strings.Contains(callback_text, "_y_") {
-		rows := make([][]tgbotapi.InlineKeyboardButton, 2)
-		rows[0] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Oggi", fmt.Sprintf("%s_today", callback_text)))
-		rows[1] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Domani", fmt.Sprintf("%s_tomorrow", callback_text)))
-
+		rows := model.ChooseTimetableDay(callback_text)
 		keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 		editConfig := tgbotapi.NewEditMessageReplyMarkup(chatId, messageId, keyboard)
 		_, err := bot.Send(editConfig)
@@ -69,22 +65,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 		}
 	} else {
 		timetableName := strings.TrimPrefix(callback_text, "lectures_")
-		yearsNro := 3
-		// Master degrees has a duration of only 2 years
-		if strings.HasPrefix(callback_text, "lectures_lm") {
-			yearsNro = 2
-		}
-		rows := make([][]tgbotapi.InlineKeyboardButton, yearsNro)
-
-		i := 1
-		for i <= yearsNro {
-			buttonText := fmt.Sprintf("%s: %d^ anno", model.Timetables[timetableName].Course, i)
-			buttonCallback := fmt.Sprintf("%s_y_%d", callback_text, i)
-			row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(buttonText, buttonCallback))
-			rows[i-1] = row
-
-			i++
-		}
+		rows := model.GetLectureYears(callback_text, model.Timetables[timetableName].Course)
 		keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 		editConfig := tgbotapi.NewEditMessageReplyMarkup(chatId, messageId, keyboard)
 		_, err := bot.Send(editConfig)
