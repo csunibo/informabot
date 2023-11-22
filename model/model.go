@@ -109,8 +109,9 @@ type Curriculum struct {
 type Timetable struct {
 	Course     string `json:"course"`    // Course title
 	Name       string `json:"name"`      // Course name
-	Type       string `json:"type"`      // Type (laurea|magistrale)
+	Type       string `json:"type"`      // Type (laurea|magistrale|2cycle)
 	Curriculum string `json:"curricula"` // Curriculum
+	Url        string `json:"url"`
 }
 
 // SECTION ACTION STRUCTS DATA
