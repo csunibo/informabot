@@ -83,9 +83,11 @@ type YearStudyDiagram struct {
 }
 
 type Year struct {
-	Year      int64            `json:"year"`
-	Chat      string           `json:"chat"`
-	Teachings YearStudyDiagram `json:"teachings"`
+	Year       int64            `json:"year"`
+	Chat       string           `json:"chat"`
+	Teachings  YearStudyDiagram `json:"teachings"`
+	GroupId    int64            `json:"group"`
+	Timetables []string         `json:"timetables"`
 }
 
 type Degree struct {
@@ -96,7 +98,7 @@ type Degree struct {
 	Chat  string `json:"chat"`
 }
 
-// cdls.json
+// timetables.json
 
 type Curriculum struct {
 	Name     string `json:"name"`

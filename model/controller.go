@@ -7,10 +7,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/csunibo/informabot/utils"
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 	"golang.org/x/exp/slices"
-
-	"github.com/csunibo/informabot/utils"
 )
 
 func (data MessageData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {
@@ -121,16 +120,62 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 }
 
 func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
-	rows := make([][]tgbotapi.InlineKeyboardButton, len(Timetables))
-
-	i := 0
-	for callback, cdl := range Timetables {
-		row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(cdl.Course, fmt.Sprintf("lectures_%s", callback)))
-		rows[i] = row
-		i++
+	// Check if `chatId` is a valid group for a year. Used to auto-select some info
+	// for the `/lezioni` command.
+	var groupYear *Year = nil
+	for _, degree := range Degrees {
+		for _, year := range degree.Years {
+			if year.GroupId == message.Chat.ID {
+				println(year.Chat)
+				groupYear = &year
+				break
+			}
+		}
 	}
-	keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
-	return makeResponseWithInlineKeyboard(keyboard)
+
+	if groupYear != nil {
+		if len(groupYear.Timetables) == 1 {
+			callback_text := fmt.Sprintf("lectures_%s_y_%d_", groupYear.Timetables[0], groupYear.Year)
+			rows := make([][]tgbotapi.InlineKeyboardButton, 2)
+			rows[0] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Oggi", fmt.Sprintf("%s_today", callback_text)))
+			rows[1] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Domani", fmt.Sprintf("%s_tomorrow", callback_text)))
+
+			keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
+			return makeResponseWithInlineKeyboard(keyboard)
+		} else {
+			callback_text := fmt.Sprintf("lectures_%s", groupYear.Timetables[0])
+			timetableName := strings.TrimPrefix(callback_text, "lectures_")
+			yearsNro := 3
+			// Master degrees has a duration of only 2 years
+			if strings.HasPrefix(callback_text, "lectures_lm") {
+				yearsNro = 2
+			}
+			rows := make([][]tgbotapi.InlineKeyboardButton, yearsNro)
+
+			i := 1
+			for i <= yearsNro {
+				buttonText := fmt.Sprintf("%s: %d^ anno", Timetables[timetableName].Course, i)
+				buttonCallback := fmt.Sprintf("%s_y_%d", callback_text, i)
+				row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(buttonText, buttonCallback))
+				rows[i-1] = row
+
+				i++
+			}
+			keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
+			return makeResponseWithInlineKeyboard(keyboard)
+		}
+	} else {
+		rows := make([][]tgbotapi.InlineKeyboardButton, len(Timetables))
+
+		i := 0
+		for callback, timetable := range Timetables {
+			row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(timetable.Course, fmt.Sprintf("lectures_%s", callback)))
+			rows[i] = row
+			i++
+		}
+		keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
+		return makeResponseWithInlineKeyboard(keyboard)
+	}
 }
 
 func (data ListData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {

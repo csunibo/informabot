@@ -42,10 +42,10 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 			return
 		}
 
-		cdlKey := callback_text[len("lectures_"):strings.Index(callback_text, "_y_")]
+		timetableKey := callback_text[len("lectures_"):strings.Index(callback_text, "_y_")]
 
-		cdl := model.Timetables[cdlKey]
-		response, err := commands.GetTimeTable(cdl.Type, cdl.Name, cdl.Curriculum, year, timeForLectures)
+		timetable := model.Timetables[timetableKey]
+		response, err := commands.GetTimeTable(timetable.Type, timetable.Name, timetable.Curriculum, year, timeForLectures)
 		if err != nil {
 			log.Printf("Error [GetTimeTable]: %s\n", err)
 		}
@@ -68,7 +68,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 			log.Printf("Error [bot.Send() for the NewEditMessageReplyMarkup]: %s\n", err)
 		}
 	} else {
-		cdlName := strings.TrimPrefix(callback_text, "lectures_")
+		timetableName := strings.TrimPrefix(callback_text, "lectures_")
 		yearsNro := 3
 		// Master degrees has a duration of only 2 years
 		if strings.HasPrefix(callback_text, "lectures_lm") {
@@ -78,7 +78,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 
 		i := 1
 		for i <= yearsNro {
-			buttonText := fmt.Sprintf("%s: %d^ anno", model.Timetables[cdlName].Course, i)
+			buttonText := fmt.Sprintf("%s: %d^ anno", model.Timetables[timetableName].Course, i)
 			buttonCallback := fmt.Sprintf("%s_y_%d", callback_text, i)
 			row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(buttonText, buttonCallback))
 			rows[i-1] = row

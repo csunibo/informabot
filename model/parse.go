@@ -208,7 +208,7 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 
 func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsFile, groups) }
 
-func ParseTimetables() (cdls map[string]Timetable, err error) {
+func ParseTimetables() (timetables map[string]Timetable, err error) {
 	filepath := filepath.Join(jsonPath, configSubpath, timetablesFile)
 	file, err := os.Open(filepath)
 	defer file.Close()
@@ -223,6 +223,6 @@ func ParseTimetables() (cdls map[string]Timetable, err error) {
 		return nil, fmt.Errorf("error parsing %s file: %w", filepath, err)
 	}
 
-	cdls = mapData
+	timetables = mapData
 	return
 }

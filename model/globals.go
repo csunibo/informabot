@@ -19,7 +19,7 @@ var (
 	Settings    SettingsStruct
 	Teachings   map[string]Teaching
 	Groups      GroupsStruct
-	Timetables        map[string]Timetable
+	Timetables  map[string]Timetable
 )
 
 func InitGlobals() {
