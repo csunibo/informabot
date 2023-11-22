@@ -16,12 +16,12 @@ import (
 )
 
 const (
-	jsonPath      = "./json/"
-	groupsFile    = "groups.json"
-	configSubpath = "config/"
-	degreesFile   = "degrees.json"
-	teachingsFile = "teachings.json"
-	cdlFile       = "cdls.json"
+	jsonPath       = "./json/"
+	groupsFile     = "groups.json"
+	configSubpath  = "config/"
+	degreesFile    = "degrees.json"
+	teachingsFile  = "teachings.json"
+	timetablesFile = "timetables.json"
 )
 
 func ParseAutoReplies() (autoReplies []AutoReply, err error) {
@@ -208,15 +208,15 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 
 func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsFile, groups) }
 
-func ParseCdls() (cdls map[string]Cdl, err error) {
-	filepath := filepath.Join(jsonPath, cdlFile)
+func ParseTimetables() (cdls map[string]Timetable, err error) {
+	filepath := filepath.Join(jsonPath, configSubpath, timetablesFile)
 	file, err := os.Open(filepath)
 	defer file.Close()
 	if err != nil {
-		return nil, fmt.Errorf("error reading %s file: %w", cdlFile, err)
+		return nil, fmt.Errorf("error reading %s file: %w", timetablesFile, err)
 	}
 
-	var mapData map[string]Cdl
+	var mapData map[string]Timetable
 
 	err = json.NewDecoder(file).Decode(&mapData)
 	if err != nil {

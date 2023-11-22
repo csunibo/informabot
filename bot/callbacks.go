@@ -44,7 +44,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 
 		cdlKey := callback_text[len("lectures_"):strings.Index(callback_text, "_y_")]
 
-		cdl := model.Cdls[cdlKey]
+		cdl := model.Timetables[cdlKey]
 		response, err := commands.GetTimeTable(cdl.Type, cdl.Name, cdl.Curriculum, year, timeForLectures)
 		if err != nil {
 			log.Printf("Error [GetTimeTable]: %s\n", err)
@@ -78,7 +78,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 
 		i := 1
 		for i <= yearsNro {
-			buttonText := fmt.Sprintf("%s: %d^ anno", model.Cdls[cdlName].Course, i)
+			buttonText := fmt.Sprintf("%s: %d^ anno", model.Timetables[cdlName].Course, i)
 			buttonCallback := fmt.Sprintf("%s_y_%d", callback_text, i)
 			row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(buttonText, buttonCallback))
 			rows[i-1] = row

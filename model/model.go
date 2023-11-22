@@ -104,7 +104,7 @@ type Curriculum struct {
 }
 
 // Recognized by a callback string
-type Cdl struct {
+type Timetable struct {
 	Course     string `json:"course"`    // Course title
 	Name       string `json:"name"`      // Course name
 	Type       string `json:"type"`      // Type (laurea|magistrale)

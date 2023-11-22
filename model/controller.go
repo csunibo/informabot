@@ -121,10 +121,10 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 }
 
 func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
-	rows := make([][]tgbotapi.InlineKeyboardButton, len(Cdls))
+	rows := make([][]tgbotapi.InlineKeyboardButton, len(Timetables))
 
 	i := 0
-	for callback, cdl := range Cdls {
+	for callback, cdl := range Timetables {
 		row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(cdl.Course, fmt.Sprintf("lectures_%s", callback)))
 		rows[i] = row
 		i++
