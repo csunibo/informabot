@@ -121,40 +121,9 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 }
 
 func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
-	// Check if `chatId` is a valid group for a year. Used to auto-select some info
-	// for the `/lezioni` command.
-	var groupYear *Year = nil
-	for _, degree := range Degrees {
-		for _, year := range degree.Years {
-			if year.GroupId == message.Chat.ID {
-				groupYear = &year
-				break
-			}
-		}
-	}
-
-	if groupYear != nil {
-		if len(groupYear.Timetables) == 1 {
-			callback_text := fmt.Sprintf("lectures_%s_y_%d_", groupYear.Timetables[0], groupYear.Year)
-			rows := ChooseTimetableDay(callback_text)
-
-			keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
-			return makeResponseWithInlineKeyboard(keyboard)
-		} else {
-			timetables := make(map[string]Timetable, len(groupYear.Timetables))
-			for _, t := range groupYear.Timetables {
-				timetables[t] = Timetables[t]
-
-			}
-			rows := GetTimetableCoursesRows(&timetables)
-			keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
-			return makeResponseWithInlineKeyboard(keyboard)
-		}
-	} else {
-		rows := GetTimetableCoursesRows(&Timetables)
-		keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
-		return makeResponseWithInlineKeyboard(keyboard)
-	}
+	rows := GetTimetableCoursesRows(&Timetables)
+	keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
+	return makeResponseWithInlineKeyboard(keyboard)
 }
 
 func (data ListData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) CommandResponse {

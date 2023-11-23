@@ -52,7 +52,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 		timetableKey := callback_text[len("lectures_"):strings.Index(callback_text, "_y_")]
 
 		timetable := model.Timetables[timetableKey]
-		response, err := commands.GetTimeTable(timetable.Type, timetable.Name, timetable.Curriculum, timetable.Url, year, timeForLectures)
+		response, err := commands.GetTimeTable(timetable.Type, timetable.Name, timetable.Curriculum, year, timeForLectures)
 		if err != nil {
 			log.Printf("Error [GetTimeTable]: %s\n", err)
 		}

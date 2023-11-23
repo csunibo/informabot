@@ -50,11 +50,9 @@ func (t *LezioniTime) UnmarshalJSON(data []byte) error {
 
 // GetTimeTable returns an HTML string containing the timetable for the given
 // course on the given date. Returns an empty string if there are no lessons.
-func GetTimeTable(courseType, courseName string, curriculum string, url string, year int, day time.Time) (string, error) {
+func GetTimeTable(courseType, courseName string, curriculum string, year int, day time.Time) (string, error) {
 
 	interval := &timetable.Interval{Start: day, End: day}
-	// FIXME: after the edit on unibo-go the line below will be valid
-	// events, err := timetable.FetchTimetable(courseType, courseName, curriculum, url, year, interval)
 	events, err := timetable.FetchTimetable(courseType, courseName, curriculum, year, interval)
 	if err != nil {
 		log.Printf("Error getting timetable: %s\n", err)

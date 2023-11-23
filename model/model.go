@@ -83,11 +83,9 @@ type YearStudyDiagram struct {
 }
 
 type Year struct {
-	Year       int64            `json:"year"`
-	Chat       string           `json:"chat"`
-	Teachings  YearStudyDiagram `json:"teachings"`
-	GroupId    int64            `json:"group"`
-	Timetables []string         `json:"timetables"`
+	Year      int64            `json:"year"`
+	Chat      string           `json:"chat"`
+	Teachings YearStudyDiagram `json:"teachings"`
 }
 
 type Degree struct {
@@ -111,7 +109,6 @@ type Timetable struct {
 	Name       string `json:"name"`      // Course name
 	Type       string `json:"type"`      // Type (laurea|magistrale|2cycle)
 	Curriculum string `json:"curricula"` // Curriculum
-	Url        string `json:"url"`
 }
 
 // SECTION ACTION STRUCTS DATA
