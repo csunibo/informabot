@@ -3,6 +3,7 @@ package model
 import (
 	"fmt"
 	"strings"
+	"time"
 
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 )
@@ -25,9 +26,20 @@ func GetTimetableCoursesRows(timetables *map[string]Timetable) InlineKeyboardRow
 
 // Returns buttons which permits to choose the day for the timetable
 func ChooseTimetableDay(callback_text string) InlineKeyboardRows {
-	rows := make([][]tgbotapi.InlineKeyboardButton, 2)
-	rows[0] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Oggi", fmt.Sprintf("%s_today", callback_text)))
-	rows[1] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Domani", fmt.Sprintf("%s_tomorrow", callback_text)))
+	rows := make([][]tgbotapi.InlineKeyboardButton, 7)
+	var weekdays = [7]string{
+		"Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato",
+	}
+	var months = [12]string{
+		"Dicembre", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre",
+	}
+
+	dt := time.Now()
+
+	for day := 0; day < 7; day++ {
+		rows[day] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(fmt.Sprintf("%s %d %s", weekdays[dt.Weekday()], dt.Day(), months[dt.Month()]), fmt.Sprintf("%s_day_%d", callback_text, dt.Unix())))
+		dt = dt.AddDate(0, 0, 1)
+	}
 
 	return rows
 }

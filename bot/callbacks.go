@@ -22,12 +22,20 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 	var chatId = int64(update.CallbackQuery.Message.Chat.ID)
 	var messageId = update.CallbackQuery.Message.MessageID
 
-	if strings.HasSuffix(callback_text, "_today") || strings.HasSuffix(callback_text, "_tomorrow") {
-		timeForLectures := time.Now()
-
-		if strings.HasSuffix(callback_text, "_tomorrow") {
-			timeForLectures = timeForLectures.AddDate(0, 0, 1)
+	if strings.Contains(callback_text, "_day_") {
+		dayRegex, err := regexp.Compile(`_day_(\d+)`)
+		if err != nil {
+			log.Printf("Error [dayRegex]: %s\n", err)
+			return
 		}
+
+		unixTime, err := strconv.ParseInt(dayRegex.FindString(callback_text)[5:], 10, 64)
+		if err != nil {
+			log.Printf("Error [unixTime]: %s\n", err)
+			return
+		}
+
+		timeForLectures := time.Unix(unixTime, 0)
 
 		yearRegex, err := regexp.Compile(`_y_(\d)_`)
 		if err != nil {
