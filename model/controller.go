@@ -44,7 +44,7 @@ func (data IssueData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.M
 	noMantainerFound := true
 	chatID := message.Chat.ID
 	var answer strings.Builder
-	answer.WriteString("mantainer c'è bisogno del vostro aiuto" + "\n")
+	answer.WriteString("Mantainer c'è bisogno del vostro aiuto" + "\n")
 	var Ids []int64
 
 	for _, m := range Mantainers {
@@ -58,7 +58,9 @@ func (data IssueData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.M
 		}
 	}
 	if noMantainerFound {
-		answer.WriteString("Scrivete sul gruppo di @csunibo nel topic Bot")
+		var s strings.Builder
+		s.WriteString("Scrivete sul gruppo di @csunibo nel topic Bot")
+		return makeResponseWithText(s.String())
 	}
 	return makeResponseWithText(answer.String())
 }
