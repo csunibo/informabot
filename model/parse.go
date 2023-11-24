@@ -231,7 +231,5 @@ func ParseMantainers() (mantainer []Mantainer, err error) {
 		}
 	}
 
-	
-
 	return nil, fmt.Errorf("couldn't found informabot projects after parsing mantainers.json")
 }
