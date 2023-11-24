@@ -30,6 +30,29 @@ func (data HelpData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) Comma
 	return makeResponseWithText(answer.String())
 }
 
+func (data IssueData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
+	noMantainerFound := true
+	chatID := message.Chat.ID
+	var answer strings.Builder
+	answer.WriteString("mantainer c'è bisogno del vostro aiuto" + "\n")
+	var Ids []int64
+
+	for _, m := range Mantainers {
+		Ids = append(Ids, int64(m.Id))
+	}
+
+	for i, participant := range utils.GetChatMembers(bot, chatID, Ids) {
+		if Ids[i] == participant.User.ID && participant.User.UserName != "???" {
+			answer.WriteString("@" + participant.User.UserName + " ")
+			noMantainerFound = false
+		}
+	}
+	if noMantainerFound {
+		answer.WriteString("Scrivete sul gruppo di @csunibo nel topic Bot")
+	}
+	return makeResponseWithText(answer.String())
+}
+
 func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	chatTitle := strings.ToLower(message.Chat.Title)
 

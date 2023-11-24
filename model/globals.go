@@ -17,6 +17,7 @@ var (
 	MemeList    []Meme
 	Settings    SettingsStruct
 	Groups      GroupsStruct
+	Mantainers  []Mantainer
 )
 
 func InitGlobals() {
@@ -45,4 +46,10 @@ func InitGlobals() {
 	if err != nil {
 		log.Fatalf("Error reading or creating groups.json file: %s", err.Error())
 	}
+
+	Mantainers, err = ParseMantainers()
+	if err != nil {
+		log.Fatalf("Error reading mantainer.json file: %s", err.Error())
+	}
+
 }

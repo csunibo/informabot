@@ -21,6 +21,8 @@ func GetActionFromType(name string, commandType string) Action {
 		data = MessageData{}
 	case "help":
 		data = HelpData{}
+	case "issue":
+		data = IssueData{}
 	case "lookingFor":
 		data = LookingForData{}
 	case "notLookingFor":
@@ -71,6 +73,11 @@ type Action struct {
 	Data DataInterface `json:"data"`
 }
 
+type Mantainer struct {
+	Id       int    `json:"id"`
+	Username string `json:"username"`
+}
+
 // SECTION ACTION STRUCTS DATA
 type MessageData struct {
 	Text        string `json:"text"`
@@ -78,6 +85,10 @@ type MessageData struct {
 }
 
 type HelpData struct {
+	Description string `json:"description"`
+}
+
+type IssueData struct {
 	Description string `json:"description"`
 }
 

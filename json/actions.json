@@ -11,6 +11,12 @@
       "description": "Elenca i comandi disponibili"
     }
   },
+  "issue": {
+    "type": "issue",
+    "data": {
+      "description": "C'è un problema tecnico/tattico, portalo all'attenzione di un mantainer"
+    }
+  },
   "unknown": {
     "type": "message",
     "data": {
