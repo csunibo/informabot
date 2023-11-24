@@ -36,10 +36,6 @@ func (d ListData) GetDescription() string {
 	return d.Description
 }
 
-func (d CourseData) GetDescription() string {
-	return d.Description
-}
-
 func (d LuckData) GetDescription() string {
 	return d.Description
 }

@@ -35,8 +35,6 @@ func GetActionFromType(name string, commandType string) Action {
 		data = TomorrowLecturesData{}
 	case "list":
 		data = ListData{}
-	case "course":
-		data = CourseData{}
 	case "luck":
 		data = LuckData{}
 	default:
@@ -78,6 +76,37 @@ type Mantainer struct {
 	Username string `json:"username"`
 }
 
+// config/teachings.json
+
+type Teaching struct {
+	Name       string   `json:"name"`
+	Url        string   `json:"url"`
+	Chat       string   `json:"chat"`
+	Website    string   `json:"website"`
+	Professors []string `json:"professors"`
+}
+
+// config/degrees.json
+
+type YearStudyDiagram struct {
+	Mandatory []string `json:"mandatory"`
+	Electives []string `json:"electives"`
+}
+
+type Year struct {
+	Year      int64            `json:"year"`
+	Chat      string           `json:"chat"`
+	Teachings YearStudyDiagram `json:"teachings"`
+}
+
+type Degree struct {
+	Id    string `json:"id"`
+	Name  string `json:"name"`
+	Icon  string `json:"icon"`
+	Years []Year `json:"years"`
+	Chat  string `json:"chat"`
+}
+
 // SECTION ACTION STRUCTS DATA
 type MessageData struct {
 	Text        string `json:"text"`
@@ -86,6 +115,7 @@ type MessageData struct {
 
 type HelpData struct {
 	Description string `json:"description"`
+	Slashes     bool   `json:"slashes"`
 }
 
 type IssueData struct {
@@ -132,16 +162,6 @@ type ListData struct {
 	Header      string     `json:"header"`
 	Template    string     `json:"template"`
 	Items       [][]string `json:"items"`
-}
-
-type CourseData struct {
-	Name        string   `json:"name"`
-	Description string   `json:"description"`
-	Virtuale    string   `json:"virtuale"`
-	Teams       string   `json:"teams"`
-	Website     string   `json:"website"`
-	Professors  []string `json:"professors"`
-	Telegram    string   `json:"telegram"`
 }
 
 type LuckData struct {
