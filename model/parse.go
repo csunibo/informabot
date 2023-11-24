@@ -206,7 +206,6 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 }
 
 func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsFile, groups) }
-func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsPath, groups) }
 
 func ParseMantainers() (mantainer []Mantainer, err error) {
 	file, err := os.ReadFile("./json/config/mantainers.json")
