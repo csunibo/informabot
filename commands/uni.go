@@ -68,7 +68,8 @@ func GetTimeTable(courseType, courseName string, curriculum string, year int, da
 	for _, event := range events {
 		b.WriteString(fmt.Sprintf(`  🕘 <b><a href="%s">%s</a></b>`, event.Teams, event.Title))
 		b.WriteString("\n")
-		b.WriteString(event.Start.Format("15:04"))
+		b.WriteString(event.Start.Format("15:04") + " - " +
+			event.End.Format("15:04"))
 		b.WriteString("\n")
 		if len(event.Classrooms) > 0 {
 			b.WriteString(fmt.Sprintf("  🏢 %s - %s\n", event.Classrooms[0].BuildingDesc, event.Classrooms[0].FloorDesc))
