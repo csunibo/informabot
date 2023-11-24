@@ -210,9 +210,9 @@ func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsFi
 func ParseMantainers() (mantainer []Mantainer, err error) {
 	file, err := os.ReadFile("./json/config/mantainers.json")
 	if errors.Is(err, os.ErrNotExist) {
-		return mantainer, nil
+		return mantainer, fmt.Errorf("mantainers.json does not exist")
 	} else if err != nil {
-		return nil, fmt.Errorf("error reading groups.json file: %w", err)
+		return nil, fmt.Errorf("error reading mantainers.json file: %w", err)
 	}
 
 	var projects []struct {
