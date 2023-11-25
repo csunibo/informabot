@@ -45,7 +45,7 @@ func (data IssueData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.M
 	var answer strings.Builder
 	var Ids []int64
 
-	answer.WriteString(data.Responses[0])
+	answer.WriteString(data.Response)
 
 	for _, m := range Mantainers {
 		Ids = append(Ids, int64(m.Id))
@@ -58,7 +58,7 @@ func (data IssueData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.M
 		}
 	}
 	if noMantainerFound {
-		return makeResponseWithText(data.Responses[1])
+		return makeResponseWithText(data.Fallback)
 	}
 	return makeResponseWithText(answer.String())
 }

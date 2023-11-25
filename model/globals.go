@@ -61,7 +61,7 @@ func InitGlobals() {
 
 	Mantainers, err = ParseMantainers()
 	if err != nil {
-		log.Fatalf("Error reading mantainers.json file: %s", err.Error())
+		log.Fatalf("Error parsing mantainers.json file: %s", err.Error())
 	}
 
 }
