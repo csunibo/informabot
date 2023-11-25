@@ -19,6 +19,7 @@ var (
 	Settings    SettingsStruct
 	Teachings   map[string]Teaching
 	Groups      GroupsStruct
+	Mantainers  []Mantainer
 )
 
 func InitGlobals() {
@@ -57,4 +58,10 @@ func InitGlobals() {
 	if err != nil {
 		log.Fatalf("Error reading or creating groups.json file: %s", err.Error())
 	}
+
+	Mantainers, err = ParseMantainers()
+	if err != nil {
+		log.Fatalf("Error parsing mantainers.json file: %s", err.Error())
+	}
+
 }

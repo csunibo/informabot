@@ -8,6 +8,10 @@ func (d HelpData) GetDescription() string {
 	return d.Description
 }
 
+func (d IssueData) GetDescription() string {
+	return d.Description
+}
+
 func (d LookingForData) GetDescription() string {
 	return d.Description
 }
