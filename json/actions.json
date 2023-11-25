@@ -22,7 +22,11 @@
   "issue": {
     "type": "issue",
     "data": {
-      "description": "C'è un problema tecnico/tattico, portalo all'attenzione di un mantainer"
+      "description": "C'è un problema tecnico/tattico, portalo all'attenzione di un mantainer",
+      "responses":[
+        "Mantainer c'è bisogno del vostro aiuto \n",
+        "Scrivete sul gruppo di @csunibo nel topic Bot"
+      ]
     }
   },
   "unknown": {
