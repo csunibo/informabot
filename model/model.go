@@ -120,6 +120,7 @@ type HelpData struct {
 
 type IssueData struct {
 	Description string `json:"description"`
+	Responses []string `json:"responses"`
 }
 
 type LookingForData struct {
