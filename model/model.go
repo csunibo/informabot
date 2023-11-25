@@ -120,8 +120,8 @@ type HelpData struct {
 
 type IssueData struct {
 	Description string `json:"description"`
-	Response string `json:"response"`
-	Fallback string `json:"fallback"`
+	Response    string `json:"response"`
+	Fallback    string `json:"fallback"`
 }
 
 type LookingForData struct {
