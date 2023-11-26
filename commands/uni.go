@@ -61,7 +61,7 @@ func GetTimeTable(courseType, courseName string, year int, day time.Time) (strin
 
 	// Sort the events by start time
 	slices.SortFunc(events, func(a, b timetable.Event) int {
-		return int(b.Start.Time.Sub(a.Start.Time).Nanoseconds())
+		return int(a.Start.Time.Sub(b.Start.Time).Nanoseconds())
 	})
 
 	b := strings.Builder{}
