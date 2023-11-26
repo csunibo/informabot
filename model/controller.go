@@ -39,6 +39,29 @@ func (data HelpData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) Comma
 	return makeResponseWithText(answer.String())
 }
 
+func (data IssueData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
+	noMantainerFound := true
+	var answer strings.Builder
+	var Ids []int64
+
+	answer.WriteString(data.Response)
+
+	for _, m := range Mantainers {
+		Ids = append(Ids, int64(m.Id))
+	}
+
+	for i, participant := range utils.GetChatMembers(bot, message.Chat.ID, Ids) {
+		if Ids[i] == participant.User.ID && participant.User.UserName != "???" {
+			answer.WriteString("@" + participant.User.UserName + " ")
+			noMantainerFound = false
+		}
+	}
+	if noMantainerFound {
+		return makeResponseWithText(data.Fallback)
+	}
+	return makeResponseWithText(answer.String())
+}
+
 func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	chatTitle := strings.ToLower(message.Chat.Title)
 

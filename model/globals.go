@@ -20,6 +20,7 @@ var (
 	Teachings   map[string]Teaching
 	Groups      GroupsStruct
 	Timetables  map[string]Timetable
+	Mantainers  []Mantainer
 )
 
 func InitGlobals() {
@@ -62,5 +63,10 @@ func InitGlobals() {
 	Timetables, err = ParseTimetables()
 	if err != nil {
 		log.Fatalf(err.Error())
+	}
+
+	Mantainers, err = ParseMantainers()
+	if err != nil {
+		log.Fatalf("Error parsing mantainers.json file: %s", err.Error())
 	}
 }
