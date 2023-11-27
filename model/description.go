@@ -20,15 +20,7 @@ func (d NotLookingForData) GetDescription() string {
 	return d.Description
 }
 
-func (d YearlyData) GetDescription() string {
-	return d.Description
-}
-
-func (d TodayLecturesData) GetDescription() string {
-	return d.Description
-}
-
-func (d TomorrowLecturesData) GetDescription() string {
+func (d Lectures) GetDescription() string {
 	return d.Description
 }
 

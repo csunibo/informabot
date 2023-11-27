@@ -9,6 +9,7 @@ import (
 
 type DataInterface interface {
 	HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse
+	HandleBotCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_text string)
 	GetDescription() string
 }
 
@@ -27,12 +28,8 @@ func GetActionFromType(name string, commandType string) Action {
 		data = LookingForData{}
 	case "notLookingFor":
 		data = NotLookingForData{}
-	case "yearly":
-		data = YearlyData{}
-	case "todayLectures":
-		data = TodayLecturesData{}
-	case "tomorrowLectures":
-		data = TomorrowLecturesData{}
+	case "buttonsLecture":
+		data = Lectures{}
 	case "list":
 		data = ListData{}
 	case "luck":
@@ -107,6 +104,23 @@ type Degree struct {
 	Chat  string `json:"chat"`
 }
 
+// timetables.json
+
+type Curriculum struct {
+	Name     string `json:"name"`
+	Callback string `json:"callback"`
+}
+
+// Recognized by a callback string
+type Timetable struct {
+	Course       string `json:"course"`    // Course title
+	Name         string `json:"name"`      // Course name
+	Type         string `json:"type"`      // Type (laurea|magistrale|2cycle)
+	Curriculum   string `json:"curricula"` // Curriculum
+	Title        string `json:"title"`
+	FallbackText string `json:"fallbackText"`
+}
+
 // SECTION ACTION STRUCTS DATA
 type MessageData struct {
 	Text        string `json:"text"`
@@ -138,26 +152,11 @@ type NotLookingForData struct {
 	NotFoundError string `json:"notFoundError"`
 }
 
-type YearlyData struct {
-	Description string `json:"description"`
-	Command     string `json:"command"`
-	NoYear      string `json:"noYear"`
+type Lectures struct {
+	Description  string `json:"description"`
+	Title        string `json:"title"`
+	FallbackText string `json:"fallbackText"`
 }
-
-type CourseId struct {
-	Type string `json:"type"`
-	Name string `json:"name"`
-	Year int    `json:"year"`
-}
-
-type TodayLecturesData struct {
-	Description  string   `json:"description"`
-	Course       CourseId `json:"course"`
-	Title        string   `json:"title"`
-	FallbackText string   `json:"fallbackText"`
-}
-
-type TomorrowLecturesData TodayLecturesData
 
 type ListData struct {
 	Description string     `json:"description"`

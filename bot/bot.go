@@ -35,6 +35,18 @@ func run(bot *tgbotapi.BotAPI) {
 
 	for update := range updates {
 		if update.Message == nil {
+			callback := tgbotapi.NewCallback(update.CallbackQuery.ID, update.CallbackQuery.Data)
+			if _, err := bot.Request(callback); err != nil {
+				log.Printf("Error [bot.Request() for the callback]: %s\n", err)
+				continue
+			}
+
+			callback_text := update.CallbackQuery.Data
+
+			if strings.HasPrefix(callback_text, "lectures_") {
+				handleCallback(bot, &update, "lezioni", callback_text)
+			}
+
 			continue
 		} else if filterMessage(bot, update.Message) {
 			continue
@@ -229,6 +241,15 @@ func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex 
 		if newCommand.HasNextCommand() {
 			handleAction(bot, update, newCommand.NextCommand)
 		}
+
+		if newCommand.HasRows() {
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
+			msg.ReplyMarkup = newCommand.Rows
+			if _, err := bot.Send(msg); err != nil {
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Error sending data")
+				bot.Send(msg)
+			}
+		}
 	}
 }
 
@@ -241,6 +262,21 @@ func handleAction(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandName str
 
 	if idx != -1 {
 		executeCommand(bot, update, idx)
+		return true
+	}
+
+	return false
+}
+
+// Handle a callback searching a the good action
+func handleCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandName string, callback_text string) bool {
+	idx := slices.IndexFunc(model.Actions, func(action model.Action) bool {
+		return action.Name == commandName
+	})
+
+	if idx != -1 {
+		model.Actions[idx].Data.HandleBotCallback(bot, update, callback_text)
+
 		return true
 	}
 

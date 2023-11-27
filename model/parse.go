@@ -16,11 +16,12 @@ import (
 )
 
 const (
-	jsonPath      = "./json/"
-	groupsFile    = "groups.json"
-	configSubpath = "config/"
-	degreesFile   = "degrees.json"
-	teachingsFile = "teachings.json"
+	jsonPath       = "./json/"
+	groupsFile     = "groups.json"
+	configSubpath  = "config/"
+	degreesFile    = "degrees.json"
+	teachingsFile  = "teachings.json"
+	timetablesFile = "timetables.json"
 )
 
 func ParseAutoReplies() (autoReplies []AutoReply, err error) {
@@ -206,6 +207,25 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 }
 
 func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsFile, groups) }
+
+func ParseTimetables() (timetables map[string]Timetable, err error) {
+	filepath := filepath.Join(jsonPath, configSubpath, timetablesFile)
+	file, err := os.Open(filepath)
+	defer file.Close()
+	if err != nil {
+		return nil, fmt.Errorf("error reading %s file: %w", timetablesFile, err)
+	}
+
+	var mapData map[string]Timetable
+
+	err = json.NewDecoder(file).Decode(&mapData)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing %s file: %w", filepath, err)
+	}
+
+	timetables = mapData
+	return
+}
 
 func ParseMantainers() (mantainer []Mantainer, err error) {
 	file, err := os.ReadFile("./json/config/mantainers.json")
