@@ -9,6 +9,7 @@ import (
 
 type DataInterface interface {
 	HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse
+	HandleBotCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_text string)
 	GetDescription() string
 }
 
@@ -153,6 +154,7 @@ type NotLookingForData struct {
 
 type Lectures struct {
 	Description  string `json:"description"`
+	Title        string `json:"title"`
 	FallbackText string `json:"fallbackText"`
 }
 

@@ -9,12 +9,16 @@ import (
 )
 
 func TestGetTimetableCoursesRows(t *testing.T) {
-	var timetables = map[string]Timetable{
+	timetables := make([]map[string]Timetable, 2)
+
+	timetables[0] = map[string]Timetable{
 		"l_informatica": {
 			Course: "Informatica",
 			Type:   "laurea",
 			Name:   "informatica",
 		},
+	}
+	timetables[1] = map[string]Timetable{
 		"lm_informatica_software_techniques": {
 			Course:     "Informatica Magistrale - Tecniche del software",
 			Type:       "magistrale",
@@ -22,34 +26,36 @@ func TestGetTimetableCoursesRows(t *testing.T) {
 			Curriculum: "A58-000",
 		},
 	}
+	wants := make([]InlineKeyboardRows, 2)
+	wants[0] = InlineKeyboardRows{tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica", "lectures_l_informatica"))}
+	wants[1] = InlineKeyboardRows{tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale - Tecniche del software", "lectures_lm_informatica_software_techniques"))}
 
 	type args struct {
-		data map[string]Timetable
+		data []map[string]Timetable
 	}
 	tests := []struct {
 		name string
 		args args
-		want InlineKeyboardRows
+		want []InlineKeyboardRows
 	}{
 		{
 			name: "All the timetables from the map",
 			args: args{data: timetables},
-			want: InlineKeyboardRows{
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica", "lectures_l_informatica")),
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale - Tecniche del software", "lectures_lm_informatica_software_techniques")),
-			},
+			want: wants,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			var got InlineKeyboardRows = GetTimetableCoursesRows(&tt.args.data)
-			if len(got) != len(tt.want) {
-				t.Errorf("GetTimetableCoursesRows() = %v, want %v", got, tt.want)
-			} else {
-				for i, v := range got {
-					for j, w := range v {
-						if w.Text != tt.want[i][j].Text || *w.CallbackData != *tt.want[i][j].CallbackData {
-							t.Errorf("GetTimetableCoursesRows() = %v, want %v", w, tt.want[i][j])
+			for idx, timetable := range tt.args.data {
+				var got InlineKeyboardRows = GetTimetableCoursesRows(&timetable)
+				if len(got) != len(tt.want[idx]) {
+					t.Errorf("GetTimetableCoursesRows() = %v, want %v", got, tt.want)
+				} else {
+					for i, v := range got {
+						for j, w := range v {
+							if w.Text != tt.want[idx][i][j].Text || *w.CallbackData != *tt.want[idx][i][j].CallbackData {
+								t.Errorf("GetTimetableCoursesRows() = %v, want %v", w, tt.want[idx][i][j])
+							}
 						}
 					}
 				}
@@ -118,17 +124,17 @@ func TestGetLectureYears(t *testing.T) {
 			name: "Get rows for bachelor's degree",
 			args: args{data: [2]string{"lectures_l_informatica", "Informatica"}},
 			want: InlineKeyboardRows{
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 1^ anno", "lectures_l_informatica_y_1")),
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 2^ anno", "lectures_l_informatica_y_2")),
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 3^ anno", "lectures_l_informatica_y_3")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 1\u00b0 anno", "lectures_l_informatica_y_1")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 2\u00b0 anno", "lectures_l_informatica_y_2")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 3\u00b0 anno", "lectures_l_informatica_y_3")),
 			},
 		},
 		{
 			name: "Get rows for master's degree",
 			args: args{data: [2]string{"lectures_lm_informatica_software_techniques", "Informatica Magistrale"}},
 			want: InlineKeyboardRows{
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale: 1^ anno", "lectures_lm_informatica_software_techniques_y_1")),
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale: 2^ anno", "lectures_lm_informatica_software_techniques_y_2")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale: 1\u00b0 anno", "lectures_lm_informatica_software_techniques_y_1")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale: 2\u00b0 anno", "lectures_lm_informatica_software_techniques_y_2")),
 			},
 		},
 	}

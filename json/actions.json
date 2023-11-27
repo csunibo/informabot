@@ -94,7 +94,9 @@
   "lezioni": {
     "type": "buttonsLecture",
     "data": {
-      "description": "Orari lezioni"
+      "description": "Orari lezioni",
+      "title": " <b>Lezioni di %s di (%d\u00b0 anno) di giorno %s</b>",
+      "fallbackText": "Non ci sono lezioni in questo giorno. SMETTILA DI PRESSARMI"
     }
   },
   "materiali": {

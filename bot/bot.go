@@ -44,7 +44,7 @@ func run(bot *tgbotapi.BotAPI) {
 			callback_text := update.CallbackQuery.Data
 
 			if strings.HasPrefix(callback_text, "lectures_") {
-				lecturesCallback(bot, &update, callback_text)
+				handleCallback(bot, &update, "lezioni", callback_text)
 			}
 
 			continue
@@ -262,6 +262,21 @@ func handleAction(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandName str
 
 	if idx != -1 {
 		executeCommand(bot, update, idx)
+		return true
+	}
+
+	return false
+}
+
+// Handle a callback searching a the good action
+func handleCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandName string, callback_text string) bool {
+	idx := slices.IndexFunc(model.Actions, func(action model.Action) bool {
+		return action.Name == commandName
+	})
+
+	if idx != -1 {
+		model.Actions[idx].Data.HandleBotCallback(bot, update, callback_text)
+
 		return true
 	}
 

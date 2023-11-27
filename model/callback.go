@@ -1,4 +1,4 @@
-package bot
+package model
 
 import (
 	"fmt"
@@ -11,15 +11,34 @@ import (
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 
 	"github.com/csunibo/informabot/commands"
-	"github.com/csunibo/informabot/model"
 )
+
+func (_ MessageData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+	log.Printf("`HandleBotCallback` not defined for `MessageData`")
+}
+
+func (_ HelpData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+	log.Printf("`HandleBotCallback` not defined for `HelpData`")
+}
+
+func (_ IssueData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+	log.Printf("`HandleBotCallback` not defined for `IssueData`")
+}
+
+func (_ LookingForData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+	log.Printf("`HandleBotCallback` not defined for `LookingForData`")
+}
+
+func (_ NotLookingForData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+	log.Printf("`HandleBotCallback` not defined for `NotLookingForData`")
+}
 
 // Handle the callback for the lectures command (`/lezioni`)
 // Parse the `callback_text` to check which operation it must to do:
 // - If the string ends with "_today" or "_tomorrow" it returns the timetable
 // - If the string just contains a "_y_<number>" it asks for today or tomorrow
 // - Otherwise prints the course year of what timetable the user wants to see
-func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_text string) {
+func (data Lectures) HandleBotCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_text string) {
 	var chatId = int64(update.CallbackQuery.Message.Chat.ID)
 	var messageId = update.CallbackQuery.Message.MessageID
 
@@ -52,16 +71,16 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 
 		timetableKey := callback_text[len("lectures_"):strings.Index(callback_text, "_y_")]
 
-		timetable := model.Timetables[timetableKey]
+		timetable := Timetables[timetableKey]
 		response, err := commands.GetTimeTable(timetable.Type, timetable.Name, timetable.Curriculum, year, timeForLectures)
 		if err != nil {
 			log.Printf("Error [GetTimeTable]: %s\n", err)
 		}
 
 		if response == "" {
-			response = timetable.FallbackText
+			response = data.FallbackText
 		} else {
-			response = fmt.Sprintf(timetable.Title, timetable.Course, year, timeForLectures.Format("2006-01-02")) + "\n\n" + response
+			response = fmt.Sprintf(data.Title, timetable.Course, year, timeForLectures.Format("2006-01-02")) + "\n\n" + response
 		}
 
 		editConfig := tgbotapi.NewEditMessageText(chatId, messageId, response)
@@ -72,7 +91,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 			log.Printf("Error [bot.Send() for the NewEditMessageText]: %s\n", err)
 		}
 	} else if strings.Contains(callback_text, "_y_") {
-		rows := model.ChooseTimetableDay(callback_text)
+		rows := ChooseTimetableDay(callback_text)
 		keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 		editConfig := tgbotapi.NewEditMessageReplyMarkup(chatId, messageId, keyboard)
 		_, err := bot.Send(editConfig)
@@ -81,7 +100,7 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 		}
 	} else {
 		timetableName := strings.TrimPrefix(callback_text, "lectures_")
-		rows := model.GetLectureYears(callback_text, model.Timetables[timetableName].Course)
+		rows := GetLectureYears(callback_text, Timetables[timetableName].Course)
 		keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 		editConfig := tgbotapi.NewEditMessageReplyMarkup(chatId, messageId, keyboard)
 		_, err := bot.Send(editConfig)
@@ -89,4 +108,16 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 			log.Printf("Error [bot.Send() for the NewEditMessageReplyMarkup]: %s\n", err)
 		}
 	}
+}
+
+func (_ ListData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+	log.Printf("`HandleBotCallback` not defined for `ListData`")
+}
+
+func (_ LuckData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+	log.Printf("`HandleBotCallback` not defined for `LuckData`")
+}
+
+func (_ InvalidData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+	log.Printf("`HandleBotCallback` not defined for `InvalidData`")
 }
