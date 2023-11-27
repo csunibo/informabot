@@ -37,7 +37,7 @@ func ChooseTimetableDay(callback_text string) InlineKeyboardRows {
 	dt := time.Now()
 
 	for day := 0; day < 7; day++ {
-		rows[day] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(fmt.Sprintf("%s %d %s", weekdays[dt.Weekday()], dt.Day(), months[dt.Month()]), fmt.Sprintf("%s_day_%d", callback_text, dt.Unix())))
+		rows[day] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(fmt.Sprintf("%s %d %s", weekdays[dt.Weekday()%7], dt.Day(), months[dt.Month()%12]), fmt.Sprintf("%s_day_%d", callback_text, dt.Unix())))
 		dt = dt.AddDate(0, 0, 1)
 	}
 

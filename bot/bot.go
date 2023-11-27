@@ -246,7 +246,7 @@ func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex 
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
 			msg.ReplyMarkup = newCommand.Rows
 			if _, err := bot.Send(msg); err != nil {
-				msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Error retrieving lectures")
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Error sending data")
 				bot.Send(msg)
 			}
 		}

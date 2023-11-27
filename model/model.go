@@ -112,10 +112,12 @@ type Curriculum struct {
 
 // Recognized by a callback string
 type Timetable struct {
-	Course     string `json:"course"`    // Course title
-	Name       string `json:"name"`      // Course name
-	Type       string `json:"type"`      // Type (laurea|magistrale|2cycle)
-	Curriculum string `json:"curricula"` // Curriculum
+	Course       string `json:"course"`    // Course title
+	Name         string `json:"name"`      // Course name
+	Type         string `json:"type"`      // Type (laurea|magistrale|2cycle)
+	Curriculum   string `json:"curricula"` // Curriculum
+	Title        string `json:"title"`
+	FallbackText string `json:"fallbackText"`
 }
 
 // SECTION ACTION STRUCTS DATA
@@ -150,7 +152,8 @@ type NotLookingForData struct {
 }
 
 type Lectures struct {
-	Description string `json:"description"`
+	Description  string `json:"description"`
+	FallbackText string `json:"fallbackText"`
 }
 
 type ListData struct {

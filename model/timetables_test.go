@@ -84,7 +84,7 @@ func TestChooseTimetableDay(t *testing.T) {
 	}
 
 	for day := 0; day < 7; day++ {
-		tests[0].want[day] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(fmt.Sprintf("%s %d %s", weekdays[dt.Weekday()], dt.Day(), months[dt.Month()]), fmt.Sprintf("%s_day_%d", "lectures_lm_informatica_software_techniques", dt.Unix())))
+		tests[0].want[day] = tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(fmt.Sprintf("%s %d %s", weekdays[dt.Weekday()%7], dt.Day(), months[dt.Month()%12]), fmt.Sprintf("%s_day_%d", "lectures_lm_informatica_software_techniques", dt.Unix())))
 		dt = dt.AddDate(0, 0, 1)
 	}
 	for _, tt := range tests {

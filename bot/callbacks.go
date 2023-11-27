@@ -1,6 +1,7 @@
 package bot
 
 import (
+	"fmt"
 	"log"
 	"regexp"
 	"strconv"
@@ -57,12 +58,15 @@ func lecturesCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_te
 			log.Printf("Error [GetTimeTable]: %s\n", err)
 		}
 
+		if response == "" {
+			response = timetable.FallbackText
+		} else {
+			response = fmt.Sprintf(timetable.Title, timetable.Course, year, timeForLectures.Format("2006-01-02")) + "\n\n" + response
+		}
+
 		editConfig := tgbotapi.NewEditMessageText(chatId, messageId, response)
 		editConfig.ParseMode = tgbotapi.ModeHTML
 
-		if response == "" {
-			editConfig = tgbotapi.NewEditMessageText(chatId, messageId, "Non ci sono lezioni in questo giorno. SMETTILA DI PRESSARMI")
-		}
 		_, err = bot.Send(editConfig)
 		if err != nil {
 			log.Printf("Error [bot.Send() for the NewEditMessageText]: %s\n", err)
