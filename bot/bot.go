@@ -243,10 +243,21 @@ func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex 
 		}
 
 		if newCommand.HasRows() {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
+
+			var msg tgbotapi.MessageConfig
+			if update.Message.IsTopicMessage {
+				msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID, update.Message.MessageThreadID, update.Message.Text)
+			} else {
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
+			}
 			msg.ReplyMarkup = newCommand.Rows
 			if _, err := bot.Send(msg); err != nil {
-				msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Error sending data")
+				errorMsg := "Error sending data"
+				if update.Message.IsTopicMessage {
+					msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID, update.Message.MessageThreadID, errorMsg)
+				} else {
+					msg = tgbotapi.NewMessage(update.Message.Chat.ID, errorMsg)
+				}
 				bot.Send(msg)
 			}
 		}
