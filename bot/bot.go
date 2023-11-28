@@ -59,17 +59,7 @@ func run(bot *tgbotapi.BotAPI) {
 			for i := 0; i < len(model.Autoreplies); i++ {
 				if strings.Contains(strings.ToLower(update.Message.Text),
 					strings.ToLower(model.Autoreplies[i].Text)) {
-					var msg tgbotapi.MessageConfig
-
-					if update.Message.IsTopicMessage {
-						msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
-							update.Message.MessageThreadID, model.Autoreplies[i].Reply)
-					} else {
-						msg = tgbotapi.NewMessage(update.Message.Chat.ID,
-							model.Autoreplies[i].Reply)
-					}
-					msg.ReplyToMessageID = update.Message.MessageID
-					utils.SendHTML(bot, msg)
+					utils.SendHTML(bot, update, model.Autoreplies[i].Reply, true)
 				}
 			}
 		}
@@ -143,7 +133,7 @@ func handleTeaching(bot *tgbotapi.BotAPI, update *tgbotapi.Update, teachingName 
 	if !ok {
 		return false
 	}
-	utils.SendHTML(bot, tgbotapi.NewMessage(update.Message.Chat.ID, teachingToString(teaching)))
+	utils.SendHTML(bot, *update, teachingToString(teaching), false)
 	return true
 }
 
@@ -197,7 +187,7 @@ func handleDegree(bot *tgbotapi.BotAPI, update *tgbotapi.Update, degreeId string
 	if !ok {
 		return false
 	}
-	utils.SendHTML(bot, tgbotapi.NewMessage(update.Message.Chat.ID, degreeToString(degree)))
+	utils.SendHTML(bot, *update, degreeToString(degree), false)
 	return true
 }
 
@@ -207,14 +197,7 @@ func handleMeme(bot *tgbotapi.BotAPI, update *tgbotapi.Update, memeName string) 
 	})
 
 	if memeIndex != -1 {
-		var msg tgbotapi.MessageConfig
-		if update.Message.IsTopicMessage {
-			msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
-				update.Message.MessageThreadID, model.MemeList[memeIndex].Text)
-		} else {
-			msg = tgbotapi.NewMessage(update.Message.Chat.ID, model.MemeList[memeIndex].Text)
-		}
-		utils.SendHTML(bot, msg)
+		utils.SendHTML(bot, *update, model.MemeList[memeIndex].Text, false)
 		return true
 	}
 	return false
@@ -227,15 +210,7 @@ func executeCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandIndex 
 		newCommand := model.Actions[commandIndex].Data.HandleBotCommand(bot, update.Message)
 
 		if newCommand.HasText() {
-			var msg tgbotapi.MessageConfig
-
-			if update.Message.IsTopicMessage {
-				msg = tgbotapi.NewThreadMessage(update.Message.Chat.ID,
-					update.Message.MessageThreadID, newCommand.Text)
-			} else {
-				msg = tgbotapi.NewMessage(update.Message.Chat.ID, newCommand.Text)
-			}
-			utils.SendHTML(bot, msg)
+			utils.SendHTML(bot, *update, newCommand.Text, false)
 		}
 
 		if newCommand.HasNextCommand() {

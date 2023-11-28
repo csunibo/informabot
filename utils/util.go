@@ -12,8 +12,23 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-// SendHTML is a wrapper for the send function, to send HTML messages
-func SendHTML(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) (tgbotapi.Message, error) {
+/*
+ * Has "bot" send "html" as a HTML-formatted text message in the same chat/topic
+ * as "trigger". If "reply" is set to true, the new message is a reply to
+ * "trigger".
+ */
+func SendHTML(bot *tgbotapi.BotAPI, trigger tgbotapi.Update, html string, reply bool) (tgbotapi.Message, error) {
+	var msg tgbotapi.MessageConfig
+	if trigger.Message.IsTopicMessage {
+		msg = tgbotapi.NewThreadMessage(trigger.Message.Chat.ID,
+			trigger.Message.MessageThreadID, html)
+	} else {
+		msg = tgbotapi.NewMessage(trigger.Message.Chat.ID,
+			html)
+	}
+	if reply {
+		msg.ReplyToMessageID = trigger.Message.MessageID
+	}
 	msg.ParseMode = tgbotapi.ModeHTML
 	msg.DisableWebPagePreview = true
 	return bot.Send(msg)
