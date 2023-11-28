@@ -3,6 +3,7 @@ package bot
 import (
 	"fmt"
 	"log"
+	"log/slog"
 	"strings"
 
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
@@ -34,34 +35,38 @@ func run(bot *tgbotapi.BotAPI) {
 	updates := bot.GetUpdatesChan(u)
 
 	for update := range updates {
-		if update.Message == nil {
-			callback := tgbotapi.NewCallback(update.CallbackQuery.ID, update.CallbackQuery.Data)
+
+		if update.CallbackQuery != nil { // first process callback queries
+
+			callbackText := update.CallbackQuery.Data
+
+			callback := tgbotapi.NewCallback(update.CallbackQuery.ID, callbackText)
 			if _, err := bot.Request(callback); err != nil {
 				log.Printf("Error [bot.Request() for the callback]: %s\n", err)
 				continue
 			}
 
-			callback_text := update.CallbackQuery.Data
-
-			if strings.HasPrefix(callback_text, "lectures_") {
-				handleCallback(bot, &update, "lezioni", callback_text)
+			if strings.HasPrefix(callbackText, "lectures_") {
+				handleCallback(bot, &update, "lezioni", callbackText)
 			}
 
 			continue
-		} else if filterMessage(bot, update.Message) {
-			continue
-		}
-
-		if update.Message.IsCommand() {
-			handleCommand(bot, &update)
-		} else {
-			// text message
-			for i := 0; i < len(model.Autoreplies); i++ {
-				if strings.Contains(strings.ToLower(update.Message.Text),
-					strings.ToLower(model.Autoreplies[i].Text)) {
-					utils.SendHTML(bot, update, model.Autoreplies[i].Reply, true)
+		} else if update.Message != nil {
+			if filterMessage(bot, update.Message) {
+				continue
+			} else if update.Message.IsCommand() {
+				handleCommand(bot, &update)
+			} else {
+				// text message
+				for i := 0; i < len(model.Autoreplies); i++ {
+					if strings.Contains(strings.ToLower(update.Message.Text),
+						strings.ToLower(model.Autoreplies[i].Text)) {
+						utils.SendHTML(bot, update, model.Autoreplies[i].Reply, true)
+					}
 				}
 			}
+		} else {
+			slog.Debug("ignoring unknown update", "update", update)
 		}
 
 	}
