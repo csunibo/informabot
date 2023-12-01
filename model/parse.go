@@ -206,7 +206,10 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 	return groups, nil
 }
 
-func SaveGroups(groups GroupsStruct) error { return utils.WriteJSONFile(groupsFile, groups) }
+func SaveGroups(groups GroupsStruct) error {
+	filepath := filepath.Join(jsonPath, groupsFile)
+	return utils.WriteJSONFile(filepath, groups)
+}
 
 func ParseTimetables() (timetables map[string]Timetable, err error) {
 	filepath := filepath.Join(jsonPath, configSubpath, timetablesFile)
