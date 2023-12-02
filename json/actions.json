@@ -176,7 +176,8 @@
   "tesi": {
     "type": "message",
     "data": {
-      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/raccoglitesi/disi.html'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>\n\n\ud83d\udcdd <a href='https://github.com/csunibo/latex-thesis'>Modello tesi LaTeX DISI</a>\n\ud83d\udcdd <a href='https://github.com/csunibo/asciidoc-thesis'>Modello tesi AsciiDoc DISI</a>"
+      "description": "Tesi: proposte dei docenti e modelli DISI",
+      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/raccoglitesi/disi.html'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>\n\n\ud83d\udcdd <a href='https://github.com/csunibo/latex-thesis'>Modello tesi LaTeX DISI</a>\n\ud83d\udcdd <a href='https://github.com/csunibo/asciidoc-thesis'>Modello tesi AsciiDoc DISI</a>\n\ud83d\udcdd <a href='https://github.com/csunibo/typst-thesis'>Modello tesi Typst DISI</a>"
     }
   },
   "tirocinio": {
