@@ -273,7 +273,7 @@
     "data": {
       "description": "Comando per elencare tutti i rappresentanti",
       "title": "<b>Rappresentanti:</b>",
-      "fallback": "Non ci sono rappresentanti per il corso selezionato"
+      "fallbackText": "Non ci sono rappresentanti per il corso selezionato"
     }
   }
 }
