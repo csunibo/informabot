@@ -32,6 +32,10 @@ func (d LuckData) GetDescription() string {
 	return d.Description
 }
 
+func (d RepresentativesData) GetDescription() string {
+	return d.Description
+}
+
 func (d InvalidData) GetDescription() string {
 	return "This data is invalidly parsed, please report this bug to the developer."
 }

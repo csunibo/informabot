@@ -13,23 +13,23 @@ import (
 	"github.com/csunibo/informabot/commands"
 )
 
-func (_ MessageData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+func (_ MessageData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
 	log.Printf("`HandleBotCallback` not defined for `MessageData`")
 }
 
-func (_ HelpData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+func (_ HelpData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
 	log.Printf("`HandleBotCallback` not defined for `HelpData`")
 }
 
-func (_ IssueData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+func (_ IssueData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
 	log.Printf("`HandleBotCallback` not defined for `IssueData`")
 }
 
-func (_ LookingForData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+func (_ LookingForData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
 	log.Printf("`HandleBotCallback` not defined for `LookingForData`")
 }
 
-func (_ NotLookingForData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+func (_ NotLookingForData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
 	log.Printf("`HandleBotCallback` not defined for `NotLookingForData`")
 }
 
@@ -110,14 +110,37 @@ func (data Lectures) HandleBotCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Up
 	}
 }
 
-func (_ ListData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+func (data RepresentativesData) HandleBotCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, callback_text string) {
+	var chatId = int64(update.CallbackQuery.Message.Chat.ID)
+	var messageId = update.CallbackQuery.Message.MessageID
+
+	degreeName := strings.TrimPrefix(callback_text, "representatives_")
+
+	var response string
+	rep := Representatives[degreeName].Representatives
+	if len(rep) == 0 {
+		response = data.FallbackText
+	} else {
+		response = "Abbiamo i rappresentanti!!" //Da fare il parse degli utenti
+	}
+
+	editConfig := tgbotapi.NewEditMessageText(chatId, messageId, response)
+	editConfig.ParseMode = tgbotapi.ModeHTML
+
+	_, err := bot.Send(editConfig)
+	if err != nil {
+		log.Printf("Error [bot.Send() for the NewEditMessageText]: %s\n", err)
+	}
+}
+
+func (_ ListData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
 	log.Printf("`HandleBotCallback` not defined for `ListData`")
 }
 
-func (_ LuckData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+func (_ LuckData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
 	log.Printf("`HandleBotCallback` not defined for `LuckData`")
 }
 
-func (_ InvalidData) HandleBotCallback(_bot *tgbotapi.BotAPI, _udpate *tgbotapi.Update, _callback_text string) {
+func (_ InvalidData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
 	log.Printf("`HandleBotCallback` not defined for `InvalidData`")
 }

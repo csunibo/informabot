@@ -144,7 +144,28 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 }
 
 func (data Lectures) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
+	log.Println("HandleBotCommand: data Lectures")
 	rows := GetTimetableCoursesRows(&Timetables)
+	keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
+	log.Println(rows)
+	log.Println(keyboard)
+	return makeResponseWithInlineKeyboard(keyboard)
+}
+
+func (data RepresentativesData) HandleBotCommand(_ *tgbotapi.BotAPI,
+	message *tgbotapi.Message) CommandResponse {
+	log.Println("HandleBotCommand: data Representatives")
+
+	rows := make([][]tgbotapi.InlineKeyboardButton, len(Representatives))
+
+	i := 0
+	for callback, repData := range Representatives {
+		row := tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData(repData.Course,
+				fmt.Sprintf("representatives_%s", callback)))
+		rows[i] = row
+		i++
+	}
 	keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 	return makeResponseWithInlineKeyboard(keyboard)
 }

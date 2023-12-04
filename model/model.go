@@ -30,6 +30,8 @@ func GetActionFromType(name string, commandType string) Action {
 		data = NotLookingForData{}
 	case "buttonsLecture":
 		data = Lectures{}
+	case "buttonsRepresentatives":
+		data = RepresentativesData{}
 	case "list":
 		data = ListData{}
 	case "luck":
@@ -69,7 +71,7 @@ type Action struct {
 }
 
 type Mantainer struct {
-	Id       int    `json:"id"`
+	Id       int64  `json:"id"`
 	Username string `json:"username"`
 }
 
@@ -168,6 +170,17 @@ type ListData struct {
 type LuckData struct {
 	Description     string `json:"description"`
 	NoLuckGroupText string `json:"noLuckGroupText"`
+}
+
+type RepresentativesData struct {
+	Description  string `json:"description"`
+	Title        string `json:"title"`
+	FallbackText string `json:"fallbackText"`
+}
+
+type Representative struct {
+	Course          string  `json:"course"`
+	Representatives []int64 `json:"representatives"`
 }
 
 type InvalidData struct{}

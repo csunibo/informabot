@@ -16,12 +16,13 @@ import (
 )
 
 const (
-	jsonPath       = "./json/"
-	groupsFile     = "groups.json"
-	configSubpath  = "config/"
-	degreesFile    = "degrees.json"
-	teachingsFile  = "teachings.json"
-	timetablesFile = "timetables.json"
+	jsonPath            = "./json/"
+	groupsFile          = "groups.json"
+	configSubpath       = "config/"
+	degreesFile         = "degrees.json"
+	teachingsFile       = "teachings.json"
+	timetablesFile      = "timetables.json"
+	representativesFile = "representatives.json"
 )
 
 func ParseAutoReplies() (autoReplies []AutoReply, err error) {
@@ -255,4 +256,27 @@ func ParseMantainers() (mantainer []Mantainer, err error) {
 	}
 
 	return nil, fmt.Errorf("couldn't found informabot projects after parsing mantainers.json")
+}
+
+func ParseRepresentatives() (map[string]Representative, error) {
+	representatives := make(map[string]Representative)
+
+	filepath := filepath.Join(jsonPath, configSubpath, representativesFile)
+	byteValue, err := os.ReadFile(filepath)
+	if errors.Is(err, os.ErrNotExist) {
+		return representatives, nil
+	} else if err != nil {
+		return nil, fmt.Errorf("error reading %s file: %w", filepath, err)
+	}
+
+	err = json.Unmarshal(byteValue, &representatives)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing %s file: %w", filepath, err)
+	}
+
+	if representatives == nil {
+		representatives = make(map[string]Representative)
+	}
+
+	return representatives, nil
 }

@@ -40,6 +40,8 @@ func run(bot *tgbotapi.BotAPI) {
 
 			callbackText := update.CallbackQuery.Data
 
+			log.Println("callback: " + callbackText)
+
 			callback := tgbotapi.NewCallback(update.CallbackQuery.ID, callbackText)
 			if _, err := bot.Request(callback); err != nil {
 				log.Printf("Error [bot.Request() for the callback]: %s\n", err)
@@ -48,6 +50,8 @@ func run(bot *tgbotapi.BotAPI) {
 
 			if strings.HasPrefix(callbackText, "lectures_") {
 				handleCallback(bot, &update, "lezioni", callbackText)
+			} else if strings.HasPrefix(callbackText, "representatives_") {
+				handleCallback(bot, &update, "rappresentanti", callbackText)
 			}
 
 			continue
@@ -264,6 +268,9 @@ func handleCallback(bot *tgbotapi.BotAPI, update *tgbotapi.Update, commandName s
 	idx := slices.IndexFunc(model.Actions, func(action model.Action) bool {
 		return action.Name == commandName
 	})
+
+	log.Println("index: ", idx)
+	log.Println("Action: ", model.Actions[idx])
 
 	if idx != -1 {
 		model.Actions[idx].Data.HandleBotCallback(bot, update, callback_text)
