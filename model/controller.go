@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"sort"
 	"strings"
 	"time"
 
@@ -158,13 +159,19 @@ func (data RepresentativesData) HandleBotCommand(_ *tgbotapi.BotAPI,
 
 	rows := make([][]tgbotapi.InlineKeyboardButton, len(Representatives))
 
-	i := 0
-	for callback, repData := range Representatives {
+	// get all keys in orderd to iterate on them sorted
+	keys := make([]string, 0)
+	for k := range Representatives {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for i, callback := range keys {
+		repData := Representatives[callback]
 		row := tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData(repData.Course,
 				fmt.Sprintf("representatives_%s", callback)))
 		rows[i] = row
-		i++
 	}
 	keyboard := tgbotapi.NewInlineKeyboardMarkup(rows...)
 	return makeResponseWithInlineKeyboard(keyboard)
