@@ -272,8 +272,8 @@
     "type": "buttonsRepresentatives",
     "data": {
       "description": "Comando per elencare tutti i rappresentanti",
-      "title": "<b>Rappresentanti:</b>",
-      "fallbackText": "Non ci sono rappresentanti per il corso selezionato"
+      "title": "<b>Rappresentanti %s:</b>",
+      "fallbackText": "Non ci sono rappresentanti per il corso selezionato (%s)"
     }
   }
 }

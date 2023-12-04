@@ -117,11 +117,13 @@ func (data RepresentativesData) HandleBotCallback(bot *tgbotapi.BotAPI, update *
 	degreeName := strings.TrimPrefix(callback_text, "representatives_")
 
 	var response string
-	rep := Representatives[degreeName].Representatives
-	if len(rep) == 0 {
-		response = data.FallbackText
+	repData, _ := Representatives[degreeName]
+	reps := repData.Representatives
+	courseName := repData.Course
+	if len(reps) == 0 {
+		response = fmt.Sprintf(data.FallbackText, courseName)
 	} else {
-		response = "Abbiamo i rappresentanti!!" //Da fare il parse degli utenti
+		response = fmt.Sprintf(data.Title, courseName) + "\n\n" + response
 	}
 
 	editConfig := tgbotapi.NewEditMessageText(chatId, messageId, response)
