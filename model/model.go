@@ -179,8 +179,8 @@ type RepresentativesData struct {
 }
 
 type Representative struct {
-	Course          string  `json:"course"`
-	Representatives []int64 `json:"representatives"`
+	Course          string   `json:"course"`
+	Representatives []string `json:"representatives"`
 }
 
 type InvalidData struct{}
