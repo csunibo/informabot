@@ -63,7 +63,7 @@ func GetLectureYears(callback_text string, course string) InlineKeyboardRows {
 
 	i := 1
 	for i <= yearsNro {
-		buttonText := fmt.Sprintf("%s: %d\u00b0 anno", course, i)
+		buttonText := fmt.Sprintf("%d\u00b0 anno", i)
 		buttonCallback := fmt.Sprintf("%s_y_%d", callback_text, i)
 		row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(buttonText, buttonCallback))
 		rows[i-1] = row
