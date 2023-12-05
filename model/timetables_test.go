@@ -124,17 +124,17 @@ func TestGetLectureYears(t *testing.T) {
 			name: "Get rows for bachelor's degree",
 			args: args{data: [2]string{"lectures_l_informatica", "Informatica"}},
 			want: InlineKeyboardRows{
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 1\u00b0 anno", "lectures_l_informatica_y_1")),
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 2\u00b0 anno", "lectures_l_informatica_y_2")),
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica: 3\u00b0 anno", "lectures_l_informatica_y_3")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("1\u00b0 anno", "lectures_l_informatica_y_1")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("2\u00b0 anno", "lectures_l_informatica_y_2")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("3\u00b0 anno", "lectures_l_informatica_y_3")),
 			},
 		},
 		{
 			name: "Get rows for master's degree",
 			args: args{data: [2]string{"lectures_lm_informatica_software_techniques", "Informatica Magistrale"}},
 			want: InlineKeyboardRows{
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale: 1\u00b0 anno", "lectures_lm_informatica_software_techniques_y_1")),
-				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale: 2\u00b0 anno", "lectures_lm_informatica_software_techniques_y_2")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("1\u00b0 anno", "lectures_lm_informatica_software_techniques_y_1")),
+				tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("2\u00b0 anno", "lectures_lm_informatica_software_techniques_y_2")),
 			},
 		},
 	}
