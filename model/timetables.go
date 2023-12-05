@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 	"time"
 
@@ -14,8 +15,15 @@ type InlineKeyboardRows [][]tgbotapi.InlineKeyboardButton
 func GetTimetableCoursesRows(timetables *map[string]Timetable) InlineKeyboardRows {
 	rows := make([][]tgbotapi.InlineKeyboardButton, len(*timetables))
 
-	i := 0
-	for callback, timetable := range *timetables {
+	keys := make([]string, 0)
+
+	for key := range *timetables {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+
+	for i, callback := range keys {
+		timetable := (*timetables)[callback]
 		row := tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(timetable.Course, fmt.Sprintf("lectures_%s", callback)))
 		rows[i] = row
 		i++
