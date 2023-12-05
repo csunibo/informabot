@@ -11,6 +11,7 @@ import (
 	tgbotapi "github.com/musianisamuele/telegram-bot-api"
 
 	"github.com/csunibo/informabot/commands"
+	"github.com/csunibo/informabot/utils"
 )
 
 func (_ MessageData) HandleBotCallback(_bot *tgbotapi.BotAPI, _update *tgbotapi.Update, _callback_text string) {
@@ -116,14 +117,33 @@ func (data RepresentativesData) HandleBotCallback(bot *tgbotapi.BotAPI, update *
 
 	degreeName := strings.TrimPrefix(callback_text, "representatives_")
 
-	var response string
 	repData, _ := Representatives[degreeName]
-	reps := repData.Representatives
+	ids := repData.Representatives
 	courseName := repData.Course
-	if len(reps) == 0 {
+
+	var response string
+	if len(ids) == 0 {
 		response = fmt.Sprintf(data.FallbackText, courseName)
 	} else {
-		response = fmt.Sprintf(data.Title, courseName) + "\n\n" + response
+		// Get chat mebers based on ids
+		var tmp strings.Builder
+		noRepresentativeFound := true
+		for i, participant := range utils.GetChatMembers(bot, chatId, ids) {
+			if ids[i] == participant.User.ID &&
+				participant.User.UserName != "???" {
+				tmp.WriteString("@" + participant.User.UserName + "\n")
+				noRepresentativeFound = false
+			}
+		}
+		if noRepresentativeFound {
+			response = fmt.Sprintf(data.Title, courseName) + "\n\n" + "Nessun rappresentante del corso è presente nel gruppo."
+			// Fallback sulle mail?
+			// Hardcodiamo gli username?
+			// Qui srvirebbero sempre tutti i rappresentanti indipendentemente dal
+			// gruppo o no
+		} else {
+			response = fmt.Sprintf(data.Title, courseName) + "\n\n" + tmp.String()
+		}
 	}
 
 	editConfig := tgbotapi.NewEditMessageText(chatId, messageId, response)
