@@ -186,5 +186,13 @@
       "description": "Strumento per riassumere le attivit\u00e0 svolte durante il proprio tirocinio",
       "text": "\ud83d\udcdd <a href='https://csunibo.github.io/diario-tirocinio/'>Diario Tirocinio</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/diario-tirocinio'>Sorgente</a>"
     }
+  },
+  "rappresentanti": {
+    "type": "buttonsRepresentatives",
+    "data": {
+      "description": "Comando per elencare tutti i rappresentanti",
+      "title": "<b>Rappresentanti %s:</b>",
+      "fallbackText": "Non ci sono rappresentanti per il corso selezionato (%s)"
+    }
   }
 }

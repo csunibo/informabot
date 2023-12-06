@@ -48,6 +48,8 @@ func run(bot *tgbotapi.BotAPI) {
 
 			if strings.HasPrefix(callbackText, "lectures_") {
 				handleCallback(bot, &update, "lezioni", callbackText)
+			} else if strings.HasPrefix(callbackText, "representatives_") {
+				handleCallback(bot, &update, "rappresentanti", callbackText)
 			}
 
 			continue

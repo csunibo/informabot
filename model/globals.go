@@ -12,15 +12,16 @@ import (
 )
 
 var (
-	Autoreplies []AutoReply
-	Actions     []Action
-	Degrees     map[string]Degree
-	MemeList    []Meme
-	Settings    SettingsStruct
-	Teachings   map[string]Teaching
-	Groups      GroupsStruct
-	Timetables  map[string]Timetable
-	Mantainers  []Mantainer
+	Autoreplies     []AutoReply
+	Actions         []Action
+	Degrees         map[string]Degree
+	MemeList        []Meme
+	Settings        SettingsStruct
+	Teachings       map[string]Teaching
+	Groups          GroupsStruct
+	Timetables      map[string]Timetable
+	Mantainers      []Mantainer
+	Representatives map[string]Representative
 )
 
 func InitGlobals() {
@@ -68,5 +69,10 @@ func InitGlobals() {
 	Mantainers, err = ParseMantainers()
 	if err != nil {
 		log.Fatalf("Error parsing mantainers.json file: %s", err.Error())
+	}
+
+	Representatives, err = ParseRepresentatives()
+	if err != nil {
+		log.Fatalf("Error parsing representatives.json file: %s", err.Error())
 	}
 }
