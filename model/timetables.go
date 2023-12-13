@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	tgbotapi "github.com/musianisamuele/telegram-bot-api"
+	tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 )
 
 type InlineKeyboardRows [][]tgbotapi.InlineKeyboardButton

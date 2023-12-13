@@ -4,7 +4,7 @@
 package model
 
 import (
-	tgbotapi "github.com/musianisamuele/telegram-bot-api"
+	tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 )
 
 type DataInterface interface {

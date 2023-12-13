@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	tgbotapi "github.com/musianisamuele/telegram-bot-api"
+	tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 )
 
 func TestCommandResponse_IsEmpty(t *testing.T) {

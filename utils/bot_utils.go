@@ -1,7 +1,7 @@
 package utils
 
 import (
-	tgbotapi "github.com/musianisamuele/telegram-bot-api"
+	tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 )
 
 func makeUnknownMember(chatConfigWithUser tgbotapi.ChatConfigWithUser) tgbotapi.ChatMember {

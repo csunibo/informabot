@@ -2,7 +2,7 @@
 // between the computations of the bot and the driver code, in bot.go
 package model
 
-import tgbotapi "github.com/musianisamuele/telegram-bot-api"
+import tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 
 // CommandResponse is returned by the command handler, it contains information
 // about the command computation.

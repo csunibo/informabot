@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	tgbotapi "github.com/musianisamuele/telegram-bot-api"
+	tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 
 	"github.com/csunibo/informabot/commands"
 )
