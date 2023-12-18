@@ -2,8 +2,8 @@ github.com/csunibo/unibo-go v0.0.9 h1:bLGzNZFvU/TXB+Depn72bO7F3yJ73EjFbM8E9iRs1k
 github.com/csunibo/unibo-go v0.0.9/go.mod h1:h2+xnccHa7x48RNB6d07bpHQ01ozw4oihgDOlvVrJ9U=
 github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=
 github.com/mitchellh/mapstructure v1.5.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
-github.com/samuelemusiani/telegram-bot-api v0.0.5 h1:BGuc43eTBYrzvizkq/K/Kfcu4rvRIwPtquGwY/yh1LA=
-github.com/samuelemusiani/telegram-bot-api v0.0.5/go.mod h1:/Sagg9PoVMvfJeQ4Dh4sasKOCRC1xsZJ2Kx9C/BSjW8=
+github.com/samuelemusiani/telegram-bot-api v0.0.6 h1:OH7/qXD4E/wDzd6UcNOJZgw9GWthUKRB33ob1PSWnGI=
+github.com/samuelemusiani/telegram-bot-api v0.0.6/go.mod h1:/Sagg9PoVMvfJeQ4Dh4sasKOCRC1xsZJ2Kx9C/BSjW8=
 golang.org/x/exp v0.0.0-20231127185646-65229373498e h1:Gvh4YaCaXNs6dKTlfgismwWZKyjVZXwOPfIyUaqU3No=
 golang.org/x/exp v0.0.0-20231127185646-65229373498e/go.mod h1:iRJReGqOEeBhDZGkGbynYwcHlctCvnjTYIamk7uXpHI=
 golang.org/x/text v0.14.0 h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ=
