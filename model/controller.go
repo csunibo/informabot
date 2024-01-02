@@ -188,13 +188,9 @@ func (data ListData) HandleBotCommand(*tgbotapi.BotAPI, *tgbotapi.Message) Comma
 
 func (data LuckData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbotapi.Message) CommandResponse {
 	var emojis = []string{"🎲", "🎯", "🏀", "⚽", "🎳", "🎰"}
-	var noLuckGroups = []int64{-1563447632} // NOTE: better way to handle this?
 
-	var canLuckGroup = true
-
-	if slices.Index(noLuckGroups, message.Chat.ID) != -1 {
-		canLuckGroup = false
-	}
+	// var canLuckGroup = ((message.Chat.Type == "group" || message.Chat.Type == "supergroup") && !isAMainGroup(message.Chat.Title))
+	var canLuckGroup bool = true
 
 	var msg string
 	if canLuckGroup {
