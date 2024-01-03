@@ -96,8 +96,7 @@ func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 		forName := commandWithAt[atIndex+1:]
 		log.Println(forName)
 
-		me, err := bot.GetMe()
-		if me.UserName != forName && err == nil {
+		if bot.Self.UserName != forName {
 			return
 		}
 	}
