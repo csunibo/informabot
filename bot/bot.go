@@ -59,13 +59,7 @@ func run(bot *tgbotapi.BotAPI) {
 			} else if update.Message.IsCommand() {
 				handleCommand(bot, &update)
 			} else {
-				// text message
-				for i := 0; i < len(model.Autoreplies); i++ {
-					if strings.Contains(strings.ToLower(update.Message.Text),
-						strings.ToLower(model.Autoreplies[i].Text)) {
-						utils.SendHTML(bot, update, model.Autoreplies[i].Reply, true)
-					}
-				}
+				handleAutoreplies(bot, &update)
 			}
 		} else {
 			slog.Debug("ignoring unknown update", "update", update)
@@ -297,4 +291,25 @@ func filterMessage(bot *tgbotapi.BotAPI, message *tgbotapi.Message) bool {
 		return true
 	}
 	return false
+}
+
+func handleAutoreplies(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
+	txt := strings.ToLower(update.Message.Text)
+	for _, a := range model.Autoreplies {
+		autoTxt := strings.ToLower(a.Text)
+		if a.IsStrict {
+			if strings.Contains(txt, autoTxt) {
+				utils.SendHTML(bot, *update, a.Reply, true)
+			}
+		} else {
+			sAutoTxt := strings.Split(autoTxt, " ")
+
+			for i := range sAutoTxt {
+				if !strings.Contains(txt, sAutoTxt[i]) {
+					return
+				}
+			}
+			utils.SendHTML(bot, *update, a.Reply, true)
+		}
+	}
 }

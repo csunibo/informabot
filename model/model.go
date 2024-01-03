@@ -51,8 +51,9 @@ func GetActionFromType(name string, commandType string) Action {
 type GroupsStruct = map[int64][]int64
 
 type AutoReply struct {
-	Text  string `json:"text"`
-	Reply string `json:"reply"`
+	Text     string `json:"text"`
+	IsStrict bool   `json:"strict"`
+	Reply    string `json:"reply"`
 }
 
 type SettingsStruct struct {
