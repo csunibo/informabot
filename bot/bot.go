@@ -94,6 +94,20 @@ func handleUnknown(bot *tgbotapi.BotAPI, update *tgbotapi.Update, _ string) bool
 
 func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 	commandName := strings.ToLower(update.Message.Command())
+
+	// Check if the command is for me
+	commandWithAt := update.Message.CommandWithAt()
+	atIndex := strings.Index(commandWithAt, "@")
+	if atIndex != -1 {
+		forName := commandWithAt[atIndex+1:]
+		log.Println(forName)
+
+		me, err := bot.GetMe()
+		if me.UserName != forName && err == nil {
+			return
+		}
+	}
+
 	for _, h := range handlers {
 		if h.handlerBehavior(bot, update, commandName) {
 			log.Printf("@%s: \t%s -> %s", update.Message.From.UserName, update.Message.Text, h.string)
