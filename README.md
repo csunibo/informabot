@@ -1,6 +1,6 @@
 # Informabot
 
-[![Go Version](https://img.shields.io/badge/Go-1.18-blue.svg)](https://golang.org/doc/go1.18)
+[![Go Version](https://img.shields.io/badge/Go-1.21-blue.svg)](https://golang.org/doc/go1.21)
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](LICENSE)
 [![Actions Status](https://github.com/csunibo/informabot/actions/workflows/go.yml/badge.svg)](https://github.com/csunibo/informabot/actions/)
 
