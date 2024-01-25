@@ -89,19 +89,34 @@ func handleUnknown(bot *tgbotapi.BotAPI, update *tgbotapi.Update, _ string) bool
 func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 	commandName := strings.ToLower(update.Message.Command())
 
-	// Check if the command is for me
-	commandWithAt := update.Message.CommandWithAt()
-	atIndex := strings.Index(commandWithAt, "@")
-	if atIndex != -1 {
-		forName := commandWithAt[atIndex+1:]
-		log.Println(forName)
+	// If the bot is in a group and the command does NOT have the recipient bot:
+	// If is the command is not correct nothing is done
+	//
+	// If the bot is in a group and the command does HAVE the recipient bot:
+	// If the command is not correct the bot returns unknown command message
 
-		if bot.Self.UserName != forName {
-			return
+	permitUnknownCommandMessage := true
+
+	if !update.Message.Chat.IsPrivate() {
+		// Check if the command is for me
+		commandWithAt := update.Message.CommandWithAt()
+		atIndex := strings.Index(commandWithAt, "@")
+		if atIndex != -1 {
+			forName := commandWithAt[atIndex+1:]
+
+			if bot.Self.UserName != forName {
+				return
+			}
+		} else {
+			permitUnknownCommandMessage = false
 		}
 	}
 
 	for _, h := range handlers {
+		if !permitUnknownCommandMessage && h.string == "unknown" {
+			continue
+		}
+
 		if h.handlerBehavior(bot, update, commandName) {
 			log.Printf("@%s: \t%s -> %s", update.Message.From.UserName, update.Message.Text, h.string)
 			return
