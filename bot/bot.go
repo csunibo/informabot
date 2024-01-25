@@ -99,16 +99,14 @@ func handleUnknown(bot *tgbotapi.BotAPI, update *tgbotapi.Update, _ string) bool
 func handleCommand(bot *tgbotapi.BotAPI, update *tgbotapi.Update) {
 	commandName := strings.ToLower(update.Message.Command())
 
-	if !update.Message.Chat.IsPrivate() {
-		// Check if the command is for me
-		commandWithAt := update.Message.CommandWithAt()
-		atIndex := strings.Index(commandWithAt, "@")
-		if atIndex != -1 {
-			forName := commandWithAt[atIndex+1:]
+	// Check if the command is for me
+	commandWithAt := update.Message.CommandWithAt()
+	atIndex := strings.Index(commandWithAt, "@")
+	if atIndex != -1 {
+		forName := commandWithAt[atIndex+1:]
 
-			if bot.Self.UserName != forName {
-				return
-			}
+		if bot.Self.UserName != forName {
+			return
 		}
 	}
 
