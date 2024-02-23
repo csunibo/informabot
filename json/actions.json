@@ -74,7 +74,7 @@
     "type": "message",
     "data": {
       "description": "Tutte le info di AdmStaff",
-      "text": "<b><i>\ud83d\udcbb AdmStaff</i></b>\n\n<a href='https://students.cs.unibo.it'>\ud83c\udf10Sito ufficiale e wiki</a>\n\ud83d\udce7E-mail admstaff@cs.unibo.it"
+      "text": "<b><i>\ud83d\udcbb AdmStaff</i></b>\n\n<a href='https://students.cs.unibo.it'>\ud83c\udf10Sito ufficiale e wiki</a>"
     }
   },
   "csunibo": {
