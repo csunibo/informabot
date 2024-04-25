@@ -1,5 +1,5 @@
-github.com/csunibo/unibo-go v0.0.9 h1:bLGzNZFvU/TXB+Depn72bO7F3yJ73EjFbM8E9iRs1kM=
-github.com/csunibo/unibo-go v0.0.9/go.mod h1:h2+xnccHa7x48RNB6d07bpHQ01ozw4oihgDOlvVrJ9U=
+github.com/csunibo/unibo-go v0.0.10 h1:UwFIvTpXMKZCOVoX564RmqQttXTTs5Xz5hCAjun8NFk=
+github.com/csunibo/unibo-go v0.0.10/go.mod h1:h2+xnccHa7x48RNB6d07bpHQ01ozw4oihgDOlvVrJ9U=
 github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=
 github.com/mitchellh/mapstructure v1.5.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
 github.com/samuelemusiani/telegram-bot-api v0.0.6 h1:OH7/qXD4E/wDzd6UcNOJZgw9GWthUKRB33ob1PSWnGI=
