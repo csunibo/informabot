@@ -126,7 +126,7 @@
     "type": "message",
     "data": {
       "description": "Lezioni registrate su OneDrive",
-      "text": "<b>Registrazioni</b>\n  <a href='https://rec.students.cs.unibo.it/triennale'>Triennale</a>\n  <a href='https://rec.students.cs.unibo.it/magistrale'>Magistrale</a>\n  <a href='https://rec.students.cs.unibo.it/miscellanei/'>Altro</a>"
+      "text": "<b>Registrazioni:</b>\n  <a href='https://rec.students.cs.unibo.it/informatica'>Informatica</a>\n  <a href='https://rec.students.cs.unibo.it/informatica-magistrale'>Informatica Magistrale</a>\n  <a href='https://rec.students.cs.unibo.it/miscellanei/'>Altro</a>"
     }
   },
   "scelta": {
