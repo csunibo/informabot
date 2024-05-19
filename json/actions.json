@@ -22,9 +22,9 @@
   "issue": {
     "type": "issue",
     "data": {
-      "description": "C'è un problema tecnico/tattico, portalo all'attenzione di un mantainer",
-      "response": "Mantainers, c'è bisogno del vostro aiuto \n",
-      "fallback": "Nessun mantainer è presente in questo gruppo. Riportate il problema direttamente sul gruppo di @csunibo nel topic Bot"
+      "description": "C'è un problema tecnico/tattico, portalo all'attenzione di un maintainer",
+      "response": "Maintainers, c'è bisogno del vostro aiuto \n",
+      "fallback": "Nessun maintainer è presente in questo gruppo. Riportate il problema direttamente sul gruppo di @csunibo nel topic Bot"
     }
   },
   "unknown": {
