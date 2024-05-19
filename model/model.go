@@ -71,7 +71,7 @@ type Action struct {
 	Data DataInterface `json:"data"`
 }
 
-type Mantainer struct {
+type Maintainer struct {
 	Id       int64  `json:"id"`
 	Username string `json:"username"`
 }

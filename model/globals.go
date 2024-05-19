@@ -20,7 +20,7 @@ var (
 	Teachings       map[string]Teaching
 	Groups          GroupsStruct
 	Timetables      map[string]Timetable
-	Mantainers      []Mantainer
+	Maintainers     []Maintainer
 	Representatives map[string]Representative
 )
 
@@ -66,9 +66,9 @@ func InitGlobals() {
 		log.Fatalf(err.Error())
 	}
 
-	Mantainers, err = ParseMantainers()
+	Maintainers, err = ParseMaintainers()
 	if err != nil {
-		log.Fatalf("Error parsing mantainers.json file: %s", err.Error())
+		log.Fatalf("Error parsing maintainers.json file: %s", err.Error())
 	}
 
 	Representatives, err = ParseRepresentatives()
