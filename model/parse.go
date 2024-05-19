@@ -22,7 +22,7 @@ const (
 	degreesFile         = "degrees.json"
 	teachingsFile       = "teachings.json"
 	timetablesFile      = "timetables.json"
-	mantainersFile      = "mantainers.json"
+	maintainersFile     = "maintainers.json"
 	representativesFile = "representatives.json"
 )
 
@@ -232,32 +232,32 @@ func ParseTimetables() (timetables map[string]Timetable, err error) {
 	return
 }
 
-func ParseMantainers() (mantainer []Mantainer, err error) {
-	filepath := filepath.Join(jsonPath, configSubpath, mantainersFile)
+func ParseMaintainers() (maintainer []Maintainer, err error) {
+	filepath := filepath.Join(jsonPath, configSubpath, maintainersFile)
 	file, err := os.ReadFile(filepath)
 	if errors.Is(err, os.ErrNotExist) {
-		return mantainer, fmt.Errorf("%s does not exist", mantainersFile)
+		return maintainer, fmt.Errorf("%s does not exist", maintainersFile)
 	} else if err != nil {
-		return nil, fmt.Errorf("error reading %s file: %w", mantainersFile, err)
+		return nil, fmt.Errorf("error reading %s file: %w", maintainersFile, err)
 	}
 
 	var projects []struct {
-		Name       string      `json:"project"`
-		Mantainers []Mantainer `json:"mantainers"`
+		Name        string       `json:"project"`
+		Maintainers []Maintainer `json:"maintainers"`
 	}
 
 	err = json.Unmarshal(file, &projects)
 	if err != nil {
-		return nil, fmt.Errorf("error parsing %s file: %w", mantainersFile, err)
+		return nil, fmt.Errorf("error parsing %s file: %w", maintainersFile, err)
 	}
 
 	for _, p := range projects {
 		if p.Name == "informabot" {
-			return p.Mantainers, nil
+			return p.Maintainers, nil
 		}
 	}
 
-	return nil, fmt.Errorf("couldn't found informabot projects after parsing %s", mantainersFile)
+	return nil, fmt.Errorf("couldn't found informabot projects after parsing %s", maintainersFile)
 }
 
 func ParseRepresentatives() (map[string]Representative, error) {
