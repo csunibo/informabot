@@ -57,7 +57,7 @@ func (data IssueData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbotapi.M
 			noMaintainerFound = false
 		}
 	}
-	if noMiantainerFound {
+	if noMaintainerFound {
 		return makeResponseWithText(data.Fallback)
 	}
 	return makeResponseWithText(answer.String())
