@@ -5,20 +5,21 @@ import (
 	"testing"
 	"time"
 
+	"github.com/csunibo/config-parser-go"
 	tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 )
 
 func TestGetTimetableCoursesRows(t *testing.T) {
-	timetables := make([]map[string]Timetable, 2)
+	timetables := make([]map[string]cparser.Timetable, 2)
 
-	timetables[0] = map[string]Timetable{
+	timetables[0] = map[string]cparser.Timetable{
 		"l_informatica": {
 			Course: "Informatica",
 			Type:   "laurea",
 			Name:   "informatica",
 		},
 	}
-	timetables[1] = map[string]Timetable{
+	timetables[1] = map[string]cparser.Timetable{
 		"lm_informatica_software_techniques": {
 			Course:     "Informatica Magistrale - Tecniche del software",
 			Type:       "magistrale",
@@ -31,7 +32,7 @@ func TestGetTimetableCoursesRows(t *testing.T) {
 	wants[1] = InlineKeyboardRows{tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData("Informatica Magistrale - Tecniche del software", "lectures_lm_informatica_software_techniques"))}
 
 	type args struct {
-		data []map[string]Timetable
+		data []map[string]cparser.Timetable
 	}
 	tests := []struct {
 		name string
