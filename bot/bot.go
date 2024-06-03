@@ -9,6 +9,7 @@ import (
 	tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 	"golang.org/x/exp/slices"
 
+	"github.com/csunibo/config-parser-go"
 	"github.com/csunibo/informabot/model"
 	"github.com/csunibo/informabot/utils"
 )
@@ -124,7 +125,7 @@ func buildEmails(emails []string) string {
 	return strings.Join(emails, DOMAIN) + DOMAIN
 }
 
-func teachingToString(teaching model.Teaching) string {
+func teachingToString(teaching cparser.Teaching) string {
 	var b strings.Builder
 	if teaching.Name != "" {
 		b.WriteString(fmt.Sprintf("<b>%s</b>\n", teaching.Name))
@@ -159,15 +160,15 @@ func handleTeaching(bot *tgbotapi.BotAPI, update *tgbotapi.Update, teachingName 
 	return true
 }
 
-func degreeToTeaching(degree model.Degree) model.Teaching {
-	return model.Teaching{
+func degreeToTeaching(degree cparser.Degree) cparser.Teaching {
+	return cparser.Teaching{
 		Name: degree.Name,
 		Url:  degree.Id,
 		Chat: degree.Chat,
 	}
 }
 
-func degreeToString(degree model.Degree) string {
+func degreeToString(degree cparser.Degree) string {
 	if len(degree.Years) == 0 {
 		return teachingToString(degreeToTeaching(degree))
 	}

@@ -1,8 +1,9 @@
 module github.com/csunibo/informabot
 
-go 1.21
+go 1.22.3
 
 require (
+	github.com/csunibo/config-parser-go v0.0.2
 	github.com/csunibo/unibo-go v0.0.10
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/samuelemusiani/telegram-bot-api v0.0.6

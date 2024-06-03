@@ -6,13 +6,14 @@ import (
 	"strings"
 	"time"
 
+	"github.com/csunibo/config-parser-go"
 	tgbotapi "github.com/samuelemusiani/telegram-bot-api"
 )
 
 type InlineKeyboardRows [][]tgbotapi.InlineKeyboardButton
 
 // Returns a group of button rows for a selected groups on `timetables`
-func GetTimetableCoursesRows(timetables *map[string]Timetable) InlineKeyboardRows {
+func GetTimetableCoursesRows(timetables *map[string]cparser.Timetable) InlineKeyboardRows {
 	rows := make([][]tgbotapi.InlineKeyboardButton, len(*timetables))
 
 	keys := make([]string, 0)

@@ -8,20 +8,21 @@
 package model
 
 import (
+	"github.com/csunibo/config-parser-go"
 	"log"
 )
 
 var (
 	Autoreplies     []AutoReply
 	Actions         []Action
-	Degrees         map[string]Degree
+	Degrees         map[string]cparser.Degree
 	MemeList        []Meme
 	Settings        SettingsStruct
-	Teachings       map[string]Teaching
+	Teachings       map[string]cparser.Teaching
 	Groups          GroupsStruct
-	Timetables      map[string]Timetable
-	Maintainers     []Maintainer
-	Representatives map[string]Representative
+	Timetables      map[string]cparser.Timetable
+	Maintainers     []cparser.Maintainer
+	Representatives map[string]cparser.Representative
 )
 
 func InitGlobals() {

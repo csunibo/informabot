@@ -1,3 +1,5 @@
+github.com/csunibo/config-parser-go v0.0.2 h1:BNujualQX9mZdCzKsEmWlzvTinLqDC0T3dkgdZ/mCTY=
+github.com/csunibo/config-parser-go v0.0.2/go.mod h1:guoYwHikybA1kw6MFmCr+HCMZEFxGaO0cr+ACxD0dvY=
 github.com/csunibo/unibo-go v0.0.10 h1:UwFIvTpXMKZCOVoX564RmqQttXTTs5Xz5hCAjun8NFk=
 github.com/csunibo/unibo-go v0.0.10/go.mod h1:h2+xnccHa7x48RNB6d07bpHQ01ozw4oihgDOlvVrJ9U=
 github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=

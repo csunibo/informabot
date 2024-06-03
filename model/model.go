@@ -71,59 +71,6 @@ type Action struct {
 	Data DataInterface `json:"data"`
 }
 
-type Maintainer struct {
-	Id       int64  `json:"id"`
-	Username string `json:"username"`
-}
-
-// config/teachings.json
-
-type Teaching struct {
-	Name       string   `json:"name"`
-	Url        string   `json:"url"`
-	Chat       string   `json:"chat"`
-	Website    string   `json:"website"`
-	Professors []string `json:"professors"`
-}
-
-// config/degrees.json
-
-type YearStudyDiagram struct {
-	Mandatory []string `json:"mandatory"`
-	Electives []string `json:"electives"`
-}
-
-type Year struct {
-	Year      int64            `json:"year"`
-	Chat      string           `json:"chat"`
-	Teachings YearStudyDiagram `json:"teachings"`
-}
-
-type Degree struct {
-	Id    string `json:"id"`
-	Name  string `json:"name"`
-	Icon  string `json:"icon"`
-	Years []Year `json:"years"`
-	Chat  string `json:"chat"`
-}
-
-// timetables.json
-
-type Curriculum struct {
-	Name     string `json:"name"`
-	Callback string `json:"callback"`
-}
-
-// Recognized by a callback string
-type Timetable struct {
-	Course       string `json:"course"`    // Course title
-	Name         string `json:"name"`      // Course name
-	Type         string `json:"type"`      // Type (laurea|magistrale|2cycle)
-	Curriculum   string `json:"curricula"` // Curriculum
-	Title        string `json:"title"`
-	FallbackText string `json:"fallbackText"`
-}
-
 // SECTION ACTION STRUCTS DATA
 type MessageData struct {
 	Text        string `json:"text"`

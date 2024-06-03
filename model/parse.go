@@ -6,12 +6,14 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 
 	"github.com/mitchellh/mapstructure"
 	"golang.org/x/exp/slices"
 
+	"github.com/csunibo/config-parser-go"
 	"github.com/csunibo/informabot/utils"
 )
 
@@ -50,11 +52,11 @@ func commandNameFromString(s string) string {
 	return s
 }
 
-func commandNameFromTeaching(t Teaching) string {
+func commandNameFromTeaching(t cparser.Teaching) string {
 	return commandNameFromString(t.Url)
 }
 
-func commandNameFromDegree(d Degree) string {
+func commandNameFromDegree(d cparser.Degree) string {
 	return commandNameFromString(d.Id)
 }
 
@@ -64,37 +66,23 @@ func commandNamesFromStrings(strings []string) {
 	}
 }
 
-func ParseTeachings() (teachings map[string]Teaching, err error) {
-	filepath := filepath.Join(jsonPath, configSubpath, teachingsFile)
-	file, err := os.Open(filepath)
-	defer file.Close()
-	if err != nil {
-		return nil, fmt.Errorf("error reading %s file: %w", filepath, err)
-	}
+func ParseTeachings() (teachings map[string]cparser.Teaching, err error) {
 
-	var teachingsArray []Teaching
-	err = json.NewDecoder(file).Decode(&teachingsArray)
+	teachingsArray, err := cparser.ParseTeachings(filepath.Join(jsonPath, configSubpath))
 	if err != nil {
-		return nil, fmt.Errorf("error parsing %s file: %w", filepath, err)
+		return nil, fmt.Errorf("error parsing Teachings: %w", err)
 	}
-	teachings = make(map[string]Teaching, len(teachingsArray))
+	teachings = make(map[string]cparser.Teaching, len(teachingsArray))
 	for _, t := range teachingsArray {
 		teachings[commandNameFromTeaching(t)] = t
 	}
 	return
 }
 
-func ParseDegrees() (degrees map[string]Degree, err error) {
-	filepath := filepath.Join(jsonPath, configSubpath, degreesFile)
-	file, err := os.Open(filepath)
-	defer file.Close()
+func ParseDegrees() (degrees map[string]cparser.Degree, err error) {
+	degreesArray, err := cparser.ParseDegrees(filepath.Join(jsonPath, configSubpath))
 	if err != nil {
-		return nil, fmt.Errorf("error reading %s file: %w", degreesFile, err)
-	}
-	var degreesArray []Degree
-	err = json.NewDecoder(file).Decode(&degreesArray)
-	if err != nil {
-		return nil, fmt.Errorf("error parsing %s file: %w", degreesFile, err)
+		return nil, fmt.Errorf("error parsing Degrees: %w", err)
 	}
 	for _, d := range degreesArray {
 		for _, y := range d.Years {
@@ -103,7 +91,7 @@ func ParseDegrees() (degrees map[string]Degree, err error) {
 			commandNamesFromStrings(t.Electives)
 		}
 	}
-	degrees = make(map[string]Degree, len(degreesArray))
+	degrees = make(map[string]cparser.Degree, len(degreesArray))
 	for _, d := range degreesArray {
 		degrees[commandNameFromDegree(d)] = d
 	}
@@ -213,72 +201,19 @@ func SaveGroups(groups GroupsStruct) error {
 	return utils.WriteJSONFile(filepath, groups)
 }
 
-func ParseTimetables() (timetables map[string]Timetable, err error) {
-	filepath := filepath.Join(jsonPath, configSubpath, timetablesFile)
-	file, err := os.Open(filepath)
-	defer file.Close()
+func ParseTimetables() (timetables map[string]cparser.Timetable, err error) {
+	timetables, err = cparser.ParseTimetables(filepath.Join(jsonPath, configSubpath))
+
 	if err != nil {
-		return nil, fmt.Errorf("error reading %s file: %w", timetablesFile, err)
+		return nil, fmt.Errorf("error parsing Timetables: %w", err)
 	}
-
-	var mapData map[string]Timetable
-
-	err = json.NewDecoder(file).Decode(&mapData)
-	if err != nil {
-		return nil, fmt.Errorf("error parsing %s file: %w", filepath, err)
-	}
-
-	timetables = mapData
 	return
 }
 
-func ParseMaintainers() (maintainer []Maintainer, err error) {
-	filepath := filepath.Join(jsonPath, configSubpath, maintainersFile)
-	file, err := os.ReadFile(filepath)
-	if errors.Is(err, os.ErrNotExist) {
-		return maintainer, fmt.Errorf("%s does not exist", maintainersFile)
-	} else if err != nil {
-		return nil, fmt.Errorf("error reading %s file: %w", maintainersFile, err)
-	}
-
-	var projects []struct {
-		Name        string       `json:"project"`
-		Maintainers []Maintainer `json:"maintainers"`
-	}
-
-	err = json.Unmarshal(file, &projects)
-	if err != nil {
-		return nil, fmt.Errorf("error parsing %s file: %w", maintainersFile, err)
-	}
-
-	for _, p := range projects {
-		if p.Name == "informabot" {
-			return p.Maintainers, nil
-		}
-	}
-
-	return nil, fmt.Errorf("couldn't found informabot projects after parsing %s", maintainersFile)
+func ParseMaintainers() (maintainer []cparser.Maintainer, err error) {
+	return cparser.ParseMaintainers(path.Join(jsonPath, configSubpath))
 }
 
-func ParseRepresentatives() (map[string]Representative, error) {
-	representatives := make(map[string]Representative)
-
-	filepath := filepath.Join(jsonPath, configSubpath, representativesFile)
-	byteValue, err := os.ReadFile(filepath)
-	if errors.Is(err, os.ErrNotExist) {
-		return representatives, nil
-	} else if err != nil {
-		return nil, fmt.Errorf("error reading %s file: %w", filepath, err)
-	}
-
-	err = json.Unmarshal(byteValue, &representatives)
-	if err != nil {
-		return nil, fmt.Errorf("error parsing %s file: %w", filepath, err)
-	}
-
-	if representatives == nil {
-		representatives = make(map[string]Representative)
-	}
-
-	return representatives, nil
+func ParseRepresentatives() (map[string]cparser.Representative, error) {
+	return cparser.ParseRepresentatives(path.Join(jsonPath, configSubpath))
 }
