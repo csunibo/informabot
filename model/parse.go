@@ -18,14 +18,9 @@ import (
 )
 
 const (
-	jsonPath            = "./json/"
-	groupsFile          = "groups.json"
-	configSubpath       = "config/"
-	degreesFile         = "degrees.json"
-	teachingsFile       = "teachings.json"
-	timetablesFile      = "timetables.json"
-	maintainersFile     = "maintainers.json"
-	representativesFile = "representatives.json"
+	jsonPath      = "./json/"
+	groupsFile    = "groups.json"
+	configSubpath = "config/"
 )
 
 func ParseAutoReplies() (autoReplies []AutoReply, err error) {
