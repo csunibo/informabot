@@ -55,12 +55,6 @@ func commandNameFromDegree(d cparser.Degree) string {
 	return commandNameFromString(d.Id)
 }
 
-func commandNamesFromStrings(strings []string) {
-	for i, s := range strings {
-		strings[i] = commandNameFromString(s)
-	}
-}
-
 func ParseTeachings() (teachings map[string]cparser.Teaching, err error) {
 
 	teachingsArray, err := cparser.ParseTeachings(filepath.Join(jsonPath, configSubpath))
@@ -79,11 +73,9 @@ func ParseDegrees() (degrees map[string]cparser.Degree, err error) {
 	if err != nil {
 		return nil, fmt.Errorf("error parsing Degrees: %w", err)
 	}
-	for _, d := range degreesArray {
-		for _, y := range d.Years {
-			t := y.Teachings
-			commandNamesFromStrings(t.Mandatory)
-			commandNamesFromStrings(t.Electives)
+	for i := range degreesArray {
+		for j := range degreesArray[i].Teachings {
+			degreesArray[i].Teachings[j].Name = commandNameFromString(degreesArray[i].Teachings[j].Name)
 		}
 	}
 	degrees = make(map[string]cparser.Degree, len(degreesArray))
