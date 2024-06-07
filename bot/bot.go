@@ -169,7 +169,7 @@ func degreeToTeaching(degree cparser.Degree) cparser.Teaching {
 }
 
 func degreeToString(degree cparser.Degree) string {
-	if len(degree.Years) == 0 {
+	if len(degree.Teachings) == 0 {
 		return teachingToString(degreeToTeaching(degree))
 	}
 	var b strings.Builder
@@ -189,17 +189,29 @@ func degreeToString(degree cparser.Degree) string {
 		b.WriteString(strings.Join(elements, " "))
 		b.WriteString("</b>\n")
 	}
-	// years
-	for _, y := range degree.Years {
-		// header
-		b.WriteString(fmt.Sprintf("%d", y.Year))
-		if y.Chat != "" {
-			b.WriteString(fmt.Sprintf(" (<a href='%s'>👥 Gruppo</a>)", y.Chat))
+
+	for y := range 5 {
+		// For not classified teachings
+		t1 := cparser.GetYearMandatoryTeachingsFromDegree(degree, int64(y))
+		t2 := cparser.GetYearElectivesTeachingsFromDegree(degree, int64(y))
+		if y != 0 && (len(t1) > 0 || len(t2) > 0) {
+			// header
+			b.WriteString(fmt.Sprintf("%d", y))
+
+			var chat string
+			for _, tmp := range degree.Years {
+				if tmp.Year == int64(y) {
+					chat = tmp.Chat
+				}
+			}
+
+			if chat != "" {
+				b.WriteString(fmt.Sprintf(" (<a href='%s'>👥 Gruppo</a>)", chat))
+			}
+			b.WriteString("\n")
 		}
-		b.WriteString("\n")
-		teachings := y.Teachings
-		for _, t := range append(teachings.Mandatory, teachings.Electives...) {
-			b.WriteString(fmt.Sprintf("/%s\n", t))
+		for _, t := range append(t1, t2...) {
+			b.WriteString(fmt.Sprintf("/%s\n", t.Name))
 		}
 	}
 	return b.String()
