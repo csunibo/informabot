@@ -1,5 +1,9 @@
+github.com/csunibo/config v0.1.0 h1:3BMloeZ4rMIGnZHtjidrnxHt+VtwF2nWNavuf2AmJiw=
+github.com/csunibo/config v0.1.0/go.mod h1:DnpQhVGqGH3ccu+Mdkmg/NdMAcEYv/BEXVTO/lGU+so=
 github.com/csunibo/config-parser-go v0.0.3-0.20240605210600-7adafb400cbf h1:KGJHNxAn9ysnmAaD4TcdGNuS1elygT4pvCgdliMfXG4=
 github.com/csunibo/config-parser-go v0.0.3-0.20240605210600-7adafb400cbf/go.mod h1:dwZfvG8VAisAae8r8kZ1wzY4KkRivXpPuco9WQy+PW4=
+github.com/csunibo/config-parser-go v0.1.0 h1:1O8yWY+CL64PSQqJPLAYjxONURvKK4yB2RfK98KFLQE=
+github.com/csunibo/config-parser-go v0.1.0/go.mod h1:Uh8k31CrCJdReDgo2ew2+Z6XeIWkl0MTg09P4oW+EdM=
 github.com/csunibo/unibo-go v0.0.10 h1:UwFIvTpXMKZCOVoX564RmqQttXTTs5Xz5hCAjun8NFk=
 github.com/csunibo/unibo-go v0.0.10/go.mod h1:h2+xnccHa7x48RNB6d07bpHQ01ozw4oihgDOlvVrJ9U=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

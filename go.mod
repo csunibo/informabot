@@ -1,6 +1,6 @@
 module github.com/csunibo/informabot
 
-go 1.22.3
+go 1.22.4
 
 require (
 	github.com/csunibo/unibo-go v0.0.10
@@ -10,4 +10,6 @@ require (
 	golang.org/x/text v0.16.0
 )
 
-require github.com/csunibo/config-parser-go v0.0.3-0.20240605210600-7adafb400cbf
+require github.com/csunibo/config-parser-go v0.1.0
+
+require github.com/csunibo/config v0.1.0 // indirect
