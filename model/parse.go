@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"path"
 	"path/filepath"
 	"strings"
 
@@ -57,7 +56,7 @@ func commandNameFromDegree(d cparser.Degree) string {
 
 func ParseTeachings() (teachings map[string]cparser.Teaching, err error) {
 
-	teachingsArray, err := cparser.ParseTeachings(filepath.Join(jsonPath, configSubpath))
+	teachingsArray, err := cparser.ParseTeachings()
 	if err != nil {
 		return nil, fmt.Errorf("error parsing Teachings: %w", err)
 	}
@@ -69,7 +68,7 @@ func ParseTeachings() (teachings map[string]cparser.Teaching, err error) {
 }
 
 func ParseDegrees() (degrees map[string]cparser.Degree, err error) {
-	degreesArray, err := cparser.ParseDegrees(filepath.Join(jsonPath, configSubpath))
+	degreesArray, err := cparser.ParseDegrees()
 	if err != nil {
 		return nil, fmt.Errorf("error parsing Degrees: %w", err)
 	}
@@ -189,7 +188,7 @@ func SaveGroups(groups GroupsStruct) error {
 }
 
 func ParseTimetables() (timetables map[string]cparser.Timetable, err error) {
-	timetables, err = cparser.ParseTimetables(filepath.Join(jsonPath, configSubpath))
+	timetables, err = cparser.ParseTimetables()
 
 	if err != nil {
 		return nil, fmt.Errorf("error parsing Timetables: %w", err)
@@ -198,9 +197,9 @@ func ParseTimetables() (timetables map[string]cparser.Timetable, err error) {
 }
 
 func ParseMaintainers() (maintainer []cparser.Maintainer, err error) {
-	return cparser.ParseMaintainers(path.Join(jsonPath, configSubpath))
+	return cparser.ParseMaintainers()
 }
 
 func ParseRepresentatives() (map[string]cparser.Representative, error) {
-	return cparser.ParseRepresentatives(path.Join(jsonPath, configSubpath))
+	return cparser.ParseRepresentatives()
 }

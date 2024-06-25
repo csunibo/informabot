@@ -1,3 +1,0 @@
-[submodule "json/config"]
-	path = json/config
-	url = https://github.com/csunibo/config.git
