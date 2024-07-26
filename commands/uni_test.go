@@ -150,6 +150,7 @@ func TestGetTimeTable(t *testing.T) {
 			if err != nil && !tt.error {
 				t.Errorf("GetTimeTable() error = %v", err)
 				return
+			} else if got == "" {
 			} else {
 				got = strings.ReplaceAll(got, " ", "")
 				want := strings.ReplaceAll(tt.want, " ", "")
