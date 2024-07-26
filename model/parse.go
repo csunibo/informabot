@@ -17,9 +17,9 @@ import (
 )
 
 const (
-	jsonPath      = "./json/"
-	groupsFile    = "groups.json"
-	configSubpath = "config/"
+	jsonPath           = "./json/"
+	ProjectsGroupsFile = "groups.json"
+	configSubpath      = "config/"
 )
 
 func ParseAutoReplies() (autoReplies []AutoReply, err error) {
@@ -159,10 +159,10 @@ func ParseMemeList() (memes []Meme, err error) {
 	return
 }
 
-func ParseOrCreateGroups() (GroupsStruct, error) {
-	groups := make(GroupsStruct)
+func ParseOrCreateProjectsGroups() (ProjectsGroupsStruct, error) {
+	groups := make(ProjectsGroupsStruct)
 
-	filepath := filepath.Join(jsonPath, groupsFile)
+	filepath := filepath.Join(jsonPath, ProjectsGroupsFile)
 	byteValue, err := os.ReadFile(filepath)
 	if errors.Is(err, os.ErrNotExist) {
 		return groups, nil
@@ -176,14 +176,14 @@ func ParseOrCreateGroups() (GroupsStruct, error) {
 	}
 
 	if groups == nil {
-		groups = make(GroupsStruct)
+		groups = make(ProjectsGroupsStruct)
 	}
 
 	return groups, nil
 }
 
-func SaveGroups(groups GroupsStruct) error {
-	filepath := filepath.Join(jsonPath, groupsFile)
+func SaveProjectsGroups(groups ProjectsGroupsStruct) error {
+	filepath := filepath.Join(jsonPath, ProjectsGroupsFile)
 	return utils.WriteJSONFile(filepath, groups)
 }
 

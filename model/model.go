@@ -48,7 +48,7 @@ func GetActionFromType(name string, commandType string) Action {
 }
 
 // SECTION GLOBAL JSON STRUCTS
-type GroupsStruct = map[int64][]int64
+type ProjectsGroupsStruct = map[int64][]int64
 
 type AutoReply struct {
 	Text     string `json:"text"`

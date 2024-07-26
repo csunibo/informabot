@@ -76,19 +76,19 @@ func (data LookingForData) HandleBotCommand(bot *tgbotapi.BotAPI, message *tgbot
 	var senderID = message.From.ID
 
 	log.Printf("LookingForData: %d, %d", chatId, senderID)
-	if chatArray, ok := Groups[chatId]; ok {
+	if chatArray, ok := ProjectsGroups[chatId]; ok {
 		if !slices.Contains(chatArray, senderID) {
-			Groups[chatId] = append(chatArray, senderID)
+			ProjectsGroups[chatId] = append(chatArray, senderID)
 		}
 	} else {
-		Groups[chatId] = []int64{senderID}
+		ProjectsGroups[chatId] = []int64{senderID}
 	}
-	err := SaveGroups(Groups)
+	err := SaveProjectsGroups(ProjectsGroups)
 	if err != nil {
 		log.Printf("Error [LookingForData]: %s\n", err)
 	}
 
-	chatMembers := utils.GetChatMembers(bot, message.Chat.ID, Groups[chatId])
+	chatMembers := utils.GetChatMembers(bot, message.Chat.ID, ProjectsGroups[chatId])
 
 	var resultMsg string
 	// Careful: additional arguments must be passed in the right order!
@@ -120,7 +120,7 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 		isAMainGroup(chatTitle) {
 		log.Print("Error [NotLookingForData]: not a group or yearly group")
 		return makeResponseWithText(data.ChatError)
-	} else if _, ok := Groups[message.Chat.ID]; !ok {
+	} else if _, ok := ProjectsGroups[message.Chat.ID]; !ok {
 		log.Print("Info [NotLookingForData]: group empty, user not found")
 		return makeResponseWithText(fmt.Sprintf(data.NotFoundError, message.Chat.Title))
 	}
@@ -129,12 +129,12 @@ func (data NotLookingForData) HandleBotCommand(_ *tgbotapi.BotAPI, message *tgbo
 	var senderId = message.From.ID
 
 	var msg string
-	if idx := slices.Index(Groups[chatId], senderId); idx == -1 {
+	if idx := slices.Index(ProjectsGroups[chatId], senderId); idx == -1 {
 		log.Print("Info [NotLookingForData]: user not found in group")
 		msg = fmt.Sprintf(data.NotFoundError, chatTitle)
 	} else {
-		Groups[chatId] = append(Groups[chatId][:idx], Groups[chatId][idx+1:]...)
-		err := SaveGroups(Groups)
+		ProjectsGroups[chatId] = append(ProjectsGroups[chatId][:idx], ProjectsGroups[chatId][idx+1:]...)
+		err := SaveProjectsGroups(ProjectsGroups)
 		if err != nil {
 			log.Printf("Error [NotLookingForData]: %s\n", err)
 		}

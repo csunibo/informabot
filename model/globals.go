@@ -19,7 +19,7 @@ var (
 	MemeList        []Meme
 	Settings        SettingsStruct
 	Teachings       map[string]cparser.Teaching
-	Groups          GroupsStruct
+	ProjectsGroups  ProjectsGroupsStruct
 	Timetables      map[string]cparser.Timetable
 	Maintainers     []cparser.Maintainer
 	Representatives map[string]cparser.Representative
@@ -57,7 +57,7 @@ func InitGlobals() {
 		log.Fatalf("Error reading memes.json file: %s", err.Error())
 	}
 
-	Groups, err = ParseOrCreateGroups()
+	ProjectsGroups, err = ParseOrCreateProjectsGroups()
 	if err != nil {
 		log.Fatalf("Error reading or creating groups.json file: %s", err.Error())
 	}
