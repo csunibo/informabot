@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io"
 	"os"
 	"path/filepath"
 	"strings"
@@ -72,6 +71,7 @@ func ParseDegrees() (degrees map[string]cparser.Degree, err error) {
 	if err != nil {
 		return nil, fmt.Errorf("error parsing Degrees: %w", err)
 	}
+
 	for i := range degreesArray {
 		for j := range degreesArray[i].Teachings {
 			degreesArray[i].Teachings[j].Name = commandNameFromString(degreesArray[i].Teachings[j].Name)
@@ -103,24 +103,30 @@ func ParseSettings() (settings SettingsStruct, err error) {
 	return
 }
 
-func ParseActions() (actions []Action, err error) {
-	byteValue, err := os.Open("./json/actions.json")
+func ParseActions() ([]Action, error) {
+	byteValue, err := os.ReadFile("./json/actions.json")
 	if err != nil {
 		return nil, fmt.Errorf("error reading actions.json file: %w", err)
 	}
 
-	actions, err = ParseActionsBytes(byteValue)
+	actions, err := ParseActionsBytes(byteValue)
 	if err != nil {
 		return nil, fmt.Errorf("error parsing actions.json file: %w", err)
 	}
 
-	return
+	return actions, nil
 }
 
-func ParseActionsBytes(reader io.Reader) (actions []Action, err error) {
+func ParseActionsBytes(actionBytes []byte) (actions []Action, err error) {
+
+	filledActions, err := FillActionsTemplate(actionBytes)
+	if err != nil {
+		return nil, fmt.Errorf("error executing template on actions: %w", err)
+	}
+
 	var mapData map[string]interface{}
 
-	err = json.NewDecoder(reader).Decode(&mapData)
+	err = json.Unmarshal(filledActions, &mapData)
 	if err != nil {
 		return
 	}

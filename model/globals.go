@@ -32,11 +32,6 @@ func InitGlobals() {
 		log.Fatalf("Error reading autoreply.json file: %s", err.Error())
 	}
 
-	Actions, err = ParseActions()
-	if err != nil {
-		log.Fatalf("Error reading actions.json file: %s", err.Error())
-	}
-
 	Teachings, err = ParseTeachings()
 	if err != nil {
 		log.Fatalf(err.Error())
@@ -45,6 +40,12 @@ func InitGlobals() {
 	Degrees, err = ParseDegrees()
 	if err != nil {
 		log.Fatalf(err.Error())
+	}
+
+	// This should be executed AFTER ParseDegrees()
+	Actions, err = ParseActions()
+	if err != nil {
+		log.Fatalf("Error reading actions.json file: %s", err.Error())
 	}
 
 	Settings, err = ParseSettings()
