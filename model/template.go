@@ -9,8 +9,8 @@ import (
 )
 
 type globaVar struct {
-	TelegramGroups map[string]map[string]string
-	Domains        map[string]string
+	ChatGroups map[string]map[string]string
+	Domains    map[string]string
 }
 
 func FillActionsTemplate(actions []byte) ([]byte, error) {
@@ -63,6 +63,11 @@ func getVariables() globaVar {
 		panic("informatica_magistrale not found in degrees. Could not continue")
 	}
 
+	degreeInformaticaScienzeInfoMag, found := Degrees["ingegneria_e_scienze_informatich"]
+	if !found {
+		panic("ingegneria-e-scienze-informatiche-magistrale not found in degrees. Could not continue")
+	}
+
 	degreeAI, found := Degrees["artificial_intelligence"]
 	if !found {
 		panic("artificial_intelligence not found in degrees. Could not continue")
@@ -74,7 +79,7 @@ func getVariables() globaVar {
 	}
 
 	v := globaVar{
-		TelegramGroups: map[string]map[string]string{
+		ChatGroups: map[string]map[string]string{
 			"Informatica": {
 				"Global": "",
 				"First":  cparser.MustGetYear(degreeInformatica, 1).Chat,
@@ -82,7 +87,7 @@ func getVariables() globaVar {
 				"Third":  cparser.MustGetYear(degreeInformatica, 3).Chat,
 			},
 			"Informatica_per_il_management": {
-				"Global": cparser.MustGetYear(degreeManagement, 1).Chat, // Need to be modified
+				"Global": degreeManagement.Chat, // Need to be modified
 			},
 			"Ingegneria": {
 				"Global": degreeIngegneria.Chat,
@@ -93,8 +98,9 @@ func getVariables() globaVar {
 			"Informatica_magistrale": {
 				"Global": degreeInformaticaMag.Chat,
 			},
-			// "Ingegneria_e_scienze_informatiche_magistrale": {
-			// },
+			"Ingegneria_e_scienze_informatiche_magistrale": {
+				"Global": degreeInformaticaScienzeInfoMag.Chat,
+			},
 			"Artificial_intelligence": {
 				"First":  cparser.MustGetYear(degreeAI, 1).Chat,
 				"Second": cparser.MustGetYear(degreeAI, 2).Chat,
@@ -111,10 +117,10 @@ func getVariables() globaVar {
 		},
 	}
 
-	// Add https:// to links for TelegramGroups
-	for i := range v.TelegramGroups {
-		for j := range v.TelegramGroups[i] {
-			v.TelegramGroups[i][j] = "https://" + v.TelegramGroups[i][j]
+	// Add https:// to links for ChatGroups
+	for i := range v.ChatGroups {
+		for j := range v.ChatGroups[i] {
+			v.ChatGroups[i][j] = "https://" + v.ChatGroups[i][j]
 		}
 	}
 
