@@ -1,12 +1,11 @@
 package model
 
 import (
-	"strings"
 	"testing"
 )
 
 func TestActions(t *testing.T) {
-	reader := strings.NewReader(`{
+	reader := []byte(`{
 		"start": {
 		  "type": "message",
 		  "data": {
@@ -14,6 +13,12 @@ func TestActions(t *testing.T) {
 		  }
 		}
 	}`)
+
+	var err error
+	Degrees, err = ParseDegrees()
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	actions, err := ParseActionsBytes(reader)
 	t.Log(actions)
