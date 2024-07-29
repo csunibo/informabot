@@ -10,6 +10,6 @@ require (
 	golang.org/x/text v0.16.0
 )
 
-require github.com/csunibo/config-parser-go v0.1.6
+require github.com/csunibo/config-parser-go v0.1.7
 
-require github.com/csunibo/config v0.1.7 // indirect
+require github.com/csunibo/config v0.1.8 // indirect
