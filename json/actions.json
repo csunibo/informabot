@@ -2,7 +2,7 @@
   "start": {
     "type": "message",
     "data": {
-      "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica. Puoi contribuire al progetto su <a href='https://github.com/csunibo/informabot'>GitHub</a>."
+      "text": "Ciao! Stai parlando con Informabot. Assisto gli studenti Unibo della triennale di Informatica. Puoi contribuire al progetto su <a href='https://{{ .Domains.GithubBase }}/informabot'>GitHub</a>."
     }
   },
   "help": {
@@ -44,7 +44,7 @@
     "type": "message",
     "data": {
       "description": "Aggiungi lezioni al tuo calendario",
-      "text": "\ud83d\udcdd <a href='https://calendar.students.cs.unibo.it/'>Calendario</a>\n\ud83d\udcbb <a href='https://github.com/VaiTon/UniboCalendar'>Sorgente</a>"
+      "text": "\ud83d\udcdd <a href='https://calendar.{{ .Domains.ADMStaffBase }}/'>Calendario</a>\n\ud83d\udcbb <a href='https://github.com/VaiTon/UniboCalendar'>Sorgente</a>"
     }
   },
   "cercogruppo": {
@@ -60,7 +60,7 @@
     "type": "message",
     "data": {
       "description": "Documento con tutte le descrizioni dei corsi in inglese",
-      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/course-description-merged'>Course description merged</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/course-description-merged'>Sorgente</a> e <a href='https://csunibo.github.io/wiki/web-scraper/course-description-merged/'>documentazione</a>"
+      "text": "\ud83d\udcdd <a href='https://{{ .Domains.GithubPages }}/course-description-merged'>Course description merged</a>\n\ud83d\udcbb <a href='https://{{ .Domains.GithubBase }}/course-description-merged'>Sorgente</a> e <a href='https://{{ .Domains.GithubPages }}/wiki/web-scraper/course-description-merged/'>documentazione</a>"
     }
   },
   "dns": {
@@ -74,14 +74,14 @@
     "type": "message",
     "data": {
       "description": "Tutte le info di AdmStaff",
-      "text": "<b><i>\ud83d\udcbb AdmStaff</i></b>\n\n<a href='https://students.cs.unibo.it'>\ud83c\udf10Sito ufficiale e wiki</a>"
+      "text": "<b><i>\ud83d\udcbb AdmStaff</i></b>\n\n<a href='https://{{ .Domains.ADMStaffBase }}'>\ud83c\udf10Sito ufficiale e wiki</a>"
     }
   },
   "csunibo": {
     "type": "message",
     "data": {
       "description": "La pagina principale di CSUnibo",
-      "text": "<b><i>\ud83d\udcbb CSUnibo</i></b>\n\n<a href='https://csunibo.students.cs.unibo.it'>\ud83c\udf10Sito ufficiale</a>"
+      "text": "<b><i>\ud83d\udcbb CSUnibo</i></b>\n\n<a href='https://csunibo.{{ .Domains.ADMStaffBase }}'>\ud83c\udf10Sito ufficiale</a>"
     }
   },
   "gruppi": {
@@ -103,7 +103,7 @@
     "type": "message",
     "data": {
       "description": "Libri, materiali, prove e altro su CSUnibo",
-      "text": "<b>Appunti, esercizi, libri, prove e altre risorse</b>\n\ud83d\udcda <a href='https://risorse.students.cs.unibo.it'>Istanza principale</a>\n\ud83d\udcda <a href='https://dynamik.vercel.app'>Istanza di riserva</a>\n\ud83d\udcda <a href='https://csunibo.students.cs.unibo.it/wiki/raccolte-di-risorse/contribuire-a-un-insegnamento/index.html'>Come carico il mio materiale?</a>"
+      "text": "<b>Appunti, esercizi, libri, prove e altre risorse</b>\n\ud83d\udcda <a href='https://risorse.{{ .Domains.ADMStaffBase }}'>Istanza principale</a>\n\ud83d\udcda <a href='https://dynamik.vercel.app'>Istanza di riserva</a>\n\ud83d\udcda <a href='https://csunibo.{{ .Domains.ADMStaffBase }}/wiki/raccolte-di-risorse/contribuire-a-un-insegnamento/index.html'>Come carico il mio materiale?</a>"
     }
   },
   "noncercogruppo": {
@@ -126,7 +126,7 @@
     "type": "message",
     "data": {
       "description": "Lezioni registrate",
-      "text": "<b>Registrazioni:</b>\n  <a href='https://rec.students.cs.unibo.it/informatica'>Informatica</a>\n  <a href='https://rec.students.cs.unibo.it/informatica-magistrale'>Informatica Magistrale</a>\n  <a href='https://rec.students.cs.unibo.it/ingegneria'>Ingegneria Informatica</a>\n  <a href='https://rec.students.cs.unibo.it/ingegneria-informatica-magistrale'>Ingegneria Informatica Magistrale</a>\n  <a href='https://rec.students.cs.unibo.it/miscellanei/'>Altro</a>\n\nuser: csunibo\npass: 20rec24"
+      "text": "<b>Registrazioni:</b>\n  <a href='https://rec.{{ .Domains.ADMStaffBase }}/informatica'>Informatica</a>\n  <a href='https://rec.{{ .Domains.ADMStaffBase }}/informatica-magistrale'>Informatica Magistrale</a>\n  <a href='https://rec.{{ .Domains.ADMStaffBase }}/ingegneria'>Ingegneria Informatica</a>\n  <a href='https://rec.{{ .Domains.ADMStaffBase }}/ingegneria-informatica-magistrale'>Ingegneria Informatica Magistrale</a>\n  <a href='https://rec.{{ .Domains.ADMStaffBase }}/miscellanei/'>Altro</a>\n\nuser: csunibo\npass: 20rec24"
     }
   },
   "scelta": {
@@ -177,14 +177,14 @@
     "type": "message",
     "data": {
       "description": "Tesi: proposte dei docenti e modelli DISI",
-      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/raccoglitesi/disi.html'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/raccoglitesi'>Sorgente</a>\n\n\ud83d\udcdd <a href='https://github.com/csunibo/latex-thesis'>Modello tesi LaTeX DISI</a>\n\ud83d\udcdd <a href='https://github.com/csunibo/asciidoc-thesis'>Modello tesi AsciiDoc DISI</a>\n\ud83d\udcdd <a href='https://github.com/csunibo/typst-thesis'>Modello tesi Typst DISI</a>"
+      "text": "\ud83d\udcdd <a href='https://{{ .Domains.GithubPages }}/raccoglitesi/disi.html'>Tesi DISI</a>\n\ud83d\udcbb <a href='https://{{ .Domains.GithubBase }}/raccoglitesi'>Sorgente</a>\n\n\ud83d\udcdd <a href='https://{{ .Domains.GithubBase }}/latex-thesis'>Modello tesi LaTeX DISI</a>\n\ud83d\udcdd <a href='https://{{ .Domains.GithubBase }}/asciidoc-thesis'>Modello tesi AsciiDoc DISI</a>\n\ud83d\udcdd <a href='https://{{ .Domains.GithubBase }}/typst-thesis'>Modello tesi Typst DISI</a>"
     }
   },
   "tirocinio": {
     "type": "message",
     "data": {
       "description": "Strumento per riassumere le attivit\u00e0 svolte durante il proprio tirocinio",
-      "text": "\ud83d\udcdd <a href='https://csunibo.github.io/diario-tirocinio/'>Diario Tirocinio</a>\n\ud83d\udcbb <a href='https://github.com/csunibo/diario-tirocinio'>Sorgente</a>"
+      "text": "\ud83d\udcdd <a href='https://{{ .Domains.GithubPages }}/diario-tirocinio/'>Diario Tirocinio</a>\n\ud83d\udcbb <a href='https://{{ .Domains.GithubBase }}/diario-tirocinio'>Sorgente</a>"
     }
   },
   "rappresentanti": {

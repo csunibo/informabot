@@ -10,6 +10,7 @@ import (
 
 type globaVar struct {
 	TelegramGroups map[string]map[string]string
+	Domains        map[string]string
 }
 
 func FillActionsTemplate(actions []byte) ([]byte, error) {
@@ -102,9 +103,15 @@ func getVariables() globaVar {
 				"Global": lab.Chat,
 			},
 		},
+		// The following domains are hard-coded, we could write them in config...
+		Domains: map[string]string{
+			"ADMStaffBase": "students.cs.unibo.it",
+			"GithubBase":   "github.com/csunibo",
+			"GithubPages":  "csunibo.github.io",
+		},
 	}
 
-	// Add https:// to links
+	// Add https:// to links for TelegramGroups
 	for i := range v.TelegramGroups {
 		for j := range v.TelegramGroups[i] {
 			v.TelegramGroups[i][j] = "https://" + v.TelegramGroups[i][j]
