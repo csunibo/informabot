@@ -1,5 +1,5 @@
-github.com/csunibo/config v0.1.8 h1:ORJdl3KRA46BAtbJpAY2O5t5FW8XD7e3XetgQc8i+Dc=
-github.com/csunibo/config v0.1.8/go.mod h1:DnpQhVGqGH3ccu+Mdkmg/NdMAcEYv/BEXVTO/lGU+so=
+github.com/csunibo/config v1.0.0 h1:cHPxm64M9AibZ7zRxtRJ32i6zCGrPZmYbKCuaKa6E/w=
+github.com/csunibo/config v1.0.0/go.mod h1:DnpQhVGqGH3ccu+Mdkmg/NdMAcEYv/BEXVTO/lGU+so=
 github.com/csunibo/config-parser-go v0.1.7 h1:CKimZoBPrPaee4wj/KA0ONWE1I7ZIO8MOYCxqKJsurU=
 github.com/csunibo/config-parser-go v0.1.7/go.mod h1:1yZBBlxmGGESQ0dDvJnnL/Rmims6HDXJR1QFEHz4xng=
 github.com/csunibo/unibo-go v0.0.10 h1:UwFIvTpXMKZCOVoX564RmqQttXTTs5Xz5hCAjun8NFk=
