@@ -12,4 +12,4 @@ require (
 
 require github.com/csunibo/config-parser-go v0.1.7
 
-require github.com/csunibo/config v0.1.8 // indirect
+require github.com/csunibo/config v1.0.0 // indirect
